@@ -4,9 +4,9 @@ import { useState, useEffect } from "react"
 import './index.css'
 
 const carouselImg = [
-    {id:0,imgUrl:"beautyzone1"},
-    {id:1,imgUrl:"beautyzone2"},
-    {id:2,imgUrl:"beautyzone3"},
+    {id:0,imgUrl:"beautyzone1" ,offer : "Up to 20% off",service : "On Facial & Spa",btn:"Book Now   ❯"},
+    {id:1,imgUrl:"beautyzone2",offer : "Min to 15% off",service : "On Makeup & HairStyles",btn:"Book Now   ❯"},
+    {id:2,imgUrl:"beautyzone3",offer : "Min to 50% off",service : "On Manicure & Padicure",btn:"Book Now   ❯"},
 ]
 
 const Carousel = () =>{
@@ -33,9 +33,16 @@ const Carousel = () =>{
     return(
         <>   
             <div className="carouselImg-con">
-                {carouselImg.map(each=>(
-                    <img src={`./${each.imgUrl}.png`} style={{transform:`translate(-${activeIndex * 100}%)`}} className="carouselImg" alt="carouselImg"/>  
-                ))}
+                 {carouselImg.map(each=>(
+                        <div id={each.id} className="carousel-content" style={{transform:`translate(-${activeIndex * 100}%)`, backgroundImage: `URL(./${each.imgUrl}.png)`}}>
+                            <h1 className="offer">{each.offer}</h1>
+                            <p className="service">{each.service}</p>
+                            <button className="btn" type="button">{each.btn}</button>
+                            <div className="shadow">
+                                
+                            </div>
+                        </div> 
+                 ))}
             </div>
             <div className="dots-con">
                  {carouselImg.map(each=>(<div id={each.id} className={activeIndex === each.id ? "dots" :"dots2"}></div>))}
