@@ -25,13 +25,11 @@ const Sukras = () =>{
     return(
         <div className="sukras-main">
             <div className='header'>
-                <h1 className='website-name'>SUKRA'S</h1>
-                <p className='tag-name'>SIGNATURE FOR STYLES</p>
+                <img className='sukras-logo' src="./sukraslogo.png" alt="Logo Space"/>
             </div>
             <div className='website-body'>
                  <form className='form'>
-                    <h1 className='website-form-name'>SUKRA'S</h1>
-                    <p className='tag-form-name'>SIGNATURE FOR STYLES</p>
+                    <img className='sukras-logo2' src='./logo2.png' alt="Logo Space2"/>
                     <p className='welcome-name'>Welcome to Sukra's</p>
                     <p className='verify-number'>Get Verified by your Mobile Number</p>
                     {otp === 0?<p className='enter-number'>Enter your mobile number to get started.</p>:<p className='enter-number'>Enter the OTP sent on *********{phone.slice((phone.length-2),(phone.length))}</p>}

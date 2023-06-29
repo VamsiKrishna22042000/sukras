@@ -1,0 +1,13 @@
+.total-container{
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding-top:20%;
+}
+.total{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+}

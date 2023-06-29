@@ -1,11 +1,13 @@
 
 import './index.css'
 
+import { withRouter } from 'react-router-dom/cjs/react-router-dom.min'
+
 import { useState } from 'react'
 
-const Verification = () =>{
+const Verification = (props) =>{
 
-     const [obtainedOTP,setOTP]=useState({index:0, OTP:""})
+     const [obtainedOTP,setOTP] = useState({index:0, OTP:""})
      
 
      const obtainOtp = (event) =>{
@@ -41,9 +43,10 @@ const Verification = () =>{
         
      }
 
-     const verifyOTP = ()=>{
-        const {OTP}=obtainedOTP
-        console.log(OTP)
+     const verifyOTP = () => {
+        const {OTP} = obtainedOTP
+        const {history} = props
+        history.replace("/select-category")
      }
     
     
@@ -69,4 +72,4 @@ const Verification = () =>{
     )
 }
 
-export default Verification
+export default withRouter(Verification)

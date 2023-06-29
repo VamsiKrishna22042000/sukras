@@ -9,11 +9,24 @@ import {Switch,Route} from 'react-router-dom'
 
 import Sukras from './SuskrasMain/index'
 
+import SelectCategory from './Select-Category';
+import EmailLogin from './Email login';
+
+import Beautyzone from './BeautyZone/index';
+
+import Protectedroute from './Protectedroute';
+
+import NotFound from './NotFound';
+
 function App() {
   return (
     <BrowserRouter>
        <Switch>
-          <Route path="/" component={Sukras}/>
+          <Route exact path="/email-login" component={EmailLogin} />
+          <Protectedroute exact path ="/" component={Sukras}/>
+          <Protectedroute exact path="/select-category" component={SelectCategory}/>
+          <Protectedroute exact path="/beautyzone" component={Beautyzone}/>
+          <NotFound/>
        </Switch>
     </BrowserRouter>
   );
