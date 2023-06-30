@@ -1,5 +1,7 @@
 
+
 import { useState, useEffect } from "react"
+
 
 import './index.css'
 
@@ -8,6 +10,8 @@ const carouselImg = [
     {id:1,imgUrl:"beautyzone2",offer : "Min to 15% off",service : "On Makeup & HairStyles",btn:"Book Now   ❯"},
     {id:2,imgUrl:"beautyzone3",offer : "Min to 50% off",service : "On Manicure & Padicure",btn:"Book Now   ❯"},
 ]
+
+
 
 const Carousel = () =>{
     
@@ -38,9 +42,7 @@ const Carousel = () =>{
                             <h1 className="offer">{each.offer}</h1>
                             <p className="service">{each.service}</p>
                             <button className="btn" type="button">{each.btn}</button>
-                            <div className="shadow">
-                                
-                            </div>
+                            <div className="shadow"></div>
                         </div> 
                  ))}
             </div>

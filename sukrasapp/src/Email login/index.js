@@ -62,7 +62,7 @@ const Emaillogin = (props) =>{
             body : JSON.stringify(userDetails)
         }
         const response = await fetch(url,requestConfiger)
-        console.log(response)
+       
     }
     
     const getLogin = async () => {
