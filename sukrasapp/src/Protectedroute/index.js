@@ -7,7 +7,7 @@ import Cookies from 'js-cookie'
 
 const ProtectedRoute = (props) =>{
 
-    console.log(props)
+   
     const obtainedCookie = Cookies.get("jwt_token")
     if(obtainedCookie===undefined){
         return <Redirect to="/email-login"/>

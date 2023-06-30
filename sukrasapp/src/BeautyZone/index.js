@@ -8,6 +8,8 @@ import { withRouter } from "react-router-dom/cjs/react-router-dom.min"
 
 import { v4 as uuidv4 } from 'uuid';
 
+import {Link} from 'react-router-dom'
+
 const OtherServices = [
     {id:uuidv4(), imgUrl : "FemaleHairSalon"},
     {id:uuidv4(), imgUrl : "FemaleSpa"},
@@ -49,7 +51,12 @@ const Beautyzone = () =>{
         <div className="beautyzone-body-2">
             <div className="our-services">
                     <p className="our-services-head">Our Service's</p>
-                    {OtherServices.map(each=>(<button key={each.id} className="our-services-btn" id={each.id} type="button"><img className="our-services-img" src={`./${each.imgUrl}.png`} alt={each.imgUrl}/></button>))}
+                    {OtherServices.map(each=>(
+                    <Link  to={`/${each.imgUrl}/${each.id}`}>
+                        <button key={each.id} className="our-services-btn" id={each.id} type="button">
+                             <img className="our-services-img" src={`./${each.imgUrl}.png`} alt={each.imgUrl}/>
+                        </button>
+                    </Link>))}
             </div>
         </div>
     </div>

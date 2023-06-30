@@ -137,13 +137,13 @@
       .our-services-btn{
         border-color:transparent;
         background-color:transparent;
-        margin-top:3%;
+        margin-top:8%;
         margin-right:2%;
         margin-left:2%;
       }
       .our-services-img{
-        height:28vh;
-        width:15vw;
+        height:31vh;
+        width:18vw;
       }
 
 }
@@ -300,6 +300,7 @@
         width:100%;
         flex-wrap:wrap;
         margin-top:5%;
+        margin-bottom:5%;
      }
 
 
@@ -327,8 +328,9 @@
       .our-services-btn{
         border-color:transparent;
         background-color:transparent;
-        margin-top:10%;
-        margin-right:3.5%;
+        margin-top:30%;
+        margin-right:5%;
+        margin-left:-9%;
       }
       .our-services-img{
         height:13vh;

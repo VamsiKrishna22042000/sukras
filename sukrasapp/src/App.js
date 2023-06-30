@@ -16,6 +16,8 @@ import Beautyzone from './BeautyZone/index';
 
 import Protectedroute from './Protectedroute';
 
+import SelectedService from './SelectedService';
+
 import NotFound from './NotFound';
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
           <Protectedroute exact path ="/" component={Sukras}/>
           <Protectedroute exact path="/select-category" component={SelectCategory}/>
           <Protectedroute exact path="/beautyzone" component={Beautyzone}/>
+          <Protectedroute exact path='/:category/:id' component={SelectedService}/>
           <NotFound/>
        </Switch>
     </BrowserRouter>
