@@ -49,7 +49,7 @@ const Beautyzone = () =>{
         <div className="beautyzone-body-2">
             <div className="our-services">
                     <p className="our-services-head">Our Service's</p>
-                    {OtherServices.map(each=>(<button className="our-services-btn" id={each.id} type="button"><img className="our-services-img" src={`./${each.imgUrl}.png`} alt={each.imgUrl}/></button>))}
+                    {OtherServices.map(each=>(<button key={each.id} className="our-services-btn" id={each.id} type="button"><img className="our-services-img" src={`./${each.imgUrl}.png`} alt={each.imgUrl}/></button>))}
             </div>
         </div>
     </div>

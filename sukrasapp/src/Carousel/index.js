@@ -38,7 +38,7 @@ const Carousel = () =>{
         <>   
             <div className="carouselImg-con">
                  {carouselImg.map(each=>(
-                        <div id={each.id} className="carousel-content" style={{transform:`translate(-${activeIndex * 100}%)`, backgroundImage: `URL(./${each.imgUrl}.png)`}}>
+                        <div key = {each.id} id={each.id} className="carousel-content" style={{transform:`translate(-${activeIndex * 100}%)`, backgroundImage: `URL(./${each.imgUrl}.png)`}}>
                             <h1 className="offer">{each.offer}</h1>
                             <p className="service">{each.service}</p>
                             <button className="btn" type="button">{each.btn}</button>
@@ -47,7 +47,7 @@ const Carousel = () =>{
                  ))}
             </div>
             <div className="dots-con">
-                 {carouselImg.map(each=>(<div id={each.id} className={activeIndex === each.id ? "dots" :"dots2"}></div>))}
+                 {carouselImg.map(each=>(<div key={each.id} id={each.id} className={activeIndex === each.id ? "dots" :"dots2"}></div>))}
             </div>
         </>
       
