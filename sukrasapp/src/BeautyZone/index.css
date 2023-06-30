@@ -243,12 +243,12 @@
     }
     .left-arrow-mobile{
         color:#4E4E4E;
-        height:4vh;
+        height:3vh;
         padding-top:4%;
         padding-bottom:4%;
     }
     .location-mobile{  
-        height:4vh;
+        height:3.5vh;
         padding-top:4%;
         padding-bottom:4%;
     }
@@ -266,7 +266,7 @@
        background-color:transparent;
     }
     .search-btn{
-        margin-left:28.5%;
+        margin-left:27%;
         border-color:transparent;
         background-color:transparent;
     }
@@ -278,19 +278,21 @@
 
     .search-mobile{
         color:#4E4E4E;
-        height:3vh;
+        height:2.5vh;
         padding-top:4%;
         padding-bottom:4%;
     }
     .notification-mobile{
         color:#4E4E4E;
-        height:3vh;
+        height:2.5vh;
         padding-top:4%;
         padding-bottom:4%;
     }
     .dropdown-con{
         margin-left:1%;
         border-color:transparent;
+        background-color:transparent;
+        outline:none;
     }
 
     .beautyzone-body-2{
@@ -329,7 +331,7 @@
         margin-right:3.5%;
       }
       .our-services-img{
-        height:15vh;
+        height:13vh;
         width: 25vw;
       }
 }
