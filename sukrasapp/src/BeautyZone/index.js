@@ -23,12 +23,18 @@ const OtherServices = [
 
 ]
 
-const Beautyzone = () =>{
+const Beautyzone = (props) =>{
+
+    const gobackTo = () =>{
+           const {history} = props
+           history.push("/select-category")
+    }
+
     return(
         <div className="sukras-main-beauty">
         <div className='sukras-header-beauty'>
                 <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
-                <button className="arrow-btn" type="button"><img className="left-arrow-mobile" src="./backarrow.png"/></button>
+                <button onClick={gobackTo} className="arrow-btn" type="button"><img className="left-arrow-mobile" src="./backarrow.png"/></button>
                 <button className="location-btn" type="button"><img className="location-mobile" src="./location-icon.png"/></button>
                 <select className="dropdown-con">
                     <option>Hyderabad</option>

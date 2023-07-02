@@ -27,7 +27,7 @@ const SelectedService = (props) =>{
         <div className='sukras-header-beauty'>
                 <img className='sukraslogobeauty' src="/sukraslogo.png" alt="Logo Space"/>
                 <button className="arrow-btn" type="button" onClick={goback}><img className="left-arrow-mobile" src="/backarrow.png"/></button>
-                <p className='sukras-beauty-selected'>{arr.category}</p>
+                <p className='sukras-beauty-select'>{arr.category}</p>
                 <button className="location-btn" type="button"><img className="location-mobile" src="/location-icon.png"/></button>
                 <select className="dropdown-con">
                     <option>Hyderabad</option>
