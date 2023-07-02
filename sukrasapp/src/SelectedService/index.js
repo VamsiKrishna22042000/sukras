@@ -47,7 +47,7 @@ const SelectedService = (props) =>{
         <div className='selected-body'>
             <div className='selected-body-total'>
                 <div className='selected-body-content'>
-                    <h1 className='selected-head'>{arr.category}</h1>
+                    <h1 className='selected-hea'>{arr.category}</h1>
                     <div className='selected-rating-con'>
                         <p className='selected-rating'>4.5</p>
                         <img className='rating-star' src="/ratingstar.png" alt="rating"/>
