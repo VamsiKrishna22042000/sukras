@@ -61,11 +61,11 @@ const SelectCategory = (props) =>{
                         <p className="enjoy-sevices">Enjoy our services by clicking any of these<br/>mentioned below...</p>
                         {categories.map(each=>(
                         <button id={each.category} className={(categorySelected === each.category)?"category-2":"category"} type="button" onClick={selectedCat}>
-                            <span className="sukras-span" onClick={selectedCat}>
-                                <img onClick={selectedCat} className="sukras-icons" src={`./${each.imageUrl}.png`} alt={each.imageUrl}/>
-                            </span>
-                            <div onClick={selectedCat} className={(categorySelected === each.category)?"sukras-name-span2":"sukras-name-span1"}>{each.name}</div>
-                            {(categorySelected === each.category) && <img className="sukras-icons-yes" src={`./${each.yes}.png`} alt ={each.yes}/>}
+                            <button id={each.category} className="sukras-span" onClick={selectedCat}>
+                                <img id={each.category} onClick={selectedCat} className="sukras-icons" src={`./${each.imageUrl}.png`} alt={each.imageUrl}/>
+                            </button>
+                            <button id={each.category} onClick={selectedCat} className={(categorySelected === each.category)?"sukras-name-span2":"sukras-name-span1"}>{each.name}</button>
+                            {(categorySelected === each.category) && <img className="sukras-icons-yes" src={`/${each.yes}.png`} alt ={each.yes}/>}
                         </button>))}
                         <div className="proceed-con">
                             <button onClick={moveToHomePage} className={(categorySelected!=="")?"proceed-2":"proceed"} type="button">Proceed</button>

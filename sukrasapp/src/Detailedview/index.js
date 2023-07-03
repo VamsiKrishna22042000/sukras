@@ -116,7 +116,7 @@ const DetailedView = (props) =>{
                     <button className="search-icon-button">
                         <img src="/search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
-                    <p onClick={toCart} className='count-of-cart2'>0</p>
+                    <button onClick={toCart} className='count-of-cart2'>0</button>
                     <button onClick={toCart} className="cart-icon-button2">
                         <img src="/cart.png" alt="cart-icon" className="cart-icon2"/>
                     </button>
