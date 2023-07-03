@@ -46,7 +46,7 @@ const Beautyzone = (props) =>{
                     <button className="search-icon-button">
                         <img src="./search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
-                    <button className="cart-icon-button">
+                    <button className="cart-icon-buttonn">
                         <img src="./cart.png" alt="cart-icon" className="cart-icon"/>
                     </button>
                 </div>

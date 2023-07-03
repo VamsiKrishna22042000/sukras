@@ -24,7 +24,7 @@
         margin-bottom:0.8%;
     }
 
-    .search-cart{
+    .search-cart1{
         height:auto;
         width:41%;
         margin-right:7.5%;
@@ -60,7 +60,7 @@
         width:85%;
         margin:0px;
     }
-    .cart-icon-button{
+    .cart-icon-button1{
         position:absolute;
         height:85%;
         width: 20%;
@@ -72,7 +72,7 @@
         background-color:transparent;
         border-width:0px;
     }
-    .cart-icon{
+    .cart-icon1{
         position:absolute;
         height:85%;
         width:85%;
@@ -208,6 +208,7 @@
     .sukras-beauty-select{
         display:none;
     }
+    
 }
 
 @media screen and (max-width:600px){
@@ -227,6 +228,7 @@
         flex-direction:row;
         justify-content:flex-start;
         align-items:center;
+        overflow:hidden;
     }
    
     .sukraslogobeauty{
@@ -236,13 +238,14 @@
         display:none;
     }
 
-    .search-cart{
-        display:none;
+    .search-cart1{
+        display:flex;
         height:auto;
-        width:41%;
+        width:auto;
         margin-right:7.5%;
-        margin-bottom:1.5%;
-        position: relative;
+        position:absolute;
+        top:20%;
+        left:70%;
     }
     .serch-cart-input{
         display:none;
@@ -276,22 +279,16 @@
         width:85%;
         margin:0px;
     }
-    .cart-icon-button{
-        display:none;
-        position:absolute;
-        height:85%;
-        width: 20%;
-        top:12%;
-        left:75%;
+    .cart-icon-button1{
+        height:5.5vh;
+        width: 30vw;
         display:flex;
         justify-content:flex-start;
         align-items:flex-start;
         background-color:transparent;
         border-width:0px;
     }
-    .cart-icon{
-        display:none;
-        position:absolute;
+    .cart-icon1{
         height:85%;
         width:85%;
         margin:0px;
@@ -306,7 +303,7 @@
     }
     .sukras-beauty-select{
         display:inline;
-        padding-right:38%;
+        padding-right:43%;
         font-family:Arial, Helvetica, sans-serif;
         font-size:4vw;
         color:#4E4E4E;
@@ -382,8 +379,8 @@
         padding-bottom:1.5%;
     }
     .rating-star{
-        height:13px;
-        width:14px;
+        height:15px;
+        width:15px;
         margin-left:1%;
         margin-right:1%;
     }

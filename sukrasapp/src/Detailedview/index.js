@@ -106,13 +106,13 @@ const DetailedView = (props) =>{
                 </select>
                 <button className="search-btn" type="button"><img className="search-mobile" src="/search-mobile.png"/></button>
                 <button className="notification-btn" type="button"><img className="notification-mobile" src="/notification-mobile.png"/></button>
-                <div className="search-cart">
+                <div className="search-cart2">
                     <input className="serch-cart-input" placeholder="Enter keywords, title, author or ISBN " type="search"/>
                     <button className="search-icon-button">
                         <img src="/search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
-                    <button className="cart-icon-button">
-                        <img src="/cart.png" alt="cart-icon" className="cart-icon"/>
+                    <button className="cart-icon-button2">
+                        <img src="/cart.png" alt="cart-icon" className="cart-icon2"/>
                     </button>
                 </div>
              </div>
