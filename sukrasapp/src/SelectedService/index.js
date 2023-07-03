@@ -39,6 +39,7 @@ const SelectedService = (props) =>{
                     <button className="search-icon-button">
                         <img src="/search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
+                    <p className='count-of-cart1'>0</p>
                     <button className="cart-icon-button1">
                         <img src="/cart.png" alt="cart-icon" className="cart-icon1"/>
                     </button>

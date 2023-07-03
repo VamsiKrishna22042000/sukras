@@ -10,6 +10,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import {Link} from 'react-router-dom'
 
+
+
 const OtherServices = [
     {id:uuidv4(), imgUrl : "FemaleHairSalon"},
     {id:uuidv4(), imgUrl : "FemaleSpa"},
@@ -46,6 +48,7 @@ const Beautyzone = (props) =>{
                     <button className="search-icon-button">
                         <img src="./search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
+                    <p className="count-of-cart">0</p>
                     <button className="cart-icon-buttonn">
                         <img src="./cart.png" alt="cart-icon" className="cart-icon"/>
                     </button>

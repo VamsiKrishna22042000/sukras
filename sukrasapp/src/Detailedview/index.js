@@ -111,6 +111,7 @@ const DetailedView = (props) =>{
                     <button className="search-icon-button">
                         <img src="/search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
+                    <p className='count-of-cart2'>0</p>
                     <button className="cart-icon-button2">
                         <img src="/cart.png" alt="cart-icon" className="cart-icon2"/>
                     </button>
