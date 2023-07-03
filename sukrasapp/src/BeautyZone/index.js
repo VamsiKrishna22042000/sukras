@@ -53,7 +53,7 @@ const Beautyzone = (props) =>{
                     <button className="search-icon-button">
                         <img src="./search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
-                    <p className="count-of-cart">0</p>
+                    <p onClick={toCart} className="count-of-cart">0</p>
                     <button className="cart-icon-buttonn" onClick={toCart}>
                         <img src="./cart.png" alt="cart-icon" className="cart-icon"/>
                     </button>
