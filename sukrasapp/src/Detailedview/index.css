@@ -331,7 +331,7 @@
         width:auto;
         margin-right:7.5%;
         position:absolute;
-        top:23%;
+        top:20%;
         left:70%;
     }
     .serch-cart-input{
@@ -457,8 +457,8 @@
         padding-left:0px;
     }
     .rating-star1{
-        height:12px;
-        width:13px;
+        height:14px;
+        width:14px;
         margin-left:1%;
         margin-right:1%;
     }
