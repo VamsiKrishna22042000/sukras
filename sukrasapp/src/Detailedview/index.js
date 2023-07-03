@@ -129,9 +129,6 @@ const DetailedView = (props) =>{
                         <p className='selected-rating'><span className='selected-price'>₹ </span><span className='selected-price-icon'>599</span></p>
                         <p className='selected-rating'>• 30 mins</p>
                     </div>
-                    <Link to={`/${detailsarr.category}/${detailsarr.id}/details`}>
-                        <button className="make-abook" type="button">Book</button>
-                    </Link>
                     <p>• A quick trim to remove split ends while minimally reducing hair length</p>
                     <p>• Follow this up with styling look of your choice</p>
                     <p>• Trim Hair to strengthen your hair</p>
@@ -152,6 +149,9 @@ const DetailedView = (props) =>{
                     <p>• Improves Hair Growth</p>
                     <p>• Removing Split Ends</p>
                     <p>• Boost your Confidence</p>
+                    <Link to={`/${detailsarr.category}/${detailsarr.id}/details`}>
+                        <button className="make-abook-details" type="button">Book</button>
+                    </Link>
                     <p className='details-about'>Customer Reviews</p>
                     
                     {review.map(each=>(

@@ -114,7 +114,7 @@
         width:90%;
         margin-bottom:3%;
     }
-    .make-abook{
+    .make-abook-details{
         background-color:#F4BD18;
         border-color:#F4BD18;
         color:#fff;
@@ -275,6 +275,9 @@
         color: #4E4E4E;
         left:96%;
     }
+    .sukras-beauty-selected{
+        display:none;
+    }
 }
 
 
@@ -358,7 +361,7 @@
         margin:0px;
     }
     .left-arrow-mobile{
-        display:inline;
+        display:flex;
         color:#4E4E4E;
         font-size:8vw;
     }
@@ -400,15 +403,14 @@
         font-size:6vw;
         margin-bottom:1%;
     }
-    .make-abook{
-        display:none;
+    .make-abook-details{
         background-color:#F4BD18;
         border-color:#F4BD18;
         color:#fff;
-        width:22%;
-        font-size:1.5vw;
-        padding-top:0.5%;
-        padding-bottom:0.5%;
+        width:100%;
+        font-size:4vw;
+        padding-top:3%;
+        padding-bottom:3%;
         border-radius:5px;
         margin-top:1%;
         margin-bottom:1%;
