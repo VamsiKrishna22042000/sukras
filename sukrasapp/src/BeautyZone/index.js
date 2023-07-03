@@ -32,6 +32,11 @@ const Beautyzone = (props) =>{
            history.push("/select-category")
     }
 
+    const toCart = () =>{
+        const {history}=props
+        history.push('/cart')
+    }
+
     return(
         <div className="sukras-main-beauty">
         <div className='sukras-header-beauty'>
@@ -49,7 +54,7 @@ const Beautyzone = (props) =>{
                         <img src="./search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
                     <p className="count-of-cart">0</p>
-                    <button className="cart-icon-buttonn">
+                    <button className="cart-icon-buttonn" onClick={toCart}>
                         <img src="./cart.png" alt="cart-icon" className="cart-icon"/>
                     </button>
                 </div>

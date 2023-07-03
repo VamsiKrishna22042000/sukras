@@ -22,6 +22,11 @@ const SelectedService = (props) =>{
         history.push(`/beautyzone`)
     }
 
+    const toCart = () =>{
+        const {history}=props
+        history.push('/cart')
+    }
+
     return(
      <div className='selected-category-con'>
         <div className='sukras-header-beauty'>
@@ -40,7 +45,7 @@ const SelectedService = (props) =>{
                         <img src="/search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
                     <p className='count-of-cart1'>0</p>
-                    <button className="cart-icon-button1">
+                    <button onClick={toCart} className="cart-icon-button1">
                         <img src="/cart.png" alt="cart-icon" className="cart-icon1"/>
                     </button>
                 </div>

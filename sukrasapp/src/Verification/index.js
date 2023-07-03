@@ -61,10 +61,10 @@ const Verification = (props) =>{
     return (
         <>   
             <div className='otp-box'>
-                <input className='otp-input' autoFocus type="tel"  maxLength={1} onFocus={changeFocus} onBlur={changeBlur} onChange={obtainOtp}/>
-                <input className='otp-input' type="tel"  maxLength={1} onFocus={changeFocus} onBlur={changeBlur} onChange={obtainOtp} />
-                <input className='otp-input' type="tel"  maxLength={1} onFocus={changeFocus} onBlur={changeBlur} onChange={obtainOtp} />
-                <input className='otp-input' type="tel"  maxLength={1} onFocus={changeFocus} onBlur={changeBlur} onChange={obtainOtp} />
+                <input className='otp-input'  autoFocus type="tel"  maxLength={1} onFocus={changeFocus} onBlur={changeBlur} onChange={obtainOtp}/>
+                <input className='otp-input'  type="tel"  maxLength={1} onFocus={changeFocus} onBlur={changeBlur} onChange={obtainOtp} />
+                <input className='otp-input'  type="tel"  maxLength={1} onFocus={changeFocus} onBlur={changeBlur} onChange={obtainOtp} />
+                <input className='otp-input'  type="tel"  maxLength={1} onFocus={changeFocus} onBlur={changeBlur} onChange={obtainOtp} />
             </div>
             <p className='resend-otp'>Did'nt get the OTP? <span className='resend-otp-span'>Resend OTP</span></p>
             <button type="button" onClick={verifyOTP} className={ obtainedOTP.index <= 3 ? "verify":"otp-verify-2"}>Verify</button>

@@ -19,6 +19,8 @@ import Protectedroute from './Protectedroute';
 
 import SelectedService from './SelectedService/index';
 
+import Cart from './Cart';
+
 import NotFound from './NotFound';
 import Detailedview from './Detailedview';
 
@@ -32,6 +34,7 @@ function App() {
           <Protectedroute exact path="/beautyzone" component={Beautyzone}/>
           <Protectedroute exact path='/:category/:id' component={SelectedService}/>
           <Protectedroute exact path="/:category/:id/:details" component={Detailedview}/>
+          <Protectedroute exact path="/cart" component={Cart}/>
           <NotFound/>
        </Switch>
     </BrowserRouter>
