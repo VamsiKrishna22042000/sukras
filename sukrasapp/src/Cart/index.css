@@ -3,4 +3,23 @@
         height:auto;
         width:100vw;
     }
+    .cart-total-body{
+        height:auto;
+        width:100vw;
+        overflow:hidden;
+        display:flex;
+        flex-direction:row;
+    }
+}
+
+@media screen and (max-width:600px){
+    .Cart-total-con{
+        height:auto;
+        width:100vw;
+    }
+    .cart-total-body{
+        height:auto;
+        width:100vw;
+        overflow:hidden;
+    }
 }

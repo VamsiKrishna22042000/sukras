@@ -1,6 +1,10 @@
 
 import "./index.css"
 
+import Loader from 'react-loader'
+
+
+import { useState, useEffect } from "react";
 
 import Carousel from "../Carousel/index"
 
@@ -25,19 +29,54 @@ const OtherServices = [
 
 ]
 
+
+
+const pageStage  = {
+    loading:"LOADING",
+    success:"SUCCESS",
+}
+
 const Beautyzone = (props) =>{
+
+
+    const [categories , setCategories] = useState("")
+    const [load , setLoad] = useState(pageStage.loading)
+
+    const getTheCategories = async() =>{
+         
+        const response = await fetch("https://sukras.onrender.com/api/admin/getAllSalon");
+        const data = await response.json()
+
+        if(response.ok === true){
+              setLoad(pageStage.success)
+              setCategories(data.salons[0].categories)
+             
+        }
+
+    };
+
+    useEffect( () =>{getTheCategories()
+    }
+        ,[])
+
+   
 
     const gobackTo = () =>{
            const {history} = props
            history.push("/select-category")
     }
+   
 
-    const toCart = () =>{
-        const {history}=props
-        history.push('/cart')
+    if(categories===""){
+        return null
+    }else{
+        console.log(categories[0].services[0].image[0])
     }
+   
+
 
     return(
+        load === pageStage.loading ? <Loader/>: 
         <div className="sukras-main-beauty">
         <div className='sukras-header-beauty'>
                 <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
@@ -53,10 +92,12 @@ const Beautyzone = (props) =>{
                     <button className="search-icon-button">
                         <img src="./search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
-                    <button onClick={toCart} className="count-of-cart">0</button>
-                    <button className="cart-icon-buttonn" onClick={toCart}>
-                        <img src="./cart.png" alt="cart-icon" className="cart-icon"/>
-                    </button>
+                    <Link to={`/cart/beautyzone`}>
+                        <button className="count-of-cart">0</button>
+                        <button className="cart-icon-buttonn">
+                            <img src="./cart.png" alt="cart-icon" className="cart-icon"/>
+                        </button>
+                    </Link>
                 </div>
         </div>
         <div className="beautyzone-body">
@@ -73,7 +114,7 @@ const Beautyzone = (props) =>{
                     </Link>))}
             </div>
         </div>
-    </div>
+        </div>
     )
 }
 export default withRouter(Beautyzone)

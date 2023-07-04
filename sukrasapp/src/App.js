@@ -32,9 +32,11 @@ function App() {
           <Protectedroute exact path ="/" component={Sukras}/>
           <Protectedroute exact path="/select-category" component={SelectCategory}/>
           <Protectedroute exact path="/beautyzone" component={Beautyzone}/>
+          <Protectedroute exact path="/cart/:zone" component={Cart}/>
+          <Protectedroute exact path="/cart/:zone/:id" component={Cart}/>
+          <Protectedroute exact path="/cart/:zone/:id/:details" component={Cart}/>
           <Protectedroute exact path='/:category/:id' component={SelectedService}/>
           <Protectedroute exact path="/:category/:id/:details" component={Detailedview}/>
-          <Protectedroute exact path="/cart" component={Cart}/>
           <NotFound/>
        </Switch>
     </BrowserRouter>

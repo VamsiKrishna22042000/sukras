@@ -94,10 +94,6 @@ const DetailedView = (props) =>{
         setRating(parseInt(event.target.id))
     }
 
-    const toCart = () =>{
-        const {history}=props
-        history.push('/cart')
-    }
 
     return(
         <div className='details-view-con'>
@@ -116,10 +112,12 @@ const DetailedView = (props) =>{
                     <button className="search-icon-button">
                         <img src="/search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
-                    <button onClick={toCart} className='count-of-cart2'>0</button>
-                    <button onClick={toCart} className="cart-icon-button2">
-                        <img src="/cart.png" alt="cart-icon" className="cart-icon2"/>
-                    </button>
+                    <Link to={`/cart/${detailsarr.category}/${detailsarr.id}/details`}>
+                        <button className='count-of-cart2'>0</button>
+                        <button className="cart-icon-button2">
+                            <img src="/cart.png" alt="cart-icon" className="cart-icon2"/>
+                        </button>
+                    </Link>
                 </div>
              </div>
              <div className='details-view-body'>
