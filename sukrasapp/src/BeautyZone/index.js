@@ -1,7 +1,7 @@
 
 import "./index.css"
 
-import Loader from 'react-loader'
+import {TailSpin} from 'react-loader-spinner'
 
 
 import { useState, useEffect } from "react";
@@ -41,6 +41,7 @@ const Beautyzone = (props) =>{
 
     const [categories , setCategories] = useState("")
     const [load , setLoad] = useState(pageStage.loading)
+    const [categoryImg, setCategoryImg] = useState("")
 
     const getTheCategories = async() =>{
          
@@ -50,7 +51,11 @@ const Beautyzone = (props) =>{
         if(response.ok === true){
               setLoad(pageStage.success)
               setCategories(data.salons[0].categories)
-             
+              /*console.log(data.salons[0].categories)*/
+              const service =(data.salons[0].categories.map(each=>each.services))
+              const service2 = service.map(each=>each[0].image[0])
+              setCategoryImg(service2)
+              /*console.log(service)*/
         }
 
     };
@@ -67,16 +72,12 @@ const Beautyzone = (props) =>{
     }
    
 
-    if(categories===""){
-        return null
-    }else{
-        console.log(categories[0].services[0].image[0])
-    }
+   
    
 
 
     return(
-        load === pageStage.loading ? <Loader/>: 
+        load === pageStage.loading ? <div className="loader-spinner"> <TailSpin color={"#F4BD18"} height={70} width={70}/></div>:
         <div className="sukras-main-beauty">
         <div className='sukras-header-beauty'>
                 <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
@@ -104,17 +105,20 @@ const Beautyzone = (props) =>{
             <Carousel/>
         </div>
         <div className="beautyzone-body-2">
+            {categories === "" ? <div className="service-spinner"> <TailSpin color={"#F4BD18"} height={70} width={70}/></div>:
             <div className="our-services">
                     <p className="our-services-head">Our Service's</p>
-                    {OtherServices.map(each=>(
-                    <Link  to={`/${each.imgUrl}/${each.id}`}>
-                        <button key={each.id} className="our-services-btn" id={each.id} type="button">
-                             <img className="our-services-img" src={`./${each.imgUrl}.png`} alt={each.imgUrl}/>
+                    {categories.map(each=>(
+                    <Link  to={`/${each.category}/${each._id}`}>
+                        <button key={each._id} className="our-services-btn" id={each._id} type="button">
+                             <img className="our-services-img" src={`${each.categoryImage}`} alt={each.categoryImage}/>
+                             <p style={{textTransform:"capitalize"}} className="our-services-name">{each.category}</p>
                         </button>
                     </Link>))}
-            </div>
+            </div>}
         </div>
         </div>
+        
     )
 }
 export default withRouter(Beautyzone)

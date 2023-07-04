@@ -6,6 +6,7 @@ import CartItems  from '../CartItems'
 
 
 import { useState } from 'react'
+import ScheduleTime from '../ScheduleTime'
 
 const Cart = () =>{
     const [progress,setProgress] = useState("Cart")
@@ -18,7 +19,7 @@ const Cart = () =>{
         <div className='Cart-total-con'>
             <Paymentprogress prog={progress}  updateProgress={updateProgress}/>
             <div className='cart-total-body'>
-              {progress==="Cart"?<CartItems/>:null}
+              {progress==="Cart"?<CartItems updateProgress={updateProgress}/>:progress==="Schedule"?<ScheduleTime/>:null}
             </div>
         </div>
     )

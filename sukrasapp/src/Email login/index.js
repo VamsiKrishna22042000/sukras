@@ -98,6 +98,7 @@ const Emaillogin = (props) =>{
      
     const obtainedCookie = Cookies.get("jwt_token")
     
+    
     if(obtainedCookie !== undefined){
         return <Redirect to="/select-category"/>
     }return(

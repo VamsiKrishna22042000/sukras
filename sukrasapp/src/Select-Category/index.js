@@ -49,6 +49,7 @@ const SelectCategory = (props) =>{
           history.push(`/${categorySelected}`)
      }
 
+     
       return(
         <div className="sukras-main-sukras">
             <div className='sukras-header-sukras'>

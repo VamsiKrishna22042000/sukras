@@ -1,9 +1,11 @@
 
 import {withRouter,Link} from 'react-router-dom'
 
-import {v4 as uuidv4} from "uuid";
+import {v4 as uuidv4} from 'uuid'
 
 import {useState,useEffect} from 'react'
+
+import { TailSpin } from 'react-loader-spinner';
 
 import './index.css'
  
@@ -11,15 +13,7 @@ import './index.css'
 import {RiDeleteBinLine} from 'react-icons/ri';
 
 
-const reviews = [
-    {   
-        id:uuidv4(),
-        rating:4.5,
-        comment:"Done an excellent job on my hair....Loved it..",
-        name:"Rani Kumar",
-        date:"5 May,2023",
-    },
-]
+
 
 
 const ratingStars = [
@@ -30,21 +24,46 @@ const ratingStars = [
     {id:5,star1:"☆",star2:"★"},
 ]
 
+
+const pageStage = {
+    loading : "LOADING",
+    success : "SUCCESS"
+}
+
 const DetailedView = (props) =>{
 
     const [detailsarr, setArr] = useState("")
-    const [review , setReview] = useState(reviews)
+    const [review , setReview] = useState([])
     const [comment , setComment ] = useState("")
     const [rating, setRating] = useState(0)
 
+    const [loading, setLoading] = useState(pageStage.loading)
+
+    const [serviceDetails, setDetails] = useState("")
+
     const{match}=props
     const {params}=match
+
+   
    
     
     useEffect(()=>{
         setArr(params)
+        getServices()
     },[])
 
+    const getServices = async () =>{
+       const response = await fetch("https://sukras.onrender.com/api/admin/getAllSalon")
+       const data = await response.json()
+       if(response.ok === true){
+           const obtainedServices = (data.salons[0].categories.map(each => each.services))
+           const filterdService = obtainedServices.map(each => (each.filter(eachService => eachService.service === params.category)))
+           const servicefilterd = filterdService.filter(each => each.length === 1)
+           setDetails(servicefilterd[0][0])
+           setReview(servicefilterd[0][0].reviews)
+           setLoading(pageStage.success)
+       }
+    }
 
     const gobackToNodetails = () =>{
         const {history}=props
@@ -85,7 +104,7 @@ const DetailedView = (props) =>{
       };
       
       const deleteReview = (event) =>{
-          const deletedReview = review.filter((each)=>{return each.id!==event.target.id})
+          const deletedReview = review.filter((each)=>{return each.id !==event.target.id})
           setReview(deletedReview)
       }
       
@@ -95,12 +114,14 @@ const DetailedView = (props) =>{
     }
 
 
+    
     return(
-        <div className='details-view-con'>
+        loading === pageStage.loading ? <div className='loader-spinner'><TailSpin color={"#F4BD18"} height={70} width={70}/></div> :
+        <div id={serviceDetails._id} className='details-view-con'>
              <div className='sukras-header-beauty'>
                 <img className='sukraslogobeauty' src="/sukraslogo.png" alt="Logo Space"/>
                 <button className="arrow-btn" type="button" onClick={gobackToNodetails}><img className="left-arrow-mobile" src="/backarrow.png"/></button>
-                <p className='sukras-beauty-selected'>{detailsarr.category}</p>
+                <p style={{textTransform:"capitalize"}} className='sukras-beauty-selected'>{detailsarr.category}</p>
                 <button className="location-btn" type="button"><img className="location-mobile" src="/location-icon.png"/></button>
                 <select className="dropdown-con">
                     <option>Hyderabad</option>
@@ -122,18 +143,18 @@ const DetailedView = (props) =>{
              </div>
              <div className='details-view-body'>
                 <div className='details-content'>
-                    <img className='details-img' src="/details.png" alt="details-img"/>
-                    <h1 className='details-head'>{detailsarr.category}</h1>
+                    <img className='details-img' src={serviceDetails.image[0]} alt="details-img"/>
+                    <h1 style={{textTransform:"capitalize"}} className='details-head'>{detailsarr.category}</h1>
                     <div className='selected-rating-con'>
-                        <p className='selected-rating'>4.5</p>
+                        <p className='selected-rating'>{serviceDetails.rating}</p>
                         <img className='rating-star1' src="/ratingstar.png" alt="rating"/>
-                        <p className='selected-rating'>(3.7k reviews)</p>
+                        <p className='selected-rating'>({serviceDetails.reviews.length} k reviews)</p>
                     </div>
                     <div className='selected-rating-con'>
-                        <p className='selected-rating'><span className='selected-price'>₹ </span><span className='selected-price-icon'>599</span></p>
-                        <p className='selected-rating'>• 30 mins</p>
+                        <p className='selected-rating'><span className='selected-price'>₹ </span><span className='selected-price-icon'>{serviceDetails.price}</span></p>
+                        <p className='selected-rating'>• {serviceDetails.time} mins</p>
                     </div>
-                    <p>• A quick trim to remove split ends while minimally reducing hair length</p>
+                    <p>• {serviceDetails.description}</p>
                     <p>• Follow this up with styling look of your choice</p>
                     <p>• Trim Hair to strengthen your hair</p>
                     <p>• Finishing with Blow Dry to double the game</p>
@@ -164,12 +185,12 @@ const DetailedView = (props) =>{
                                     <p>{each.rating}</p>
                                     <img className='rating-star2' src="/ratingstar.png" alt="rating"/>
                                 </div>
-                                <p className='review-para'>{each.comment}</p>
+                                <p className='review-para'>{each.review}</p>
                                 <div className='review-person'>
-                                    <p>{each.name}</p>
+                                    <p>{each.userId}</p>
                                     <div className='divider'></div>
                                     <p>{each.date.toString()}</p>
-                                    <button className="delete-icon" type="button"><RiDeleteBinLine onClick={deleteReview} id={each.id}/></button>
+                                    <button className="delete-icon" type="button"><RiDeleteBinLine onClick={deleteReview} id={each._id}/></button>
                                 </div>
                     </div>))}
                     <div className='AddComment'>

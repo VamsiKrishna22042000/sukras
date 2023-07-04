@@ -1,8 +1,18 @@
 
 import './index.css'
 
+import { withRouter } from 'react-router-dom/cjs/react-router-dom.min'
 
-const CartItems = () =>{
+
+const CartItems = (props) =>{
+    const {updateProgress}=props
+
+
+    const sendUpdate = () =>{
+          updateProgress("Schedule")
+    }
+
+
     return(
         <>
             <div className='total-con-cartitems'>
@@ -34,10 +44,10 @@ const CartItems = () =>{
                     <p className='total-price-head'>Total</p>
                     <p className='total-price-head'><span className='actual-price'>₹</span> 2,756</p>
                 </div>
-                <button className='proceed-to-schedule' type="button">Proceed</button>
+                <button onClick={sendUpdate} className='proceed-to-schedule' type="button">Proceed</button>
             </div>
         </>
     )
 }
 
-export default CartItems
+export default withRouter(CartItems)
