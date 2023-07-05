@@ -74,6 +74,7 @@ const Beautyzone = (props) =>{
     }
    
     const deleteCookie = () =>{
+        /* deleteCookie was integrated with both searchIcons*/
         Cookies.remove("jwt_token")
         Cookies.remove("jwt_user")
     }
@@ -87,15 +88,15 @@ const Beautyzone = (props) =>{
         <div className='sukras-header-beauty'>
                 <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
                 <button onClick={gobackTo} className="arrow-btn" type="button"><img className="left-arrow-mobile" src="./backarrow.png"/></button>
-                <button onClick={deleteCookie} className="location-btnn" type="button"><img className="location-mobilee" src="./location-icon.png"/></button>
+                <button className="location-btnn" type="button"><img className="location-mobilee" src="./location-icon.png"/></button>
                 <select className="dropdown-container">
                     <option>Hyderabad</option>
                 </select>
-                <button className="search-btnn" type="button"><img className="search-mobile" src="./search-mobile.png"/></button>
+                <button onClick={deleteCookie} className="search-btnn" type="button"><img className="search-mobile" src="./search-mobile.png"/></button>
                 <button className="notification-btnn" type="button"><img className="notification-mobile" src="./notification-mobile.png"/></button>
                 <div className="search-cart">
                     <input className="serch-cart-input" placeholder="Enter keywords, title, author or ISBN " type="search"/>
-                    <button className="search-icon-button">
+                    <button onClick={deleteCookie} className="search-icon-button">
                         <img src="./search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
                     <Link to={`/cart/beautyzone`}>
