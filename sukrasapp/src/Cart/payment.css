@@ -13,11 +13,16 @@
       padding:0.1%;
     }
     .arrow-btn-progress{
+        display:flex;
+        justify-content:center;
+        align-items:center;
         height:auto;
         width:auto;
         margin-left:2%;
         background-color:transparent;
         border-color:transparent;
+        font-family:'Courier New', Courier, monospace;
+        font-size:2.5vw;
     }
     .left-arrow-progress{
         height:30px;
@@ -125,11 +130,16 @@
       padding:0.1%;
     }
     .arrow-btn-progress{
+        display:flex;
+        justify-content:center;
+        align-items:center;
         height:auto;
         width:auto;
         margin-left:2%;
         background-color:transparent;
         border-color:transparent;
+        font-family:'Courier New', Courier, monospace;
+        font-size:5vw;
     }
     .left-arrow-progress{
         height:20px;

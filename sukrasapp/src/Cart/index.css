@@ -1,3 +1,20 @@
+
+.loader-spinner{
+    height:100vh;
+    width:100vw;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    position: relative;
+}
+
+
+
+
+
+
+
 @media screen and (min-width:992px){
     .Cart-total-con{
         height:auto;
@@ -10,6 +27,16 @@
         display:flex;
         flex-direction:row;
     }
+    .empty-cart{
+        height:40%;
+        width:20%;
+    }
+    .cart-header{
+        font-family:'Courier New', Courier, monospace;
+        font-size:3vw;
+        color:#F4BD18;
+        font-weight:600;
+    }
 }
 
 @media screen and (max-width:600px){
@@ -21,5 +48,15 @@
         height:auto;
         width:100vw;
         overflow:hidden;
+    }
+    .empty-cart{
+        height:30%;
+        width:50%;
+    }
+    .cart-header{
+        font-family:'Courier New', Courier, monospace;
+        font-size:5vw;
+        color:#F4BD18;
+        font-weight:600;
     }
 }

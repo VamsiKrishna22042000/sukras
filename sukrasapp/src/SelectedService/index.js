@@ -1,6 +1,12 @@
 import {useState , useEffect} from 'react'
 
+
+
+import Cookies from 'js-cookie'
+
 import {withRouter,Link} from 'react-router-dom'
+
+import {BsHandbag} from 'react-icons/bs'
 
 import { TailSpin } from 'react-loader-spinner'
 
@@ -16,6 +22,13 @@ const SelectedService = (props) =>{
     const [loading,setLoading] = useState(pageStage.loading)
     const [arr ,setArr] = useState("")
     const [servicesarr, setServicesarr] = useState("")
+
+
+
+
+    
+
+    const [idSection , setId] = useState({userId : Cookies.get("jwt_user"), salonId:""})
 
     const{match}=props
     const {params}=match
@@ -35,11 +48,37 @@ const SelectedService = (props) =>{
                setServicesarr(servicesOfParticularCategory)
                setLoading(pageStage.success)
                setArr({category:particularCategory[0].category,id:particularCategory[0]._id})
-         }
+               setId(prevId =>({...prevId,salonId:data.salons[0]._id}))
+            }
 
    }
     
-    useEffect(()=>{
+   const addToCart = async(event)=>{
+
+       const cartDetails = {...idSection,serviceId:event.target.id}
+
+       
+       const options={
+
+
+        method : "POST",
+
+        headers : {
+            "Content-Type" : "application/json"
+        },
+         
+        body : JSON.stringify(cartDetails)
+
+
+       }
+
+       const url ="https://sukras.onrender.com/api/salon/addServiceToCart"
+       const response = await fetch(url,options)
+       console.log(response)
+       
+   }
+   
+   useEffect(()=>{
         const{match}=props
         const {params}=match
         setArr(params)
@@ -53,6 +92,7 @@ const SelectedService = (props) =>{
     }
 
 
+   
 
     return(
         loading === pageStage.loading ? <div className="loader-spinner"> <TailSpin color={"#F4BD18"} height={70} width={70}/></div>: 
@@ -103,7 +143,7 @@ const SelectedService = (props) =>{
                 </div>
                 <div className='selected-body-book'>
                     <img className='selected-image' src={each.image[0]} alt={arr.category}/>
-                    <button className='book-btn' type="button">Book</button>
+                    <button id={each._id} onClick={addToCart} className='book-btn' type="button">Add to <BsHandbag/></button>
                 </div>
             </div>)}
         </div>

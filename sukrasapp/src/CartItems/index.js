@@ -3,34 +3,62 @@ import './index.css'
 
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min'
 
+import Cookies from 'js-cookie'
+
 
 const CartItems = (props) =>{
-    const {updateProgress}=props
+    const {updateProgress,cartItemsArr,getCartItems}=props
 
-
+   
     const sendUpdate = () =>{
-          updateProgress("Schedule")
+          updateProgress("Payment")
     }
 
+    const deleteServiceFromCart = async(event) =>{
+        
+        const url ="https://sukras.onrender.com/api/salon/deleteServiceFromCart"
+
+        const details = {userId: Cookies.get("jwt_user"), cartId:event.target.id }
+        
+        const options = {
+            method : "POST",
+
+            headers : {
+                "Content-Type" : "application/json"
+            },
+
+            body : JSON.stringify(details)
+        }
+
+        const response = await fetch(url,options)
+        console.log(response)
+        
+        getCartItems()
+    }
 
     return(
         <>
             <div className='total-con-cartitems'>
+               {cartItemsArr.map(each =>
                 <div className='cart-item'>
-                        <img className='cart-img' src="/selectedcategory.png" alt="image-cart"/>
+                        <img className='cart-img' src={each.image} alt="image-cart"/>
                         <div className='cart-contents'>
-                            <p className='cart-head'>Hair Wash</p>
-                            <p className='cart-head'><span className='service-price'>₹</span> 599</p>
-                            <div className='cart-buttons'>
-                                    <button className='cart-butt' type="button">-</button>
-                                        <p>1</p>
-                                    <button className='cart-butt' type="button">+</button>
+                            <p style={{textTransform:"capitalize"}} className='cart-head'>{each.service}</p>
+                            <p className='cart-head'><span className='service-price'>₹</span> {each.price}</p>
+                            <div className='slots-available'>
+                                    <select className='select-options'>
+                                        <option>5th, July</option>
+                                    </select>
+                                    <select className='select-options'>
+                                        <option>10 Am</option>
+                                    </select>
                             </div>
                         </div>
-                        <button className='cart-cancel' type="button">✕</button>
-                </div>
+                        <button onClick={deleteServiceFromCart} id={each._id} className='cart-cancel' type="button">✕</button>
+               </div>
+               ) }
             </div>
-            <div className='price-details'>
+            <div className='price-details'> 
                 <p className='price-head1'>PriceDetials</p>
                 <div style={{display:"flex",flexDirection:"row",justifyContent:'space-between'}}>
                     <p className='actual-price'>Actual Price</p>

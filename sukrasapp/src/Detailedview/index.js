@@ -1,6 +1,8 @@
 
 import {withRouter,Link} from 'react-router-dom'
 
+import {BsHandbag} from 'react-icons/bs'
+
 import {v4 as uuidv4} from 'uuid'
 
 import {useState,useEffect} from 'react'
@@ -178,7 +180,31 @@ const DetailedView = (props) =>{
         setRating(parseInt(event.target.id))
     }
 
+    const addToCart = async()=>{
 
+        const cartDetails = {...idSection}
+ 
+        const options={
+ 
+ 
+         method : "POST",
+ 
+         headers : {
+             "Content-Type" : "application/json"
+         },
+          
+         body : JSON.stringify(cartDetails)
+ 
+ 
+        }
+ 
+        const url ="https://sukras.onrender.com/api/salon/addServiceToCart"
+        const response = await fetch(url,options)
+        console.log(response)
+        
+    }
+
+    console.log(idSection)
     
     
     return(
@@ -241,7 +267,7 @@ const DetailedView = (props) =>{
                     <p>• Removing Split Ends</p>
                     <p>• Boost your Confidence</p>
                     <Link to={`/${detailsarr.category}/${detailsarr.id}/details`}>
-                        <button className="make-abook-details" type="button">Book</button>
+                        <button onClick={addToCart} className="make-abook-details" type="button">Add to <BsHandbag/></button>
                     </Link>
                     <p className='details-about'>Customer Reviews</p>
                     
