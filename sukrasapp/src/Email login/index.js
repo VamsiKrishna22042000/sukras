@@ -22,9 +22,10 @@ const Emaillogin = (props) =>{
 
 
 
-    const responseSuccessful = (token) =>{
+    const responseSuccessful = (token,userId) =>{
         
         Cookies.set('jwt_token', token, {expires : 30,})
+        Cookies.set('jwt_user', userId, {expires : 30,})
         const {history} = props
         history.replace("/select-category")
     }
@@ -62,6 +63,7 @@ const Emaillogin = (props) =>{
             body : JSON.stringify(userDetails)
         }
         const response = await fetch(url,requestConfiger)
+        
        
     }
     
@@ -85,7 +87,8 @@ const Emaillogin = (props) =>{
         const response = await fetch(url,requestConfiger)
         const data = await response.json()
         if(response.ok === true){
-              responseSuccessful(data.token)
+              responseSuccessful(data.token, data.result._id)
+              
         }else{
               alert(data.message)
         }

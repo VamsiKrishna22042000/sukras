@@ -13,6 +13,9 @@ import './index.css'
 import {RiDeleteBinLine} from 'react-icons/ri';
 
 
+import Cookies from 'js-cookie'
+
+
 
 
 
@@ -34,6 +37,10 @@ const DetailedView = (props) =>{
 
     const [detailsarr, setArr] = useState("")
     const [review , setReview] = useState([])
+
+
+    const [idSection , setId] = useState({userId : Cookies.get("jwt_user"), salonId:"",serviceId:""})
+
     const [comment , setComment ] = useState("")
     const [rating, setRating] = useState(0)
 
@@ -61,6 +68,8 @@ const DetailedView = (props) =>{
            const servicefilterd = filterdService.filter(each => each.length === 1)
            setDetails(servicefilterd[0][0])
            setReview(servicefilterd[0][0].reviews)
+           /*console.log(servicefilterd[0][0].reviews)*/
+           setId(prevId =>({...prevId,salonId:data.salons[0]._id, serviceId:servicefilterd[0][0]._id}))
            setLoading(pageStage.success)
        }
     }
@@ -80,7 +89,7 @@ const DetailedView = (props) =>{
       };
 
 
-    const addCommentButton = () => {
+    const addCommentButton = async() => {
        if(comment === "" && rating>0){
           alert("Please add Review about our service")
        }else if(comment!=="" && rating === 0){
@@ -88,24 +97,80 @@ const DetailedView = (props) =>{
        }else if (comment === "" && rating === 0){
         return null
     }else{
+
+           
            const newReview = {
-              id:uuidv4(),
+              ...idSection,
+              review:comment,
               rating,
-              comment,
-              name:"ravi",
               date: formatDate(new Date()),
            }
 
-           setReview([...review,newReview]);
+
+           /*console.log(newReview)*/
+
+           const url ="https://sukras.onrender.com/api/user/addServiceReview";
+
+           const options={
+
+            method : "POST",
+
+            headers : {
+
+                "Content-Type" : "application/json",
+
+                 Authorization : "Bearer " + Cookies.get("jwt_token")
+            },
+
+
+            body : JSON.stringify(newReview),
+
+           }
+
+           const response = await fetch(url,options)
+           const data = await response.json()
+
+           /*console.log(response)*/
+           
            setComment("");
            setRating(0);
            document.getElementById("comment-input").value="";
+           getServices()
        }
       };
       
-      const deleteReview = (event) =>{
-          const deletedReview = review.filter((each)=>{return each.id !==event.target.id})
-          setReview(deletedReview)
+      const deleteReview = async(event) =>{
+          
+         
+
+
+          console.log(event.target.id)
+
+          const deleteTheReview = {
+            salonId : idSection.salonId,
+            reviewId : event.target.id,
+          }
+
+
+          /*console.log(deleteTheReview)*/
+
+          const url ="https://sukras.onrender.com/api/user/deleteServiceReview"
+
+          const options = {
+              method : "POST",
+
+              headers :{
+                "Content-Type" : "application/json",
+                 Authorization : "Bearer " + Cookies.get("jwt_user")
+              },
+
+
+              body : JSON.stringify(deleteTheReview)
+          }
+
+          const response = await fetch(url,options)
+          const data = await response.json()
+          getServices()
       }
       
       
@@ -114,6 +179,7 @@ const DetailedView = (props) =>{
     }
 
 
+    
     
     return(
         loading === pageStage.loading ? <div className='loader-spinner'><TailSpin color={"#F4BD18"} height={70} width={70}/></div> :
@@ -190,7 +256,7 @@ const DetailedView = (props) =>{
                                     <p>{each.userId}</p>
                                     <div className='divider'></div>
                                     <p>{each.date.toString()}</p>
-                                    <button className="delete-icon" type="button"><RiDeleteBinLine onClick={deleteReview} id={each._id}/></button>
+                                    <button id={each._id} className={Cookies.get("jwt_user")=== each.userId ? "delete-icon": "dont-delete" } type="button"><RiDeleteBinLine onClick={deleteReview} id={each._id}/></button>
                                 </div>
                     </div>))}
                     <div className='AddComment'>

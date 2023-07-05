@@ -8,6 +8,9 @@
     align-items:center;
 }
 
+.dont-delete{
+    display:none;
+}
 
 @media screen and (min-width:992px){
     .selected-category-con{

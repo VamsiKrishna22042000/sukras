@@ -5,7 +5,11 @@ import Sukras from "../SuskrasMain"
 
 import Cookies from 'js-cookie'
 
+
+
+
 const ProtectedRoute = (props) =>{
+
     
     const obtainedCookie = Cookies.get("jwt_token")
     if(obtainedCookie===undefined){
