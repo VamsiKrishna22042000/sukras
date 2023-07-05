@@ -3,6 +3,8 @@ import "./index.css"
 
 import {TailSpin} from 'react-loader-spinner'
 
+import Cookies from 'js-cookie'
+
 
 import { useState, useEffect } from "react";
 
@@ -71,7 +73,10 @@ const Beautyzone = (props) =>{
            history.push("/select-category")
     }
    
-
+    const deleteCookie = () =>{
+        Cookies.remove("jwt_token")
+        Cookies.remove("jwt_user")
+    }
    
    
 
@@ -82,7 +87,7 @@ const Beautyzone = (props) =>{
         <div className='sukras-header-beauty'>
                 <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
                 <button onClick={gobackTo} className="arrow-btn" type="button"><img className="left-arrow-mobile" src="./backarrow.png"/></button>
-                <button className="location-btnn" type="button"><img className="location-mobilee" src="./location-icon.png"/></button>
+                <button onClick={deleteCookie} className="location-btnn" type="button"><img className="location-mobilee" src="./location-icon.png"/></button>
                 <select className="dropdown-container">
                     <option>Hyderabad</option>
                 </select>
