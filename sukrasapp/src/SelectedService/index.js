@@ -27,7 +27,7 @@ const SelectedService = (props) =>{
 
     useEffect(()=>{
         getCartItems()
-    },[itemsInCart])
+    },[])
 
     const getCartItems = async() =>{
         const id = Cookies.get("jwt_user") 
@@ -88,6 +88,9 @@ const SelectedService = (props) =>{
        const url ="https://sukras.onrender.com/api/salon/addServiceToCart"
        const response = await fetch(url,options)
        console.log(response)
+       if(response.ok=== true){
+         getCartItems()
+       }
        
    }
    

@@ -214,7 +214,9 @@ const DetailedView = (props) =>{
  
         const url ="https://sukras.onrender.com/api/salon/addServiceToCart"
         const response = await fetch(url,options)
-        console.log(response)
+        if(response.ok === true){
+            getCartItems()
+        }
         
     }
 

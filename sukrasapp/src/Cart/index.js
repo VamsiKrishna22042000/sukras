@@ -114,6 +114,7 @@ const Cart = (props) =>{
                userId:Cookies.get('jwt_user'),
                salonId:"64a2bac3ec45bcb4034bdd46",
                serviceId:each.serviceId,
+               cartId:each._id,
                time:each.time,
                date:formatdate(new Date(each.date)),
             }
@@ -147,7 +148,7 @@ const Cart = (props) =>{
                 }
 
                 const res = await fetch(u,options)
-                if(res.ok){
+                if(res.ok===true){
                     const {history}=props
                     history.replace("/succefullyBooked")
                 }
@@ -166,7 +167,7 @@ const Cart = (props) =>{
         loading === pageStage.loading ? <div className='loader-spinner'><TailSpin color={"#F4BD18"} height={70} width={70}/></div>:
         cartItemsArr.length !== 0 ?
          <div className='Cart-total-con'>
-            <Paymentprogress prog={progress === "D" ? "Payment" : progress}  updateProgress={updateProgress}/>
+            <Paymentprogress prog={progress === "Done" ? "Payment" : progress}  updateProgress={updateProgress}/>
             <div className='cart-total-body'>
               {progress==="Cart"?<CartItems cartItemsArr={cartItemsArr} updateProgress={updateProgress} getCartItems={getCartItems} TotalPrice={TotalPrice} discount={discount}/>:progress==="Payment"?<ScheduleTime ScheduleTimeProgress={ScheduleTimeProgress} TotalPrice={TotalPrice} discount={discount} />:<ScheduleTime ScheduleTimeProgress={ScheduleTimeProgress} TotalPrice={TotalPrice} discount={discount} />}
             </div>

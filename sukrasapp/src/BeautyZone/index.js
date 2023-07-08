@@ -50,7 +50,7 @@ const Beautyzone = (props) =>{
 
     useEffect(()=>{
         getCartItems()
-    },[itemsInCart])
+    },[])
 
     const getCartItems = async() =>{
         const id = Cookies.get("jwt_user") 
@@ -77,8 +77,7 @@ const Beautyzone = (props) =>{
     };
 
     useEffect( () =>{getTheCategories()
-    }
-        ,[])
+    },[])
 
    
 
