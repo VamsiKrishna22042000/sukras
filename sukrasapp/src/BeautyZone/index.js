@@ -45,6 +45,7 @@ const Beautyzone = (props) =>{
 
     const [itemsInCart, setItemsInCart] = useState([])
 
+    console.log(Cookies.get("jwt_user"))
     useEffect(()=>{
         getCartItems()
     },[])
