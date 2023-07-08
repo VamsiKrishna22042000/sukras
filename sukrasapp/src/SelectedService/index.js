@@ -23,6 +23,19 @@ const SelectedService = (props) =>{
     const [arr ,setArr] = useState("")
     const [servicesarr, setServicesarr] = useState("")
 
+    const [itemsInCart, setItemsInCart] = useState([])
+
+    useEffect(()=>{
+        getCartItems()
+    },[itemsInCart])
+
+    const getCartItems = async() =>{
+        const id = Cookies.get("jwt_user") 
+        const response = await fetch(`https://sukras.onrender.com/api/salon/getAllServicesFromCart/${id}`)
+        const data = await response.json()
+        setItemsInCart(data.cart)
+    }
+
 
 
 
@@ -113,7 +126,7 @@ const SelectedService = (props) =>{
                         <img src="/search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
                     <Link to={`/cart/${arr.category}/${arr.id}`}>
-                        <button className='count-of-cart1'>0</button>
+                        <button className='count-of-cart1'>{itemsInCart.length}</button>
                         <button className="cart-icon-button1">
                             <img src="/cart.png" alt="cart-icon" className="cart-icon1"/>
                         </button>

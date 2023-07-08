@@ -40,10 +40,24 @@ const pageStage  = {
 
 const Beautyzone = (props) =>{
 
-
+    
+    
     const [categories , setCategories] = useState("")
     const [load , setLoad] = useState(pageStage.loading)
     const [categoryImg, setCategoryImg] = useState("")
+
+    const [itemsInCart, setItemsInCart] = useState([])
+
+    useEffect(()=>{
+        getCartItems()
+    },[itemsInCart])
+
+    const getCartItems = async() =>{
+        const id = Cookies.get("jwt_user") 
+        const response = await fetch(`https://sukras.onrender.com/api/salon/getAllServicesFromCart/${id}`)
+        const data = await response.json()
+        setItemsInCart(data.cart)
+    }
 
     const getTheCategories = async() =>{
          
@@ -100,7 +114,7 @@ const Beautyzone = (props) =>{
                         <img src="./search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
                     <Link to={`/cart/beautyzone`}>
-                        <button className="count-of-cart">0</button>
+                        <button className="count-of-cart">{itemsInCart.length}</button>
                         <button className="cart-icon-buttonn">
                             <img src="./cart.png" alt="cart-icon" className="cart-icon"/>
                         </button>

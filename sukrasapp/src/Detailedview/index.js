@@ -50,6 +50,20 @@ const DetailedView = (props) =>{
 
     const [serviceDetails, setDetails] = useState("")
 
+
+    const [itemsInCart, setItemsInCart] = useState([])
+
+    useEffect(()=>{
+        getCartItems()
+    },[])
+
+    const getCartItems = async() =>{
+        const id = Cookies.get("jwt_user") 
+        const response = await fetch(`https://sukras.onrender.com/api/salon/getAllServicesFromCart/${id}`)
+        const data = await response.json()
+        setItemsInCart(data.cart)
+    }
+
     const{match}=props
     const {params}=match
 
@@ -204,7 +218,7 @@ const DetailedView = (props) =>{
         
     }
 
-    console.log(idSection)
+    /*console.log(idSection)*/
     
     
     return(
@@ -226,7 +240,7 @@ const DetailedView = (props) =>{
                         <img src="/search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
                     <Link to={`/cart/${detailsarr.category}/${detailsarr.id}/details`}>
-                        <button className='count-of-cart2'>0</button>
+                        <button className='count-of-cart2'>{itemsInCart.length}</button>
                         <button className="cart-icon-button2">
                             <img src="/cart.png" alt="cart-icon" className="cart-icon2"/>
                         </button>

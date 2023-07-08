@@ -8,6 +8,10 @@
         padding-left:1%;
         padding-top:1%;
         padding-bottom:1%;
+        display:flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items:center;
     }
     .cart-item{
         width:100%;
@@ -22,6 +26,9 @@
         flex-direction:row;
         justify-content:flex-start;
         align-items:center;
+        margin-top:1.5%;
+        margin-bottom:1.5%;
+        margin-left:1.8%;
         padding-left:1%; 
         padding-top:1.5%;
         padding-bottom:1.5%; 
@@ -56,27 +63,43 @@
 
     .service-price{
         color:#8D8D8F;
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:2vw;
+        font-family:'Courier New', Courier, monospace;
+        font-size:1.7vw;
         margin:0px;
     }
   
     .slots-available{
         height:auto;
         width:auto;
-        border-style:solid;
-        border-color:red;
-        border-width:2px;
         display:flex;
         flex-direction:row;
         justify-content:space-around;
         align-items:center;
+        margin-top:2%;
     }
 
-    .select-options{
+    .select-options1{
         height:5vh;
-        width:10vw;
+        width:8vw;
         margin-right:5%;
+        border-color:#F4BD18;
+        border-width:2px;
+        border-radius:5px;
+        border-style:solid;
+        outline:none;
+        font-weight:600;
+    }
+
+    .select-options2{
+        height:5vh;
+        width:6vw;
+        margin-right:5%;
+        border-color:#F4BD18;
+        border-width:2px;
+        border-radius:5px;
+        border-style:solid;
+        outline:none;
+        font-weight:600;
     }
     
     .cart-cancel{
@@ -140,17 +163,18 @@
         font-size:1.35vw;
         color:#3E3E3E;
     }
-    .proceed-to-schedule{
+    .proceed-schedule{
         color:#fff;
         background-color:#F4BD18;
         border-width:0px;
         border-radius:5px;
         font-family: Arial, Helvetica, sans-serif;
-        font-size:2vw;
-        width:100%;
+        font-size:1.5vw;
+        width:50%;
         padding-top:2.5%;
         padding-bottom:2.5%;
         margin-top:5%;
+        margin-left:30%;
     }
     
 }
@@ -197,14 +221,15 @@
     }
 
     .cart-head{
+        width:110%;
         padding:0px;
-        margin:5%;
+        margin:3%;
     }
    
     .service-price{
         color:#8D8D8F;
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:5vw;
+        font-family:'Courier New', Courier, monospace;
+        font-size:6vw;
         margin:0px;
     }
     
@@ -273,7 +298,7 @@
         color:#3E3E3E;
     }
     
-    .proceed-to-schedule{
+    .proceed-schedule{
         color:#fff;
         background-color:#F4BD18;
         border-width:0px;
@@ -284,5 +309,43 @@
         padding-top:2.5%;
         padding-bottom:2.5%;
         margin-top:5%;
+        margin-bottom:10%;
+    }
+
+
+    .slots-available{
+        width:170%;
+        height:auto;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-around;
+        align-items:center;
+        margin-top:2%;
+    }
+
+    .select-options1{
+        height:5vh;
+        width:54%;
+        margin-right:5%;
+        border-color:#F4BD18;
+        border-width:2px;
+        border-radius:5px;
+        border-style:solid;
+        outline:none;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight:600;
+    }
+
+    .select-options2{
+        height:5vh;
+        width:35%;
+        margin-right:5%;
+        border-color:#F4BD18;
+        border-width:2px;
+        border-radius:5px;
+        border-style:solid;
+        outline:none;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight:600;
     }
 }
