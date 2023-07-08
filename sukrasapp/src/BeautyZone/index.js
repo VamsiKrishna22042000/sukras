@@ -33,17 +33,14 @@ const OtherServices = [
 
 
 
-const pageStage  = {
-    loading:"LOADING",
-    success:"SUCCESS",
-}
+
 
 const Beautyzone = (props) =>{
 
     
     
     const [categories , setCategories] = useState("")
-    const [load , setLoad] = useState(pageStage.loading)
+    const [load , setLoad] = useState(false)
     const [categoryImg, setCategoryImg] = useState("")
 
     const [itemsInCart, setItemsInCart] = useState([])
@@ -65,7 +62,7 @@ const Beautyzone = (props) =>{
         const data = await response.json()
 
         if(response.ok === true){
-              setLoad(pageStage.success)
+              setLoad(true)
               setCategories(data.salons[0].categories)
               /*console.log(data.salons[0].categories)*/
               const service =(data.salons[0].categories.map(each=>each.services))
@@ -96,7 +93,7 @@ const Beautyzone = (props) =>{
 
 
     return(
-        load === pageStage.success ? 
+        load ? 
        
             <div className="sukras-main-beauty">
             <div className='sukras-header-beauty'>
