@@ -49,9 +49,8 @@ const Beautyzone = (props) =>{
         getCartItems()
     },[])
 
-    const getCartItems = async() =>{
-        const id = Cookies.get("jwt_user") 
-        const response = await fetch(`https://sukras.onrender.com/api/salon/getAllServicesFromCart/${id}`)
+    const getCartItems = async() =>{ 
+        const response = await fetch(`https://sukras.onrender.com/api/salon/getAllServicesFromCart/${Cookies.get("jwt_user")}`)
         const data = await response.json()
         setItemsInCart(data.cart)
     }
@@ -94,7 +93,6 @@ const Beautyzone = (props) =>{
 
     return(
         load ? 
-       
             <div className="sukras-main-beauty">
             <div className='sukras-header-beauty'>
                     <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
