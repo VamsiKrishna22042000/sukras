@@ -61,6 +61,7 @@ const Beautyzone = (props) =>{
         const data = await response.json()
 
         if(response.ok === true){
+              getCartItems()
               setLoad(true)
               setCategories(data.salons[0].categories)
               /*console.log(data.salons[0].categories)*/
