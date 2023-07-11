@@ -131,27 +131,12 @@ const Cart = (props) =>{
     
     
           const response = await fetch(url,options)
+          const data = await response.json()
          
           if(response.ok){
-               const u ="https://sukras.onrender.com/api/salon/deleteServiceFromCart"
-
-               const details = {userId: Cookies.get("jwt_user"), cartId:each._id }
-        
-                const options = {
-                    method : "POST",
-
-                    headers : {
-                        "Content-Type" : "application/json"
-                    },
-
-                    body : JSON.stringify(details)
-                }
-
-                const res = await fetch(u,options)
-                if(res.ok===true){
+                    console.log(data)
                     const {history}=props
                     history.replace("/succefullyBooked")
-                }
           }
         })}
     }

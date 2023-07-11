@@ -92,7 +92,7 @@ const Beautyzone = (props) =>{
    
    
 
-
+    console.log(itemsInCart)
     return(
         load ? 
             <div className="sukras-main-beauty">

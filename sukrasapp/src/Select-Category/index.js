@@ -12,21 +12,21 @@ import './index.css'
 const categories = [
     {
         id:uuidv4(),
-        imgUrl:"beautyzone",
+        imgUrl:"beauty.png",
         category:"beautyzone",
         name:"Beauty Zone",
         yes:"yes"
     },
     {
         id:uuidv4(),
-        imageUrl:"fashion",
+        imageUrl:"fashion.png",
         category:"fashionzone",
         name : "Fashion Zone",
         yes:'yes'
     },
     {
         id:uuidv4(),
-        imageUrl:"eventmanagement",
+        imageUrl:"eventmanagement.png",
         category:"eventManagement",
         name : "Event Management",
         yes:"yes",
@@ -63,7 +63,7 @@ const SelectCategory = (props) =>{
                         {categories.map(each=>(
                         <button id={each.category} className={(categorySelected === each.category)?"category-2":"category"} type="button" onClick={selectedCat}>
                             <button id={each.category} className="sukras-span" onClick={selectedCat}>
-                                <img id={each.category} onClick={selectedCat} className="sukras-icons" src={`./${each.imageUrl}.png`} alt={each.imageUrl}/>
+                                <img id={each.category} onClick={selectedCat} className="sukras-icons" src={`./${each.imageUrl}`} alt={each.imageUrl}/>
                             </button>
                             <button id={each.category} onClick={selectedCat} className={(categorySelected === each.category)?"sukras-name-span2":"sukras-name-span1"}>{each.name}</button>
                             {(categorySelected === each.category) && <img className="sukras-icons-yes" src={`/${each.yes}.png`} alt ={each.yes}/>}

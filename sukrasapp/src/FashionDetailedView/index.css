@@ -1,0 +1,203 @@
+@media screen and (min-width:992px){
+    .detailed-view-body{
+        height:auto;
+        width:100vw;
+    }
+    .detailed-view-head{
+        display:none;
+    }
+    .detailed-view-sub-body{
+        height:auto;
+        width:100%;
+        overflow: hidden;
+    }
+    .detailed-view-image{
+        margin-top:5%;
+        height:85vh;
+        width:90%;
+        margin-left:5%;
+    }
+    .fashion-details-content{
+        position: relative;
+        height:auto;
+        width:100vw;
+        font-size:1.1vw;
+        margin-left:55%;
+    }
+    .fashion-details-head{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:2vw;
+        color:#3E3E3E;
+    }
+    .fashion-selected-price{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:1.5vw;
+        color:#8D8D8F;
+    }
+    .fashion-selected-rating{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:1.5vw;
+        color:#3E3E3E;
+    }
+    .fashion-selected-offer{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:1.5vw;
+        color:#EB5757;
+        margin-left:1%;
+    }
+    .fashion-selected-price-icon{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:1.5vw;
+        color:#8D8D8F;
+        text-decoration:line-through;
+    }
+    .fashion-details-about{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:1.5vw;
+        font-weight:bold;
+        color:#3E3E3E;
+    }
+    .fashion-details-size-selection{
+        height:auto;
+        width:30%;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-around;
+        align-items:center;
+     }
+     .fashion-size-select{
+         padding-left:4%;
+         padding-right:4%;
+         padding-top:1%;
+         padding-bottom:1%;
+         display:flex;
+         flex-direction:row;
+         justify-content:center;
+         align-items:center;
+         background-color:transparent;
+         border-color:#8D8D8F;
+         border-radius:5px;
+         color:#8D8D8F;
+     }
+     .fashion-size-select1{
+        padding-left:4%;
+        padding-right:4%;
+        padding-top:1%;
+        padding-bottom:1%;
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        background-color:transparent;
+        border-color:orange;
+        border-radius:5px;
+        color:orange;
+    }
+     .fashion-color-select{
+        padding:5%;
+        border-radius:50%;
+     }
+}
+
+@media screen and (max-width:600px){
+    .detailed-view-body{
+        height:auto;
+        width:100vw;
+        position: relative;
+    }
+    .detailed-view-head{
+        position:absolute;
+        left:40%;
+    }
+    .detailed-view-sub-body{
+        height:auto;
+        width:100%;
+    }
+    .detailed-view-image{
+        margin-top:5%;
+        height:5%;
+        width:100%;
+        margin-left:1.2%;
+    }
+    .fashion-details-content{
+        height:auto;
+        width:85%; 
+        padding-top:5%;
+        padding-left:9.5%;
+        font-size:3vw;
+        margin-left:-4%;
+    }
+    .fashion-details-head{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:5vw;
+        color:#3E3E3E;
+    }
+    .fashion-selected-price{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:4vw;
+        color:#8D8D8F;
+    }
+    .fashion-selected-rating{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:4vw;
+        color:#3E3E3E;
+    }
+    .fashion-selected-offer{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:4vw;
+        color:#EB5757;
+        margin-left:1%;
+    }
+    .fashion-selected-price-icon{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:4vw;
+        color:#8D8D8F;
+        text-decoration:line-through;
+    }
+    .fashion-details-about{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:3.2vw;
+        font-weight:bold;
+        color:#3E3E3E;
+    }
+    .fashion-details-size-selection{
+       height:auto;
+       width:auto;
+       display:flex;
+       flex-direction:row;
+       justify-content:space-around;
+       align-items:center;
+    }
+    .fashion-size-select1{
+        padding-left:4%;
+        padding-right:4%;
+        padding-top:1%;
+        padding-bottom:1%;
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        background-color:transparent;
+        border-color:Orange;
+        border-radius:5px;
+        color:orange;
+    }
+    .fashion-size-select{
+        padding-left:4%;
+        padding-right:4%;
+        padding-top:1%;
+        padding-bottom:1%;
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        background-color:transparent;
+        border-color:#8D8D8F;
+        border-radius:5px;
+        color:#8D8D8F;
+    }
+    .fashion-color-select{
+        padding:5%;
+        border-radius:50%;
+     }
+}

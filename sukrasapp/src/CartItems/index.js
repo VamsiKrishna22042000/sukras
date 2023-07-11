@@ -17,12 +17,11 @@ import Cookies from 'js-cookie'
 
 const CartItems = (props) =>{
     const {updateProgress,cartItemsArr,getCartItems,TotalPrice,discount}=props
-
+    
 
 const pageStage={
     loading:"LOADING",
     success :"SUCCESS"
-
 }        
            
 
@@ -56,7 +55,14 @@ const pageStage={
     
 
 
-
+    function getCurrentTime() {
+        const date = new Date();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const formattedHours = hours > 12 ? hours - 12 : hours;
+        const timeString = `${formattedHours}:${minutes < 10 ? '0' + minutes : minutes}`;
+        return timeString;
+      }
  
     const [cartArr, setCartArr] = useState([])
 
@@ -161,8 +167,12 @@ const pageStage={
          if(booked.length === 0){
              return timesAvailable
          }else{
+               const currentTime = getCurrentTime()
                const notBookedSlots = timesAvailable.filter(each=>(!booked.includes(each)))
+               const curretTimeFilter = notBookedSlots.filter(each=>each>currentTime)
+               
                return notBookedSlots
+               
          }
     }
    
@@ -369,8 +379,10 @@ const pageStage={
    
     
 
-    
-  
+   /* console.log(cartItemsArr)
+    console.log(cartArr)
+    console.log(displayArr)
+    console.log(ArrayWithTime)*/
    
     return(
         stage===pageStage.loading?<div className='loader-spinner'><TailSpin color={"#F4BD18"} height={70} width={70}/></div>:
