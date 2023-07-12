@@ -98,7 +98,7 @@
     }
     .star-btn{
         position:absolute;
-        width:7%;
+        width:8%;
         top:60%;
         left:65%;
         text-align: center;
@@ -109,6 +109,10 @@
         z-index:1;
         background-color:#ffffff70;
         border-radius:30px;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-evenly;
+        align-items:center;
       }
  
     .carouselImg-con {
