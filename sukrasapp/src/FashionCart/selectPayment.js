@@ -9,7 +9,7 @@ import {useState} from 'react'
 const paymentMethodArr = [
     {
         imgUrl:"CashafterPayment",
-        mode:"Cash After Service"
+        mode:"Cash On Delivery"
     },
     {
         imgUrl:"UPi",
@@ -35,14 +35,14 @@ const SelectPayment = (props) =>{
         if(buttonSelected !== ""){
             updateProgress("PaymentDone")
         }else{
-            alert("Please select Cash after service")
+            alert("Please select Cash On Delivery")
         } 
     }
 
    
 
     const selectButton = () =>{
-        setUpbutton("Cash After Service")
+        setUpbutton("Cash On Delivery")
     }
 
     return(
@@ -50,7 +50,7 @@ const SelectPayment = (props) =>{
         <h1 className='fashion-paymentmode-head'>Payment Mode</h1>
         <div className='fashion-buttons'>
             {paymentMethodArr.map(each=>(
-            <button onClick={selectButton} className={each.mode !== "Cash After Service" ? "fashion-payment-modebutton2" :buttonSelected==="" ?"fashion-payment-modebutton1" : "fashion-payment-modebutton3" } type="button"><img className='paymentmode-image' src={`/${each.imgUrl}.png`} alt={each.mode}/><p>{each.mode}</p><img className={each.mode !== "Cash After Service" ? "yes-disable" : buttonSelected=== "" ? "yes-disable" : "yes-enable"  } src={`/yes.png`} alt ={each.yes}/></button>
+            <button onClick={selectButton} className={each.mode !== "Cash On Delivery" ? "fashion-payment-modebutton2" :buttonSelected==="" ?"fashion-payment-modebutton1" : "fashion-payment-modebutton3" } type="button"><img className='paymentmode-image' src={`/${each.imgUrl}.png`} alt={each.mode}/><p>{each.mode}</p><img className={each.mode !== "Cash After Service" ? "yes-disable" : buttonSelected=== "" ? "yes-disable" : "yes-enable"  } src={`/yes.png`} alt ={each.yes}/></button>
             ))
             }
         </div>
