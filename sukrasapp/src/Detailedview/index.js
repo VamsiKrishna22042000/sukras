@@ -1,5 +1,5 @@
 
-import {withRouter,Link} from 'react-router-dom'
+import {withRouter,Link,Redirect} from 'react-router-dom'
 
 import {BsHandbag} from 'react-icons/bs'
 
@@ -16,6 +16,7 @@ import {RiDeleteBinLine} from 'react-icons/ri';
 
 
 import Cookies from 'js-cookie'
+
 
 
 
@@ -40,7 +41,7 @@ const DetailedView = (props) =>{
     const [detailsarr, setArr] = useState("")
     const [review , setReview] = useState([])
 
-
+    const [button,setButtonColor] = useState("make-abook-details")
     const [idSection , setId] = useState({userId : Cookies.get("jwt_user"), salonId:"",serviceId:""})
 
     const [comment , setComment ] = useState("")
@@ -195,7 +196,7 @@ const DetailedView = (props) =>{
     }
 
     const addToCart = async()=>{
-
+        setButtonColor("make-abook-details1")
         const cartDetails = {...idSection}
  
         const options={
@@ -215,7 +216,10 @@ const DetailedView = (props) =>{
         const url ="https://sukras.onrender.com/api/salon/addServiceToCart"
         const response = await fetch(url,options)
         if(response.ok === true){
+            setButtonColor("make-abook-details1")
             getCartItems()
+            const {history}= props
+            history.replace(`/cart/${detailsarr.category}/${detailsarr.id}/details`)
         }
         
     }
@@ -283,7 +287,7 @@ const DetailedView = (props) =>{
                     <p>• Removing Split Ends</p>
                     <p>• Boost your Confidence</p>
                     <Link to={`/${detailsarr.category}/${detailsarr.id}/details`}>
-                        <button onClick={addToCart} className="make-abook-details" type="button">Add to <BsHandbag/></button>
+                        <button onClick={addToCart} className={button} type="button">Add to <BsHandbag/></button>
                     </Link>
                     <p className='details-about'>Customer Reviews</p>
                     

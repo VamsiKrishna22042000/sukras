@@ -2,7 +2,7 @@
 import Detailedview from '../Detailedview'
 import './index.css'
 
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 
@@ -47,6 +47,7 @@ const FashionDetailedView = (props) =>{
     const [categories , setCategories] = useState([])
     const [load, setLoad] = useState(false)
     const [cartItems, setCartItems]= useState([])
+    const [button, setButton] = useState("make-abook-details")
     const {match}=props
     const {params}=match
  
@@ -162,6 +163,7 @@ const FashionDetailedView = (props) =>{
    }
 
    const addProductToCart = async() =>{
+         setButton("make-abook-details1")
          const url="https://sukras.onrender.com/api/product/addProductToCart"
          const details = {
             userId : Cookies.get("jwt_user"),
@@ -179,11 +181,13 @@ const FashionDetailedView = (props) =>{
          const data = await response.json()
          if(response.ok){
             getAllCartItems()
-            console.log(data)
+            const {history}= props
+             history.replace(`/fashioncart/fashioncategory/${params.type}/${params.name}/${params.id}`)
          }
    }
   
-  
+ 
+   
     return (
     load  ? <div classname="detailed-view-body">
         <div className='sukras-header-beauty'>
@@ -239,7 +243,7 @@ const FashionDetailedView = (props) =>{
                     <p className='fashion-details-about'>Material & Care</p>
                     <p>• Pure georgette</p>
                     <p>• Mashine wash</p>
-                    <button onClick={addProductToCart} className="make-abook-details" type="button">Add to <BsHandbag/></button>
+                    <button onClick={addProductToCart} className={button} type="button">Add to <BsHandbag/></button>
                    
                     <p className='fashion-details-about'>Customer Reviews</p>
                     

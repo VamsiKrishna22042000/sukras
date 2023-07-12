@@ -150,13 +150,25 @@
     }
     .make-abook-details{
         background-color:#F4BD18;
-        border-color:#F4BD18;
+        border-width:0px;
         color:#fff;
-        width:22%;
-        font-size:1.5vw;
+        width:10%;
+        font-size:1.2vw;
         padding-top:0.5%;
         padding-bottom:0.5%;
-        border-radius:5px;
+        border-radius:20px;
+        margin-top:1%;
+        margin-bottom:1%;
+    }
+    .make-abook-details1{
+        background-color:#4E4E4E;
+        border-width:0px;
+        color:#fff;
+        width:10%;
+        font-size:1.2vw;
+        padding-top:0.5%;
+        padding-bottom:0.5%;
+        border-radius:20px;
         margin-top:1%;
         margin-bottom:1%;
     }
@@ -211,6 +223,7 @@
         color:#8D8D8F;
         margin:0px;
         padding:0px;
+        width:45%;
     }
     .review-rating{
         display:flex;
@@ -305,9 +318,9 @@
         font-size:1.5vw;
         background-color:transparent;
         border-color:transparent;
-        padding-top:0.25%;
+        padding-top:1%;
         color: #4E4E4E;
-        left:96%;
+        left:90%;
     }
     .sukras-beauty-selected{
         display:none;
@@ -482,13 +495,25 @@
     }
     .make-abook-details{
         background-color:#F4BD18;
-        border-color:#F4BD18;
+        border-width:0px;
         color:#fff;
-        width:100%;
-        font-size:4vw;
+        width:30%;
+        font-size:3.8vw;
         padding-top:3%;
         padding-bottom:3%;
-        border-radius:5px;
+        border-radius:30px;
+        margin-top:1%;
+        margin-bottom:1%;
+    }
+    .make-abook-details1{
+        background-color:#4E4E4E;
+        border-width:0px;
+        color:#fff;
+        width:30%;
+        font-size:3.8vw;
+        padding-top:3%;
+        padding-bottom:3%;
+        border-radius:30px;
         margin-top:1%;
         margin-bottom:1%;
     }

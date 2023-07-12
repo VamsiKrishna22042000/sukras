@@ -12,10 +12,10 @@ import './index.css'
 const categories = [
     {
         id:uuidv4(),
-        imgUrl:"beauty.png",
+        imageUrl:"beautyzone.png",
         category:"beautyzone",
-        name:"Beauty Zone",
-        yes:"yes"
+        name : "Beauty Zone",
+        yes:'yes'
     },
     {
         id:uuidv4(),

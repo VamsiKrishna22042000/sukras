@@ -11,6 +11,7 @@ import {BsHandbag} from 'react-icons/bs'
 import { TailSpin } from 'react-loader-spinner'
 
 import './index.css'
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 
 const pageStage  = {
     loading:"LOADING",
@@ -22,7 +23,7 @@ const SelectedService = (props) =>{
     const [loading,setLoading] = useState(pageStage.loading)
     const [arr ,setArr] = useState("")
     const [servicesarr, setServicesarr] = useState("")
-
+    const [button,setButton] = useState("book-btn")
     const [itemsInCart, setItemsInCart] = useState([])
 
     useEffect(()=>{
@@ -67,7 +68,7 @@ const SelectedService = (props) =>{
    }
     
    const addToCart = async(event)=>{
-
+       setButton("book-btn1")
        const cartDetails = {...idSection,serviceId:event.target.id}
 
        
@@ -87,9 +88,11 @@ const SelectedService = (props) =>{
 
        const url ="https://sukras.onrender.com/api/salon/addServiceToCart"
        const response = await fetch(url,options)
-       console.log(response)
+       /*console.log(response)*/
        if(response.ok=== true){
-         getCartItems()
+        getCartItems()
+          const {history}= props
+          history.replace(`/cart/${arr.category}/${arr.id}`)
        }
        
    }
@@ -159,7 +162,7 @@ const SelectedService = (props) =>{
                 </div>
                 <div className='selected-body-book'>
                     <img className='selected-image' src={each.image[0]} alt={arr.category}/>
-                    <button id={each._id} onClick={addToCart} className='book-btn' type="button">Add to <BsHandbag/></button>
+                    <button id={each._id} onClick={addToCart} className={button} type="button">Add to <BsHandbag/></button>
                 </div>
             </div>)}
         </div>
