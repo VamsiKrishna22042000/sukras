@@ -37,7 +37,7 @@ const FashionZone = (props) =>{
     const [categories , setCategories] = useState([])
     const [load , setLoad] = useState(false)
     const [categoryImg, setCategoryImg] = useState("")
-
+    const [cartItems, setCartItems]= useState([])
     const gobackTo = () =>{
         const {history} = props
         history.push("/select-category")
@@ -45,8 +45,20 @@ const FashionZone = (props) =>{
 
  useEffect(()=>{
    getAllCategoryOfProducts()
+   getAllCartItems()
  },[])
 
+
+ const getAllCartItems = async() =>{
+    
+    const response = await fetch(`https://sukras.onrender.com/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`)
+    const data = await response.json()
+
+    if(response.ok){
+        setCartItems(data.productCart)
+    }
+
+ }
 
 
  const getAllCategoryOfProducts = async () =>{
@@ -81,8 +93,8 @@ const FashionZone = (props) =>{
                     <button onClick={deleteCookie} className="search-icon-button">
                         <img src="./search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
-                    <Link to={`/cart/beautyzone`}>
-                        <button className="count-of-cart">0</button>
+                    <Link to={`/fashioncart/fashionzone`}>
+                        <button className="count-of-cart">{cartItems.length}</button>
                         <button className="cart-icon-buttonn">
                             <img src="./cart.png" alt="cart-icon" className="cart-icon"/>
                         </button>

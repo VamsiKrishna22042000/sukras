@@ -23,7 +23,7 @@
       margin-top:30.9%;
     }
     .dots{
-      padding:0.5%;
+      padding:0.4%;
       width:1.5%;
       background:#F4BD18;
       background-position:center;
@@ -34,7 +34,7 @@
       transition: all 0.5s ease-in-out;
     }
     .dots2{
-      padding:0.5%;
+      padding:0.4%;
       width:0.1%;
       background:#BFBBC3;
       background-position:center;
@@ -228,9 +228,9 @@
   }
   .star-btn{
     position:absolute;
-    width:10%;
+    width:13%;
     top:86%;
-    left:78%;
+    left:75%;
     text-align: center;
     color:#fff;
     background-color:transparent;

@@ -78,6 +78,7 @@
          border-color:#8D8D8F;
          border-radius:5px;
          color:#8D8D8F;
+         width:3px;
      }
      .fashion-size-select1{
         padding-left:4%;
@@ -92,11 +93,44 @@
         border-color:orange;
         border-radius:5px;
         color:orange;
+        width:3px;
     }
      .fashion-color-select{
         padding:5%;
         border-radius:50%;
+        border-style:solid;
+        border-color:grey;
+        border-width:3px;
      }
+     .fashion-color-select1{
+        padding:5%;
+        border-radius:50%;
+        border-style:solid;
+        border-color:orange;
+        border-width:3px;
+     }
+     .fashion-cartBag-btn{
+        display:none;
+     }
+     .fashion-count-of-cart{
+        display:inline-flex;
+        position:absolute;
+        color:#4E4E4E;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:1vw;
+        left:81%;
+        top:35%;
+        background-color:#fff;
+        height:auto;
+        width:auto;
+        border-radius:50%;
+        z-index: 1;
+        border-color:#F4BD18;
+        border-style:solid;
+        border-width:1px;
+        padding-left:0.8%;
+        padding-right:0.8%;
+    }
 }
 
 @media screen and (max-width:600px){
@@ -199,5 +233,48 @@
     .fashion-color-select{
         padding:5%;
         border-radius:50%;
+        border-style:solid;
+        border-width:2px;
+        border-color:#3E3E3E;
      }
+    .fashion-color-select1{
+        padding:5%;
+        border-radius:50%;
+        border-style:solid;
+        border-width:2px;
+        border-color:orange;
+    } 
+    .fashion-cartBag-btn{
+        height:4vh;
+        width:10.5vw;
+        background-color:transparent;
+        border-color:transparent;
+        margin-top:1.2vh;
+        margin-left:80%;
+    }
+    .fashion-cartBag{
+        height:100%;
+        width:100%;
+    }
+    .fashion-count-of-cart{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        position:absolute;
+        color:#4E4E4E;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:3.5vw;
+        left:79.5%;
+        background-color:#fff;
+        height:auto;
+        width:auto;
+        border-radius:50%;
+        z-index: 1;
+        border-color:#4E4E4E;
+        border-style:solid;
+        border-width:1px;
+        padding-left:2.5%;
+        padding-right:2.5%;
+        top:40%;
+    }
 }

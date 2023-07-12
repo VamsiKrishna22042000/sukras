@@ -298,7 +298,7 @@ const DetailedView = (props) =>{
                                     <p>{each.userId}</p>
                                     <div className='divider'></div>
                                     <p>{each.date.toString()}</p>
-                                    <button id={each._id} className={Cookies.get("jwt_user")=== each.userId ? "delete-icon": "dont-delete" } type="button"><RiDeleteBinLine onClick={deleteReview} id={each._id}/></button>
+                                    <button id={each._id} className={Cookies.get("jwt_user") === each.userId ? "delete-icon": "dont-delete" } type="button"><RiDeleteBinLine onClick={deleteReview} id={each._id}/></button>
                                 </div>
                     </div>))}
                     <div className='AddComment'>

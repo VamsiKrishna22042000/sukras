@@ -61,8 +61,7 @@ const FashionZoneCarousel = () =>{
         )
     },[activeIndex])
     
-    console.log(activeIndex)
-    console.log(dots)
+  
     return(
         <>   
             <h1 className="fashion-zone-head">Top Picks For You</h1>

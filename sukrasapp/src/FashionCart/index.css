@@ -1,38 +1,80 @@
-@media screen and (min-width:992px) {
-    .price-details{
-        position:relative;
-        overflow:visible;
-        padding-left:2%;
-    }
-    .payment-mode{
+
+.loader-spinner{
+    height:100vh;
+    width:100vw;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    position: relative;
+}
+
+
+
+
+@media screen and (min-width:992px){
+    .fashion-total-container-payment{
         height:auto;
         width:100%;
         display:flex;
         flex-direction:row;
-        justify-content:flex-start;
-        align-items:flex-start;
-        position:absolute;
-        top:0px;
-        left:100%;
-        border-color:#CECECE;
-        border-style:solid;
-        border-top:hidden;
-        border-right:hidden;
-        border-bottom:hidden;
-        border-width:1px;
-        padding-left:2%;
-        flex-wrap:wrap;
     }
-    .paymentmode-head{
+    .counter{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        background-color:#FFF6D4;
+        border-radius:5px;
+        height:5vh;
+        width:5vw;
+        margin-top:5%;
+        margin-left:5%;
+    }
+    .counter-button{
+        background-color: transparent;
+        border-color: transparent;
+        color:#F4BD18;
+        font-size:2vw;
+    }
+    .counter-para{
+        color:#F4BD18;
+    }
+    .fashion-buttons{
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+    }
+    .payment-mode-fashion{
+        height:auto;
+        background-color:transparent;
+        width:45%;
+        margin-left:3%;
+        padding-right:1.8%;
+        padding-left:1%;
+        padding-top:1%;
+        padding-bottom:1%;
+        display:flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items:center;
+        border-style: solid;
+        border-color:#DFDFDF;
+        border-left:hidden;
+        border-top:hidden;
+        border-bottom:hidden;
+    }
+    .fashion-paymentmode-head{
         font-family:Arial, Helvetica, sans-serif;
         font-size:1.4vw;
         color:#3E3E3E;
         font-weight:500;
         margin-bottom:5%;
         width:100%;
+        display:inline-block;
     }
-    .payment-modebutton1{
-        display:flex;
+    .fashion-payment-modebutton1{
+        display:inline-flex;
         flex-direction:row;
         justify-content:flex-start;
         align-items:center;
@@ -55,7 +97,7 @@
         margin-left:1.5vw;
 
     }
-    .payment-modebutton2{
+    .fashion-payment-modebutton2{
         display:flex;
         flex-direction:row;
         justify-content:flex-start;
@@ -76,11 +118,11 @@
         font-weight:bold;
         padding:0.5vh;
         position: relative;
-        filter:blur(1.5px);
+        filter:blur(1px);
         margin-left:1.5vw;
     }
-    .payment-modebutton3{
-        display:flex;
+    .fashion-payment-modebutton3{
+        display:inline-flex;
         flex-direction:row;
         justify-content:flex-start;
         align-items:center;
@@ -102,51 +144,80 @@
         position: relative;
         margin-left:1.5vw;
     }
-    .paymentmode-image{
-        height:10vh;
-        width:5vw;
-        margin-right:5%;
-    }
-    .proceed-to-schedule{
+    .fashion-proceed-to-schedule{
         color:#fff;
         background-color:#F4BD18;
         border-width:0px;
         border-radius:5px;
         font-family: Arial, Helvetica, sans-serif;
-        font-size:1.5vw;
+        font-size:2vw;
         width:50%;
-        padding-top:2.5%;
-        padding-bottom:2.5%;
+        padding-top:1.8vh;
+        padding-bottom:1.8vh;
         margin-top:5%;
-        margin-left:22%;
+        margin-bottom:10vh;
     }
-    .yes-disable{
-        display:none;
+
+    .fashion-proceed-button-disable{
+       display:none;
     }
-    .yes-enable{
-        height:20px;
-        width:20px;
-        position:absolute;
-        left:85%;
-    }
+    
 }
 
-@media screen and (max-width:600px){
-    .payment-mode{
+@media  screen and (max-width:600px) {
+    .fashion-total-container-payment{
         height:auto;
         width:100%;
         display:flex;
         flex-direction:column;
-        justify-content:flex-start;
-        align-items:flex-start;
     }
-    .paymentmode-head{
+    .counter{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        align-items:center;
+        background-color:#FFF6D4;
+        height:5vh;
+        width:18vw;
+        border-radius:5px;
+        margin-left:5%;
+    }
+    .counter-button{
+        background-color: transparent;
+        border-color: transparent;
+        color:#F4BD18;
+        font-size:6vw;
+    }
+    .counter-para{
+        color:#F4BD18;
+    }
+    .fashion-buttons{
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+    }
+    .payment-mode-fashion{
+        height:auto;
+        background-color:transparent;
+        width:90%;
+        padding-right:5%;
+        padding-left:5%;
+        padding-top:1%;
+        padding-bottom:1%;
+        display:flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items:center;
+        order:2;
+    }
+    .fashion-paymentmode-head{
         font-family:Arial, Helvetica, sans-serif;
         font-size:4.3vw;
         color:#3E3E3E;
         margin-bottom:5%;
+        align-self:flex-start;
     }
-    .payment-modebutton1{
+    .fashion-payment-modebutton1{
         display:flex;
         flex-direction:row;
         justify-content:flex-start;
@@ -167,7 +238,7 @@
         padding:1vh;
         position: relative;
     }
-    .payment-modebutton2{
+    .fashion-payment-modebutton2{
         display:flex;
         flex-direction:row;
         justify-content:flex-start;
@@ -189,7 +260,7 @@
         padding:1vh;
         position: relative;
     }
-    .payment-modebutton3{
+    .fashion-payment-modebutton3{
         display:flex;
         flex-direction:row;
         justify-content:flex-start;
@@ -210,12 +281,7 @@
         padding:1vh;
         position: relative;
     }
-    .paymentmode-image{
-        height:8vh;
-        width:15vw;
-        margin-right:5%;
-    }
-    .proceed-to-schedule{
+    .fashion-proceed-to-schedule{
         color:#fff;
         background-color:#F4BD18;
         border-width:0px;
@@ -228,14 +294,8 @@
         margin-top:5%;
         margin-bottom:10vh;
     }
-    .yes-disable{
+
+    .fashion-proceed-button-disable{
         display:none;
     }
-    .yes-enable{
-        height:20px;
-        width:20px;
-        position:absolute;
-        left:85%;
-    }
-   
 }

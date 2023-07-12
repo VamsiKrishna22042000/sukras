@@ -41,10 +41,12 @@ const ratingStars = [
 
 const FashionDetailedView = (props) =>{
     const [rating, setRating] = useState(0)
+    const [review, setReview] = useState("")
     const [size,setSize] = useState("")
     const [color,setColor] = useState("")
     const [categories , setCategories] = useState([])
     const [load, setLoad] = useState(false)
+    const [cartItems, setCartItems]= useState([])
     const {match}=props
     const {params}=match
  
@@ -53,10 +55,31 @@ const FashionDetailedView = (props) =>{
         history.push(`/fashioncategory/${params.type}`)
    }
 
+   const changeReview = (event) =>{
+       setReview(event.target.value)
+   }
+
+   const formatDate = (date) => {
+        const options = { day: "numeric", month: "long", year: "numeric" };
+        return new Intl.DateTimeFormat("en-US", options).format(date);
+  };
+
    useEffect(()=>{
     getAllCategoryOfProducts()
+    getAllCartItems()
   },[])
  
+
+  const getAllCartItems = async() =>{
+    
+    const response = await fetch(`https://sukras.onrender.com/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`)
+    const data = await response.json()
+
+    if(response.ok){
+        setCartItems(data.productCart)
+    }
+
+ }
 
    const getAllCategoryOfProducts = async () =>{
     const response = await fetch(`https://sukras.onrender.com/api/admin/getAllProduct`)
@@ -81,11 +104,85 @@ const FashionDetailedView = (props) =>{
    const setupRating = (event) =>{
     setRating(parseInt(event.target.id))
 }
+   const filterItem = categories.filter(each=> each._id === params.id)
 
+   const addReview = async () =>{
 
-const filterItem = categories.filter(each=> each._id === params.id)
-console.log(filterItem)
-   
+    if(review === ""){
+        alert("Please add Review about the product")
+    }else if(rating === ""){
+        alert("Please add rating about the product")
+    }else{
+
+    const url = "https://sukras.onrender.com/api/product/addProductReview"
+    const details = {
+        userId : Cookies.get("jwt_user"),
+        productId : filterItem[0]._id,
+        rating,
+        review,
+        date:formatDate(new Date()),
+    }
+    const options = {
+        method : "POST",
+        
+        headers : {
+            "Content-Type" : "application/json"
+        },
+
+        body : JSON.stringify(details)
+    }
+
+    await fetch(url,options)
+    setRating(0)
+    document.getElementById("comment-input").value = ""
+    getAllCategoryOfProducts()
+   }
+   }
+
+   const deleteReview =  async (event) =>{
+        
+         const url = "https://sukras.onrender.com/api/product/deleteProductReview"
+
+         const details = {
+            productId : filterItem[0]._id,
+            reviewId  : event.target.id
+         }
+         
+         const opitons = {
+            method : "POST",
+
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body : JSON.stringify(details)
+         }
+
+         await fetch(url,opitons)
+         getAllCategoryOfProducts()
+   }
+
+   const addProductToCart = async() =>{
+         const url="https://sukras.onrender.com/api/product/addProductToCart"
+         const details = {
+            userId : Cookies.get("jwt_user"),
+            productId : params.id
+         }
+         const options ={
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json",
+            },
+            body: JSON.stringify(details)
+         }
+
+         const response = await fetch(url,options)
+         const data = await response.json()
+         if(response.ok){
+            console.log(data)
+         }
+   }
+  
+  
     return (
     load  ? <div classname="detailed-view-body">
         <div className='sukras-header-beauty'>
@@ -97,11 +194,13 @@ console.log(filterItem)
                     <button className="search-icon-button">
                         <img src="/search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
-                    <Link to={`/cart/beautyzone`}>
-                        <button className="count-of-cart">0</button>
+                    
+                    <Link to={`/fashioncart/fashioncategory/${params.type}/${params.name}/${params.id}`}>
+                        <button className="fashion-count-of-cart">{cartItems.length}</button>
                         <button className="cart-icon-buttonn">
                             <img src="/cart.png" alt="cart-icon" className="cart-icon"/>
                         </button>
+                        <button className="fashion-cartBag-btn" type="button"><img className="fashion-cartBag" src="/cartBag.png"/></button>
                     </Link>
                 </div>
         </div>
@@ -124,12 +223,11 @@ console.log(filterItem)
                     </div>
                     <p className='fashion-details-about'>Select Size</p>
                     <div className='fashion-details-size-selection'>
-                       {sizes.map(each =>( <button id = {each.id} onClick={selectSize}  className={each.id === size? 'fashion-size-select1' :'fashion-size-select'} type='button'>{each.text}</button>))}
+                       {sizes.map(each =>(<button id = {each.id} onClick={selectSize}  className={each.id === size? 'fashion-size-select1' :'fashion-size-select'} type='button'>{each.text}</button>))}
                     </div>
                     <p className='fashion-details-about'>Select Color</p>
                     <div className='fashion-details-size-selection'>
-                      {colors.map(each=> <button id={each.id} onClick = {selectColor} style={{backgroundColor:each.text}} className='fashion-color-select' type='button'></button>)} 
-                      
+                       {colors.map(each=> <button id={each.id} onClick = {selectColor} style={{backgroundColor:each.text}} className={ each.id === color ?'fashion-color-select1' : 'fashion-color-select'} type='button'></button>)} 
                     </div>
                     <p className='fashion-details-about'>Product Details</p>
                     <p>{filterItem[0].about}</p>
@@ -140,31 +238,32 @@ console.log(filterItem)
                     <p className='fashion-details-about'>Material & Care</p>
                     <p>• Pure georgette</p>
                     <p>• Mashine wash</p>
-                    <button className="make-abook-details" type="button">Add to <BsHandbag/></button>
+                    <button onClick={addProductToCart} className="make-abook-details" type="button">Add to <BsHandbag/></button>
                    
                     <p className='fashion-details-about'>Customer Reviews</p>
                     
+                   {filterItem[0].productReviews.map(each=>
                    <div className='review-item'>
                                 <div className='review-rating'>
-                                    <p>4.5</p>
+                                    <p>{each.rating}</p>
                                     <img className='rating-star2' src="/ratingstar.png" alt="rating"/>
                                 </div>
-                                <p className='review-para'>3</p>
+                                <p className='review-para'>{each.review}</p>
                                 <div className='review-person'>
-                                    <p>vamsi</p>
+                                    <p>{each.userId}</p>
                                     <div className='divider'></div>
-                                    <p>11th, July</p>
-                                    <button className="delete-icon" type="button"><RiDeleteBinLine /></button>
+                                    <p>{each.date}</p>
+                                    <button onClick={deleteReview} id={each._id} className={Cookies.get("jwt_user") === each.userId ? "delete-icon":"dont-delete"} type="button"><RiDeleteBinLine id={each._id} /></button>
                                 </div>
-                    </div>
+                    </div>)}
                     <div className='AddComment'>
                         <h1 className='comment-head'>Write your review</h1>
-                        <textarea id="comment-input"  className="add-comment-input" type="text" placeholder="What did you like or dislike about our service."/>
-                        <h1 className='rating-head'>How would you rate our Product?</h1>
+                        <textarea onChange={changeReview} id="comment-input"  className="add-comment-input" type="text" placeholder="What did you like or dislike about our product."/>
+                        <h1 className='rating-head'>How would you rate our product?</h1>
                         <div className='rating-box'>
                         {ratingStars.map(each=>(<button onClick={setupRating} id={each.id} className={each.id>rating?"rating-button":"rating-button2"} type="button">{(each.id>rating)?each.star1:each.star2}</button>))}
                         </div>
-                        <button className='add' >Add</button>
+                        <button onClick={addReview} className='add' >Add</button>
                     </div>
              </div>
           </div>

@@ -389,7 +389,7 @@ const pageStage={
         <>
             <div className='total-con-cartitems'>
                {displayArr.map(each =>
-                <div className='cart-item'>
+               <div className='cart-item'>
                         <img className='cart-img' src={each.image} alt="image-cart"/>
                         <div className='cart-contents'>
                             <p style={{textTransform:"capitalize"}} className='cart-head'>{each.service}</p>

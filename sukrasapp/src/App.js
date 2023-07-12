@@ -24,6 +24,8 @@ import SuccessfullyBooked from './SuccessfullyBooked';
 
 import FashionZone from './FashionZone';
 
+import FashionCart from './FashionCart';
+
 import Cart from './Cart';
 
 import NotFound from './NotFound';
@@ -31,6 +33,7 @@ import Detailedview from './Detailedview';
 
 import FashionCategory from './FashionCategory';
 
+import SuccessfullyBookedFashion from './SuccessFullyBookedFashion';
 
 import FashionDetailedView from './FashionDetailedView';
 
@@ -47,12 +50,15 @@ function App() {
           <Protectedroute exact path="/fashionzone" component={FashionZone}/>
           <Protectedroute exact path="/fashioncategory/:category" component={FashionCategory}/>
           <Protectedroute exact path="/fashioncategory/detailedview/:type/:name/:id" component={FashionDetailedView}/>
+          <Protectedroute exact path="/fashioncart/:zone" component={FashionCart}/>
+          <Protectedroute exact path="/fashioncart/:fashioncategory/:type/:name/:id" component={FashionCart}/>
           <Protectedroute exact path="/cart/:zone"  component={Cart}/>
           <Protectedroute exact path="/cart/:zone/:id" component={Cart}/>
           <Protectedroute exact path="/cart/:zone/:id/:details" component={Cart}/>
           <Protectedroute exact path='/:category/:id'  component={SelectedService}/>
           <Protectedroute exact path="/:category/:id/:details"  component={Detailedview}/>
           <Protectedroute exact path="/succefullyBooked" component={SuccessfullyBooked}/>
+          <Protectedroute exact path="/succefullyBookedFashion" component ={SuccessfullyBookedFashion}/>
           <NotFound/>
        </Switch>
     </BrowserRouter>

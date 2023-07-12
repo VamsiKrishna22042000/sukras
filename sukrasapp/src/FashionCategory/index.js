@@ -21,15 +21,26 @@ const FashionCategory = (props) =>{
     const [allProducts,setallProducts] = useState([])
     const [load , setLoad] = useState(false)
     const [options,setOptions] = useState({price:true, discount:true , availability:true})
-    
+    const [cartItems, setCartItems]= useState([])
     const {match} = props
     const {params} = match
 
     useEffect(()=>{
         getTheCategoryItems()
         getAllOFtheProducts()
+        getAllCartItems()
     },[])
-
+ 
+    const getAllCartItems = async() =>{
+    
+        const response = await fetch(`https://sukras.onrender.com/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`)
+        const data = await response.json()
+    
+        if(response.ok){
+            setCartItems(data.productCart)
+        }
+    
+     }
 
 
     const changeOptions = (event) =>{
@@ -71,7 +82,7 @@ const FashionCategory = (props) =>{
     }
     
     const filterdItemsBasedOnType = allProducts.filter(each=>each.type === params.category)
-
+    
     return(
         load  ?
     <div className='fashion-category'>
@@ -80,14 +91,16 @@ const FashionCategory = (props) =>{
                 <button onClick={goback} className="arrow-btn" type="button"><img className="left-arrow-mobile" src="/backarrow.png"/></button>
                 <button onClick={deleteCookie} className="search-btn-fashion" type="button"><img className="search-mobile" src="/search-mobile.png"/></button>
                 <button className="favourites-bttn" type="button"><img className="favourites" src="/favourites.png"/></button>
-                <button className="cartBag-btn" type="button"><img className="cartBag" src="/cartBag.png"/></button>
+                <Link to={`/fashioncart/${params.category}`}>
+                    <button className="cartBag-btn" type="button"><img className="cartBag" src="/cartBag.png"/></button>
+                </Link>
                 <div className="search-cart">
                     <input className="serch-cart-input" placeholder="Enter keywords, title, author or ISBN " type="search"/>
                     <button onClick={deleteCookie} className="search-icon-button">
                         <img src="/search-icon.png" alt="search-icon" className="search-icon"/>
                     </button>
-                    <Link to={`/cart/beautyzone`}>
-                        <button className="count-of-cart">0</button>
+                    <Link to={`/fashioncart/${params.type}`}>
+                        <button className="fashioncategory-count-of-cart">{cartItems.length}</button>
                         <button className="cart-icon-buttonn">
                             <img src="/cart.png" alt="cart-icon" className="cart-icon"/>
                         </button>

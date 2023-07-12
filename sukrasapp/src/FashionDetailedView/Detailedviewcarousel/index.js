@@ -13,11 +13,6 @@ const DetailedViewCarousel = (props) =>{
     const [activeIndex, setActiveIndex] = useState(0)
     const [dots,setDots] = useState([])
    
-
-   
-
-      
-
        useEffect(()=>{getDots()},[photos])   
 
        const getDots = () =>{
@@ -44,7 +39,6 @@ const DetailedViewCarousel = (props) =>{
     },[activeIndex])
     
 
-    console.log(photos)
     return(
         <>   
             <div className="fashion-carouselImg-con">
