@@ -205,13 +205,7 @@
         margin-left:1%;
         margin-right:1%;
     }
-    .fashion-category-like{
-        position:absolute;
-        height:3.3vh;
-        width:2vw;
-        left:80%;
-        top:5%;
-    }
+    
     .fashioncategory-count-of-cart{
         display:inline-flex;
         position:absolute;
@@ -381,13 +375,7 @@
         margin-left:1%;
         margin-right:1%;
     }
-    .fashion-category-like{
-        position:absolute;
-        height:3.3vh;
-        width:6vw;
-        left:80%;
-        top:5%;
-    }
+    
     .fashioncategory-count-of-cart{
         display:flex;
         justify-content:center;

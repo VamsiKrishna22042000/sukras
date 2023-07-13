@@ -86,7 +86,6 @@ const FashionZone = (props) =>{
                     <option>Hyderabad</option>
                 </select>
                 <button onClick={deleteCookie} className="search-btn-fashion" type="button"><img className="search-mobile" src="./search-mobile.png"/></button>
-                <button className="favourites-bttn" type="button"><img className="favourites" src="./favourites.png"/></button>
                 <button className="notification-btnn" type="button"><img className="notification-mobile" src="./notification-mobile.png"/></button>
                 <div className="search-cart">
                     <input className="serch-cart-input" placeholder="Enter keywords, title, author or ISBN " type="search"/>

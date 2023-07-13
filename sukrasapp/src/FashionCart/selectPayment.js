@@ -6,6 +6,8 @@ import {withRouter} from 'react-router-dom'
 
 import {useState} from 'react'
 
+import Cookies from 'js-cookie'
+
 const paymentMethodArr = [
     {
         imgUrl:"CashafterPayment",
@@ -27,13 +29,32 @@ const paymentMethodArr = [
 const SelectPayment = (props) =>{
 
 
-    const {updateProgress,progress}=props
+    const {updateProgress,progress,cartItems}=props
  
     const [buttonSelected,setUpbutton]=useState("")
 
     const setUpSuccessfull = () =>{
         if(buttonSelected !== ""){
-            updateProgress("PaymentDone")
+            cartItems.map(async (each) =>{
+                const details = {
+                    userId : Cookies.get("jwt_user"), 
+                    productId : each.productId, 
+                    cartId :each._id
+                }
+                const url = "https://sukras.onrender.com/api/product/bookProduct"
+                const options ={
+                    method : "POST",
+                    headers : {
+                        "Content-Type" : "application/json"
+                    },
+                    body : JSON.stringify(details)
+                }
+                const response = await fetch(url,options)
+                if(response.ok){
+                    updateProgress("PaymentDone")
+                }
+                
+            })
         }else{
             alert("Please select Cash On Delivery")
         } 
@@ -50,7 +71,7 @@ const SelectPayment = (props) =>{
         <h1 className='fashion-paymentmode-head'>Payment Mode</h1>
         <div className='fashion-buttons'>
             {paymentMethodArr.map(each=>(
-            <button onClick={selectButton} className={each.mode !== "Cash On Delivery" ? "fashion-payment-modebutton2" :buttonSelected==="" ?"fashion-payment-modebutton1" : "fashion-payment-modebutton3" } type="button"><img className='paymentmode-image' src={`/${each.imgUrl}.png`} alt={each.mode}/><p>{each.mode}</p><img className={each.mode !== "Cash After Service" ? "yes-disable" : buttonSelected=== "" ? "yes-disable" : "yes-enable"  } src={`/yes.png`} alt ={each.yes}/></button>
+            <button onClick={selectButton} className={each.mode !== "Cash On Delivery" ? "fashion-payment-modebutton2" :buttonSelected==="" ?"fashion-payment-modebutton1" : "fashion-payment-modebutton3" } type="button"><img className='paymentmode-image' src={`/${each.imgUrl}.png`} alt={each.mode}/><p>{each.mode}</p><img className={each.mode !== "Cash On Delivery" ? "yes-disable" : buttonSelected=== "" ? "yes-disable" : "yes-enable"  } src={`/yes.png`} alt ={each.yes}/></button>
             ))
             }
         </div>

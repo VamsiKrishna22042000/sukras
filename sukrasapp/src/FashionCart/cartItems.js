@@ -2,7 +2,7 @@ import Cookies from 'js-cookie'
 import './index.css'
 
 const CartItemsFashion = (props) =>{
-    const {cartItems}=props
+    const {cartItems,getAllCartItems}=props
 
 
 
@@ -16,18 +16,41 @@ const CartItemsFashion = (props) =>{
        const opitons ={
          method : "POST",
 
-         header : {
+         headers : {
             "Content-Type" : "application/json"
          },
 
          body : JSON.stringify(details)
        }
        await fetch(url,opitons)
-       
+       getAllCartItems()
+    }
+     
+    const countUpdate = async (event) => {
+           const details  = {
+              userId : Cookies.get("jwt_user"),
+              cartId : event.target.id,
+              count  : event.target.getAttribute("count")
+           }
+           const url = "https://sukras.onrender.com/api/product/changeProductCountInCart"
+           const options = {
+              method : "POST",
+
+              headers : {
+                 "Content-Type" : "application/json",
+              },
+              
+              body : JSON.stringify(details)
+
+           }
+           const response = await fetch(url, options)
+           if(response.ok){
+               getAllCartItems()
+           }
+           
     }
 
-
-    console.log(cartItems)
+   
 
     return(
     <div className='total-con-cartitems'>
@@ -36,7 +59,7 @@ const CartItemsFashion = (props) =>{
                     <div className='cart-contents'>
                         <p style={{textTransform:"capitalize"}} className='cart-head'>{each.name}</p>
                         <p className='cart-head'><span className='service-price'>₹</span> {each.price}</p>
-                    <div className='counter'><button className='counter-button'>-</button><p className='counter-para'>{each.count}</p><button className='counter-button'>+</button></div>
+                    <div className='counter'><button id={each._id} count="decrement" onClick={countUpdate} className='counter-button'>-</button><p className='counter-para'>{each.count}</p><button id={each._id} onClick={countUpdate} count="increment" className='counter-button'>+</button></div>
                     </div>
                     <button onClick={deleteProductFromCart} id={each._id} className='cart-cancel' type="button">✕</button>
     </div>)}

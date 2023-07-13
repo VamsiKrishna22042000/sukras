@@ -42,6 +42,7 @@ const DetailedView = (props) =>{
     const [review , setReview] = useState([])
 
     const [button,setButtonColor] = useState("make-abook-details")
+    const [button2, setButtonColor2] = useState("add")
     const [idSection , setId] = useState({userId : Cookies.get("jwt_user"), salonId:"",serviceId:""})
 
     const [comment , setComment ] = useState("")
@@ -98,6 +99,10 @@ const DetailedView = (props) =>{
     
     const addCommentFunction = (event) =>{
          setComment(event.target.value)
+         setButtonColor2("add2")
+         setTimeout(()=>{
+            setButtonColor2("add")
+         },1000)
     }
 
     const formatDate = (date) => {
@@ -312,7 +317,7 @@ const DetailedView = (props) =>{
                         <div className='rating-box'>
                             {ratingStars.map(each=>(<button onClick={setupRating} id={each.id} className={each.id>rating?"rating-button":"rating-button2"} type="button">{(each.id>rating)?each.star1:each.star2}</button>))}
                         </div>
-                        <button className='add' onClick={addCommentButton}>Add</button>
+                        <button className={button2} onClick={addCommentButton}>Add</button>
                     </div>
              </div>
           </div>

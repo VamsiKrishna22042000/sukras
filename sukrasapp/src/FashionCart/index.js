@@ -92,7 +92,7 @@ const FashionCart = (props) =>{
             </div>
         </div>
         <div className='fashion-total-container-payment'>
-        {progress === "Cart" ?<CartItemsFashion cartItems={cartItems}/>: <SelectPayment updateProgress={updateProgress} progress={progress}/>}
+        {progress === "Cart" ?<CartItemsFashion cartItems={cartItems} getAllCartItems={getAllCartItems}/>: <SelectPayment cartItems={cartItems} updateProgress={updateProgress} progress={progress}/>}
         
         <div className='price-details'> 
       

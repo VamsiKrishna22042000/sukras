@@ -82,7 +82,7 @@ const FashionCategory = (props) =>{
     }
     
     const filterdItemsBasedOnType = allProducts.filter(each=>each.type === params.category)
-    
+   
     return(
         load  ?
     <div className='fashion-category'>
@@ -90,7 +90,6 @@ const FashionCategory = (props) =>{
                 <img className='sukraslogobeauty' src="/sukraslogo.png" alt="Logo Space"/>
                 <button onClick={goback} className="arrow-btn" type="button"><img className="left-arrow-mobile" src="/backarrow.png"/></button>
                 <button onClick={deleteCookie} className="search-btn-fashion" type="button"><img className="search-mobile" src="/search-mobile.png"/></button>
-                <button className="favourites-bttn" type="button"><img className="favourites" src="/favourites.png"/></button>
                 <Link to={`/fashioncart/${params.category}`}>
                     <button className="cartBag-btn" type="button"><img className="cartBag" src="/cartBag.png"/></button>
                 </Link>
@@ -174,7 +173,6 @@ const FashionCategory = (props) =>{
                 {filterdItemsBasedOnType.map(each =>
                 <Link to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`} key={each._id} id={each._id} className='fashion-category-item'>
                 <img className='fashion-category-image' src={each.image} alt={each.image}/>
-                <img className='fashion-category-like' src="/fav-icon-item.png" alt="like"/>
                 <p style={{textTransform:"capitalize"}} className='fashion-item-name'>{each.name}</p>
                 <div className='price-details-off'>
                     <p className='fashion-item-price'><span className='fashion-item-name'>₹</span>{each.price}</p>
