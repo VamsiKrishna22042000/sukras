@@ -24,7 +24,6 @@ const FashionCategory = (props) =>{
     const [cartItems, setCartItems]= useState([])
     const {match} = props
     const {params} = match
-
     useEffect(()=>{
         getTheCategoryItems()
         getAllOFtheProducts()
@@ -71,10 +70,16 @@ const FashionCategory = (props) =>{
     }
     
     const goback = () =>{
-        const {history} = props
-        history.push(`/fashionzone`)
+        const {history,match} = props
+        const {params}=match
+        
+        if(params.category === "cosmetics"){
+            history.push('/beautyzone')
+        }else{
+             history.push(`/fashionzone`)
+        }
    }
-
+    
     const deleteCookie = () =>{
         /* deleteCookie was integrated with both searchIcons*/
         Cookies.remove("jwt_token")

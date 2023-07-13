@@ -76,9 +76,11 @@ const FashionZone = (props) =>{
      Cookies.remove("jwt_user")
  }
 
+    const filterCosmetics = categories.filter(each=>(each.type!=="cosmetics"))
+
     return( load ? 
         <div className="sukras-main-beauty">
-        <div className='sukras-header-beauty'>
+        <div className='sukras-header-fashionzone'>
                 <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
                 <button onClick={gobackTo} className="arrow-btn" type="button"><img className="left-arrow-mobile" src="./backarrow.png"/></button>
                 <button className="location-btnn" type="button"><img className="location-mobilee" src="./location-icon.png"/></button>
@@ -107,7 +109,7 @@ const FashionZone = (props) =>{
             {categories === "" ? <div className="service-spinner"> <TailSpin color={"#F4BD18"} height={70} width={70}/></div>:
             <div className="our-services">
                     <p className="our-services-head">Find Your Fashion</p>
-                    {categories.map(each=>(
+                    {filterCosmetics.map(each=>(
                     <Link  to={`/fashioncategory/${each.type}`}>
                         <button key={each._id} className="our-services-btn" id={each._id} type="button">
                             <img className="our-services-img" src={`${each.image}`} alt={each.categoryImage}/>

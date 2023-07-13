@@ -37,6 +37,29 @@
         flex-direction:row;
         justify-content:space-between;
         align-items:center;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+        background-color:#fff;
+        z-index:2;
+    }
+
+    .sukras-header-fashionzone{
+        height:1vh;
+        width:100%;
+        padding:0px;
+        padding-top:1.5%;
+        padding-left:2%;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+        background-color:#fff;
+        margin-top:2%;
+        z-index:2;
     }
    
     .sukraslogobeauty{
@@ -122,6 +145,8 @@
        height:auto;
        width:100%;
        overflow:hidden;
+       margin-top:0px;
+       padding-top:0px;
     }
     .left-arrow-mobile{
         display:none;
@@ -159,7 +184,7 @@
         padding:3%;
         display:flex;
         flex-direction:row;
-        justify-content:space-around;
+        justify-content:space-evenly;
         align-items:center;
         font-family:Arial, Helvetica, sans-serif;
         font-size:1.5vw;
@@ -168,32 +193,39 @@
         text-align:center;
         font-weight:bold;
         flex-wrap:wrap;
+        cursor:pointer;
       }
       .our-services-head{
         position: absolute;
         top:0px;
         left:45%;
+        cursor:pointer;
       }
       .our-services-btn{
         border-color:transparent;
         background-color:transparent;
         margin-top:15%;
-        margin-right:2%;
+        margin-right:2vw;
         margin-left:2%;
+        width:18vw;
+        border-style:solid;
+        cursor:pointer;
       }
       .our-services-img{
-        height:33vh;
-        width:18vw;
+        height:22vh;
+        width:12vw;
         border-radius:100%;
         border-style:solid;
         border-color:#F4BD18;
         border-width:5px;
+        cursor:pointer;
       }
       .our-services-name{
         font-family: Arial, Helvetica, sans-serif;
         font-size:1.5vw;
         color:#4E4E4E;
         font-weight:Bold;
+        cursor:pointer;
       }
 
 }
@@ -208,6 +240,20 @@
         overflow:hidden;
     }
     .sukras-header-beauty{
+        height:12%;
+        width:100%;
+        padding:0px;
+        padding-top:2%;
+        padding-left:2%;
+        margin:0px;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        position: relative;
+    }
+
+    .sukras-header-fashionzone{
         height:12%;
         width:100%;
         padding:0px;
@@ -307,9 +353,11 @@
         padding-right:0.8%;
     }
     .beautyzone-body{
-       height:auto;
-       width:100vw;
-       overflow:hidden;
+        height:auto;
+        width:100%;
+        overflow:hidden;
+        margin-top:0px;
+        padding-top:0px;
     }
     .left-arrow-mobile{
         color:#4E4E4E;
@@ -405,6 +453,7 @@
         font-weight:bold;
         flex-wrap:wrap;
         padding-top:5%;
+        cursor:pointer;
       }
       .our-services-head{
         position: absolute;
@@ -417,19 +466,22 @@
         margin-top:30%;
         margin-right:5%;
         margin-left:-9%;
+        cursor:pointer;
       }
       .our-services-img{
-        height:13vh;
-        width: 25vw;
+        height:11vh;
+        width: 22vw;
         border-style:solid;
         border-width:3px;
         border-color: #F4BD18;
         border-radius:100%;
+        cursor:pointer;
       }
       .our-services-name{
         font-family: Arial, Helvetica, sans-serif;
         font-size:4vw;
         color:#4E4E4E;
         font-weight:Bold;
+        cursor:pointer;
       }
 }

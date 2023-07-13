@@ -28,7 +28,10 @@
         flex-direction:row;
         justify-content:space-between;
         align-items:center;
-
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+        background-color:#fff;
     }
    
     .sukraslogobeauty{

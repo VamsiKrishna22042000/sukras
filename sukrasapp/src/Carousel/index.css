@@ -7,6 +7,8 @@
       flex-direction:row;
       overflow:hidden;
       position: relative;
+      margin-top:0px;
+      padding-top:0px;
     }
     
 
@@ -17,6 +19,7 @@
       flex-direction:row;
       justify-content:center;
       align-items:center;
+      height:1%;
     }
     .dots{
       padding:0.3%;
@@ -108,7 +111,7 @@
       z-index:1;
     }
     .carouselImg-con {
-      margin-top:3%;
+      margin-top:0%;
     }
   
 }
@@ -123,6 +126,8 @@
     flex-direction:row;
     overflow:hidden;
     position: relative;
+    margin-top:0px;
+    padding-top:0px;
   }
   .dots-con{
     padding:1.5%;
@@ -131,6 +136,7 @@
     flex-direction:row;
     justify-content:center;
     align-items:center;
+    height:1%;
   }
   .dots{
     padding:1.2%;
@@ -142,6 +148,7 @@
     margin-right:2%;
     border-radius:5px;
     transition: all 0.5s ease-in-out;
+    height:5%;
   }
   .dots2{
     padding:1%;
@@ -153,6 +160,7 @@
     margin-right:2%;
     border-radius:5px;
     transition: all 0.5s ease-in-out;
+    height:5%;
   }
   .carousel-content{
     transition: all 0.5s ease-in-out;
@@ -234,7 +242,7 @@
   }
 
   .carouselImg-con {
-    margin-top:3%;
+    margin-top:0%;
   }
 
 }

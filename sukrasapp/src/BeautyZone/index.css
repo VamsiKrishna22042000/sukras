@@ -1,4 +1,13 @@
 
+
+::-webkit-scrollbar{
+    display:none;
+}
+
+.decoration{
+  text-decoration:none;
+}
+
 .loader-spinner{
     height:100vh;
     width:100vw;
@@ -37,8 +46,28 @@
         flex-direction:row;
         justify-content:space-between;
         align-items:center;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+        background-color:transparent;
     }
-   
+    .sukras-header-beautyzone{
+      height:1vh;
+      width:100%;
+      padding:0px;
+      padding-top:1.5%;
+      padding-left:2%;
+      display:flex;
+      flex-direction:row;
+      justify-content:space-between;
+      align-items:center;
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+      top: 0;
+      background-color:#fff;
+      margin-top:2%;
+      z-index:2;
+  }
     .sukraslogobeauty{
         height:58px;
         margin-left:1%;
@@ -122,6 +151,7 @@
        height:auto;
        width:100%;
        overflow:hidden;
+       position:relative;
     }
     .left-arrow-mobile{
         display:none;
@@ -153,47 +183,124 @@
         flex-wrap:wrap;
      }
 
-    .our-services{
-        background-color:#FFFAED;
-        width:95vw;
-        padding:3%;
-        display:flex;
-        flex-direction:row;
-        justify-content:space-around;
-        align-items:center;
-        font-family:Arial, Helvetica, sans-serif;
-        font-size:1.5vw;
-        color:#3E3E3E;
-        position:relative;
-        text-align:center;
-        font-weight:bold;
-        flex-wrap:wrap;
-      }
-      .our-services-head{
-        position: absolute;
-        top:0px;
-        left:45%;
-      }
-      .our-services-btn{
-        border-color:transparent;
-        background-color:transparent;
-        margin-top:15%;
-        margin-right:2%;
-        margin-left:2%;
-      }
-      .our-services-img{
-        height:33vh;
-        width:18vw;
-        border-radius:100%;
-        border-style:solid;
-        border-color:#F4BD18;
-        border-width:5px;
-      }
+     .our-services{
+      background-color:#FFFAED;
+      width:95vw;
+      padding:3%;
+      display:flex;
+      flex-direction:row;
+      justify-content:space-evenly;
+      align-items:center;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:1.5vw;
+      color:#3E3E3E;
+      position:relative;
+      text-align:center;
+      font-weight:bold;
+      flex-wrap:wrap;
+      cursor:pointer;
+    }
+    .our-services-head{
+      position: absolute;
+      top:0px;
+      left:45%;
+    }
+    .our-services-btn{
+      border-color:transparent;
+      background-color:transparent;
+      margin-top:15%;
+      margin-right:2vw;
+      margin-left:2%;
+      width:18vw;
+      border-style:solid;
+      cursor:pointer;
+    }
+    .our-services-img{
+      height:22vh;
+      width:12vw;
+      border-radius:100%;
+      border-style:solid;
+      border-color:#F4BD18;
+      border-width:5px;
+      cursor:pointer;
+    }
+  
       .our-services-name{
         font-family: Arial, Helvetica, sans-serif;
         font-size:1.5vw;
         color:#4E4E4E;
         font-weight:Bold;
+        cursor:pointer;
+      }
+      .beauty-cosmetic-products{
+        height:auto;
+        width:100%;
+        display:flex;
+        flex-direction:row;
+        justify-content:flex-start;
+        align-items:center;
+        flex-wrap:wrap;
+        overflow:scroll;
+        scroll-behavior:smooth;
+        margin-left:2%;
+      }
+      .beauty-cosmetic-head{
+        height:auto;
+        display:inline-block;
+        width:90%;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        margin-left:5%;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:0.8vw;
+        margin-right:5%;
+        font-weight:600;
+        margin-top:2%;
+        color:#3E3E3E;
+        text-decoration:none;
+      }
+      .cosmatic-products-con{
+        height:auto;
+        width:auto;
+        display:flex;
+        flex-direction:row;
+        justify-content: space-evenly;
+        align-items:center;
+        margin-top:1%;
+        margin-bottom:5%;
+      }
+      .cosmatic-productItem{
+        height:40vh;
+        width:18vw;
+        margin-left:1%;
+        margin-right:1%;
+        position: relative;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        cursor:pointer;
+      }
+      .cosmatic-productImg{
+        height:100%;
+        width:100%;
+        border-radius:10px;
+        cursor:pointer;
+      }
+
+      .cosmatic-product-name{
+        position:absolute;
+        font-size:1.5vw;
+        padding-top:1%;
+        padding-bottom:2%;
+        padding-left:5%;
+        padding-right:5%;
+        bottom:-13%;
+        background-color: #3E3E3E;
+        color:#fff;
+        border-radius:5px;
+        cursor:pointer;
       }
 
 }
@@ -221,6 +328,19 @@
         position: relative;
     }
     
+    .sukras-header-beautyzone{
+      height:12%;
+      width:100%;
+      padding:0px;
+      padding-top:2%;
+      padding-left:2%;
+      margin:0px;
+      display:flex;
+      flex-direction:row;
+      justify-content:space-between;
+      align-items:center;
+      position: relative;
+  }
 
     .sukraslogobeauty{
         display:none;
@@ -307,9 +427,11 @@
         padding-right:0.8%;
     }
     .beautyzone-body{
-       height:auto;
-       width:100vw;
+      height:auto;
+       width:100%;
        overflow:hidden;
+       margin-top:0px;
+       padding-top:0px;
     }
     .left-arrow-mobile{
         color:#4E4E4E;
@@ -399,6 +521,7 @@
         font-weight:bold;
         flex-wrap:wrap;
         padding-top:5%;
+        cursor:pointer;
       }
       .our-services-head{
         position: absolute;
@@ -411,19 +534,94 @@
         margin-top:30%;
         margin-right:5%;
         margin-left:-9%;
+        cursor:pointer;
       }
+
       .our-services-img{
-        height:13vh;
-        width: 25vw;
+        height:11vh;
+        width: 22vw;
         border-style:solid;
         border-width:3px;
         border-color: #F4BD18;
         border-radius:100%;
+        cursor:pointer;
       }
       .our-services-name{
         font-family: Arial, Helvetica, sans-serif;
         font-size:4vw;
         color:#4E4E4E;
         font-weight:Bold;
+        cursor:pointer;
       }
+
+      .beauty-cosmetic-products{
+        height:auto;
+        width:100%;
+        display:flex;
+        flex-direction:row;
+        justify-content:flex-start;
+        align-items:center;
+        flex-wrap:wrap;
+        overflow:scroll;
+        margin-left:2%;
+      }
+
+      .beauty-cosmetic-head{
+        height:auto;
+        display:inline-block;
+        width:90%;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:2vw;
+        margin-left:5%;
+        margin-right:5%;
+        color:#3E3E3E !important;
+        font-weight:600;
+        text-decoration:none;
+      }
+      .cosmatic-products-con{
+        height:auto;
+        width:auto;
+        display:flex;
+        flex-direction:row;
+        justify-content: space-evenly;
+        align-items:center;
+        margin-top:5%;
+        margin-bottom:10%;
+      }
+      .cosmatic-productItem{
+        height:18vh;
+        width:30vw;
+        margin-left:1%;
+        margin-right:1%;
+        position: relative;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        cursor:pointer;
+      }
+      .cosmatic-productImg{
+        height:100%;
+        width:100%;
+        border-radius:10px;
+        cursor:pointer;
+      }
+
+      .cosmatic-product-name{
+        position:absolute;
+        font-size:2.5vw;
+        padding-top:2%;
+        padding-bottom:2%;
+        padding-left:5%;
+        padding-right:5%;
+        bottom:-13%;
+        background-color: #3E3E3E;
+        color:#fff;
+        border-radius:3px;
+        cursor:pointer;
+      }
+      
 }

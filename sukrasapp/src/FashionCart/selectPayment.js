@@ -39,7 +39,8 @@ const SelectPayment = (props) =>{
                 const details = {
                     userId : Cookies.get("jwt_user"), 
                     productId : each.productId, 
-                    cartId :each._id
+                    cartId :each._id,
+                    count : each.count
                 }
                 const url = "https://sukras.onrender.com/api/product/bookProduct"
                 const options ={
@@ -65,6 +66,7 @@ const SelectPayment = (props) =>{
     const selectButton = () =>{
         setUpbutton("Cash On Delivery")
     }
+    
 
     return(
     <div className='payment-mode-fashion'>

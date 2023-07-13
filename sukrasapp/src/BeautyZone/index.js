@@ -42,7 +42,7 @@ const Beautyzone = (props) =>{
     const [categories , setCategories] = useState("")
     const [load , setLoad] = useState(false)
     const [categoryImg, setCategoryImg] = useState("")
-
+    const [products, setallProducts] = useState([])
     const [itemsInCart, setItemsInCart] = useState([])
 
     console.log(Cookies.get("jwt_user"))
@@ -74,10 +74,19 @@ const Beautyzone = (props) =>{
 
     };
 
-    useEffect( () =>{getTheCategories()
+    useEffect( () =>{
+        getTheCategories()
+        getAllOFtheProducts()
     },[])
 
-   
+    const getAllOFtheProducts = async() =>{
+        const res = await fetch("https://sukras.onrender.com/api/admin/getAllProduct");
+        const da = await res.json()
+        if(res.ok){
+           setallProducts(da.products)
+           setLoad(true)
+        }
+    }
 
     const gobackTo = () =>{
            const {history} = props
@@ -90,13 +99,13 @@ const Beautyzone = (props) =>{
         Cookies.remove("jwt_user")
     }
    
-   
 
-    console.log(itemsInCart)
+    const filterdProductsBasedOnType = products.filter(each=>each.type === "cosmetics")
+
     return(
         load ? 
             <div className="sukras-main-beauty">
-            <div className='sukras-header-beauty'>
+            <div className='sukras-header-beautyzone'>
                     <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
                     <button onClick={gobackTo} className="arrow-btn" type="button"><img className="left-arrow-mobile" src="./backarrow.png"/></button>
                     <button className="location-btnn" type="button"><img className="location-mobilee" src="./location-icon.png"/></button>
@@ -133,6 +142,16 @@ const Beautyzone = (props) =>{
                             </button>
                         </Link>))}
                 </div>}
+            </div>
+            <div className="beauty-cosmetic-head"><h1>Cosmetics</h1><p><Link className="decoration" to={`/fashioncategory/cosmetics`}>View All</Link></p></div>
+            <div className="beauty-cosmetic-products">
+                <div className="cosmatic-products-con">
+                    {filterdProductsBasedOnType.map(each=>(
+                    <Link to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`} className="cosmatic-productItem">
+                        <img className="cosmatic-productImg" src={each.image} alt={each.category}/>
+                        <p className="cosmatic-product-name">{each.name}</p>
+                    </Link>))}
+                </div>
             </div>
             </div> : <div className="loader-spinner"> <TailSpin color={"#F4BD18"} height={70} width={70}/></div>
         

@@ -53,7 +53,11 @@ const FashionDetailedView = (props) =>{
  
     const gobackTo = () =>{
         const {history} = props
-        history.push(`/fashioncategory/${params.type}`)
+        if(params.type === "cosmetics"){
+            history.push('/beautyzone')
+        }else{
+            history.push(`/fashioncategory/${params.type}`)
+        }
    }
 
    const changeReview = (event) =>{
@@ -226,14 +230,14 @@ const FashionDetailedView = (props) =>{
                         <img className='rating-star1' src="/ratingstar.png" alt="rating"/>
                         <p className='selected-rating'>({filterItem[0].reviews} k reviews)</p>
                     </div>
-                    <p className='fashion-details-about'>Select Size</p>
-                    <div className='fashion-details-size-selection'>
+                    {params.type === "cosmetics" ? null :<p className='fashion-details-about'>Select Size</p>}
+                    {params.type === "cosmetics" ? null :<div className='fashion-details-size-selection'>
                        {sizes.map(each =>(<button id = {each.id} onClick={selectSize}  className={each.id === size? 'fashion-size-select1' :'fashion-size-select'} type='button'>{each.text}</button>))}
-                    </div>
-                    <p className='fashion-details-about'>Select Color</p>
-                    <div className='fashion-details-size-selection'>
+                    </div>}
+                    {params.type === "cosmetics" ? null : <p className='fashion-details-about'>Select Color</p>}
+                    {params.type === "cosmetics" ? null : <div className='fashion-details-size-selection'>
                        {colors.map(each=> <button id={each.id} onClick = {selectColor} style={{backgroundColor:each.text}} className={ each.id === color ?'fashion-color-select1' : 'fashion-color-select'} type='button'></button>)} 
-                    </div>
+                    </div>}
                     <p className='fashion-details-about'>Product Details</p>
                     <p>{filterItem[0].about}</p>
                     <p className='fashion-details-about'>Select Color</p>
