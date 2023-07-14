@@ -192,6 +192,7 @@
         font-weight:bold;
         flex-wrap:wrap;
         cursor:pointer;
+        overflow:hidden;
       }
       .our-services-head{
         position: absolute;
@@ -452,6 +453,7 @@
         flex-wrap:wrap;
         padding-top:5%;
         cursor:pointer;
+        overflow:hidden;
       }
       .our-services-head{
         position: absolute;

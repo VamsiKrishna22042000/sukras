@@ -110,7 +110,7 @@
 @media screen and (max-width:600px){
     .event-points{
       height:auto;
-      width:100%;
+      width:90%;
       padding:0px;
       margin-left:5%;
       font-family: Arial, Helvetica, sans-serif;
@@ -123,11 +123,13 @@
       padding-right:2%;
     }
     .points-con{
+       height:auto;
        display:flex;
        flex-direction:row;
        margin:1%;
        justify-content:flex-start;
        align-items:center;
+       width:90%;
     }
     .booking-con{
       height:auto;
@@ -142,7 +144,8 @@
       padding-bottom:10%;
     }
     .booking-input{
-      height:7vh;
+      padding-top:3.5%;
+      padding-bottom:3.5%;
       width:95%;
       margin-top:1%;
       margin-bottom:1%;
@@ -207,7 +210,7 @@
   }
   .our-services{
     background-color:#FFFAED;
-    width:100%;
+    width:90%;
     display:flex;
     flex-direction:row;
     justify-content:space-around;
@@ -221,5 +224,13 @@
     padding-top:5%;
     padding-left:6%;
     cursor:pointer;
+    overflow:hidden;
   }
+  .sukras-main-beauty{
+    height:auto;
+    width:100vw;
+    box-sizing:border-box;
+    margin:0px;
+    overflow:hidden;
+}
 }
