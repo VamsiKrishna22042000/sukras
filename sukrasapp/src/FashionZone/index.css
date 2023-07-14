@@ -9,13 +9,12 @@
 }
 
 .service-spinner{
-    height:50vh;
-    width:50vw;
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
-    padding-left:25%;
+  height:100vh;
+  width:100vw;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
 }
 
 @media screen and (min-width:992px){
@@ -45,7 +44,7 @@
     }
 
     .sukras-header-fashionzone{
-        height:1vh;
+        height:8vh;
         width:100%;
         padding:0px;
         padding-top:1.5%;
@@ -58,7 +57,6 @@
         position: sticky;
         top: 0;
         background-color:#fff;
-        margin-top:2%;
         z-index:2;
     }
    
@@ -142,11 +140,11 @@
         padding-right:0.5%;
     }
     .beautyzone-body{
-       height:auto;
-       width:100%;
-       overflow:hidden;
-       margin-top:0px;
-       padding-top:0px;
+        height:auto;
+        width:100%;
+        overflow:hidden;
+        margin-top:0%;
+        padding-top:0%;
     }
     .left-arrow-mobile{
         display:none;
@@ -416,7 +414,7 @@
         padding-bottom:4%;
     }
     .notification-mobile{
-        color:#4E4E4E;
+        color:#3E3E3E;
         height:2.5vh;
         padding-top:4%;
         padding-bottom:4%;
@@ -469,7 +467,7 @@
         cursor:pointer;
       }
       .our-services-img{
-        height:11vh;
+        height:10vh;
         width: 22vw;
         border-style:solid;
         border-width:3px;

@@ -33,9 +33,12 @@ import Detailedview from './Detailedview';
 
 import FashionCategory from './FashionCategory';
 
-import SuccessfullyBookedFashion from './SuccessFullyBookedFashion';
+import SuccessfullyBookedFashion from './SuccessFullyBookedFashion'
+
+import SuccessEvent from './SuccessEvent';
 
 import FashionDetailedView from './FashionDetailedView';
+import EventManagement from './EventManagement';
 
 function App() {
 
@@ -48,6 +51,7 @@ function App() {
           <Protectedroute exact path="/select-category" component={SelectCategory}/>
           <Protectedroute exact path="/beautyzone"  component={Beautyzone}/>
           <Protectedroute exact path="/fashionzone" component={FashionZone}/>
+          <Protectedroute exact path = "/eventManagement" component = {EventManagement}/>
           <Protectedroute exact path="/fashioncategory/:category" component={FashionCategory}/>
           <Protectedroute exact path="/fashioncategory/detailedview/:type/:name/:id" component={FashionDetailedView}/>
           <Protectedroute exact path="/fashioncart/:zone" component={FashionCart}/>
@@ -59,6 +63,7 @@ function App() {
           <Protectedroute exact path="/:category/:id/:details"  component={Detailedview}/>
           <Protectedroute exact path="/succefullyBooked" component={SuccessfullyBooked}/>
           <Protectedroute exact path="/succefullyBookedFashion" component ={SuccessfullyBookedFashion}/>
+          <Protectedroute exact path="/successEvent" component ={SuccessEvent}/>
           <NotFound/>
        </Switch>
     </BrowserRouter>

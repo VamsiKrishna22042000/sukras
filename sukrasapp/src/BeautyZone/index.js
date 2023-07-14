@@ -103,8 +103,7 @@ const Beautyzone = (props) =>{
     const filterdProductsBasedOnType = products.filter(each=>each.type === "cosmetics")
 
     return(
-        load ? 
-            <div className="sukras-main-beauty">
+        load ? <>
             <div className='sukras-header-beautyzone'>
                     <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
                     <button onClick={gobackTo} className="arrow-btn" type="button"><img className="left-arrow-mobile" src="./backarrow.png"/></button>
@@ -127,6 +126,7 @@ const Beautyzone = (props) =>{
                         </Link>
                     </div>
             </div>
+            <div className="sukras-main-beauty">
             <div className="beautyzone-body">
                 <Carousel/>
             </div>
@@ -153,7 +153,7 @@ const Beautyzone = (props) =>{
                     </Link>))}
                 </div>
             </div>
-            </div> : <div className="loader-spinner"> <TailSpin color={"#F4BD18"} height={70} width={70}/></div>
+            </div></>: <div className="loader-spinner"> <TailSpin color={"#F4BD18"} height={70} width={70}/></div>
         
     )
 }

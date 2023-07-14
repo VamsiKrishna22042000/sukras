@@ -1,3 +1,8 @@
+::-webkit-scrollbar{
+  display:none;
+}
+
+
 @media screen and (min-width:992px){
    
     .carouselImg-con{
@@ -136,7 +141,7 @@
     flex-direction:row;
     justify-content:center;
     align-items:center;
-    height:1%;
+    height:1vh;
   }
   .dots{
     padding:1.2%;

@@ -79,29 +79,30 @@ const FashionZone = (props) =>{
     const filterCosmetics = categories.filter(each=>(each.type!=="cosmetics"))
 
     return( load ? 
-        <div className="sukras-main-beauty">
+        <>
         <div className='sukras-header-fashionzone'>
-                <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
-                <button onClick={gobackTo} className="arrow-btn" type="button"><img className="left-arrow-mobile" src="./backarrow.png"/></button>
-                <button className="location-btnn" type="button"><img className="location-mobilee" src="./location-icon.png"/></button>
-                <select className="dropdown-container">
-                    <option>Hyderabad</option>
-                </select>
-                <button onClick={deleteCookie} className="search-btn-fashion" type="button"><img className="search-mobile" src="./search-mobile.png"/></button>
-                <button className="notification-btnn" type="button"><img className="notification-mobile" src="./notification-mobile.png"/></button>
-                <div className="search-cart">
-                    <input className="serch-cart-input" placeholder="Enter keywords, title, author or ISBN " type="search"/>
-                    <button onClick={deleteCookie} className="search-icon-button">
-                        <img src="./search-icon.png" alt="search-icon" className="search-icon"/>
-                    </button>
-                    <Link to={`/fashioncart/fashionzone`}>
-                        <button className="count-of-cart">{cartItems.length}</button>
-                        <button className="cart-icon-buttonn">
-                            <img src="./cart.png" alt="cart-icon" className="cart-icon"/>
-                        </button>
-                    </Link>
-                </div>
+        <img className='sukraslogobeauty' src="./sukraslogo.png" alt="Logo Space"/>
+        <button onClick={gobackTo} className="arrow-btn" type="button"><img className="left-arrow-mobile" src="./backarrow.png"/></button>
+        <button className="location-btnn" type="button"><img className="location-mobilee" src="./location-icon.png"/></button>
+        <select className="dropdown-container">
+            <option>Hyderabad</option>
+        </select>
+        <button onClick={deleteCookie} className="search-btn-fashion" type="button"><img className="search-mobile" src="./search-mobile.png"/></button>
+        <button className="notification-btnn" type="button"><img className="notification-mobile" src="./notification-mobile.png"/></button>
+        <div className="search-cart">
+            <input className="serch-cart-input" placeholder="Enter keywords, title, author or ISBN " type="search"/>
+            <button onClick={deleteCookie} className="search-icon-button">
+                <img src="./search-icon.png" alt="search-icon" className="search-icon"/>
+            </button>
+            <Link to={`/fashioncart/fashionzone`}>
+                <button className="count-of-cart">{cartItems.length}</button>
+                <button className="cart-icon-buttonn">
+                    <img src="./cart.png" alt="cart-icon" className="cart-icon"/>
+                </button>
+            </Link>
         </div>
+        </div>
+        <div className="sukras-main-beauty">
         <div className="beautyzone-body">
             <FashionZoneCarousel/>
         </div>
@@ -118,7 +119,7 @@ const FashionZone = (props) =>{
                     </Link>))}
             </div>}
         </div>
-        </div> : <div className="loader-spinner"> <TailSpin color={"#F4BD18"} height={70} width={70}/></div>
+        </div></> : <div className="loader-spinner"> <TailSpin color={"#F4BD18"} height={70} width={70}/></div>
     )
 }
 
