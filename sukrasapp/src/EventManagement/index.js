@@ -3,21 +3,29 @@ import "./index.css";
 import EventBooking from "./eventbooking";
 
 import EventHome from "./eventHome";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 const EventManagement = () => {
   const [pageStage, setStage] = useState("Home");
+  const [eventId, setEventId] = useState("");
 
   const settingPage = (value) => {
     setStage(value);
+  };
+  const settingEvent = (id) => {
+    setEventId(id);
   };
 
   return (
     <>
       {pageStage === "Home" ? (
-        <EventHome pageStage={pageStage} settingPage={settingPage} />
+        <EventHome settingPage={settingPage} settingEvent={settingEvent} />
       ) : (
-        <EventBooking pageStage={pageStage} settingPage={settingPage} />
+        <EventBooking
+          pageStage={pageStage}
+          settingPage={settingPage}
+          eventId={eventId}
+        />
       )}
     </>
   );

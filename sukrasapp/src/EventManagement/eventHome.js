@@ -11,7 +11,7 @@ import { TailSpin } from "react-loader-spinner";
 import EventManagementCarousel from "../EventManagementCarousel";
 
 const EventHome = (props) => {
-  const { pageStage, settingPage } = props;
+  const { settingPage, settingEvent } = props;
   const [eventServices, setEventServices] = useState([]);
   const [load, setLoad] = useState(false);
   const [displayProfile, setProfile] = useState(false);
@@ -32,6 +32,7 @@ const EventHome = (props) => {
   };
 
   const sendPage = (event) => {
+    settingEvent(event.target.getAttribute("program"));
     settingPage(event.target.id);
   };
 
@@ -50,8 +51,7 @@ const EventHome = (props) => {
     setProfile(!displayProfile);
   };
 
-  console.log(eventServices);
-  return load ? (
+  /*console.log(eventServices)*/ return load ? (
     <>
       <div className="sukras-header-fashionzone">
         <img
@@ -143,7 +143,6 @@ const EventHome = (props) => {
       <div className="beautyzone-body-2">
         {eventServices === "" ? (
           <div className="service-spinner">
-            {" "}
             <TailSpin color={"#F4BD18"} height={70} width={70} />
           </div>
         ) : (
@@ -158,6 +157,7 @@ const EventHome = (props) => {
                 type="button"
               >
                 <img
+                  program={each._id}
                   id={each.name}
                   className="our-services-img"
                   src={`${each.image}`}
@@ -177,7 +177,6 @@ const EventHome = (props) => {
     </>
   ) : (
     <div className="service-spinner">
-      {" "}
       <TailSpin color={"#F4BD18"} height={70} width={70} />
     </div>
   );

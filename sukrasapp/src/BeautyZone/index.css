@@ -46,7 +46,7 @@
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
-    background-color: transparent;
+    background-color: #fff;
   }
   .sukras-header-beautyzone {
     height: 8vh;

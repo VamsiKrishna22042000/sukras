@@ -14,10 +14,11 @@ const categories = [
 ];
 
 const EventBooking = (props) => {
-  const { pageStage, settingPage } = props;
+  const { pageStage, settingPage, eventId } = props;
 
   const [book, setBook] = useState({
     name: "",
+    eventId,
     eventname: "",
     category: pageStage,
     date: "",
@@ -79,6 +80,7 @@ const EventBooking = (props) => {
       const url = "https://sukras.onrender.com/api/user/bookEvent";
       const details = {
         userId: Cookies.get("jwt_user"),
+        eventId: book.eventId,
         yourName: book.name,
         eventname: book.eventname,
         date: book.date,
@@ -86,6 +88,7 @@ const EventBooking = (props) => {
         state: book.state,
         country: book.country,
       };
+      console.log(details);
       const options = {
         method: "POST",
 

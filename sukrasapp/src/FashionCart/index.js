@@ -66,7 +66,7 @@ const FashionCart = (props) => {
   };
 
   return load ? (
-    cartItems === [] ? (
+    cartItems.length === 0 ? (
       <div className="loader-spinner">
         <img className="empty-cart" src="/emptycart.gif" alt="empty-cart" />
         <p className="cart-header">Your Cart is Empty</p>
