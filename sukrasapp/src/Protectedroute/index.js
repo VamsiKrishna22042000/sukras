@@ -1,20 +1,20 @@
+import {
+  withRouter,
+  Redirect,
+  Route,
+} from "react-router-dom/cjs/react-router-dom.min";
 
-import { withRouter,Redirect,Route } from "react-router-dom/cjs/react-router-dom.min"
+import Sukras from "../SuskrasMain";
 
-import Sukras from "../SuskrasMain"
+import Cookies from "js-cookie";
 
-import Cookies from 'js-cookie'
+const ProtectedRoute = (props) => {
+  const obtainedCookie = Cookies.get("jwt_token");
+  const userCookie = Cookies.get("jwt_user");
+  if (obtainedCookie === undefined || userCookie === undefined) {
+    return <Redirect to="/email-login" />;
+  }
+  return <Route {...props} />;
+};
 
-
-
-
-const ProtectedRoute = (props) =>{
-
-    const obtainedCookie = Cookies.get("jwt_token")
-    if(obtainedCookie===undefined){
-        return <Redirect to="/email-login"/>
-    }return <Route {...props}/>
-    
-}
-
-export default withRouter(ProtectedRoute)
+export default withRouter(ProtectedRoute);

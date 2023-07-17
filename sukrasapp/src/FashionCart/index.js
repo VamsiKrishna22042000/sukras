@@ -15,7 +15,7 @@ const FashionCart = (props) => {
   const [progress, setProgress] = useState("Cart");
 
   const [cartItems, setCartItems] = useState([]);
-  const [TotalPrice, setTotalPrice] = useState(0);
+  const [totalFashionItemsPrice, setTotalPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [load, setLoad] = useState(false);
 
@@ -25,6 +25,10 @@ const FashionCart = (props) => {
   useEffect(() => {
     getAllCartItems();
   }, []);
+
+  useEffect(() => {
+    settingTotalPrice();
+  }, [cartItems]);
 
   const getAllCartItems = async () => {
     const response = await fetch(
@@ -36,12 +40,18 @@ const FashionCart = (props) => {
 
     if (response.ok) {
       setCartItems(data.productCart);
-      data.productCart.map((each) => {
-        setTotalPrice((prevTotal) => prevTotal + each.price);
-      });
       setLoad(true);
     }
   };
+
+  const settingTotalPrice = () => {
+    setTotalPrice(0);
+    cartItems.map((each) => {
+      console.log(each);
+      setTotalPrice((prevPrice) => prevPrice + each.price * each.count);
+    });
+  };
+
   const gobackTo = () => {
     const { match, history } = props;
     const { params } = match;
@@ -137,7 +147,7 @@ const FashionCart = (props) => {
               <p className="actual-price">Actual Price</p>
               <p className="price1">
                 <span className="actual-price">₹</span>
-                {TotalPrice}
+                {totalFashionItemsPrice}
               </p>
             </div>
             <div
@@ -163,7 +173,8 @@ const FashionCart = (props) => {
             >
               <p className="total-price-head">Total</p>
               <p className="total-price-head">
-                <span className="actual-price">₹</span> {TotalPrice - discount}
+                <span className="actual-price">₹</span>
+                {totalFashionItemsPrice - discount}
               </p>
             </div>
             <button
