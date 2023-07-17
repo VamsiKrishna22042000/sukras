@@ -180,7 +180,7 @@
 
 @media screen and (max-width: 600px) {
   .cart-item {
-    height: 20vh;
+    height: 18vh;
     width: 90%;
     border-style: solid;
     border: width 2px;

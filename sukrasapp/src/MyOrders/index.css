@@ -29,14 +29,14 @@
     margin: 1%;
   }
   .each-img {
-    height: 21vh;
+    height: 20vh;
     width: 40%;
     margin: 0px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
   .each-content {
-    height: auto;
+    height: 20vh;
     width: 60%;
     padding-left: 3%;
     color: #3e3e3e;
@@ -99,14 +99,14 @@
     margin: 1%;
   }
   .each-img {
-    height: 21vh;
+    height: 20vh;
     width: 40%;
     margin: 0px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
   .each-content {
-    height: auto;
+    height: 20vh;
     width: 60%;
     padding-left: 3%;
     color: #3e3e3e;

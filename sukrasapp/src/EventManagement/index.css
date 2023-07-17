@@ -199,16 +199,20 @@
     font-size: 4vw;
     color: #3e3e3e;
     flex-wrap: wrap;
-    margin-left: 3%;
+    margin-left: 5%;
   }
 
   .event-our-services-btn {
     border-color: transparent;
     background-color: transparent;
+    width: 40%;
     margin-top: 10%;
-    margin-right: 5%;
-    margin-left: -7%;
+    margin-left: 0%;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
   .our-services {
     background-color: #fffaed;
