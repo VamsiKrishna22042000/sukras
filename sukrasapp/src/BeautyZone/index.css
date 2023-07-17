@@ -701,7 +701,7 @@
     border-color: transparent;
     position: absolute;
     top: 25%;
-    right: 6%;
+    right: 5%;
     outline: none;
     cursor: pointer;
   }
@@ -716,7 +716,7 @@
     border-color: transparent;
     position: absolute;
     top: 25%;
-    right: 2%;
+    right: 1.5%;
     z-index: 2;
     outline: none;
     cursor: pointer;
