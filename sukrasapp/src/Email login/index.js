@@ -3,6 +3,9 @@ import {
   Redirect,
 } from "react-router-dom/cjs/react-router-dom.min";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Cookies from "js-cookie";
 
 import { useState } from "react";
@@ -73,7 +76,13 @@ const Emaillogin = (props) => {
     if (response.ok === true) {
       responseSuccessful(data.token, data.result._id);
     } else {
-      alert(data.message);
+      toast.error(`${data.message}`, {
+        position: "top-center",
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+        autoClose: 2000,
+      });
     }
   };
 
@@ -85,6 +94,7 @@ const Emaillogin = (props) => {
   }
   return (
     <div className="total">
+      <ToastContainer />
       <div className="total-container">
         <input id="login" type="email" onChange={updateLogin} />
         <input

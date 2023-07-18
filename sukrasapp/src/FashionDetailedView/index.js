@@ -1,6 +1,10 @@
 import Detailedview from "../Detailedview";
 import "./index.css";
 
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
 import { Link, Redirect } from "react-router-dom";
 
 import Cookies from "js-cookie";
@@ -110,10 +114,30 @@ const FashionDetailedView = (props) => {
   const filterItem = categories.filter((each) => each._id === params.id);
 
   const addReview = async () => {
-    if (review === "") {
-      alert("Please add Review about the product");
-    } else if (rating === "") {
-      alert("Please add rating about the product");
+    if (review === "" && rating > 0) {
+      toast.info("Please add Review about the product", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    } else if (review !== "" && rating === 0) {
+      toast.info("Please add rating about the product", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    } else if (review === "" && rating === 0) {
+      toast.info("Please add Review & Rating about our product", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else {
       const url = "https://sukras.onrender.com/api/product/addProductReview";
       const details = {
@@ -137,6 +161,13 @@ const FashionDetailedView = (props) => {
       setRating(0);
       document.getElementById("comment-input").value = "";
       getAllCategoryOfProducts();
+      toast.success("Review added Successfully", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
   };
 
@@ -157,8 +188,17 @@ const FashionDetailedView = (props) => {
       body: JSON.stringify(details),
     };
 
-    await fetch(url, opitons);
-    getAllCategoryOfProducts();
+    const response = await fetch(url, opitons);
+    if (response.ok) {
+      getAllCategoryOfProducts();
+    }
+    toast.error("Review Deleted", {
+      position: "top-center",
+      autoClose: 2000,
+      pauseOnHover: true,
+      closeOnClick: true,
+      theme: "colored",
+    });
   };
   const goToSelectCategory = () => {
     const { history } = props;
@@ -193,6 +233,7 @@ const FashionDetailedView = (props) => {
 
   return load ? (
     <div classname="detailed-view-body">
+      <ToastContainer />
       <div className="sukras-header-fashion">
         <img
           onClick={goToSelectCategory}

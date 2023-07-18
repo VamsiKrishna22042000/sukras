@@ -1,6 +1,9 @@
 import Cookies from "js-cookie";
 import "./index.css";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const CartItemsFashion = (props) => {
   const { cartItems, getAllCartItems } = props;
 

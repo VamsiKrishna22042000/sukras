@@ -2,6 +2,9 @@ import "./index.css";
 
 import { withRouter } from "react-router-dom";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { useState } from "react";
 
 import Cookies from "js-cookie";
@@ -53,7 +56,13 @@ const SelectPayment = (props) => {
         }
       });
     } else {
-      alert("Please select Cash On Delivery");
+      toast.info("Please select Cash On Delivery", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
   };
 
@@ -63,6 +72,7 @@ const SelectPayment = (props) => {
 
   return (
     <div className="payment-mode-fashion">
+      <ToastContainer />
       <h1 className="fashion-paymentmode-head">Payment Mode</h1>
       <div className="fashion-buttons">
         {paymentMethodArr.map((each) => (

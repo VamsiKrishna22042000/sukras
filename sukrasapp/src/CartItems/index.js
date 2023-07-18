@@ -1,5 +1,8 @@
 import "./index.css";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 import { v4 as uuidv4 } from "uuid";
@@ -77,7 +80,13 @@ const CartItems = (props) => {
       ArrayWithTime.map((each) => {
         if (each.time === "") {
           timeObtained = each.service;
-          alert(`Select Time for ${each.service}`);
+          toast.error(`Select Time for ${each.service}`, {
+            theme: "colored",
+            position: "top-center",
+            autoClose: 2000,
+            pauseOnHover: true,
+            closeOnClick: true,
+          });
         }
       });
 
@@ -85,7 +94,13 @@ const CartItems = (props) => {
         updateProgress(["Payment", ArrayWithTime]);
       }
     } else if (ArrayWithTime.length < displayArr.length) {
-      alert(`Select Date and Time for each the services in Cart`);
+      toast.error(`Select Date and Time for each the services in Cart`, {
+        theme: "colored",
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+      });
     }
   };
 
@@ -368,6 +383,8 @@ const CartItems = (props) => {
     }
   };
 
+  const notify = () =>
+    toast.error("Deleted Item from cart!", { theme: "colored" });
   /* console.log(cartItemsArr)
     console.log(cartArr)
     console.log(displayArr)
@@ -379,6 +396,12 @@ const CartItems = (props) => {
     </div>
   ) : (
     <>
+      <ToastContainer
+        position="top-center"
+        pauseOnHover
+        closeOnClick
+        autoClose={3000}
+      />
       {displayArr.length === 0 ? (
         <div className="total-con-cartitems">
           <TailSpin color={"#F4BD18"} height={70} width={70} />
@@ -419,6 +442,7 @@ const CartItems = (props) => {
               </div>
               <button
                 onClick={deleteServiceFromCart}
+                onClickCapture={notify}
                 id={each._id}
                 className="cart-cancel"
                 type="button"

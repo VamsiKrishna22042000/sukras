@@ -3,7 +3,9 @@ import { withRouter, Link, Redirect } from "react-router-dom";
 import { BsHandbag } from "react-icons/bs";
 
 import { v4 as uuidv4 } from "uuid";
+import { ToastContainer, toast } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
 import { useState, useEffect } from "react";
 
 import { TailSpin } from "react-loader-spinner";
@@ -101,7 +103,7 @@ const DetailedView = (props) => {
 
   const addCommentFunction = (event) => {
     setComment(event.target.value);
-    setButtonColor2("add2");
+    setButtonColor2("add");
     setTimeout(() => {
       setButtonColor2("add");
     }, 1000);
@@ -119,11 +121,29 @@ const DetailedView = (props) => {
 
   const addCommentButton = async () => {
     if (comment === "" && rating > 0) {
-      alert("Please add Review about our service");
+      toast.info("Please add Review about our service", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else if (comment !== "" && rating === 0) {
-      alert("Please rate our service");
+      toast.info("Please rate our service", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else if (comment === "" && rating === 0) {
-      return null;
+      toast.info("Please add Review & Rating about our service", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else {
       const newReview = {
         ...idSection,
@@ -149,14 +169,21 @@ const DetailedView = (props) => {
       };
 
       const response = await fetch(url, options);
-      const data = await response.json();
+      if (response.ok) {
+        setComment("");
+        setRating(0);
+        document.getElementById("comment-input").value = "";
+        getServices();
+        toast.success("Review added Successfully", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      }
 
       /*console.log(response)*/
-
-      setComment("");
-      setRating(0);
-      document.getElementById("comment-input").value = "";
-      getServices();
     }
   };
 
@@ -185,7 +212,16 @@ const DetailedView = (props) => {
 
     const response = await fetch(url, options);
     const data = await response.json();
-    getServices();
+    if (response.ok) {
+      getServices();
+    }
+    toast.error("Review Deleted", {
+      position: "top-center",
+      autoClose: 2000,
+      pauseOnHover: true,
+      closeOnClick: true,
+      theme: "colored",
+    });
   };
 
   const setupRating = (event) => {
@@ -224,6 +260,7 @@ const DetailedView = (props) => {
     </div>
   ) : (
     <div id={serviceDetails._id} className="details-view-con">
+      <ToastContainer />
       <div className="sukras-header-beauty">
         <img
           onClick={goToSelectCategory}

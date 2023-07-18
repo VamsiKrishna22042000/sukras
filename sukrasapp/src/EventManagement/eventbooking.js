@@ -1,5 +1,8 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./index.css";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -15,7 +18,6 @@ const categories = [
 
 const EventBooking = (props) => {
   const { pageStage, settingPage, eventId } = props;
-  const ref = useRef();
 
   const [book, setBook] = useState({
     name: "",
@@ -56,19 +58,61 @@ const EventBooking = (props) => {
     event.preventDefault();
 
     if (book.name === "") {
-      alert("Please Enter Name");
+      toast.info("Please Enter Name", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else if (book.eventname === "") {
-      alert("Please Enter Event Name");
+      toast.info("Please Enter Event Name", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else if (book.category === "") {
-      alert("Please Enter Category");
+      toast.info("Please Enter Category", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else if (book.date === "") {
-      alert("Please Enter Date");
+      toast.info("Please Enter Date", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else if (book.guest === "") {
-      alert("Enter No of Guest");
+      toast.info("Enter No of Guest", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else if (book.state === "") {
-      alert("Please Enter State");
+      toast.info("Please Enter State", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else if (book.country === "") {
-      alert("Please Enter Country");
+      toast.info("Please Enter Country", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     } else {
       document.getElementById("name").value = "";
       document.getElementById("eventname").value = "";
@@ -124,6 +168,7 @@ const EventBooking = (props) => {
   return (
     <>
       <div className="sukras-header-fashionzone">
+        <ToastContainer />
         <img
           onClick={goToSelectCategory}
           className="sukraslogobeauty"
@@ -220,9 +265,7 @@ const EventBooking = (props) => {
             className="booking-input"
             id="date"
             placeholder="Select Date"
-            ref={ref}
-            onFocus={() => (ref.current.type = "date")}
-            onBlur={() => (ref.current.type = "text")}
+            type="date"
           />
         </div>
         <div className="items-con-booking">
