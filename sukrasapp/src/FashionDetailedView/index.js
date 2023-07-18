@@ -160,6 +160,10 @@ const FashionDetailedView = (props) => {
     await fetch(url, opitons);
     getAllCategoryOfProducts();
   };
+  const goToSelectCategory = () => {
+    const { history } = props;
+    history.push("/select-category");
+  };
 
   const addProductToCart = async () => {
     setButton("make-abook-details1");
@@ -191,6 +195,7 @@ const FashionDetailedView = (props) => {
     <div classname="detailed-view-body">
       <div className="sukras-header-fashion">
         <img
+          onClick={goToSelectCategory}
           className="sukraslogobeauty"
           src="/sukraslogo.png"
           alt="Logo Space"

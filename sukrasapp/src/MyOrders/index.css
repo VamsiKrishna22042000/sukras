@@ -1,3 +1,12 @@
+.loader-container-myorders {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (min-width: 992px) {
   .total-orders {
     height: auto;

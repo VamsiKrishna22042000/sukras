@@ -87,6 +87,11 @@ const Beautyzone = (props) => {
     }
   };
 
+  const goToSelectCategory = () => {
+    const { history } = props;
+    history.push("/select-category");
+  };
+
   const gobackTo = () => {
     const { history } = props;
     history.push("/select-category");
@@ -106,6 +111,7 @@ const Beautyzone = (props) => {
     <>
       <div className="sukras-header-beautyzone">
         <img
+          onClick={goToSelectCategory}
           className="sukraslogobeauty"
           src="./sukraslogo.png"
           alt="Logo Space"

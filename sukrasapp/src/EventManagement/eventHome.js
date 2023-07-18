@@ -51,10 +51,16 @@ const EventHome = (props) => {
     setProfile(!displayProfile);
   };
 
+  const goToSelectCategory = () => {
+    const { history } = props;
+    history.push("/select-category");
+  };
+
   /*console.log(eventServices)*/ return load ? (
     <>
       <div className="sukras-header-fashionzone">
         <img
+          onClick={goToSelectCategory}
           className="sukraslogobeauty"
           src="./sukraslogo.png"
           alt="Logo Space"

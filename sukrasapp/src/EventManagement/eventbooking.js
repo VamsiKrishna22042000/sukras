@@ -115,10 +115,16 @@ const EventBooking = (props) => {
     Cookies.remove("jwt_user");
   };
 
+  const goToSelectCategory = () => {
+    const { history } = props;
+    history.push("/select-category");
+  };
+
   return (
     <>
       <div className="sukras-header-fashionzone">
         <img
+          onClick={goToSelectCategory}
           className="sukraslogobeauty"
           src="./sukraslogo.png"
           alt="Logo Space"
@@ -214,6 +220,7 @@ const EventBooking = (props) => {
             id="date"
             type="date"
             placeholder="Select Date"
+            onfocus="(this.type='date')"
           />
         </div>
         <div className="items-con-booking">

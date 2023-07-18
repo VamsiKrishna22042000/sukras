@@ -44,8 +44,8 @@ const MyOrders = (props) => {
 
   return load ? (
     orders.serviceOrders.length !== 0 ||
-    orders.eventOrders !== 0 ||
-    orders.productOrders !== 0 ? (
+    orders.eventOrders.length !== 0 ||
+    orders.productOrders.length !== 0 ? (
       <div className="total-orders">
         <div className="myorders-head">
           <button onClick={gobackTo} className="order-arrow-btn" type="button">
@@ -134,7 +134,9 @@ const MyOrders = (props) => {
       </div>
     )
   ) : (
-    <TailSpin color={"#F4BD18"} height={70} width={70} />
+    <div className="loader-container-myorders">
+      <TailSpin color={"#F4BD18"} height={70} width={70} />
+    </div>
   );
 };
 

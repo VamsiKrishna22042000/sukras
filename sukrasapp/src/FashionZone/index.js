@@ -92,7 +92,10 @@ const FashionZone = (props) => {
       setLoad(true);
     }
   };
-
+  const goToSelectCategory = () => {
+    const { history } = props;
+    history.push("/select-category");
+  };
   const deleteCookie = () => {
     /* deleteCookie was integrated with both searchIcons*/
     Cookies.remove("jwt_token");
@@ -107,6 +110,7 @@ const FashionZone = (props) => {
     <>
       <div className="sukras-header-fashionzone">
         <img
+          onClick={goToSelectCategory}
           className="sukraslogobeauty"
           src="./sukraslogo.png"
           alt="Logo Space"
@@ -212,7 +216,6 @@ const FashionZone = (props) => {
     </>
   ) : (
     <div className="loader-spinner">
-      {" "}
       <TailSpin color={"#F4BD18"} height={70} width={70} />
     </div>
   );

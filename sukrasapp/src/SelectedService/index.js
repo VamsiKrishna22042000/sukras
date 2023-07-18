@@ -104,6 +104,10 @@ const SelectedService = (props) => {
     const { history } = props;
     history.push(`/beautyzone`);
   };
+  const goToSelectCategory = () => {
+    const { history } = props;
+    history.push("/select-category");
+  };
 
   return loading === pageStage.loading ? (
     <div className="loader-spinner">
@@ -113,6 +117,7 @@ const SelectedService = (props) => {
     <div className="selected-category-con">
       <div className="sukras-header-beauty">
         <img
+          onClick={goToSelectCategory}
           className="sukraslogobeauty"
           src="/sukraslogo.png"
           alt="Logo Space"
