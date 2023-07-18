@@ -3,8 +3,6 @@ import "./index.css";
 
 import { TailSpin } from "react-loader-spinner";
 
-const [load, setLoad] = useState(false);
-
 import { useEffect, useState } from "react";
 
 const MyOrders = (props) => {
@@ -13,7 +11,7 @@ const MyOrders = (props) => {
     serviceOrders: [],
     productOrders: [],
   });
-
+  const [load, setLoad] = useState(false);
   useEffect(() => {
     getMyOrders();
   }, []);
