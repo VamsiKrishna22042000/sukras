@@ -38,6 +38,8 @@ import FashionDetailedView from "./FashionDetailedView";
 import EventManagement from "./EventManagement";
 import MyOrders from "./MyOrders";
 
+import Dashboard from "./AdminDashboard";
+
 function App() {
   return (
     <BrowserRouter>
@@ -109,6 +111,7 @@ function App() {
           path="/myorders/myorders/myorders/:zone"
           component={MyOrders}
         />
+        <Protectedroute exact path="/admindashboard" component={Dashboard} />
         <NotFound />
       </Switch>
     </BrowserRouter>

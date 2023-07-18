@@ -82,9 +82,10 @@ const EventBooking = (props) => {
         userId: Cookies.get("jwt_user"),
         eventId: book.eventId,
         yourName: book.name,
-        eventname: book.eventname,
+        eventName: book.eventname,
+        categories: book.category,
         date: book.date,
-        NumberofGuest: book.guest,
+        NumberOfGuest: book.guest,
         state: book.state,
         country: book.country,
       };

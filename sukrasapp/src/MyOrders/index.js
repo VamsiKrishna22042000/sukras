@@ -4,7 +4,11 @@ import "./index.css";
 import { useEffect, useState } from "react";
 
 const MyOrders = (props) => {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState({
+    eventOrders: [],
+    serviceOrders: [],
+    productOrders: [],
+  });
 
   useEffect(() => {
     getMyOrders();
@@ -19,6 +23,12 @@ const MyOrders = (props) => {
     const data = await response.json();
     if (response.ok) {
       console.log(data);
+      setOrders((prevData) => ({
+        ...prevData,
+        eventOrders: data.eventOrders,
+        serviceOrders: data.serviceOrders,
+        productOrders: data.productOrders,
+      }));
     }
   };
 
@@ -38,48 +48,73 @@ const MyOrders = (props) => {
       </div>
       <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Services</h1>
       <div className="all-orders">
-        <div className="each-order">
-          <img
-            className="each-img"
-            src="/beautyzone1.png"
-            alt="your services"
-          />
-          <div className="each-content">
-            <h1>Hair Cut</h1>
-            <p>299</p>
-            <p>30/4/2023</p>
+        {orders.serviceOrders.map((each) => (
+          <div className="each-order">
+            <img className="each-img" src={each.image} alt="your services" />
+            <div className="each-content">
+              <h1
+                style={{
+                  textTransform: "capitalize",
+                  fontSize: 18,
+                  marginTop: 20,
+                  width: 200,
+                }}
+              >
+                {each.name}
+              </h1>
+              <p>{each.price}</p>
+              <p>{each.orderedAt}</p>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
       <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Products</h1>
       <div className="all-orders">
-        <div className="each-order">
-          <img
-            className="each-img"
-            src="/beautyzone1.png"
-            alt="your services"
-          />
-          <div className="each-content">
-            <h1 style={{ marginTop: 2, marginBottom: 0 }}>Hair Cut</h1>
-            <p>299</p>
-            <p>30/4/2023</p>
-            <p>{`5 ordered`}</p>
+        {orders.productOrders.map((each) => (
+          <div className="each-order">
+            <img className="each-img" src={each.image} alt="your services" />
+            <div className="each-content">
+              <h1
+                style={{
+                  textTransform: "capitalize",
+                  fontSize: 18,
+                  marginTop: 10,
+                  width: 200,
+                }}
+              >
+                {each.name}
+              </h1>
+              <p>{each.price}</p>
+              <p>{each.orderedAt}</p>
+              <p>{`${each.count} ordered`}</p>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
       <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Events</h1>
       <div className="all-orders">
-        <div className="each-order">
-          <img
-            className="each-img"
-            src="/beautyzone1.png"
-            alt="your services"
-          />
-          <div className="each-content">
-            <h1 style={{ marginTop: 5 }}>Hair Cut</h1>
-            <p>30/4/2023</p>
+        {orders.eventOrders.map((each) => (
+          <div className="each-order">
+            <img
+              className="each-img"
+              src="/beautyzone1.png"
+              alt="your services"
+            />
+            <div className="each-content">
+              <h1
+                style={{
+                  textTransform: "capitalize",
+                  fontSize: 18,
+                  width: 200,
+                  marginTop: 30,
+                }}
+              >
+                {each.eventName}
+              </h1>
+              <p>{each.date}</p>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );

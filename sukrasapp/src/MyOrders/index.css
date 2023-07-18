@@ -26,11 +26,14 @@
     align-items: center;
     border-color: #f4bd18;
     border-radius: 10px;
-    margin: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 0.3%;
+    margin-right: 0.3%;
   }
   .each-img {
     height: 20vh;
-    width: 40%;
+    width: 38%;
     margin: 0px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
@@ -132,7 +135,7 @@
   }
   .order-left-arrow-mobile {
     display: inline;
-    height: 3vh;
-    width: 5vw;
+    height: 2.5vh;
+    width: 6vw;
   }
 }
