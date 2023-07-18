@@ -23,8 +23,14 @@ const CartItemsFashion = (props) => {
 
       body: JSON.stringify(details),
     };
-    await fetch(url, opitons);
+    const response = await fetch(url, opitons);
+    if (response.ok) {
+      getAllCartItems();
+    }
+
     getAllCartItems();
+    const notify = () =>
+      toast.error("Deleted Item from cart!", { theme: "colored" });
   };
 
   const countUpdate = async (event) => {

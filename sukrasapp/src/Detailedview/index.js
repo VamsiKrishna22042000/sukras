@@ -215,6 +215,7 @@ const DetailedView = (props) => {
     if (response.ok) {
       getServices();
     }
+    getServices();
     toast.error("Review Deleted", {
       position: "top-center",
       autoClose: 2000,
