@@ -220,7 +220,6 @@ const EventBooking = (props) => {
             className="booking-input"
             id="date"
             placeholder="Select Date"
-            type="date"
             ref={ref}
             onFocus={() => (ref.current.type = "date")}
             onBlur={() => (ref.current.type = "text")}
