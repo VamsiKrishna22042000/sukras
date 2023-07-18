@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./index.css";
 
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
@@ -15,6 +15,7 @@ const categories = [
 
 const EventBooking = (props) => {
   const { pageStage, settingPage, eventId } = props;
+  const ref = useRef();
 
   const [book, setBook] = useState({
     name: "",
@@ -218,9 +219,11 @@ const EventBooking = (props) => {
             onChange={settingvalues}
             className="booking-input"
             id="date"
-            type="date"
             placeholder="Select Date"
-            onfocus="(this.type='date')"
+            type="date"
+            ref={ref}
+            onFocus={() => (ref.current.type = "date")}
+            onBlur={() => (ref.current.type = "text")}
           />
         </div>
         <div className="items-con-booking">
