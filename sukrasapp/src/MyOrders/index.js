@@ -19,7 +19,7 @@ const MyOrders = (props) => {
   const getMyOrders = async () => {
     setLoad(false);
     const response = await fetch(
-      `https://sukras.onrender.com/api/orders/allOrders/${Cookies.get(
+      `${process.env.REACT_APP_ROOT_URL}/api/orders/allOrders/${Cookies.get(
         "jwt_user"
       )}`
     );

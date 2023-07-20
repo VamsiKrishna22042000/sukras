@@ -42,7 +42,7 @@ const Emaillogin = (props) => {
   const getSignUp = async () => {
     const { email, password } = signup;
 
-    const url = "https://sukras.onrender.com/api/user/signup";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/user/signup`;
     const userDetails = { email, password };
 
     const requestConfiger = {
@@ -60,7 +60,7 @@ const Emaillogin = (props) => {
   const getLogin = async () => {
     const { email, password } = login;
     const userDetails = { email, password };
-    const url = "https://sukras.onrender.com/api/user/login";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/user/login`;
 
     const requestConfiger = {
       method: "POST",

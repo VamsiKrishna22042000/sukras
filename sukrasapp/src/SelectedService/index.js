@@ -30,7 +30,7 @@ const SelectedService = (props) => {
   const getCartItems = async () => {
     const id = Cookies.get("jwt_user");
     const response = await fetch(
-      `https://sukras.onrender.com/api/salon/getAllServicesFromCart/${id}`
+      `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllServicesFromCart/${id}`
     );
     const data = await response.json();
     setItemsInCart(data.cart);
@@ -50,7 +50,7 @@ const SelectedService = (props) => {
     /*console.log(params)*/
 
     const response = await fetch(
-      "https://sukras.onrender.com/api/admin/getAllSalon"
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllSalon`
     );
     const data = await response.json();
     if (response.ok === true) {
@@ -83,7 +83,7 @@ const SelectedService = (props) => {
       body: JSON.stringify(cartDetails),
     };
 
-    const url = "https://sukras.onrender.com/api/salon/addServiceToCart";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/addServiceToCart`;
     const response = await fetch(url, options);
     /*console.log(response)*/
     if (response.ok === true) {

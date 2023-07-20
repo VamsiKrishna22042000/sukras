@@ -32,9 +32,9 @@ const FashionCart = (props) => {
 
   const getAllCartItems = async () => {
     const response = await fetch(
-      `https://sukras.onrender.com/api/product/getAllProductFromCart/${Cookies.get(
-        "jwt_user"
-      )}`
+      `${
+        process.env.REACT_APP_ROOT_URL
+      }/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`
     );
     const data = await response.json();
 

@@ -13,7 +13,7 @@ const FashionZoneCarousel = () => {
 
   const getBanners = async () => {
     const response = await fetch(
-      "https://sukras.onrender.com/api/admin/getAllBanners"
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllBanners`
     );
     const data = await response.json();
     if (response.ok === true) {

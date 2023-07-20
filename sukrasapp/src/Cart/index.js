@@ -66,7 +66,7 @@ const Cart = (props) => {
   const getCartItems = async () => {
     const id = Cookies.get("jwt_user");
     const response = await fetch(
-      `https://sukras.onrender.com/api/salon/getAllServicesFromCart/${id}`
+      `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllServicesFromCart/${id}`
     );
     const data = await response.json();
     if (response.ok === true) {
@@ -97,7 +97,7 @@ const Cart = (props) => {
     if (progress === "Done") {
       console.log("hi");
       obtained.map(async (each) => {
-        const url = "https://sukras.onrender.com/api/user/bookSalon";
+        const url = `${process.env.REACT_APP_ROOT_URL}/api/user/bookSalon`;
         /*console.log(each.serviceId)*/ const tobeSent = {
           userId: Cookies.get("jwt_user"),
           salonId: "64a2bac3ec45bcb4034bdd46",

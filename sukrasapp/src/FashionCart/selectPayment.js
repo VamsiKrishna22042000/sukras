@@ -42,7 +42,7 @@ const SelectPayment = (props) => {
           cartId: each._id,
           count: each.count,
         };
-        const url = "https://sukras.onrender.com/api/product/bookProduct";
+        const url = `${process.env.REACT_APP_ROOT_URL}/api/product/bookProduct`;
         const options = {
           method: "POST",
           headers: {

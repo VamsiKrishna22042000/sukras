@@ -71,9 +71,9 @@ const FashionZone = (props) => {
 
   const getAllCartItems = async () => {
     const response = await fetch(
-      `https://sukras.onrender.com/api/product/getAllProductFromCart/${Cookies.get(
-        "jwt_user"
-      )}`
+      `${
+        process.env.REACT_APP_ROOT_URL
+      }/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`
     );
     const data = await response.json();
 
@@ -84,7 +84,7 @@ const FashionZone = (props) => {
 
   const getAllCategoryOfProducts = async () => {
     const response = await fetch(
-      "https://sukras.onrender.com/api/admin/getAllCategory"
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllCategory`
     );
     const data = await response.json();
     if (response.ok === true) {

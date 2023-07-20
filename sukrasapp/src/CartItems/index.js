@@ -105,7 +105,7 @@ const CartItems = (props) => {
   };
 
   const deleteServiceFromCart = async (event) => {
-    const url = "https://sukras.onrender.com/api/salon/deleteServiceFromCart";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/deleteServiceFromCart`;
 
     const details = {
       userId: Cookies.get("jwt_user"),
@@ -191,7 +191,7 @@ const CartItems = (props) => {
 
   useEffect(() => {
     cartArr.map(async (each) => {
-      const url = "https://sukras.onrender.com/api/salon/getAllBookedSlots";
+      const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllBookedSlots`;
 
       const getSlots = {
         salonId: "64a2bac3ec45bcb4034bdd46",
@@ -347,7 +347,7 @@ const CartItems = (props) => {
   const getTheTimeSlots = async (obj) => {
     const { date, image, price, service, _id, time, timeId, serviceId } = obj;
 
-    const url = "https://sukras.onrender.com/api/salon/getAllBookedSlots";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllBookedSlots`;
 
     const tobeSent = {
       salonId: "64a2bac3ec45bcb4034bdd46",

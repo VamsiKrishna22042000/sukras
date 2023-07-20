@@ -22,7 +22,7 @@ const EventHome = (props) => {
 
   const getAllEventsServices = async () => {
     const response = await fetch(
-      "https://sukras.onrender.com/api//admin/getAllEventServices"
+      `${process.env.REACT_APP_ROOT_URL}/api//admin/getAllEventServices`
     );
     const data = await response.json();
     if (response.ok) {

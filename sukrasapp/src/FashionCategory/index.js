@@ -40,9 +40,9 @@ const FashionCategory = (props) => {
 
   const getAllCartItems = async () => {
     const response = await fetch(
-      `https://sukras.onrender.com/api/product/getAllProductFromCart/${Cookies.get(
-        "jwt_user"
-      )}`
+      `${
+        process.env.REACT_APP_ROOT_URL
+      }/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`
     );
     const data = await response.json();
 
@@ -72,7 +72,7 @@ const FashionCategory = (props) => {
 
   const getTheCategoryItems = async () => {
     const response = await fetch(
-      `https://sukras.onrender.com/api/admin/getAllCategory/${params.category}`
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllCategory/${params.category}`
     );
     const data = await response.json();
     if (response.ok) {
@@ -82,7 +82,7 @@ const FashionCategory = (props) => {
 
   const getAllOFtheProducts = async () => {
     const res = await fetch(
-      "https://sukras.onrender.com/api/admin/getAllProduct"
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllProduct`
     );
     const da = await res.json();
     if (res.ok) {

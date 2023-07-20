@@ -122,7 +122,7 @@ const EventBooking = (props) => {
       document.getElementById("state").value = "";
       document.getElementById("country").value = "";
 
-      const url = "https://sukras.onrender.com/api/user/bookEvent";
+      const url = `${process.env.REACT_APP_ROOT_URL}/api/user/bookEvent`;
       const details = {
         userId: Cookies.get("jwt_user"),
         eventId: book.eventId,

@@ -9,7 +9,7 @@ const CartItemsFashion = (props) => {
 
   const deleteProductFromCart = async (event) => {
     console.log(event.target.id);
-    const url = "https://sukras.onrender.com/api/product/deleteProductFromCart";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/product/deleteProductFromCart`;
     const details = {
       userId: Cookies.get("jwt_user"),
       cartId: event.target.id,
@@ -39,8 +39,7 @@ const CartItemsFashion = (props) => {
       cartId: event.target.id,
       count: event.target.getAttribute("count"),
     };
-    const url =
-      "https://sukras.onrender.com/api/product/changeProductCountInCart";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/product/changeProductCountInCart`;
     const options = {
       method: "POST",
 

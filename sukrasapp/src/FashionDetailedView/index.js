@@ -78,9 +78,9 @@ const FashionDetailedView = (props) => {
 
   const getAllCartItems = async () => {
     const response = await fetch(
-      `https://sukras.onrender.com/api/product/getAllProductFromCart/${Cookies.get(
-        "jwt_user"
-      )}`
+      `${
+        process.env.REACT_APP_ROOT_URL
+      }/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`
     );
     const data = await response.json();
 
@@ -91,7 +91,7 @@ const FashionDetailedView = (props) => {
 
   const getAllCategoryOfProducts = async () => {
     const response = await fetch(
-      `https://sukras.onrender.com/api/admin/getAllProduct`
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllProduct`
     );
     const data = await response.json();
     if (response.ok === true) {
@@ -139,7 +139,7 @@ const FashionDetailedView = (props) => {
         theme: "colored",
       });
     } else {
-      const url = "https://sukras.onrender.com/api/product/addProductReview";
+      const url = `${process.env.REACT_APP_ROOT_URL}/api/product/addProductReview`;
       const details = {
         userId: Cookies.get("jwt_user"),
         productId: filterItem[0]._id,
@@ -172,7 +172,7 @@ const FashionDetailedView = (props) => {
   };
 
   const deleteReview = async (event) => {
-    const url = "https://sukras.onrender.com/api/product/deleteProductReview";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/product/deleteProductReview`;
 
     const details = {
       productId: filterItem[0]._id,
@@ -208,7 +208,7 @@ const FashionDetailedView = (props) => {
 
   const addProductToCart = async () => {
     setButton("make-abook-details1");
-    const url = "https://sukras.onrender.com/api/product/addProductToCart";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/product/addProductToCart`;
     const details = {
       userId: Cookies.get("jwt_user"),
       productId: params.id,

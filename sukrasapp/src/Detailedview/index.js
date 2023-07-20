@@ -57,7 +57,7 @@ const DetailedView = (props) => {
   const getCartItems = async () => {
     const id = Cookies.get("jwt_user");
     const response = await fetch(
-      `https://sukras.onrender.com/api/salon/getAllServicesFromCart/${id}`
+      `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllServicesFromCart/${id}`
     );
     const data = await response.json();
     setItemsInCart(data.cart);
@@ -73,7 +73,7 @@ const DetailedView = (props) => {
 
   const getServices = async () => {
     const response = await fetch(
-      "https://sukras.onrender.com/api/admin/getAllSalon"
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllSalon`
     );
     const data = await response.json();
     if (response.ok === true) {
@@ -154,7 +154,7 @@ const DetailedView = (props) => {
 
       /*console.log(newReview)*/
 
-      const url = "https://sukras.onrender.com/api/user/addServiceReview";
+      const url = `${process.env.REACT_APP_ROOT_URL}/api/user/addServiceReview`;
 
       const options = {
         method: "POST",
@@ -197,7 +197,7 @@ const DetailedView = (props) => {
 
     /*console.log(deleteTheReview)*/
 
-    const url = "https://sukras.onrender.com/api/user/deleteServiceReview";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/user/deleteServiceReview`;
 
     const options = {
       method: "POST",
@@ -243,7 +243,7 @@ const DetailedView = (props) => {
       body: JSON.stringify(cartDetails),
     };
 
-    const url = "https://sukras.onrender.com/api/salon/addServiceToCart";
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/addServiceToCart`;
     const response = await fetch(url, options);
     if (response.ok === true) {
       setButtonColor("make-abook-details1");
