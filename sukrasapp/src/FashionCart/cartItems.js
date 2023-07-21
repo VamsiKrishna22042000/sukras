@@ -29,8 +29,8 @@ const CartItemsFashion = (props) => {
     }
 
     getAllCartItems();
-    const notify = () =>
-      toast.error("Deleted Item from cart!", { theme: "colored" });
+
+    toast.error("Deleted Item from cart!", { theme: "colored" });
   };
 
   const countUpdate = async (event) => {
@@ -57,6 +57,7 @@ const CartItemsFashion = (props) => {
 
   return (
     <div className="total-con-cartitems">
+      <ToastContainer />
       {cartItems.map((each) => (
         <div className="cart-item">
           <img className="cart-img" src={each.image} alt="image-cart" />
