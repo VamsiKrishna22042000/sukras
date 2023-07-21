@@ -309,14 +309,14 @@
     width: 70%;
     border-radius: 8px;
     margin-left: 5%;
-    padding-left: 2%;
-    padding-right: 2%;
   }
   .counter-button {
     background-color: transparent;
     border-color: transparent;
     color: #f4bd18;
     font-size: 6vw;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
   }
   .cart-cancel {
     font-size: 8vw;
