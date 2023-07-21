@@ -2,9 +2,12 @@ import "./index.css";
 
 import { useState, useEffect } from "react";
 
+import { TailSpin } from "react-loader-spinner";
+
 const Products = () => {
   const [productsAvailable, setAvailableProducts] = useState([]);
   const [buttonState, setButton] = useState(false);
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     getAllProducts();
@@ -21,11 +24,12 @@ const Products = () => {
     const da = await res.json();
     if (res.ok) {
       setAvailableProducts(da.products);
+      setLoad(true);
       console.log(da.products);
     }
   };
 
-  return (
+  return load ? (
     <div className="dashboard-component2">
       <button className="add-service" type="button">
         + Add new product
@@ -95,6 +99,10 @@ const Products = () => {
           </div>
         </div>
       ))}
+    </div>
+  ) : (
+    <div className="loader-spinner-admin">
+      <TailSpin color={"#F4BD18"} height={70} width={70} />
     </div>
   );
 };

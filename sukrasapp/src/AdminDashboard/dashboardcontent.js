@@ -7,6 +7,12 @@ import Services from "./services.js";
 
 import Products from "./products.js";
 
+import Appointments from "./appointments.js";
+
+import Orders from "./orders.js";
+
+import Events from "./events.js";
+
 const DashboardContent = (props) => {
   const { selectedDashboard } = props;
 
@@ -48,10 +54,16 @@ const DashboardContent = (props) => {
         <Maindashboard />
       ) : selectedDashboard === "Customers" ? (
         <Customers />
+      ) : selectedDashboard === "Appointments" ? (
+        <Appointments />
       ) : selectedDashboard === "Services" ? (
         <Services />
-      ) : (
+      ) : selectedDashboard === "Products" ? (
         <Products />
+      ) : selectedDashboard === "Orders" ? (
+        <Orders />
+      ) : (
+        <Events />
       )}
     </div>
   );
