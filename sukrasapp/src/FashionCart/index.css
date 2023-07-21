@@ -174,7 +174,7 @@
     align-items: center;
     background-color: #fff6d4;
     height: 5vh;
-    width: 70%;
+    width: 75%;
     border-radius: 8px;
     margin-left: 5%;
   }
@@ -183,6 +183,8 @@
     border-color: transparent;
     color: #f4bd18;
     font-size: 6vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
   }
   .counter-para {
     color: #f4bd18;
