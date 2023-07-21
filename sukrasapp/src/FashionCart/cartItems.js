@@ -74,7 +74,7 @@ const CartItemsFashion = (props) => {
                 count="decrement"
                 onClick={countUpdate}
                 className="counter-button"
-                style={{ marginLeft: 5 }}
+                style={{ marginLeft: 8 }}
               >
                 -
               </button>
@@ -84,7 +84,7 @@ const CartItemsFashion = (props) => {
                 onClick={countUpdate}
                 count="increment"
                 className="counter-button"
-                style={{ marginRight: 5 }}
+                style={{ marginRight: 8 }}
               >
                 +
               </button>

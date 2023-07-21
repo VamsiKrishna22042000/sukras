@@ -170,7 +170,7 @@
   .counter {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     background-color: #fff6d4;
     height: 5vh;
