@@ -65,7 +65,11 @@ const EventHome = (props) => {
           src="./sukraslogo.png"
           alt="Logo Space"
         />
-        <button onClick={gobackTo} className="arrow-btn" type="button">
+        <button
+          onClick={gobackTo}
+          className="leftevent-arrow-btn"
+          type="button"
+        >
           <img className="left-arrow-mobile" src="./backarrow.png" />
         </button>
         <button className="location-btnn" type="button">

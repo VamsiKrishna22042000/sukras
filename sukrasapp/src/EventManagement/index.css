@@ -106,6 +106,15 @@
     border-style: solid;
     cursor: pointer;
   }
+  .leftevent-arrow-btn {
+    display: none;
+  }
+  .sukraslogobeautyevent {
+    position: absolute;
+    height: 58px;
+    margin-left: 1%;
+    margin-bottom: 0.8%;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -239,5 +248,22 @@
     box-sizing: border-box;
     margin: 0px;
     overflow: hidden;
+  }
+  .leftevent-arrow-btn {
+    position: absolute;
+    padding-left: 0%;
+    border-color: transparent;
+    background-color: transparent;
+    margin-right: 1%;
+    margin-top: 1%;
+  }
+  .leftevent-arrow-mobile {
+    color: #4e4e4e;
+    height: 3vh;
+    padding-top: 4%;
+    padding-bottom: 4%;
+  }
+  .sukraslogobeautyevent {
+    display: none;
   }
 }
