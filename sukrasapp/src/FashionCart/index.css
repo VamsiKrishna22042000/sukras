@@ -318,4 +318,13 @@
     color: #f4bd18;
     font-size: 6vw;
   }
+  .cart-cancel {
+    font-size: 8vw;
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    background-color: transparent;
+    border-color: transparent;
+    color: #8d8d8f;
+  }
 }
