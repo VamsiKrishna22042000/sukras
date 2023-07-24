@@ -201,7 +201,7 @@
   }
 
   .booking-input-select {
-    height: 5.5vh;
+    height: 4.5vh;
     width: 97%;
     margin-top: 1%;
     margin-bottom: 1%;
@@ -213,7 +213,7 @@
     outline: none;
   }
   .booking-input-date {
-    height: 5vh;
+    height: 4vh;
     width: 95%;
     margin-top: 1%;
     margin-bottom: 1%;
