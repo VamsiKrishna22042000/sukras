@@ -266,7 +266,7 @@ const EventBooking = (props) => {
           </lable>
           <input
             onChange={settingvalues}
-            className="booking-input-select"
+            className="booking-input-date"
             id="date"
             placeholder="Select Date"
             type="date"
