@@ -54,12 +54,16 @@
     align-items: center;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
-    padding-left: 50%;
+    padding-left: 46%;
     padding-right: 50%;
     height: 100vh;
     background-size: 100% 100%;
     background-position: center top;
     background-repeat: no-repeat;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 2vw;
+    border-radius: 70px;
   }
   .shadow {
     position: absolute;
@@ -71,6 +75,7 @@
     width: 100%;
     z-index: 0;
     border-top: hidden;
+    border-radius: 50px;
   }
   .offer {
     position: absolute;

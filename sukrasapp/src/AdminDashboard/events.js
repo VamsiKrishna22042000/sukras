@@ -8,6 +8,7 @@ const Events = () => {
   const [eventServices, setEventServices] = useState([]);
   const [buttonState, setButton] = useState(false);
   const [load, setLoad] = useState(false);
+  const [showModal, setModal] = useState(false);
 
   useEffect(() => {
     getAllEventsServices();
@@ -28,71 +29,97 @@ const Events = () => {
     setButton(!buttonState);
   };
 
+  const settingModal = () => {
+    setModal(!showModal);
+  };
+
+  const Modal = () => {
+    return (
+      <>
+        <div className="modal-boxcon"></div>
+        <div className="modal-box">
+          <h1>Modalbox</h1>
+          <input type="file" />
+          <button onClick={settingModal} type="button">
+            close
+          </button>
+        </div>
+      </>
+    );
+  };
+
   return load ? (
-    <div className="dashboard-component2">
-      <button className="add-service" type="button">
-        + Add new Event
-      </button>
-      <div className="avialable-products-head">
-        <div className="product-checkbox"></div>
-        <div className="product-image">
-          <p className="product-heads">Image</p>
-        </div>
-        <div className="product-toggle">
-          <p className="product-heads">Toggle</p>
-        </div>
-        <div className="product-name">
-          <p className="product-heads">Name</p>
-        </div>
-        <div className="product-id">
-          <p className="product-heads">Id</p>
-          <img src="./updown.png" className="updown" alt="updown" />
-        </div>
-        <div className="product-action">
-          <p className="product-heads">Action</p>
-          <img src="./updown.png" className="updown" alt="updown" />
-        </div>
-      </div>
-      {eventServices.map((each) => (
-        <div id={each._id} className="avialable-products">
-          <div className="product-checkbox">
-            <input type="checkbox" />
-          </div>
+    <>
+      {showModal && <Modal />}
+      <div className="dashboard-component2">
+        <button onClick={settingModal} className="add-service" type="button">
+          + Add new Event
+        </button>
+        <div className="avialable-products-head">
+          <div className="product-checkbox"></div>
           <div className="product-image">
-            <img className="productimage" src={each.image} alt="productimage" />
+            <p className="product-heads">Image</p>
           </div>
-          <div id={each._id} className="product-toggle">
-            <div className={buttonState ? "toggle-con2" : "toggle-con1"}>
-              <button
-                onClick={settingButton}
-                type="button"
-                className={buttonState ? "togglebutton2" : "togglebutton1"}
-              ></button>
-            </div>
+          <div className="product-toggle1">
+            <p className="product-heads">Toggle</p>
           </div>
           <div className="product-name">
-            <p>{each.name}</p>
+            <p className="product-heads">Name</p>
           </div>
           <div className="product-id">
-            <p>{each._id}</p>
+            <p className="product-heads">Id</p>
+            <img src="./updown.png" className="updown" alt="updown" />
           </div>
           <div className="product-action">
-            <div className="actions-con">
-              <button className="actions-button">
-                <img className="actions-img" src="./edit.png" alt="edit" />
-              </button>
-              <button className="actions-button">
-                <img
-                  className="actions-img"
-                  src="./delete-fill.png"
-                  alt="delete"
-                />
-              </button>
-            </div>
+            <p className="product-heads">Action</p>
+            <img src="./updown.png" className="updown" alt="updown" />
           </div>
         </div>
-      ))}
-    </div>
+        {eventServices.map((each) => (
+          <div id={each._id} className="avialable-products">
+            <div className="product-checkbox">
+              <input type="checkbox" />
+            </div>
+            <div className="product-image">
+              <img
+                className="productimage"
+                src={each.image}
+                alt="productimage"
+              />
+            </div>
+            <div id={each._id} className="product-toggle1">
+              <div className={buttonState ? "toggle-con2" : "toggle-con1"}>
+                <button
+                  onClick={settingButton}
+                  type="button"
+                  className={buttonState ? "togglebutton2" : "togglebutton1"}
+                ></button>
+              </div>
+            </div>
+            <div className="product-name">
+              <p style={{ textTransform: "capitalize" }}>{each.name}</p>
+            </div>
+            <div className="product-id">
+              <p>{each._id}</p>
+            </div>
+            <div className="product-action">
+              <div className="actions-con">
+                <button className="actions-button">
+                  <img className="actions-img" src="./edit.png" alt="edit" />
+                </button>
+                <button className="actions-button">
+                  <img
+                    className="actions-img"
+                    src="./delete-fill.png"
+                    alt="delete"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   ) : (
     <div className="loader-spinner-admin">
       <TailSpin color={"#F4BD18"} height={70} width={70} />

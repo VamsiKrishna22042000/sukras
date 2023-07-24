@@ -50,7 +50,7 @@ const EventManagementCarousel = () => {
           <div
             key={each.id}
             id={each.id}
-            className="eventmanagement-carousel-content "
+            className="eventmanagement-carousel-content"
             style={{
               transform: `translate(-${activeIndex * 100}%)`,
               backgroundImage: `URL(${each.imgUrl})`,

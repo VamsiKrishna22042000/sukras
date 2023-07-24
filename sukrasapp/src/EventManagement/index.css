@@ -56,6 +56,20 @@
     border-radius: 5px;
     outline: none;
   }
+  .booking-input-select {
+    display: inline-flex;
+    height: 7vh;
+    width: 90%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-left: 1%;
+    background-color: #fff;
+    border-color: #8d8d8f50;
+    border-width: 1.5px;
+    border-radius: 5px;
+    outline: none;
+  }
+
   .items-con-booking {
     font-size: 1.3vw;
     height: auto;
@@ -115,6 +129,12 @@
     margin-left: 1%;
     margin-bottom: 0.8%;
   }
+  .search-btn-booking {
+    display: none;
+  }
+  .notification-btnn-booking {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -156,6 +176,19 @@
   .booking-input {
     padding-top: 3.5%;
     padding-bottom: 3.5%;
+    width: 95%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-left: 1%;
+    background-color: #fff;
+    border-color: #8d8d8f50;
+    border-width: 1.5px;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  .booking-input-select {
+    height: 6.5vh;
     width: 95%;
     margin-top: 1%;
     margin-bottom: 1%;
@@ -265,5 +298,19 @@
   }
   .sukraslogobeautyevent {
     display: none;
+  }
+  .search-btn-booking {
+    top: 23%;
+    left: 80%;
+    position: absolute;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  .notification-btnn-booking {
+    position: absolute;
+    top: 23%;
+    left: 87%;
+    border-color: transparent;
+    background-color: transparent;
   }
 }

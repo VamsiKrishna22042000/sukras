@@ -50,7 +50,7 @@ const Carousel = () => {
           <div
             key={each.id}
             id={each.id}
-            className="beautyzone-carousel-content "
+            className="beautyzone-carousel-content"
             style={{
               transform: `translate(-${activeIndex * 100}%)`,
               backgroundImage: `URL(./${each.imgUrl}.png)`,

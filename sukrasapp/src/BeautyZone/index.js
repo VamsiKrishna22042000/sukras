@@ -179,7 +179,6 @@ const Beautyzone = (props) => {
         <div className="beautyzone-body-2">
           {categories === "" ? (
             <div className="service-spinner">
-              {" "}
               <TailSpin color={"#F4BD18"} height={70} width={70} />
             </div>
           ) : (
@@ -239,7 +238,6 @@ const Beautyzone = (props) => {
     </>
   ) : (
     <div className="loader-spinner">
-      {" "}
       <TailSpin color={"#F4BD18"} height={70} width={70} />
     </div>
   );

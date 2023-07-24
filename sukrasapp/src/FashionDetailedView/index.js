@@ -24,13 +24,17 @@ const sizes = [
   { id: "M", text: "M" },
   { id: "L", text: "L" },
   { id: "XL", text: "XL" },
+  { id: "2XL", text: "2XL" },
+  { id: "3Xl", text: "3XL" },
 ];
 
-const colors = [
-  { id: "#F93D3D", text: "#F93D3D" },
-  { id: "#35CEE3", text: "#35CEE3" },
-  { id: "#35E35B", text: "#35E35B" },
-  { id: "#6235E3", text: "#6235E3" },
+const footwearsizes = [
+  { id: "5UK", text: "5UK" },
+  { id: "6UK", text: "6UK" },
+  { id: "7UK", text: "7UK" },
+  { id: "10UK", text: "10UK" },
+  { id: "11UK", text: "11UK" },
+  { id: "12UK", text: "12UK" },
 ];
 
 const ratingStars = [
@@ -45,7 +49,6 @@ const FashionDetailedView = (props) => {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
   const [size, setSize] = useState("");
-  const [color, setColor] = useState("");
   const [categories, setCategories] = useState([]);
   const [load, setLoad] = useState(false);
   const [cartItems, setCartItems] = useState([]);
@@ -102,10 +105,6 @@ const FashionDetailedView = (props) => {
 
   const selectSize = (event) => {
     setSize(event.target.id);
-  };
-
-  const selectColor = (event) => {
-    setColor(event.target.id);
   };
 
   const setupRating = (event) => {
@@ -318,9 +317,10 @@ const FashionDetailedView = (props) => {
               {params.type === "cosmetics" ? null : (
                 <p className="fashion-details-about">Select Size</p>
               )}
-              {params.type === "cosmetics" ? null : (
+              {params.type === "cosmetics" ? null : params.type ===
+                "footwear" ? (
                 <div className="fashion-details-size-selection">
-                  {sizes.map((each) => (
+                  {footwearsizes.map((each) => (
                     <button
                       id={each.id}
                       onClick={selectSize}
@@ -335,24 +335,21 @@ const FashionDetailedView = (props) => {
                     </button>
                   ))}
                 </div>
-              )}
-              {params.type === "cosmetics" ? null : (
-                <p className="fashion-details-about">Select Color</p>
-              )}
-              {params.type === "cosmetics" ? null : (
+              ) : (
                 <div className="fashion-details-size-selection">
-                  {colors.map((each) => (
+                  {sizes.map((each) => (
                     <button
                       id={each.id}
-                      onClick={selectColor}
-                      style={{ backgroundColor: each.text }}
+                      onClick={selectSize}
                       className={
-                        each.id === color
-                          ? "fashion-color-select1"
-                          : "fashion-color-select"
+                        each.id === size
+                          ? "fashion-size-select1"
+                          : "fashion-size-select"
                       }
                       type="button"
-                    ></button>
+                    >
+                      {each.text}
+                    </button>
                   ))}
                 </div>
               )}
@@ -440,7 +437,6 @@ const FashionDetailedView = (props) => {
     </div>
   ) : (
     <div className="loader-spinner">
-      {" "}
       <TailSpin color={"#F4BD18"} height={70} width={70} />
     </div>
   );

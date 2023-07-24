@@ -14,6 +14,36 @@
 }
 
 @media screen and (min-width: 992px) {
+  .modal-boxcon {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #4e4e4e90;
+  }
+
+  .modal-box {
+    position: fixed;
+    height: 70vh;
+    width: 40vw;
+    top: 11%;
+    left: 28%;
+    background-color: #fff;
+    z-index: 2;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4e4e4e;
+    font-size: 1.2vw;
+  }
+
   .admin-total-container {
     height: 100vh;
     width: 100vw;
@@ -57,7 +87,7 @@
   }
   .option-dashboard {
     height: 5vh;
-    width: 60%;
+    width: 85%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -67,10 +97,12 @@
     font-weight: 600;
     margin-bottom: 8%;
     cursor: pointer;
+    border-width: 0px;
+    background-color: transparent;
   }
   .option-dashboard2 {
     height: 5vh;
-    width: 60%;
+    width: 85%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -81,6 +113,8 @@
     width: 600;
     margin-bottom: 8%;
     cursor: pointer;
+    border-width: 0px;
+    background-color: transparent;
   }
   .option-dashboard1 {
     height: 5vh;
@@ -296,6 +330,19 @@
     font-size: 1.2vw;
     color: #8d8d8f;
   }
+
+  .product-toggle1 {
+    width: 13%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+    font-size: 1.2vw;
+    color: #8d8d8f;
+  }
+
   .product-category {
     width: 15%;
     height: 100%;
@@ -403,5 +450,32 @@
   .actions-img {
     height: 20px;
     width: 20px;
+  }
+
+  /*Service modal-box*/
+
+  .service-admin-input {
+    width: 80%;
+    height: 5%;
+  }
+  .service-admin-text-area {
+    width: 80%;
+    height: 20%;
+  }
+  .service-button-admin-con {
+    height: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+  }
+  .service-button-admin {
+    height: 100%;
+    width: 10%;
+    border-width: 0px;
+    background-color: #ffc720;
+    color: #fff;
   }
 }

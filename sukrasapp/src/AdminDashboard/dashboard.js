@@ -62,7 +62,8 @@ const DashboardMain = (props) => {
           />
         </div>
         {options.map((each) => (
-          <div
+          <button
+            type="button"
             onClick={sendSelectedOption}
             key={each.name}
             className={
@@ -72,13 +73,16 @@ const DashboardMain = (props) => {
             }
           >
             <img
+              onClick={sendSelectedOption}
               id={each.name}
               className="icons-dashboard"
               src={each.imgUrl}
               alt="Dashboard-icon"
             />
-            <p id={each.name}>{each.name}</p>
-          </div>
+            <p onClick={sendSelectedOption} id={each.name}>
+              {each.name}
+            </p>
+          </button>
         ))}
       </div>
     </div>

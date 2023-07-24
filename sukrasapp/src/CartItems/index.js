@@ -37,29 +37,32 @@ const CartItems = (props) => {
     return new Intl.DateTimeFormat("en-US", options).format(date);
   };
 
+  function getCurrentTime() {
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const formattedHours = hours.toString().padStart(2, "0");
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    const timeString = `${formattedHours}:${formattedMinutes}`;
+    return timeString;
+  }
+
   const generateDateRange = (startDate) => {
     const dates = [];
     for (let i = 0; i < 7; i++) {
       dates.push(startDate.clone().add(i, "days"));
     }
-    return dates;
+    if (getCurrentTime() >= "21:00") {
+      return dates.slice(1, dates.length + 1);
+    } else {
+      return dates;
+    }
   };
 
   const currentDate = moment(); // Get the current date
   const dateRange = generateDateRange(currentDate); // Generate the initial date range
 
   // Helper function to generate the date range
-
-  function getCurrentTime() {
-    const date = new Date();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const formattedHours = hours > 12 ? hours - 12 : hours;
-    const timeString = `${formattedHours}:${
-      minutes < 10 ? "0" + minutes : minutes
-    }`;
-    return timeString;
-  }
 
   const [cartArr, setCartArr] = useState([]);
 
@@ -163,28 +166,23 @@ const CartItems = (props) => {
       "10:00",
       "11:00",
       "12:00",
-      "01:00",
-      "02:00",
-      "03:00",
-      "04:00",
-      "05:00",
-      "06:00",
-      "07:00",
-      "08:00",
-      "09:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00",
+      "18:00",
+      "19:00",
+      "20:00",
+      "21:00",
     ];
 
     if (booked.length === 0) {
       return timesAvailable;
     } else {
-      const currentTime = getCurrentTime();
       const notBookedSlots = timesAvailable.filter(
         (each) => !booked.includes(each)
       );
-      const curretTimeFilter = notBookedSlots.filter(
-        (each) => each > currentTime
-      );
-
       return notBookedSlots;
     }
   };

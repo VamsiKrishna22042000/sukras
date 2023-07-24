@@ -190,12 +190,12 @@ const EventBooking = (props) => {
         </select>
         <button
           onClick={deleteCookie}
-          className="search-btn-fashion"
+          className="search-btn-booking"
           type="button"
         >
           <img className="search-mobile" src="./search-mobile.png" />
         </button>
-        <button className="notification-btnn" type="button">
+        <button className="notification-btnn-booking" type="button">
           <img
             className="notification-mobile"
             src="./notification-mobile.png"
@@ -248,7 +248,7 @@ const EventBooking = (props) => {
           </lable>
           <select
             onChange={settingvalues}
-            className="booking-input"
+            className="booking-input-select"
             id="category"
             style={{ textTransform: "capitalize" }}
             placeholder="Select Category"
@@ -266,7 +266,7 @@ const EventBooking = (props) => {
           </lable>
           <input
             onChange={settingvalues}
-            className="booking-input"
+            className="booking-input-select"
             id="date"
             placeholder="Select Date"
             type="date"

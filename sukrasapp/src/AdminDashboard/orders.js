@@ -15,9 +15,7 @@ const Orders = () => {
 
   const getMyOrders = async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_ROOT_URL}/api/orders/allOrders/${Cookies.get(
-        "jwt_user"
-      )}`
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/appoinments`
     );
     const data = await response.json();
     if (response.ok) {
