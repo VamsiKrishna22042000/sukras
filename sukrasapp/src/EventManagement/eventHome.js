@@ -134,7 +134,7 @@ const EventHome = (props) => {
           </p>
           <div className="points-con">
             <img className="pointImg" src="./points.png" />
-            <p>Best of deals onLY ON Sukra’sBest of deals only on Sukra’s</p>
+            <p>Best of deals only on Sukra’sBest of deals only on Sukra’s</p>
           </div>
           <div className="points-con">
             <img className="pointImg" src="./points.png" />
