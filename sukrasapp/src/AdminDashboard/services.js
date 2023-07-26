@@ -51,6 +51,36 @@ const Services = () => {
   };
 
   const Modal = () => {
+    const [dataToBe, setData] = useState({
+      salonId: "64a2bac3ec45bcb4034bdd46",
+      category: "",
+      service: "",
+      rating: "",
+      price: "",
+      time: "",
+      description: "",
+      photos: "",
+    });
+
+    const addService = (event) => {
+      if (event.target.id === "service-name-admin") {
+        setData((prevData) => ({ ...prevData, service: event.target.value }));
+      } else if (event.target.id === "service-category-admin") {
+        setData((prevData) => ({ ...prevData, category: event.target.value }));
+      } else if (event.target.id === "service-price-admin") {
+        setData((prevData) => ({ ...prevData, price: event.target.value }));
+      } else if (event.target.id === "service-time-admin") {
+        setData((prevData) => ({ ...prevData, time: event.target.value }));
+      } else if (event.target.id === "service-description-admin") {
+        setData((prevData) => ({
+          ...prevData,
+          description: event.target.value,
+        }));
+      } else if (event.target.id === "file") {
+        setData((prevData) => ({ ...prevData, photos: event.target.value }));
+      }
+    };
+
     return (
       <>
         <div className="modal-boxcon"></div>
@@ -60,6 +90,7 @@ const Services = () => {
           </h1>
           <lable htmlFor="service-name-admin">Service Title</lable>
           <input
+            onChange={addService}
             className="service-admin-input"
             id="service-name-admin"
             type="text"
@@ -69,6 +100,7 @@ const Services = () => {
           </label>
           <select
             style={{ textTransform: "capitalize" }}
+            onChange={addService}
             id="service-category-admin"
             className="service-admin-input"
           >
@@ -81,12 +113,14 @@ const Services = () => {
           <lable htmlFor="service-price-admin">Service Price</lable>
           <input
             className="service-admin-input"
+            onChange={addService}
             id="service-price-admin"
             type="text"
           />
           <lable htmlFor="service-time-admin">Service Time</lable>
           <input
             className="service-admin-input"
+            onChange={addService}
             id="service-time-admin"
             type="text"
           />
@@ -95,11 +129,12 @@ const Services = () => {
           </lable>
           <textarea
             className="service-admin-text-area"
+            onChange={addService}
             id="service-description-admin"
             type="text"
           />
           <label htmlFor="service-image-admin">Upload Image for service</label>
-          <input type="file" />
+          <input id="file" onChange={addService} type="file" />
           <div className="service-button-admin-con">
             <button
               className="service-button-admin"

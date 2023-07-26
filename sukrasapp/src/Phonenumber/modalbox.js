@@ -1,6 +1,8 @@
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
+import Cookies from "js-cookie";
+
 import { TailSpin } from "react-loader-spinner";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -248,6 +250,8 @@ const ModalBox = (props) => {
           mobileNumber: "",
           otp: "",
         });
+        Cookies.set("jwt_token", data.token, { expires: 30 });
+        Cookies.set("jwt_user", data.data[0]._id);
         settingShow();
         setLoad(true);
       } else {

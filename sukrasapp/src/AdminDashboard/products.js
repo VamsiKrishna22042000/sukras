@@ -129,7 +129,7 @@ const Products = () => {
             Describe about product
           </lable>
           <textarea
-            className="service-admin-text-area"
+            className="service-admin-text-area-product"
             id="service-description-admin"
             type="text"
           />
@@ -152,6 +152,17 @@ const Products = () => {
             </button>
           </div>
           <form className="modal-box2">
+            <h1 style={{ margin: 0, color: "#3E3E3E", fontSize: 20 }}>
+              Add New Type
+            </h1>
+            <p>New Type name</p>
+            <input type="text" />
+            <button type="button" className="service-button-admin-category">
+              Add Type
+            </button>
+            <p style={{ color: "red", fontSize: 10 }}>
+              *Please add Type if needed else leave it blank.
+            </p>
             <h1 style={{ margin: 0, color: "#3E3E3E", fontSize: 20 }}>
               Add New Category
             </h1>
