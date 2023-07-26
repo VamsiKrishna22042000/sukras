@@ -12,7 +12,7 @@ const ProtectedRoute = (props) => {
   const obtainedCookie = Cookies.get("jwt_token");
   const userCookie = Cookies.get("jwt_user");
   if (obtainedCookie === undefined || userCookie === undefined) {
-    return <Redirect to="/email-login" />;
+    return <Redirect to="/" />;
   }
   return <Route {...props} />;
 };

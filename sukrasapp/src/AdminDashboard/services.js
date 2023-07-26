@@ -55,7 +55,7 @@ const Services = () => {
       <>
         <div className="modal-boxcon"></div>
         <form className="modal-box">
-          <h1 style={{ margin: 0, color: "#3E3E3E", fontSize: 20 }}>
+          <h1 style={{ marginBottom: 10, color: "#3E3E3E", fontSize: 20 }}>
             Add New Service
           </h1>
           <lable htmlFor="service-name-admin">Service Title</lable>
@@ -116,6 +116,19 @@ const Services = () => {
               close
             </button>
           </div>
+          <form className="modal-box2">
+            <h1 style={{ margin: 0, color: "#3E3E3E", fontSize: 20 }}>
+              Add New Category
+            </h1>
+            <p>New category name</p>
+            <input type="text" />
+            <button type="button" className="service-button-admin-category">
+              Add Category
+            </button>
+            <p style={{ color: "red", fontSize: 10 }}>
+              *Please add category if needed else leave it blank.
+            </p>
+          </form>
         </form>
       </>
     );
@@ -139,6 +152,9 @@ const Services = () => {
           <div className="product-name">
             <p className="product-heads">Name</p>
           </div>
+          <div className="product-toggle">
+            <p className="product-heads">Price</p>
+          </div>
           <div className="product-category">
             <p className="product-heads">Category</p>
           </div>
@@ -152,14 +168,14 @@ const Services = () => {
           </div>
         </div>
         {availableServices.map((each) => (
-          <div id={each._id} className="avialable-products">
+          <div key={each._id} id={each._id} className="avialable-products">
             <div className="product-checkbox">
               <input type="checkbox" />
             </div>
             <div className="product-image">
               <img
                 className="productimage"
-                src={each.image}
+                src={each.image[0]}
                 alt="serviceimage"
               />
             </div>
@@ -174,6 +190,9 @@ const Services = () => {
             </div>
             <div className="product-name">
               <p style={{ textTransform: "capitalize" }}>{each.service}</p>
+            </div>
+            <div id={each._id} className="product-toggle">
+              <p style={{ textTransform: "capitalize" }}>₹ {each.price}</p>
             </div>
             <div className="product-category">
               <p style={{ textTransform: "capitalize" }}>{each.category}</p>

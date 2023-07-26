@@ -41,9 +41,27 @@
     align-items: flex-start;
     font-family: Arial, Helvetica, sans-serif;
     color: #4e4e4e;
-    font-size: 1.2vw;
+    font-size: 1vw;
   }
 
+  .modal-box3 {
+    position: fixed;
+    height: 30vh;
+    width: 30vw;
+    top: 30%;
+    left: 35%;
+    background-color: #fff;
+    z-index: 2;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4e4e4e;
+    font-size: 1vw;
+  }
   .admin-total-container {
     height: 100vh;
     width: 100vw;
@@ -308,7 +326,7 @@
     color: #8d8d8f;
   }
   .product-name {
-    width: 20%;
+    width: 15%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -455,7 +473,7 @@
   /*Service modal-box*/
 
   .service-admin-input {
-    width: 80%;
+    width: 50%;
     height: 5%;
   }
   .service-admin-text-area {
@@ -471,11 +489,49 @@
     align-items: center;
     margin-top: 2%;
   }
+  .service-button-admin-con-event {
+    height: 13%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+  }
   .service-button-admin {
     height: 100%;
     width: 10%;
     border-width: 0px;
     background-color: #ffc720;
     color: #fff;
+  }
+
+  .service-button-admin-category {
+    height: 100%;
+    width: 80%;
+    border-width: 0px;
+    background-color: #ffc720;
+    color: #fff;
+    margin-top: 10%;
+    padding: 2%;
+    border-radius: 5px;
+  }
+
+  /*admin-add category*/
+
+  .modal-box2 {
+    position: absolute;
+    top: 16%;
+    right: 5%;
+    height: auto;
+    border-style: solid;
+    padding: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-width: 1px;
   }
 }

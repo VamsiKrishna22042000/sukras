@@ -37,13 +37,36 @@ const Events = () => {
     return (
       <>
         <div className="modal-boxcon"></div>
-        <div className="modal-box">
-          <h1>Modalbox</h1>
+        <form className="modal-box3">
+          <h1 style={{ marginBottom: 10, color: "#3E3E3E", fontSize: 20 }}>
+            Add New Event
+          </h1>
+          <lable htmlFor="service-name-admin">Event Title</lable>
+          <input
+            className="service-admin-input"
+            id="service-name-admin"
+            type="text"
+            style={{ height: 25, marginBottom: 10 }}
+          />
+          <label htmlFor="service-image-admin">Upload Image for service</label>
           <input type="file" />
-          <button onClick={settingModal} type="button">
-            close
-          </button>
-        </div>
+          <div className="service-button-admin-con-event">
+            <button
+              className="service-button-admin"
+              onClick={settingModal}
+              type="button"
+            >
+              Add
+            </button>
+            <button
+              className="service-button-admin"
+              onClick={settingModal}
+              type="button"
+            >
+              close
+            </button>
+          </div>
+        </form>
       </>
     );
   };
@@ -76,7 +99,7 @@ const Events = () => {
           </div>
         </div>
         {eventServices.map((each) => (
-          <div id={each._id} className="avialable-products">
+          <div key={each._id} id={each._id} className="avialable-products">
             <div className="product-checkbox">
               <input type="checkbox" />
             </div>

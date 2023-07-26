@@ -19,6 +19,7 @@ const Maindashboard = () => {
     const data = await response.json();
 
     if (response.ok) {
+      console.log(data.user);
       setDashboardData(data.user);
       setLoad(true);
     }
@@ -41,6 +42,19 @@ const Maindashboard = () => {
               {dashboarddata[1].totalOrders}
             </h1>
             <p style={{ margin: 0, paddingLeft: 1 }}>Orders</p>
+          </div>
+        </div>
+        <div className="dashboard-data-content">
+          <div className="dash-board-img-con">
+            <img
+              src="/dashboard-appointment.png"
+              className="dash-board-data-img"
+              alt="dashboard-icons"
+            />
+          </div>
+          <div className="dashboard-data-numbers">
+            <h1 style={{ margin: 0, color: "#4e4e4e" }}>0</h1>
+            <p style={{ margin: 0, paddingLeft: 1 }}>Appointments</p>
           </div>
         </div>
         <div className="dashboard-data-content">

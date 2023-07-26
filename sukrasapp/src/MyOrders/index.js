@@ -57,7 +57,11 @@ const MyOrders = (props) => {
         <div className="all-orders">
           {orders.serviceOrders.map((each) => (
             <div className="each-order">
-              <img className="each-img" src={each.image} alt="your services" />
+              <img
+                className="each-img"
+                src={each.image[0]}
+                alt="your services"
+              />
               <div className="each-content">
                 <h1
                   style={{
@@ -102,11 +106,7 @@ const MyOrders = (props) => {
         <div className="all-orders">
           {orders.eventOrders.map((each) => (
             <div className="each-order">
-              <img
-                className="each-img"
-                src="/beautyzone1.png"
-                alt="your services"
-              />
+              <img className="each-img" src={each.image} alt="your services" />
               <div className="each-content">
                 <h1
                   style={{
