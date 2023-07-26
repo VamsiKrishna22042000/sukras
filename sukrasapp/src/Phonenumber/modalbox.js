@@ -251,6 +251,14 @@ const ModalBox = (props) => {
           theme: "colored",
         });
       }
+    } else {
+      toast.error("Enter OTP", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
   };
 

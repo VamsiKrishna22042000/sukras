@@ -141,6 +141,14 @@ const Verification = (props) => {
         document.getElementById("input4").value = "";
         setOTP({ index: 0, OTP: "" });
       }
+    } else {
+      toast.error("Enter OTP", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
   };
 
