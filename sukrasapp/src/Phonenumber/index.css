@@ -190,7 +190,7 @@
 
   .modal-box-phone {
     position: fixed;
-    height: 63vh;
+    height: 63%;
     width: 87vw;
     top: 20%;
     left: 5%;
@@ -209,7 +209,7 @@
 
   .modal-box-phone1 {
     position: fixed;
-    height: 35vh;
+    height: 35%;
     width: 87vw;
     top: 35%;
     left: 5%;
