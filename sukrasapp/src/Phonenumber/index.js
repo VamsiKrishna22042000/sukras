@@ -8,9 +8,11 @@ import { ToastContainer, toast } from "react-toastify";
 import ModalBox from "./modalbox.js";
 
 import { useState } from "react";
+import { TailSpin } from "react-loader-spinner";
 
 const Phonenumber = (props) => {
   const { phone, phonenumber, getOTP } = props;
+  const [load, setLoad] = useState(true);
 
   const [show, setShow] = useState(false);
 
@@ -24,6 +26,7 @@ const Phonenumber = (props) => {
 
   const sendOTP = async () => {
     const errorMsg = document.getElementById("error-message");
+    setLoad(false);
     if (phone.length >= 12) {
       errorMsg.classList.add("error-disable");
 
@@ -46,11 +49,23 @@ const Phonenumber = (props) => {
 
       if (response.ok) {
         console.log(data);
+        setLoad(true);
         getOTP(1);
+      } else {
+        toast.error(`${data.message}`, {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+        phonenumber("+91");
+        setLoad(true);
       }
     } else {
       console.log("error");
       errorMsg.classList.remove("error-disable");
+      setLoad(true);
     }
   };
 
@@ -68,13 +83,30 @@ const Phonenumber = (props) => {
       <p id="error-message" className="error-number error-disable">
         *Enter a valid number
       </p>
-      <button
-        className={phone.length <= 3 ? "otp" : "otp-2"}
-        type="button"
-        onClick={sendOTP}
-      >
-        Get OTP
-      </button>
+      {load ? (
+        <button
+          className={phone.length <= 3 ? "otp" : "otp-2"}
+          type="button"
+          onClick={sendOTP}
+          style={{ cursor: "pointer" }}
+        >
+          Get OTP
+        </button>
+      ) : (
+        <button
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
+          className="otp-2"
+          type="button"
+        >
+          <TailSpin height={20} width={20} color="#FFFFFF" />
+        </button>
+      )}
       <p className="signUp-phoneno">
         If not registered click
         <span

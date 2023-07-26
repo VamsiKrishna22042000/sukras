@@ -2,6 +2,8 @@ import "./index.css";
 
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
+import { TailSpin } from "react-loader-spinner";
+
 import { useState } from "react";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -13,8 +15,10 @@ import "react-toastify/dist/ReactToastify.css";
 const Verification = (props) => {
   const { phone } = props;
   const [obtainedOTP, setOTP] = useState({ index: 0, OTP: "" });
+  const [load, setLoad] = useState(true);
 
   const obtainOtp = (event) => {
+    console.log(event.target.value);
     if (event.target.value === "") {
       const myotp = document.querySelectorAll(".otp-input");
       const { index, OTP } = obtainedOTP;
@@ -90,6 +94,7 @@ const Verification = (props) => {
 
   const verifyOTP = async () => {
     const { OTP } = obtainedOTP;
+    setLoad(false);
     if (OTP.length >= 4) {
       const { phone, history } = props;
 
@@ -126,8 +131,10 @@ const Verification = (props) => {
           closeOnClick: true,
           theme: "colored",
         });
+        setLoad(true);
         history.push("/");
       } else {
+        setLoad(true);
         toast.error(`${data.message}`, {
           position: "top-center",
           autoClose: 2000,
@@ -149,6 +156,7 @@ const Verification = (props) => {
         closeOnClick: true,
         theme: "colored",
       });
+      setLoad(true);
     }
   };
 
@@ -204,17 +212,38 @@ const Verification = (props) => {
       </div>
       <p className="resend-otp">
         Did'nt get the OTP?{" "}
-        <span onClick={resendotp} className="resend-otp-span">
+        <span
+          style={{ cursor: "pointer" }}
+          onClick={resendotp}
+          className="resend-otp-span"
+        >
           Resend OTP
         </span>
       </p>
-      <button
-        type="button"
-        onClick={verifyOTP}
-        className={obtainedOTP.index <= 3 ? "verify" : "otp-verify-2"}
-      >
-        Verify
-      </button>
+      {load ? (
+        <button
+          style={{ cursor: "pointer" }}
+          type="button"
+          onClick={verifyOTP}
+          className={obtainedOTP.index <= 3 ? "verify" : "otp-verify-2"}
+        >
+          Verify
+        </button>
+      ) : (
+        <button
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
+          className="otp-verify-2"
+          type="button"
+        >
+          <TailSpin height={20} width={20} color="#FFFFFF" />
+        </button>
+      )}
     </>
   );
 };

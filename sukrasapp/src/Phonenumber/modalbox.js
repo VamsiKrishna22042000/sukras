@@ -1,12 +1,11 @@
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
+import { TailSpin } from "react-loader-spinner";
+
 import { ToastContainer, toast } from "react-toastify";
 
-import {
-  Redirect,
-  withRouter,
-} from "react-router-dom/cjs/react-router-dom.min";
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -18,6 +17,7 @@ const ModalBox = (props) => {
   const { settingShow } = props;
 
   const [change, setChange] = useState(false);
+  const [load, setLoad] = useState(true);
 
   const [signupData, setSignUpdata] = useState({
     name: "",
@@ -113,6 +113,7 @@ const ModalBox = (props) => {
   };
 
   const sendOTP = async () => {
+    setLoad(false);
     if (signupData.mobileNumber.length === 12) {
       if (signupData.name !== "") {
         if (
@@ -159,6 +160,7 @@ const ModalBox = (props) => {
                 theme: "colored",
               });
               setChange(!change);
+              setLoad(true);
             } else {
               toast.error(`${data.message}`, {
                 position: "top-center",
@@ -167,6 +169,7 @@ const ModalBox = (props) => {
                 closeOnClick: true,
                 theme: "colored",
               });
+              setLoad(true);
               settingShow();
             }
           }
@@ -178,6 +181,7 @@ const ModalBox = (props) => {
             closeOnClick: true,
             theme: "colored",
           });
+          setLoad(true);
         }
       } else {
         toast.error("Please Enter Name", {
@@ -187,6 +191,7 @@ const ModalBox = (props) => {
           closeOnClick: true,
           theme: "colored",
         });
+        setLoad(true);
       }
     } else {
       toast.error("Please Enter Valid Number", {
@@ -196,10 +201,12 @@ const ModalBox = (props) => {
         closeOnClick: true,
         theme: "colored",
       });
+      setLoad(true);
     }
   };
 
   const VerifyOTP = async () => {
+    setLoad(false);
     if (signupData.otp !== "" && signupData.otp.length >= 4) {
       console.log(signupData);
 
@@ -242,6 +249,7 @@ const ModalBox = (props) => {
           otp: "",
         });
         settingShow();
+        setLoad(true);
       } else {
         toast.error(`${data.message}`, {
           position: "top-center",
@@ -250,6 +258,7 @@ const ModalBox = (props) => {
           closeOnClick: true,
           theme: "colored",
         });
+        setLoad(true);
       }
     } else {
       toast.error("Enter OTP", {
@@ -259,6 +268,7 @@ const ModalBox = (props) => {
         closeOnClick: true,
         theme: "colored",
       });
+      setLoad(true);
     }
   };
 
@@ -289,28 +299,55 @@ const ModalBox = (props) => {
           />
           <p style={{ alignSelf: "center", marginTop: 20 }}>
             Did'nt got OTP? click{" "}
-            <span onClick={resendOTP} style={{ color: "#FFC300" }}>
+            <span
+              onClick={resendOTP}
+              style={{ color: "#FFC300", cursor: "pointer" }}
+            >
               Resend
             </span>
           </p>
-          <button
-            onClick={() => {
-              VerifyOTP();
-            }}
-            type="button"
-            style={{
-              backgroundColor: "#FFC300",
-              color: "white",
-              borderWidth: 0,
-              alignSelf: "center",
-              padding: 7,
-              borderRadius: 2,
-              fontSize: 17,
-              marginTop: 10,
-            }}
-          >
-            Verify
-          </button>
+          {load ? (
+            <button
+              onClick={() => {
+                VerifyOTP();
+              }}
+              type="button"
+              style={{
+                backgroundColor: "#FFC300",
+                color: "white",
+                borderWidth: 0,
+                alignSelf: "center",
+                padding: 7,
+                borderRadius: 2,
+                fontSize: 17,
+                marginTop: 10,
+                cursor: "pointer",
+              }}
+            >
+              Verify
+            </button>
+          ) : (
+            <button
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "#FFC300",
+                color: "white",
+                borderWidth: 0,
+                alignSelf: "center",
+                padding: 7,
+                borderRadius: 2,
+                fontSize: 17,
+                marginTop: 10,
+                cursor: "pointer",
+              }}
+              type="button"
+            >
+              <TailSpin height={20} width={20} color="#FFFFFF" />
+            </button>
+          )}
         </div>
       ) : (
         <div className="modal-box-phone">
@@ -368,25 +405,49 @@ const ModalBox = (props) => {
               borderRadius: 2,
             }}
           ></button>
-          <button
-            onClick={() => {
-              sendOTP();
-            }}
-            type="button"
-            style={{
-              backgroundColor: "#FFC300",
-              color: "white",
-              borderWidth: 0,
-              alignSelf: "flex-end",
-              padding: 5,
-              position: "absolute",
-              bottom: 25,
-              right: 20,
-              borderRadius: 2,
-            }}
-          >
-            Get OTP
-          </button>
+          {load ? (
+            <button
+              onClick={() => {
+                sendOTP();
+              }}
+              type="button"
+              style={{
+                backgroundColor: "#FFC300",
+                color: "white",
+                borderWidth: 0,
+                alignSelf: "flex-end",
+                padding: 5,
+                position: "absolute",
+                bottom: 25,
+                right: 20,
+                borderRadius: 2,
+                cursor: "pointer",
+              }}
+            >
+              Get OTP
+            </button>
+          ) : (
+            <button
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "#FFC300",
+                color: "white",
+                borderWidth: 0,
+                alignSelf: "flex-end",
+                padding: 5,
+                position: "absolute",
+                bottom: 25,
+                right: 20,
+                borderRadius: 2,
+              }}
+              type="button"
+            >
+              <TailSpin height={20} width={20} color="#FFFFFF" />
+            </button>
+          )}
 
           <button
             onClick={() => {
@@ -403,6 +464,7 @@ const ModalBox = (props) => {
               borderRadius: 2,
               top: 10,
               right: 20,
+              cursor: "pointer",
             }}
           >
             ✖
