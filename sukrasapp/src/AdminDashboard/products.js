@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 
 import { TailSpin } from "react-loader-spinner";
 
+import Mode from "./modalboxofproduct.js";
+
 const Products = () => {
   const [productsAvailable, setAvailableProducts] = useState([]);
   const [buttonState, setButton] = useState(false);
@@ -72,117 +74,17 @@ const Products = () => {
     getSubCategories(event.target.value);
   };
 
-  const Mode = () => {
-    return (
-      <>
-        <div className="modal-boxcon"></div>
-        <form className="modal-box">
-          <h1 style={{ marginBottom: 10, color: "#3E3E3E", fontSize: 20 }}>
-            Add New Product
-          </h1>
-          <lable htmlFor="service-name-admin">Product Title</lable>
-          <input
-            className="service-admin-input"
-            id="service-name-admin"
-            type="text"
-          />
-          <label htmlFor="service-category-admin">
-            Select Type of the product
-          </label>
-          <select
-            style={{ textTransform: "capitalize" }}
-            id="service-category-admin"
-            className="service-admin-input"
-            onChange={settingType}
-          >
-            {availableTypes.map((each) => (
-              <option
-                selected={selectedType === each ? true : false}
-                style={{ textTransform: "capitalize" }}
-                id={each._id}
-              >
-                {each}
-              </option>
-            ))}
-          </select>
-          <label htmlFor="service-category-admin">
-            Select Category of the product
-          </label>
-          <select
-            style={{ textTransform: "capitalize" }}
-            id="service-category-admin"
-            className="service-admin-input"
-          >
-            {availableCategories.map((each) => (
-              <option style={{ textTransform: "capitalize" }} id={each}>
-                {each}
-              </option>
-            ))}
-          </select>
-          <lable htmlFor="service-price-admin">Product Price</lable>
-          <input
-            className="service-admin-input"
-            id="service-price-admin"
-            type="text"
-          />
-          <lable htmlFor="service-description-admin">
-            Describe about product
-          </lable>
-          <textarea
-            className="service-admin-text-area-product"
-            id="service-description-admin"
-            type="text"
-          />
-          <label htmlFor="service-image-admin">Upload Image for product</label>
-          <input type="file" />
-          <div className="service-button-admin-con">
-            <button
-              className="service-button-admin"
-              onClick={settinMode}
-              type="button"
-            >
-              Add
-            </button>
-            <button
-              className="service-button-admin"
-              onClick={settinMode}
-              type="button"
-            >
-              close
-            </button>
-          </div>
-          <form className="modal-box2">
-            <h1 style={{ margin: 0, color: "#3E3E3E", fontSize: 20 }}>
-              Add New Type
-            </h1>
-            <p>New Type name</p>
-            <input type="text" />
-            <button type="button" className="service-button-admin-category">
-              Add Type
-            </button>
-            <p style={{ color: "red", fontSize: 10 }}>
-              *Please add Type if needed else leave it blank.
-            </p>
-            <h1 style={{ margin: 0, color: "#3E3E3E", fontSize: 20 }}>
-              Add New Category
-            </h1>
-            <p>New category name</p>
-            <input type="text" />
-            <button type="button" className="service-button-admin-category">
-              Add Category
-            </button>
-            <p style={{ color: "red", fontSize: 10 }}>
-              *Please add category if needed else leave it blank.
-            </p>
-          </form>
-        </form>
-      </>
-    );
-  };
-
   return load ? (
     <>
-      {showMode && <Mode />}
+      {showMode && (
+        <Mode
+          selectedType={selectedType}
+          availableTypes={availableTypes}
+          availableCategories={availableCategories}
+          settinMode={settinMode}
+          settingType={settingType}
+        />
+      )}
       <div className="dashboard-component2">
         <button onClick={settinMode} className="add-service" type="button">
           + Add new product

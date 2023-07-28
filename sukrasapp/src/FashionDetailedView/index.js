@@ -191,7 +191,6 @@ const FashionDetailedView = (props) => {
     if (response.ok) {
       getAllCategoryOfProducts();
     }
-    getAllCategoryOfProducts();
     toast.error("Review Deleted", {
       position: "top-center",
       autoClose: 2000,

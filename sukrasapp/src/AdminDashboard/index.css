@@ -521,6 +521,17 @@
     border-radius: 5px;
   }
 
+  .service-button-admin-category1 {
+    height: auto;
+    width: auto;
+    border-width: 0px;
+    background-color: #ffc720;
+    color: #fff;
+    padding: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
   /*admin-add category*/
 
   .modal-box2 {

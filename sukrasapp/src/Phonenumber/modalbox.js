@@ -16,7 +16,7 @@ import "./index.css";
 import { useState } from "react";
 
 const ModalBox = (props) => {
-  const { settingShow } = props;
+  const { settingShow, getCookiesData } = props;
 
   const [change, setChange] = useState(false);
   const [load, setLoad] = useState(true);
@@ -207,11 +207,9 @@ const ModalBox = (props) => {
     }
   };
 
-  const VerifyOTP = async () => {
+  const VerifyOTP = async (props) => {
     setLoad(false);
     if (signupData.otp !== "" && signupData.otp.length >= 4) {
-      console.log(signupData);
-
       const url = `${process.env.REACT_APP_ROOT_URL}/api/otp/verifySignup`;
 
       const details = {
@@ -250,10 +248,9 @@ const ModalBox = (props) => {
           mobileNumber: "",
           otp: "",
         });
-        Cookies.set("jwt_token", data.token, { expires: 30 });
-        Cookies.set("jwt_user", data.data[0]._id);
-        settingShow();
         setLoad(true);
+        getCookiesData({ token: data.token, userId: data.data._id });
+        settingShow();
       } else {
         toast.error(`${data.message}`, {
           position: "top-center",

@@ -34,6 +34,24 @@ const Events = () => {
   };
 
   const Modal = () => {
+    const [dataTobeSent, setData] = useState({ name: "", photos: "" });
+
+    const addingEvent = (event) => {
+      if (event.target.id === "service-name-admin") {
+        setData((prevData) => ({ ...prevData, name: event.target.value }));
+      } else if (event.target.id === "file") {
+        setData((prevData) => ({ ...prevData, photos: "" }));
+      }
+    };
+
+    const updatingEvent = () => {
+      const fd = new FormData();
+
+      for (var key in dataTobeSent) {
+        fd.append(`${key}`);
+      }
+    };
+
     return (
       <>
         <div className="modal-boxcon"></div>
@@ -47,9 +65,10 @@ const Events = () => {
             id="service-name-admin"
             type="text"
             style={{ height: 25, marginBottom: 10 }}
+            onChange={addingEvent}
           />
           <label htmlFor="service-image-admin">Upload Image for service</label>
-          <input type="file" />
+          <input id="file" onChange={addingEvent} type="file" />
           <div className="service-button-admin-con-event">
             <button
               className="service-button-admin"

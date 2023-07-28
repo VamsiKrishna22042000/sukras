@@ -3,21 +3,33 @@ import "./index.css";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
+import {
+  Redirect,
+  withRouter,
+} from "react-router-dom/cjs/react-router-dom.min";
+
 import { ToastContainer, toast } from "react-toastify";
 
 import ModalBox from "./modalbox.js";
 
 import { useState } from "react";
 import { TailSpin } from "react-loader-spinner";
+import Cookies from "js-cookie";
 
 const Phonenumber = (props) => {
-  const { phone, phonenumber, getOTP } = props;
+  const { phone, phonenumber, getOTP, history } = props;
   const [load, setLoad] = useState(true);
 
   const [show, setShow] = useState(false);
 
   const settingShow = () => {
     setShow(!show);
+  };
+
+  const getCookiesData = (data) => {
+    Cookies.set("jwt_token", data.token, { expires: 30 });
+    Cookies.set("jwt_user", data.userId, { expires: 30 });
+    history.push("/select-category");
   };
 
   const sendNumber = (value) => {
@@ -72,7 +84,9 @@ const Phonenumber = (props) => {
   return (
     <>
       <ToastContainer />
-      {show && <ModalBox settingShow={settingShow} />}
+      {show && (
+        <ModalBox getCookiesData={getCookiesData} settingShow={settingShow} />
+      )}
       <PhoneInput
         placeholder="Mobile number"
         className="phone-input"
@@ -120,4 +134,4 @@ const Phonenumber = (props) => {
     </>
   );
 };
-export default Phonenumber;
+export default withRouter(Phonenumber);

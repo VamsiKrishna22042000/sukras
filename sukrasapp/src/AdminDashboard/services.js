@@ -14,6 +14,8 @@ const Services = () => {
 
   const [showModal, setModal] = useState(false);
 
+  const [showServiceCategory, setServiceCategory] = useState(true);
+
   const settingButton = () => {
     setButton(!buttonState);
   };
@@ -52,10 +54,9 @@ const Services = () => {
 
   const Modal = () => {
     const [dataToBe, setData] = useState({
-      salonId: "64a2bac3ec45bcb4034bdd46",
+      salonId: "64c1e5b880e7fc21fb096a71",
       category: "",
       service: "",
-      rating: "",
       price: "",
       time: "",
       description: "",
@@ -65,7 +66,7 @@ const Services = () => {
     const addService = (event) => {
       if (event.target.id === "service-name-admin") {
         setData((prevData) => ({ ...prevData, service: event.target.value }));
-      } else if (event.target.id === "service-category-admin") {
+      } else if (event.target.id === "service-category-admit") {
         setData((prevData) => ({ ...prevData, category: event.target.value }));
       } else if (event.target.id === "service-price-admin") {
         setData((prevData) => ({ ...prevData, price: event.target.value }));
@@ -78,6 +79,31 @@ const Services = () => {
         }));
       } else if (event.target.id === "file") {
         setData((prevData) => ({ ...prevData, photos: event.target.value }));
+      }
+    };
+
+    const updatingServices = async () => {
+      const fd = new FormData();
+
+      for (var key in dataToBe) {
+        fd.append(`${key}`, dataToBe[key]);
+      }
+
+      const url = `${process.env.REACT_APP_ROOT_URL}/salon/addServices`;
+
+      const reqConfigure = {
+        method: "POST",
+
+        headers: { "Content-Type": "application/json" },
+
+        body: JSON.stringify(Object.fromEntries(fd.entries())),
+      };
+
+      const response = await fetch(url, reqConfigure);
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(data);
       }
     };
 
@@ -95,21 +121,40 @@ const Services = () => {
             id="service-name-admin"
             type="text"
           />
-          <label htmlFor="service-category-admin">
-            Select Category of the service
-          </label>
-          <select
-            style={{ textTransform: "capitalize" }}
-            onChange={addService}
-            id="service-category-admin"
-            className="service-admin-input"
-          >
-            {availableCategories.map((each) => (
-              <option style={{ textTransform: "capitalize" }} id={each._id}>
-                {each.category}
-              </option>
-            ))}
-          </select>
+          {showServiceCategory && (
+            <label htmlFor="service-category-admit">
+              Select Category of the service
+            </label>
+          )}
+          {showServiceCategory && (
+            <select
+              style={{ textTransform: "capitalize" }}
+              onChange={addService}
+              id="service-category-admit"
+              className="service-admin-input"
+            >
+              {availableCategories.map((each) => (
+                <option
+                  key={each._id}
+                  style={{ textTransform: "capitalize" }}
+                  id={each._id}
+                >
+                  {each.category}
+                </option>
+              ))}
+            </select>
+          )}
+          {!showServiceCategory && (
+            <button
+              onClick={() => {
+                setServiceCategory(true);
+              }}
+              type="button"
+              className="service-button-admin-category1"
+            >
+              Click here to get available categories back
+            </button>
+          )}
           <lable htmlFor="service-price-admin">Service Price</lable>
           <input
             className="service-admin-input"
@@ -137,8 +182,8 @@ const Services = () => {
           <input id="file" onChange={addService} type="file" />
           <div className="service-button-admin-con">
             <button
+              onClick={updatingServices}
               className="service-button-admin"
-              onClick={settingModal}
               type="button"
             >
               Add
@@ -156,12 +201,16 @@ const Services = () => {
               Add New Category
             </h1>
             <p>New category name</p>
-            <input type="text" />
-            <button type="button" className="service-button-admin-category">
-              Add Category
-            </button>
+            <input
+              type="text"
+              id="service-category-admit"
+              onFocusCapture={() => {
+                setServiceCategory(false);
+              }}
+            />
             <p style={{ color: "red", fontSize: 10 }}>
-              *Please add category if needed else leave it blank.
+              *Please double click and type to add new category <br /> else
+              leave it blank.
             </p>
           </form>
         </form>
