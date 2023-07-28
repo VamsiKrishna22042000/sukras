@@ -75,7 +75,8 @@
     width: 100%;
     z-index: 0;
     border-top: hidden;
-    border-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
   }
   .offer {
     position: absolute;
@@ -193,7 +194,8 @@
     width: 100%;
     z-index: 0;
     border-top: hidden;
-    border-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-left-radius: 12px;
     opacity: 82%;
   }
   .offer {
