@@ -14,16 +14,14 @@ import { v4 as uuidv4 } from "uuid";
 
 import { Link } from "react-router-dom";
 
-const OtherServices = [
-  { id: uuidv4(), imgUrl: "FemaleHairSalon" },
-  { id: uuidv4(), imgUrl: "FemaleSpa" },
-  { id: uuidv4(), imgUrl: "MaleGrooming" },
-  { id: uuidv4(), imgUrl: "MaleMassage" },
-  { id: uuidv4(), imgUrl: "PreBridalPackages" },
-  { id: uuidv4(), imgUrl: "SaloneAtHome" },
-  { id: uuidv4(), imgUrl: "AtHomeMakeup" },
-  { id: uuidv4(), imgUrl: "LEDFacial" },
-  { id: uuidv4(), imgUrl: "HomeNails" },
+const Ivideos = [
+  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/dB_ieBke6U0" },
+  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/8_Laf1DMDe4" },
+  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/NmrM6tKKLko" },
+  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/4YncgbGK9wg" },
+  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/2y3yo9a7BD4" },
+  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/NTmX7Y7vknA" },
+  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/Q3-IteS9ozs" },
 ];
 
 const Beautyzone = (props) => {
@@ -34,7 +32,6 @@ const Beautyzone = (props) => {
   const [itemsInCart, setItemsInCart] = useState([]);
   const [displayProfile, setProfile] = useState(false);
 
-  console.log(Cookies.get("jwt_user"));
   useEffect(() => {
     getCartItems();
   }, []);
@@ -44,13 +41,20 @@ const Beautyzone = (props) => {
   };
 
   const getCartItems = async () => {
-    const response = await fetch(
-      `${
-        process.env.REACT_APP_ROOT_URL
-      }/api/salon/getAllServicesFromCart/${Cookies.get("jwt_user")}`
-    );
-    const data = await response.json();
-    setItemsInCart(data.cart);
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      setItemsInCart([]);
+    } else {
+      const response = await fetch(
+        `${
+          process.env.REACT_APP_ROOT_URL
+        }/api/salon/getAllServicesFromCart/${Cookies.get("jwt_user")}`
+      );
+      const data = await response.json();
+      setItemsInCart(data.cart);
+    }
   };
 
   const getTheCategories = async () => {
@@ -89,12 +93,12 @@ const Beautyzone = (props) => {
 
   const goToSelectCategory = () => {
     const { history } = props;
-    history.push("/select-category");
+    history.push("/");
   };
 
   const gobackTo = () => {
     const { history } = props;
-    history.push("/select-category");
+    history.push("/");
   };
 
   const deleteCookie = () => {
@@ -182,31 +186,55 @@ const Beautyzone = (props) => {
               <TailSpin color={"#F4BD18"} height={70} width={70} />
             </div>
           ) : (
-            <div className="our-services">
-              <p className="our-services-head">Our Service's</p>
-              {categories.map((each) => (
-                <Link to={`/${each.category}/${each._id}`}>
-                  <button
-                    key={each._id}
-                    className="our-services-btn"
-                    id={each._id}
-                    type="button"
-                  >
-                    <img
-                      className="our-services-img"
-                      src={`${each.categoryImage}`}
-                      alt={each.categoryImage}
-                    />
-                    <p
-                      style={{ textTransform: "capitalize" }}
-                      className="our-services-name"
+            <>
+              <div className="beauty-cosmetic-head">
+                <h1>Our Service videos</h1>
+              </div>
+              <div className="beauty-cosmetic-products">
+                <div className="cosmatic-products-con">
+                  {Ivideos.map((each) => (
+                    <div className="cosmatic-videoItem">
+                      <iframe
+                        style={{ cursor: "pointer" }}
+                        className="cosmatic-productImg"
+                        width="560"
+                        height="315"
+                        src={each.videoUrl}
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen="true"
+                      ></iframe>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="our-services">
+                <p className="our-services-head">Our Service's</p>
+                {categories.map((each) => (
+                  <Link to={`/${each.category}/${each._id}`}>
+                    <button
+                      key={each._id}
+                      className="our-services-btn"
+                      id={each._id}
+                      type="button"
                     >
-                      {each.category}
-                    </p>
-                  </button>
-                </Link>
-              ))}
-            </div>
+                      <img
+                        className="our-services-img"
+                        src={`${each.categoryImage}`}
+                        alt={each.categoryImage}
+                      />
+                      <p
+                        style={{ textTransform: "capitalize" }}
+                        className="our-services-name"
+                      >
+                        {each.category}
+                      </p>
+                    </button>
+                  </Link>
+                ))}
+              </div>
+            </>
           )}
         </div>
         <div className="beauty-cosmetic-head">

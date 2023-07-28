@@ -3,6 +3,8 @@ import "./index.css";
 
 import { ToastContainer, toast } from "react-toastify";
 
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+
 import "react-toastify/dist/ReactToastify.css";
 
 import { Link, Redirect } from "react-router-dom";
@@ -53,6 +55,7 @@ const FashionDetailedView = (props) => {
   const [load, setLoad] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [button, setButton] = useState("make-abook-details");
+  const { history } = props;
   const { match } = props;
   const { params } = match;
 
@@ -80,15 +83,22 @@ const FashionDetailedView = (props) => {
   }, []);
 
   const getAllCartItems = async () => {
-    const response = await fetch(
-      `${
-        process.env.REACT_APP_ROOT_URL
-      }/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`
-    );
-    const data = await response.json();
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      setCartItems([]);
+    } else {
+      const response = await fetch(
+        `${
+          process.env.REACT_APP_ROOT_URL
+        }/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`
+      );
+      const data = await response.json();
 
-    if (response.ok) {
-      setCartItems(data.productCart);
+      if (response.ok) {
+        setCartItems(data.productCart);
+      }
     }
   };
 
@@ -113,60 +123,67 @@ const FashionDetailedView = (props) => {
   const filterItem = categories.filter((each) => each._id === params.id);
 
   const addReview = async () => {
-    if (review === "" && rating > 0) {
-      toast.info("Please add Review about the product", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    } else if (review !== "" && rating === 0) {
-      toast.info("Please add rating about the product", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    } else if (review === "" && rating === 0) {
-      toast.info("Please add Review & Rating about our product", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      window.location.href = "/login";
     } else {
-      const url = `${process.env.REACT_APP_ROOT_URL}/api/product/addProductReview`;
-      const details = {
-        userId: Cookies.get("jwt_user"),
-        productId: filterItem[0]._id,
-        rating,
-        review,
-        date: formatDate(new Date()),
-      };
-      const options = {
-        method: "POST",
+      if (review === "" && rating > 0) {
+        toast.info("Please add Review about the product", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (review !== "" && rating === 0) {
+        toast.info("Please add rating about the product", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (review === "" && rating === 0) {
+        toast.info("Please add Review & Rating about our product", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else {
+        const url = `${process.env.REACT_APP_ROOT_URL}/api/product/addProductReview`;
+        const details = {
+          userId: Cookies.get("jwt_user"),
+          productId: filterItem[0]._id,
+          rating,
+          review,
+          date: formatDate(new Date()),
+        };
+        const options = {
+          method: "POST",
 
-        headers: {
-          "Content-Type": "application/json",
-        },
+          headers: {
+            "Content-Type": "application/json",
+          },
 
-        body: JSON.stringify(details),
-      };
+          body: JSON.stringify(details),
+        };
 
-      await fetch(url, options);
-      setRating(0);
-      document.getElementById("comment-input").value = "";
-      getAllCategoryOfProducts();
-      toast.success("Review added Successfully", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
+        await fetch(url, options);
+        setRating(0);
+        document.getElementById("comment-input").value = "";
+        getAllCategoryOfProducts();
+        toast.success("Review added Successfully", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      }
     }
   };
 
@@ -201,32 +218,37 @@ const FashionDetailedView = (props) => {
   };
   const goToSelectCategory = () => {
     const { history } = props;
-    history.push("/select-category");
+    history.push("/");
   };
 
-  const addProductToCart = async () => {
-    setButton("make-abook-details1");
-    const url = `${process.env.REACT_APP_ROOT_URL}/api/product/addProductToCart`;
-    const details = {
-      userId: Cookies.get("jwt_user"),
-      productId: params.id,
-    };
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(details),
-    };
+  const addProductToCart = async (props) => {
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      window.location.href = "/login";
+    } else {
+      setButton("make-abook-details1");
+      const url = `${process.env.REACT_APP_ROOT_URL}/api/product/addProductToCart`;
+      const details = {
+        userId: Cookies.get("jwt_user"),
+        productId: params.id,
+      };
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(details),
+      };
 
-    const response = await fetch(url, options);
-    const data = await response.json();
-    if (response.ok) {
-      getAllCartItems();
-      const { history } = props;
-      history.replace(
-        `/fashioncart/fashioncategory/${params.type}/${params.name}/${params.id}`
-      );
+      const response = await fetch(url, options);
+      const data = await response.json();
+      if (response.ok) {
+        getAllCartItems();
+        console.log(params);
+        window.location.href = `/fashioncart/fashioncategory/${params.type}/${params.name}/${params.id}`;
+      }
     }
   };
 
@@ -440,4 +462,4 @@ const FashionDetailedView = (props) => {
     </div>
   );
 };
-export default FashionDetailedView;
+export default withRouter(FashionDetailedView);

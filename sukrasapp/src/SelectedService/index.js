@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Cookies from "js-cookie";
 
 import { withRouter, Link } from "react-router-dom";
@@ -28,12 +31,19 @@ const SelectedService = (props) => {
   }, []);
 
   const getCartItems = async () => {
-    const id = Cookies.get("jwt_user");
-    const response = await fetch(
-      `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllServicesFromCart/${id}`
-    );
-    const data = await response.json();
-    setItemsInCart(data.cart);
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      setItemsInCart([]);
+    } else {
+      const id = Cookies.get("jwt_user");
+      const response = await fetch(
+        `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllServicesFromCart/${id}`
+      );
+      const data = await response.json();
+      setItemsInCart(data.cart);
+    }
   };
 
   const [idSection, setId] = useState({
@@ -70,26 +80,33 @@ const SelectedService = (props) => {
   };
 
   const addToCart = async (event) => {
-    setButton(event.target.id);
-    const cartDetails = { ...idSection, serviceId: event.target.id };
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      window.location.href = "/login";
+    } else {
+      setButton(event.target.id);
+      const cartDetails = { ...idSection, serviceId: event.target.id };
 
-    const options = {
-      method: "POST",
+      const options = {
+        method: "POST",
 
-      headers: {
-        "Content-Type": "application/json",
-      },
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-      body: JSON.stringify(cartDetails),
-    };
+        body: JSON.stringify(cartDetails),
+      };
 
-    const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/addServiceToCart`;
-    const response = await fetch(url, options);
-    /*console.log(response)*/
-    if (response.ok === true) {
-      getCartItems();
-      const { history } = props;
-      history.replace(`/cart/${arr.category}/${arr.id}`);
+      const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/addServiceToCart`;
+      const response = await fetch(url, options);
+      /*console.log(response)*/
+      if (response.ok === true) {
+        getCartItems();
+        const { history } = props;
+        history.replace(`/cart/${arr.category}/${arr.id}`);
+      }
     }
   };
 
@@ -106,7 +123,7 @@ const SelectedService = (props) => {
   };
   const goToSelectCategory = () => {
     const { history } = props;
-    history.push("/select-category");
+    history.push("/");
   };
 
   return loading === pageStage.loading ? (

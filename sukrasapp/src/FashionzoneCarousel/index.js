@@ -16,8 +16,9 @@ const FashionZoneCarousel = () => {
       `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllBanners`
     );
     const data = await response.json();
+    console.log(data);
     if (response.ok === true) {
-      const bannersDestructure = data.banners.map((each) => ({
+      const bannersDestructure = data.banners.filter((each) => ({
         id: each._id,
         image: each.image,
         offer: each.offer,
@@ -25,7 +26,10 @@ const FashionZoneCarousel = () => {
         link: each.link,
         btn: "Shop Now   ❯",
       }));
-      setBanners(bannersDestructure);
+      const filterdBanners = bannersDestructure.filter(
+        (each) => each.category === "product"
+      );
+      setBanners(filterdBanners);
     }
   };
 
@@ -69,11 +73,6 @@ const FashionZoneCarousel = () => {
                 backgroundImage: `url(${each.image})`,
               }}
             >
-              <h1 className="offer">{each.offer}</h1>
-              <p className="service">{each.text}</p>
-              <button className="btn" type="button">
-                {each.btn}
-              </button>
               <div className="shadow"></div>
             </div>
           ))}

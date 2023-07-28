@@ -38,7 +38,7 @@ const EventHome = (props) => {
 
   const gobackTo = () => {
     const { history } = props;
-    history.push("/select-category");
+    history.push("/");
   };
 
   const deleteCookie = () => {
@@ -53,7 +53,7 @@ const EventHome = (props) => {
 
   const goToSelectCategory = () => {
     const { history } = props;
-    history.push("/select-category");
+    history.push("/");
   };
 
   /*console.log(eventServices)*/ return load ? (

@@ -42,25 +42,16 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Sukras} />
-        <Protectedroute
-          exact
-          path="/select-category"
-          component={SelectCategory}
-        />
-        <Protectedroute exact path="/beautyzone" component={Beautyzone} />
-        <Protectedroute exact path="/fashionzone" component={FashionZone} />
-        <Protectedroute
-          exact
-          path="/eventManagement"
-          component={EventManagement}
-        />
-        <Protectedroute
+        <Route exact path="/" component={SelectCategory} />
+        <Route exact path="/beautyzone" component={Beautyzone} />
+        <Route exact path="/fashionzone" component={FashionZone} />
+        <Route exact path="/eventManagement" component={EventManagement} />
+        <Route
           exact
           path="/fashioncategory/:category"
           component={FashionCategory}
         />
-        <Protectedroute
+        <Route
           exact
           path="/fashioncategory/detailedview/:type/:name/:id"
           component={FashionDetailedView}
@@ -82,16 +73,8 @@ function App() {
           path="/cart/:zone/:id/:details"
           component={Cart}
         />
-        <Protectedroute
-          exact
-          path="/:category/:id"
-          component={SelectedService}
-        />
-        <Protectedroute
-          exact
-          path="/:category/:id/:details"
-          component={Detailedview}
-        />
+        <Route exact path="/:category/:id" component={SelectedService} />
+        <Route exact path="/:category/:id/:details" component={Detailedview} />
         <Protectedroute
           exact
           path="/succefullyBooked"
@@ -109,6 +92,7 @@ function App() {
           component={MyOrders}
         />
         <Protectedroute exact path="/admindashboard" component={Dashboard} />
+        <Route exact path="/login" component={Sukras} />
         <NotFound />
       </Switch>
     </BrowserRouter>

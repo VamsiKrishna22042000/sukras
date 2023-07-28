@@ -55,12 +55,19 @@ const DetailedView = (props) => {
   }, []);
 
   const getCartItems = async () => {
-    const id = Cookies.get("jwt_user");
-    const response = await fetch(
-      `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllServicesFromCart/${id}`
-    );
-    const data = await response.json();
-    setItemsInCart(data.cart);
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      setItemsInCart([]);
+    } else {
+      const id = Cookies.get("jwt_user");
+      const response = await fetch(
+        `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllServicesFromCart/${id}`
+      );
+      const data = await response.json();
+      setItemsInCart(data.cart);
+    }
   };
 
   const { match } = props;
@@ -111,7 +118,7 @@ const DetailedView = (props) => {
 
   const goToSelectCategory = () => {
     const { history } = props;
-    history.push("/select-category");
+    history.push("/");
   };
 
   const formatDate = (date) => {
@@ -119,71 +126,78 @@ const DetailedView = (props) => {
     return new Intl.DateTimeFormat("en-US", options).format(date);
   };
 
-  const addCommentButton = async () => {
-    if (comment === "" && rating > 0) {
-      toast.info("Please add Review about our service", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    } else if (comment !== "" && rating === 0) {
-      toast.info("Please rate our service", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    } else if (comment === "" && rating === 0) {
-      toast.info("Please add Review & Rating about our service", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
+  const addCommentButton = async (props) => {
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      window.location.href = "/login";
     } else {
-      const newReview = {
-        ...idSection,
-        review: comment,
-        rating,
-        date: formatDate(new Date()),
-      };
-
-      /*console.log(newReview)*/
-
-      const url = `${process.env.REACT_APP_ROOT_URL}/api/user/addServiceReview`;
-
-      const options = {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
-
-          Authorization: "Bearer " + Cookies.get("jwt_token"),
-        },
-
-        body: JSON.stringify(newReview),
-      };
-
-      const response = await fetch(url, options);
-      if (response.ok) {
-        setComment("");
-        setRating(0);
-        document.getElementById("comment-input").value = "";
-        getServices();
-        toast.success("Review added Successfully", {
+      if (comment === "" && rating > 0) {
+        toast.info("Please add Review about our service", {
           position: "top-center",
           autoClose: 2000,
           pauseOnHover: true,
           closeOnClick: true,
           theme: "colored",
         });
-      }
+      } else if (comment !== "" && rating === 0) {
+        toast.info("Please rate our service", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (comment === "" && rating === 0) {
+        toast.info("Please add Review & Rating about our service", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else {
+        const newReview = {
+          ...idSection,
+          review: comment,
+          rating,
+          date: formatDate(new Date()),
+        };
 
-      /*console.log(response)*/
+        /*console.log(newReview)*/
+
+        const url = `${process.env.REACT_APP_ROOT_URL}/api/user/addServiceReview`;
+
+        const options = {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json",
+
+            Authorization: "Bearer " + Cookies.get("jwt_token"),
+          },
+
+          body: JSON.stringify(newReview),
+        };
+
+        const response = await fetch(url, options);
+        if (response.ok) {
+          setComment("");
+          setRating(0);
+          document.getElementById("comment-input").value = "";
+          getServices();
+          toast.success("Review added Successfully", {
+            position: "top-center",
+            autoClose: 2000,
+            pauseOnHover: true,
+            closeOnClick: true,
+            theme: "colored",
+          });
+        }
+
+        /*console.log(response)*/
+      }
     }
   };
 
@@ -230,26 +244,35 @@ const DetailedView = (props) => {
   };
 
   const addToCart = async () => {
-    setButtonColor("make-abook-details1");
-    const cartDetails = { ...idSection };
-
-    const options = {
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify(cartDetails),
-    };
-
-    const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/addServiceToCart`;
-    const response = await fetch(url, options);
-    if (response.ok === true) {
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      window.location.href = "/login";
+    } else {
       setButtonColor("make-abook-details1");
-      getCartItems();
-      const { history } = props;
-      history.replace(`/cart/${detailsarr.category}/${detailsarr.id}/details`);
+      const cartDetails = { ...idSection };
+
+      const options = {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify(cartDetails),
+      };
+
+      const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/addServiceToCart`;
+      const response = await fetch(url, options);
+      if (response.ok === true) {
+        setButtonColor("make-abook-details1");
+        getCartItems();
+        const { history } = props;
+        history.replace(
+          `/cart/${detailsarr.category}/${detailsarr.id}/details`
+        );
+      }
     }
   };
 

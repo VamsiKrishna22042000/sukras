@@ -54,15 +54,16 @@
     align-items: center;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
-    padding-left: 46%;
-    padding-right: 50%;
+    padding-left: 45%;
+    padding-right: 51%;
     height: 100vh;
-    background-size: 100% 200%;
-    background-position: 40% 32%;
+    width: 100vw;
+    background-size: 100% 100%;
+    background-position: center top;
     background-repeat: no-repeat;
     border-style: solid;
-    border-width: 2vw;
     border-color: #fff;
+    border-width: 2vw;
     border-bottom: hidden;
     border-radius: 70px;
   }
@@ -176,8 +177,8 @@
     padding-left: 45.8%;
     padding-right: 48.8%;
     height: 30vh;
-    background-size: 100% 200%;
-    background-position: 25% 35%;
+    background-size: 100% 100%;
+    background-position: center top;
     background-repeat: no-repeat;
     border-style: solid;
     border-color: #fff;

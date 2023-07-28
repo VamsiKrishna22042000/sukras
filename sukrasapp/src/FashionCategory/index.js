@@ -35,19 +35,26 @@ const FashionCategory = (props) => {
 
   const goToSelectCategory = () => {
     const { history } = props;
-    history.push("/select-category");
+    history.push("/");
   };
 
   const getAllCartItems = async () => {
-    const response = await fetch(
-      `${
-        process.env.REACT_APP_ROOT_URL
-      }/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`
-    );
-    const data = await response.json();
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      setCartItems([]);
+    } else {
+      const response = await fetch(
+        `${
+          process.env.REACT_APP_ROOT_URL
+        }/api/product/getAllProductFromCart/${Cookies.get("jwt_user")}`
+      );
+      const data = await response.json();
 
-    if (response.ok) {
-      setCartItems(data.productCart);
+      if (response.ok) {
+        setCartItems(data.productCart);
+      }
     }
   };
 

@@ -29,7 +29,7 @@ const Phonenumber = (props) => {
   const getCookiesData = (data) => {
     Cookies.set("jwt_token", data.token, { expires: 30 });
     Cookies.set("jwt_user", data.userId, { expires: 30 });
-    history.push("/select-category");
+    history.push("/");
   };
 
   const sendNumber = (value) => {

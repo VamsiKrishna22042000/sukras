@@ -56,100 +56,106 @@ const EventBooking = (props) => {
 
   const booking = async (event) => {
     event.preventDefault();
-
-    if (book.name === "") {
-      toast.info("Please Enter Name", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    } else if (book.eventname === "") {
-      toast.info("Please Enter Event Name", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    } else if (book.category === "") {
-      toast.info("Please Enter Category", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    } else if (book.date === "") {
-      toast.info("Please Enter Date", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    } else if (book.guest === "") {
-      toast.info("Enter No of Guest", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    } else if (book.state === "") {
-      toast.info("Please Enter State", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
-    } else if (book.country === "") {
-      toast.info("Please Enter Country", {
-        position: "top-center",
-        autoClose: 2000,
-        pauseOnHover: true,
-        closeOnClick: true,
-        theme: "colored",
-      });
+    if (
+      Cookies.get("jwt_user") === undefined &&
+      Cookies.get("jwt_token") === undefined
+    ) {
+      window.location.href = "/login";
     } else {
-      document.getElementById("name").value = "";
-      document.getElementById("eventname").value = "";
-      document.getElementById("category").value = "";
-      document.getElementById("date").value = "";
-      document.getElementById("guest").value = "";
-      document.getElementById("state").value = "";
-      document.getElementById("country").value = "";
+      if (book.name === "") {
+        toast.info("Please Enter Name", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (book.eventname === "") {
+        toast.info("Please Enter Event Name", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (book.category === "") {
+        toast.info("Please Enter Category", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (book.date === "") {
+        toast.info("Please Enter Date", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (book.guest === "") {
+        toast.info("Enter No of Guest", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (book.state === "") {
+        toast.info("Please Enter State", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (book.country === "") {
+        toast.info("Please Enter Country", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else {
+        document.getElementById("name").value = "";
+        document.getElementById("eventname").value = "";
+        document.getElementById("category").value = "";
+        document.getElementById("date").value = "";
+        document.getElementById("guest").value = "";
+        document.getElementById("state").value = "";
+        document.getElementById("country").value = "";
 
-      const url = `${process.env.REACT_APP_ROOT_URL}/api/user/bookEvent`;
-      const details = {
-        userId: Cookies.get("jwt_user"),
-        eventId: book.eventId,
-        yourName: book.name,
-        eventName: book.eventname,
-        categories: book.category,
-        date: book.date,
-        NumberOfGuest: book.guest,
-        state: book.state,
-        country: book.country,
-      };
-      console.log(details);
-      const options = {
-        method: "POST",
+        const url = `${process.env.REACT_APP_ROOT_URL}/api/user/bookEvent`;
+        const details = {
+          userId: Cookies.get("jwt_user"),
+          eventId: book.eventId,
+          yourName: book.name,
+          eventName: book.eventname,
+          categories: book.category,
+          date: book.date,
+          NumberOfGuest: book.guest,
+          state: book.state,
+          country: book.country,
+        };
+        console.log(details);
+        const options = {
+          method: "POST",
 
-        headers: {
-          "Content-Type": "application/json",
-        },
+          headers: {
+            "Content-Type": "application/json",
+          },
 
-        body: JSON.stringify(details),
-      };
+          body: JSON.stringify(details),
+        };
 
-      const response = await fetch(url, options);
+        const response = await fetch(url, options);
 
-      if (response.ok) {
-        const { history } = props;
-        history.push("/successEvent");
+        if (response.ok) {
+          const { history } = props;
+          history.push("/successEvent");
+        }
       }
     }
   };
@@ -162,7 +168,7 @@ const EventBooking = (props) => {
 
   const goToSelectCategory = () => {
     const { history } = props;
-    history.push("/select-category");
+    history.push("/");
   };
 
   return (
