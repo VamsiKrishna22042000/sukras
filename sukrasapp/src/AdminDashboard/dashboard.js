@@ -1,6 +1,9 @@
 import "./index.css";
 
-import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  Redirect,
+  withRouter,
+} from "react-router-dom/cjs/react-router-dom.min";
 
 const options = [
   {
@@ -46,6 +49,9 @@ const DashboardMain = (props) => {
         className="main-head-dashboard"
         src="sukraslogoadmin.png"
         alt="Dashboardlogo"
+        onClick={() => {
+          window.location.href = "/";
+        }}
       />
       <div className="dash-board-options">
         <div className="option-dashboard1">

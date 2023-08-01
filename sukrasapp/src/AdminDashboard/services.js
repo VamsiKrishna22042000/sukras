@@ -117,7 +117,7 @@ const Services = () => {
     };
 
     const updatingServices = async () => {
-      setLoad(false);
+      setLoad(true);
       if (dataToBe.service === "") {
         toast.error("Please Enter your service", {
           position: "top-center",
@@ -179,6 +179,7 @@ const Services = () => {
           (each) => each.category
         );
         if (filterdCategory.includes(dataToBe.category)) {
+          setLoad(false);
           const fd = new FormData();
 
           for (var key in dataToBe) {
@@ -222,6 +223,7 @@ const Services = () => {
               theme: "colored",
             });
           } else {
+            setLoad(false);
             const fd = new FormData();
 
             for (var key in dataToBe) {

@@ -339,112 +339,118 @@ const Customers = () => {
   return (
     <>
       {showAddCustomer && <ModalCustomer />}
-      <div className="dashboard-component">
-        <button
-          onClick={() => {
-            setAddCustomer(true);
-          }}
-          className="add-service"
-          type="button"
-        >
-          + Add Customer
-        </button>
-        <div className="avialable-products-head">
-          <div className="product-image">
-            <p className="product-heads"></p>
-          </div>
-          <div className="product-name">
-            <p className="product-heads">Name</p>
-          </div>
-          <div className="user-Number">
-            <p className="product-heads">Mobile Number</p>
-          </div>
-          <div className="user-email">
-            <p className="product-heads">Email</p>
-          </div>
-          <div className="user-Id">
-            <p className="product-heads">User Id</p>
-          </div>
-          <div className="product-action">
-            <p className="product-heads">Action</p>
-            <img src="./updown.png" className="updown" alt="updown" />
-          </div>
-        </div>
-        {customerData.map((each) => (
+      {customerData.length !== 0 ? (
+        <div className="dashboard-component">
+          <button
+            onClick={() => {
+              setAddCustomer(true);
+            }}
+            className="add-service"
+            type="button"
+          >
+            + Add Customer
+          </button>
           <div className="avialable-products-head">
             <div className="product-image">
-              <img
-                style={{ height: 20, width: 22 }}
-                className="productimage"
-                src="/user.png"
-                alt="serviceimage"
-              />
+              <p className="product-heads"></p>
             </div>
             <div className="product-name">
-              <p
-                style={{ fontWeight: 400, color: "#000000" }}
-                className="product-heads"
-              >
-                {each.name}
-              </p>
+              <p className="product-heads">Name</p>
             </div>
             <div className="user-Number">
-              <p
-                style={{ fontWeight: 400, color: "#000000" }}
-                className="product-heads"
-              >
-                {each.mobileNumber}
-              </p>
+              <p className="product-heads">Mobile Number</p>
             </div>
             <div className="user-email">
-              <p
-                style={{ fontWeight: 400, color: "#000000" }}
-                className="product-heads"
-              >
-                {each.email}
-              </p>
+              <p className="product-heads">Email</p>
             </div>
             <div className="user-Id">
-              <p
-                style={{ fontWeight: 400, color: "#000000" }}
-                className="product-heads"
-              >
-                {each._id}
-              </p>
+              <p className="product-heads">User Id</p>
             </div>
             <div className="product-action">
-              <div className="actions-con">
-                <button
-                  onClick={() => {
-                    setEditCustomer(each._id);
-                  }}
-                  className="actions-button"
-                >
-                  <img
-                    id={each._id}
-                    className="actions-img"
-                    src="./edit.png"
-                    alt="edit"
-                  />
-                </button>
-                <button
-                  onClick={() => {
-                    setDeleteCustomer(each._id);
-                  }}
-                  type="button"
-                  className="actions-button"
-                >
-                  <img
-                    className="actions-img"
-                    src="./delete-fill.png"
-                    alt="delete"
-                  />
-                </button>
-              </div>
+              <p className="product-heads">Action</p>
+              <img src="./updown.png" className="updown" alt="updown" />
             </div>
           </div>
-        ))}
-      </div>
+          {customerData.map((each) => (
+            <div className="avialable-products-head">
+              <div className="product-image">
+                <img
+                  style={{ height: 20, width: 22 }}
+                  className="productimage"
+                  src="/user.png"
+                  alt="serviceimage"
+                />
+              </div>
+              <div className="product-name">
+                <p
+                  style={{ fontWeight: 400, color: "#000000" }}
+                  className="product-heads"
+                >
+                  {each.name}
+                </p>
+              </div>
+              <div className="user-Number">
+                <p
+                  style={{ fontWeight: 400, color: "#000000" }}
+                  className="product-heads"
+                >
+                  {each.mobileNumber}
+                </p>
+              </div>
+              <div className="user-email">
+                <p
+                  style={{ fontWeight: 400, color: "#000000" }}
+                  className="product-heads"
+                >
+                  {each.email}
+                </p>
+              </div>
+              <div className="user-Id">
+                <p
+                  style={{ fontWeight: 400, color: "#000000" }}
+                  className="product-heads"
+                >
+                  {each._id}
+                </p>
+              </div>
+              <div className="product-action">
+                <div className="actions-con">
+                  <button
+                    onClick={() => {
+                      setEditCustomer(each._id);
+                    }}
+                    className="actions-button"
+                  >
+                    <img
+                      id={each._id}
+                      className="actions-img"
+                      src="./edit.png"
+                      alt="edit"
+                    />
+                  </button>
+                  <button
+                    onClick={() => {
+                      setDeleteCustomer(each._id);
+                    }}
+                    type="button"
+                    className="actions-button"
+                  >
+                    <img
+                      className="actions-img"
+                      src="./delete-fill.png"
+                      alt="delete"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="loader-spinner-admin">
+          <TailSpin color={"#F4BD18"} height={70} width={70} />
+        </div>
+      )}
       {editCustomer !== "" && <ModalEditCustomer />}
       {deleteCustomer !== "" && <ModalDeleteCustomer />}
     </>
