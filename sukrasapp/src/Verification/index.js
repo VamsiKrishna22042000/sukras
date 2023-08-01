@@ -123,7 +123,7 @@ const Verification = (props) => {
         console.log(data);
         setOTP((prevOTP) => ({ ...prevOTP, OTP: "" }));
         Cookies.set("jwt_token", data.token, { expires: 30 });
-        Cookies.set("jwt_user", data.data[0]._id);
+        Cookies.set("jwt_user", data.data[0]._id, { expires: 30 });
         toast.success(`Logged In`, {
           position: "top-center",
           autoClose: 2000,

@@ -182,62 +182,65 @@ const SelectedService = (props) => {
         </div>
       </div>
       <div className="selected-body">
-        {servicesarr.map((each) => (
-          <div className="selected-body-total">
-            <div className="selected-body-content">
-              <h1
-                style={{ textTransform: "capitalize" }}
-                className="selected-hea"
-              >
-                {each.service}
-              </h1>
-              <div className="selected-rating-con">
-                <p className="selected-rating">{each.rating}</p>
-                <img
-                  className="rating-star"
-                  src="/ratingstar.png"
-                  alt="rating"
-                />
-                <p className="selected-rating">
-                  ({each.reviews.length}k reviews)
-                </p>
+        {servicesarr.map(
+          (each) =>
+            each.active && (
+              <div className="selected-body-total">
+                <div className="selected-body-content">
+                  <h1
+                    style={{ textTransform: "capitalize" }}
+                    className="selected-hea"
+                  >
+                    {each.service}
+                  </h1>
+                  <div className="selected-rating-con">
+                    <p className="selected-rating">{each.rating}</p>
+                    <img
+                      className="rating-star"
+                      src="/ratingstar.png"
+                      alt="rating"
+                    />
+                    <p className="selected-rating">
+                      ({each.reviews.length}k reviews)
+                    </p>
+                  </div>
+                  <div className="selected-rating-con">
+                    <p className="selected-rating">
+                      <span className="selected-price">₹ </span>
+                      <span className="selected-price-icon">{each.price}</span>
+                    </p>
+                    <p className="selected-rating">• {each.time} mins</p>
+                  </div>
+                  <p>• {each.description}</p>
+                  <p>• Follow this up with styling look of your choice</p>
+                  <p>
+                    • A quick trim to remove split ends while minimally reducing
+                    hair length
+                  </p>
+                  <Link to={`/${each.service}/${arr.id}/details`}>
+                    <button className="view-details" type="button">
+                      View Details
+                    </button>
+                  </Link>
+                </div>
+                <div className="selected-body-book">
+                  <img
+                    className="selected-image"
+                    src={each.image[0]}
+                    alt={arr.category}
+                  />
+                  <button
+                    id={each._id}
+                    onClick={addToCart}
+                    className={button === each._id ? "book-btn1" : "book-btn"}
+                    type="button"
+                  >
+                    Add to <BsHandbag />
+                  </button>
+                </div>
               </div>
-              <div className="selected-rating-con">
-                <p className="selected-rating">
-                  <span className="selected-price">₹ </span>
-                  <span className="selected-price-icon">{each.price}</span>
-                </p>
-                <p className="selected-rating">• {each.time} mins</p>
-              </div>
-              <p>• {each.description}</p>
-              <p>• Follow this up with styling look of your choice</p>
-              <p>
-                • A quick trim to remove split ends while minimally reducing
-                hair length
-              </p>
-              <Link to={`/${each.service}/${arr.id}/details`}>
-                <button className="view-details" type="button">
-                  View Details
-                </button>
-              </Link>
-            </div>
-            <div className="selected-body-book">
-              <img
-                className="selected-image"
-                src={each.image[0]}
-                alt={arr.category}
-              />
-              <button
-                id={each._id}
-                onClick={addToCart}
-                className={button === each._id ? "book-btn1" : "book-btn"}
-                type="button"
-              >
-                Add to <BsHandbag />
-              </button>
-            </div>
-          </div>
-        ))}
+            )
+        )}
       </div>
     </div>
   );

@@ -13,6 +13,15 @@
   padding-bottom: 5%;
 }
 
+.spinner-edit {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (min-width: 992px) {
   .modal-boxcon {
     position: fixed;
@@ -27,9 +36,9 @@
 
   .modal-box {
     position: fixed;
-    height: 70vh;
-    width: 40vw;
-    top: 11%;
+    height: 75vh;
+    width: 45vw;
+    top: 9%;
     left: 28%;
     background-color: #fff;
     z-index: 2;
@@ -61,6 +70,42 @@
     font-family: Arial, Helvetica, sans-serif;
     color: #4e4e4e;
     font-size: 1vw;
+  }
+  .modal-Customer {
+    position: fixed;
+    height: auto;
+    width: 30vw;
+    top: 30%;
+    left: 35%;
+    background-color: #fff;
+    z-index: 2;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4e4e4e;
+    font-size: 1vw;
+  }
+  .modal-delete {
+    position: fixed;
+    height: auto;
+    width: auto;
+    top: 35%;
+    left: 40%;
+    background-color: #fff;
+    z-index: 2;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4e4e4e;
+    font-size: 3vw;
   }
   .admin-total-container {
     height: 100vh;
@@ -313,6 +358,17 @@
     align-items: center;
     margin: 1%;
   }
+  .product-checkbox1 {
+    width: 5%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+    color: #8d8d8f;
+    width: 0px;
+  }
 
   .product-image {
     width: 10%;
@@ -326,7 +382,7 @@
     color: #8d8d8f;
   }
   .product-name {
-    width: 15%;
+    width: 10.5%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -338,7 +394,7 @@
   }
 
   .product-toggle {
-    width: 15%;
+    width: 16%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -350,7 +406,7 @@
   }
 
   .product-toggle1 {
-    width: 13%;
+    width: 16%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -362,11 +418,46 @@
   }
 
   .product-category {
-    width: 15%;
+    width: 10%;
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
+    margin: 1%;
+    font-size: 1.2vw;
+    color: #8d8d8f;
+  }
+
+  .user-Number {
+    width: 12%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1%;
+    font-size: 1.2vw;
+    color: #8d8d8f;
+  }
+
+  .user-email {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1%;
+    font-size: 1.2vw;
+    color: #8d8d8f;
+  }
+  .user-Id {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     margin: 1%;
     font-size: 1.2vw;
@@ -416,9 +507,29 @@
     align-items: center;
     transition: all 1.5s ease-in-out;
   }
+  .toggle-con4 {
+    height: 30%;
+    width: 32%;
+    border-radius: 30px;
+    background-color: #dfdfdf;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 1.5s ease-in-out;
+  }
   .toggle-con2 {
     height: 30%;
     width: 30%;
+    border-radius: 30px;
+    background-color: #8ae07b;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 1.5s ease-in-out;
+  }
+  .toggle-con3 {
+    height: 30%;
+    width: 26%;
     border-radius: 30px;
     background-color: #8ae07b;
     display: flex;
@@ -536,8 +647,9 @@
 
   .modal-box2 {
     position: absolute;
+    width: 40%;
     top: 16%;
-    right: 5%;
+    right: 3%;
     height: auto;
     border-style: solid;
     padding: 2%;

@@ -16,7 +16,7 @@ const Events = () => {
 
   const getAllEventsServices = async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_ROOT_URL}/api//admin/getAllEventServices`
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllEventServices`
     );
     const data = await response.json();
     if (response.ok) {
@@ -34,21 +34,39 @@ const Events = () => {
   };
 
   const Modal = () => {
-    const [dataTobeSent, setData] = useState({ name: "", photos: "" });
+    const [dataTobeSent, setData] = useState({ name: "", image: "" });
 
     const addingEvent = (event) => {
       if (event.target.id === "service-name-admin") {
         setData((prevData) => ({ ...prevData, name: event.target.value }));
       } else if (event.target.id === "file") {
-        setData((prevData) => ({ ...prevData, photos: "" }));
+        setData((prevData) => ({ ...prevData, image: event.target.files[0] }));
       }
     };
 
-    const updatingEvent = () => {
+    const updatingEvent = async () => {
       const fd = new FormData();
 
       for (var key in dataTobeSent) {
-        fd.append(`${key}`);
+        fd.append(`${key}`, dataTobeSent[key]);
+      }
+
+      try {
+        const reqConfigure = {
+          method: "POST",
+          body: fd,
+        };
+
+        const res = await fetch(
+          `${process.env.REACT_APP_ROOT_URL}/api/admin/addEventServices`,
+          reqConfigure
+        );
+        const data = await res.json();
+        if (res.ok) {
+          console.log(data);
+        }
+      } catch (err) {
+        console.log(err);
       }
     };
 
@@ -72,7 +90,7 @@ const Events = () => {
           <div className="service-button-admin-con-event">
             <button
               className="service-button-admin"
-              onClick={settingModal}
+              onClick={updatingEvent}
               type="button"
             >
               Add

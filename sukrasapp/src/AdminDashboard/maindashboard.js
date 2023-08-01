@@ -19,13 +19,12 @@ const Maindashboard = () => {
     const data = await response.json();
 
     if (response.ok) {
-      console.log(data.user);
       setDashboardData(data.user);
       setLoad(true);
     }
   };
 
-  /*console.log(dashboarddata);*/
+  console.log(dashboarddata);
   return load ? (
     <div className="dashboard-component">
       <div className="dashboard-data">
@@ -39,7 +38,7 @@ const Maindashboard = () => {
           </div>
           <div className="dashboard-data-numbers">
             <h1 style={{ margin: 0, color: "#4e4e4e" }}>
-              {dashboarddata[1].totalOrders}
+              {dashboarddata[2].totalProductOrders}
             </h1>
             <p style={{ margin: 0, paddingLeft: 1 }}>Orders</p>
           </div>
@@ -53,7 +52,9 @@ const Maindashboard = () => {
             />
           </div>
           <div className="dashboard-data-numbers">
-            <h1 style={{ margin: 0, color: "#4e4e4e" }}>0</h1>
+            <h1 style={{ margin: 0, color: "#4e4e4e" }}>
+              {dashboarddata[1].totalOrders}
+            </h1>
             <p style={{ margin: 0, paddingLeft: 1 }}>Appointments</p>
           </div>
         </div>
@@ -82,7 +83,7 @@ const Maindashboard = () => {
           </div>
           <div className="dashboard-data-numbers">
             <h1 style={{ margin: 0, color: "#4e4e4e" }}>
-              {dashboarddata[4].totalServices}
+              {dashboarddata[6].totalServices}
             </h1>
             <p style={{ margin: 0, paddingLeft: 1 }}>Services</p>
           </div>
@@ -97,7 +98,7 @@ const Maindashboard = () => {
           </div>
           <div className="dashboard-data-numbers">
             <h1 style={{ margin: 0, color: "#4e4e4e" }}>
-              {dashboarddata[2].totalProducts}
+              {dashboarddata[4].totalProducts}
             </h1>
             <p style={{ margin: 0, paddingLeft: 1 }}>Products</p>
           </div>
@@ -112,7 +113,7 @@ const Maindashboard = () => {
           </div>
           <div className="dashboard-data-numbers">
             <h1 style={{ margin: 0, color: "#4e4e4e" }}>
-              {dashboarddata[3].totalEvents}
+              {dashboarddata[5].totalEvents}
             </h1>
             <p style={{ margin: 0, paddingLeft: 1 }}>Events</p>
           </div>

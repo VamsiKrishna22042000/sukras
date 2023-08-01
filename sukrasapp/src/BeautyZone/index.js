@@ -14,23 +14,29 @@ import { v4 as uuidv4 } from "uuid";
 
 import { Link } from "react-router-dom";
 
-const Ivideos = [
-  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/dB_ieBke6U0" },
-  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/8_Laf1DMDe4" },
-  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/NmrM6tKKLko" },
-  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/4YncgbGK9wg" },
-  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/2y3yo9a7BD4" },
-  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/NTmX7Y7vknA" },
-  { id: uuidv4(), videoUrl: "https://www.youtube.com/embed/Q3-IteS9ozs" },
-];
-
 const Beautyzone = (props) => {
   const [categories, setCategories] = useState("");
   const [load, setLoad] = useState(false);
-  const [categoryImg, setCategoryImg] = useState("");
+
+  const [videos, setVideos] = useState([]);
+
   const [products, setallProducts] = useState([]);
   const [itemsInCart, setItemsInCart] = useState([]);
   const [displayProfile, setProfile] = useState(false);
+
+  useEffect(() => {
+    getVideos();
+  }, []);
+
+  const getVideos = async () => {
+    const response = await fetch(
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/videosApi`
+    );
+    const data = await response.json();
+    if (response.ok) {
+      setVideos(data.videos);
+    }
+  };
 
   useEffect(() => {
     getCartItems();
@@ -68,9 +74,7 @@ const Beautyzone = (props) => {
       setLoad(true);
       setCategories(data.salons[0].categories);
       /*console.log(data.salons[0].categories)*/
-      const service = data.salons[0].categories.map((each) => each.services);
-      const service2 = service.map((each) => each[0].image[0]);
-      setCategoryImg(service2);
+
       /*console.log(service)*/
     }
   };
@@ -192,14 +196,14 @@ const Beautyzone = (props) => {
               </div>
               <div className="beauty-cosmetic-products">
                 <div className="cosmatic-products-con">
-                  {Ivideos.map((each) => (
+                  {videos.map((each) => (
                     <div className="cosmatic-videoItem">
                       <iframe
                         style={{ cursor: "pointer" }}
                         className="cosmatic-productImg"
                         width="560"
                         height="315"
-                        src={each.videoUrl}
+                        src={each.link}
                         title="YouTube video player"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
