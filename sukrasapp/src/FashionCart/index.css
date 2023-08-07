@@ -158,6 +158,17 @@
   .fashion-proceed-button-disable {
     display: none;
   }
+  .fashion-address {
+    height: 30vh;
+    width: 90%;
+    margin-left: -5%;
+    margin-top: -5%;
+    margin-bottom: 5%;
+  }
+  .input-address {
+    height: 80%;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 844px) {
@@ -295,5 +306,19 @@
 
   .fashion-proceed-button-disable {
     display: none;
+  }
+  .fashion-address {
+    height: 30vh;
+    width: 90%;
+    margin-left: -2%;
+    margin-top: -5%;
+    margin-bottom: 10%;
+  }
+  .input-address {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 }

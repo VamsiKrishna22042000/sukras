@@ -1,17 +1,24 @@
 import "./index.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { TailSpin } from "react-loader-spinner";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Mode = (props) => {
   const [showType, setShowType] = useState(true);
   const [showCategory, setShowCategory] = useState(true);
 
+  const [addProductLoader, setProductLoader] = useState(false);
+
   const {
     availableTypes,
     availableCategories,
-    selectedType,
     settingType,
     settinMode,
+    getAllProducts,
   } = props;
 
   const [dataToBe, setData] = useState({
@@ -20,6 +27,8 @@ const Mode = (props) => {
     category: "",
     price: "",
     about: "",
+    photos: "",
+    image: "",
   });
 
   const addService = (event) => {
@@ -39,37 +48,163 @@ const Mode = (props) => {
         about: event.target.value,
       }));
     } else if (event.target.id === "file") {
-      setData((prevData) => ({ ...prevData, photos: event.target.value }));
+      setData((prevData) => ({ ...prevData, photos: event.target.files[0] }));
+    } else if (event.target.id === "file-cat") {
+      setData((prevData) => ({ ...prevData, image: event.target.files[0] }));
     }
   };
 
   const updateToProductList = async () => {
-    const fd = new FormData();
+    if (dataToBe.name === "") {
+      toast.error("Please Enter Product Title", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    } else if (dataToBe.type === "") {
+      toast.error("Please Select Type or Add New Type", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    } else if (dataToBe.category === "") {
+      toast.error("Please Select Category or Add New Category", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    } else if (dataToBe.price === "") {
+      toast.error("Please Enter Price", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    } else if (dataToBe.about === "") {
+      toast.error("Please Describe About Product", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    } else if (dataToBe.photos === "") {
+      toast.error("Please Upload Image for the Product", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
+    } else if (!availableTypes.includes(dataToBe.type)) {
+      if (dataToBe.image === "") {
+        toast.error("Please Upload New Image for Type", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else {
+        console.log(dataToBe);
+        setProductLoader(true);
+        const fd = new FormData();
+        const fd2 = new FormData();
 
-    for (var key in dataToBe) {
-      fd.append(`${key}`, dataToBe[key]);
-    }
+        for (var key in dataToBe) {
+          fd.append(`${key}`, dataToBe[key]);
+        }
 
-    const url = `${process.env.REACT_APP_ROOT_URL}  /admin/addProduct`;
+        for (var key in dataToBe) {
+          if (key === "image") {
+            fd2.append(`${key}`, dataToBe[key]);
+          }
+          if (key === "type") {
+            fd2.append(`${key}`, dataToBe[key]);
+          }
+          if (key === "category") {
+            fd2.append(`${key}`, dataToBe[key]);
+          }
+        }
 
-    const reqConfigure = {
-      method: "POST",
+        const url = `${process.env.REACT_APP_ROOT_URL}/api/admin/addProduct`;
+        const url2 = `${process.env.REACT_APP_ROOT_URL}/api/admin/addCategory`;
 
-      headers: { "Content-Type": "application/json" },
+        const reqConfigure = {
+          method: "POST",
+          body: fd,
+        };
 
-      body: JSON.stringify(Object.fromEntries(fd.entries())),
-    };
+        const options = {
+          method: "POST",
+          body: fd2,
+        };
 
-    const response = await fetch(url, reqConfigure);
-    const data = await response.json();
+        const response = await fetch(url, reqConfigure);
 
-    if (response.ok) {
-      console.log(data);
+        const res = await fetch(url2, options);
+
+        if (response.ok && res.ok) {
+          setProductLoader(false);
+          getAllProducts();
+          settinMode();
+        }
+      }
+    } else {
+      setProductLoader(true);
+      const fd = new FormData();
+
+      for (var key in dataToBe) {
+        fd.append(`${key}`, dataToBe[key]);
+      }
+
+      const url = `${process.env.REACT_APP_ROOT_URL}/api/admin/addProduct`;
+
+      console.log(Object.fromEntries(fd.entries()));
+      const reqConfigure = {
+        method: "POST",
+        body: fd,
+      };
+
+      const response = await fetch(url, reqConfigure);
+
+      if (response.ok) {
+        toast.success("Added", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+        setTimeout(() => {
+          setProductLoader(false);
+          getAllProducts();
+          settinMode();
+        }, 2000);
+      }
     }
   };
 
-  return (
+  return addProductLoader ? (
     <>
+      <ToastContainer />
+      <div className="modal-boxcon"></div>
+      <div className="modal-box">
+        <div className="spinner-edit">
+          <TailSpin color={"#F4BD18"} height={50} width={50} />
+        </div>
+      </div>
+    </>
+  ) : (
+    <>
+      <ToastContainer />
       <div className="modal-boxcon"></div>
       <form className="modal-box">
         <h1 style={{ marginBottom: 10, color: "#3E3E3E", fontSize: 20 }}>
@@ -97,9 +232,10 @@ const Mode = (props) => {
               addService(event);
             }}
           >
+            <option>Select</option>
             {availableTypes.map((each) => (
               <option
-                selected={selectedType === each ? true : false}
+                selected={dataToBe.type === each ? true : false}
                 style={{ textTransform: "capitalize" }}
                 id={each._id}
               >
@@ -120,6 +256,7 @@ const Mode = (props) => {
             className="service-admin-input"
             onChange={addService}
           >
+            <option>Select</option>
             {availableCategories.map((each) => (
               <option style={{ textTransform: "capitalize" }} id={each}>
                 {each}
@@ -196,6 +333,7 @@ const Mode = (props) => {
             id="service-type-product"
             onFocusCapture={() => {
               setShowType(false);
+              setData((prevData) => ({ ...prevData, type: "", category: "" }));
             }}
             onFocus={() => {
               setShowCategory(false);
@@ -207,7 +345,16 @@ const Mode = (props) => {
           <p style={{ color: "red", fontSize: 10 }}>
             *Please add Type if needed else leave it blank.
           </p>
-          <h1 style={{ margin: 0, color: "#3E3E3E", fontSize: 20 }}>
+          <label htmlFor="service-image-admin">
+            Upload Image New Product Type
+          </label>
+          <input
+            style={{ marginBottom: 10, marginTop: 10 }}
+            id="file-cat"
+            onChange={addService}
+            type="file"
+          />
+          <h1 style={{ margin: 0, color: "#3E3E3E", fontSize: 18 }}>
             Add New Category
           </h1>
           <p>New category name</p>
@@ -219,7 +366,6 @@ const Mode = (props) => {
             onChange={addService}
             type="text"
           />
-
           <p style={{ color: "red", fontSize: 10 }}>
             *Please add category if needed else leave it blank.
           </p>

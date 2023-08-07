@@ -11,7 +11,7 @@ import "./index.css";
 
 import { useState } from "react";
 
-const Sukras = () => {
+const Sukras = (props) => {
   const [phone, setPhone] = useState("");
   const [otp, setOTP] = useState(0);
 
@@ -41,7 +41,15 @@ const Sukras = () => {
     <div className="sukras-main">
       <ToastContainer />
       <div className="header">
-        <img className="sukras-logo" src="./sukraslogo.png" alt="Logo Space" />
+        <img
+          onClick={() => {
+            const { history } = props;
+            history.push("/");
+          }}
+          className="sukras-logo"
+          src="./sukraslogo.png"
+          alt="Logo Space"
+        />
       </div>
       <div className="website-body">
         <form className="form">

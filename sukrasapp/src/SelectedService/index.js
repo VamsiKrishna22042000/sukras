@@ -201,7 +201,7 @@ const SelectedService = (props) => {
                       alt="rating"
                     />
                     <p className="selected-rating">
-                      ({each.reviews.length}k reviews)
+                      ({each.reviews.length} reviews)
                     </p>
                   </div>
                   <div className="selected-rating-con">

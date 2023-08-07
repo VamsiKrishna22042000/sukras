@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 
 import { TailSpin } from "react-loader-spinner";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Customers = () => {
   const [customerData, setCustomerData] = useState([]);
 
@@ -25,25 +28,78 @@ const Customers = () => {
     });
 
     const addingCustomer = async () => {
-      setAddCustomerLoad(true);
-      const url = `${process.env.REACT_APP_ROOT_URL}/api/admin/user/addUser`;
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(tobeAdded),
-      };
+      if (tobeAdded.name === "") {
+        toast.error("Please Enter Name", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (tobeAdded.mobileNumber === "") {
+        toast.error("Please Enter Mobile Number", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (tobeAdded.email === "") {
+        toast.error("Please Enter Email", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (!tobeAdded.email.endsWith("@gmail.com")) {
+        toast.error("Please Enter correct email", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else {
+        setAddCustomerLoad(true);
+        const url = `${process.env.REACT_APP_ROOT_URL}/api/admin/user/addUser`;
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(tobeAdded),
+        };
 
-      const response = await fetch(url, options);
-      if (response.ok) {
-        setAddCustomer(false);
-        getCustomerData();
+        const response = await fetch(url, options);
+        if (response.ok) {
+          toast.success("Added", {
+            position: "top-center",
+            autoClose: 2000,
+            pauseOnHover: true,
+            closeOnClick: true,
+            theme: "colored",
+          });
+          setTimeout(() => {
+            setAddCustomer(false);
+            getCustomerData();
+          }, 2000);
+        } else {
+          setAddCustomerLoad(false);
+          toast.error("Mobile number already exists", {
+            position: "top-center",
+            autoClose: 2000,
+            pauseOnHover: true,
+            closeOnClick: true,
+            theme: "colored",
+          });
+        }
       }
     };
 
     return (
       <>
+        <ToastContainer />
         <div className="modal-boxcon"></div>
         {addCustomerLoad ? (
           <div style={{ height: 250, width: 410 }} className="modal-Customer">
@@ -58,6 +114,7 @@ const Customers = () => {
             </h1>
             <lable htmlFor="service-name-admin">Event Name</lable>
             <input
+              value={tobeAdded.name}
               className="service-admin-input"
               id="service-name-admin"
               type="text"
@@ -71,6 +128,7 @@ const Customers = () => {
             />
             <lable htmlFor="service-num-admin">Event Mobile Number</lable>
             <input
+              value={tobeAdded.mobileNumber}
               className="service-admin-input"
               id="service-num-admin"
               maxLength={10}
@@ -79,12 +137,13 @@ const Customers = () => {
               onChange={(event) => {
                 setTobeAdded((prevAdd) => ({
                   ...prevAdd,
-                  mobileNumber: event.target.value,
+                  mobileNumber: parseInt(event.target.value),
                 }));
               }}
             />
             <lable htmlFor="service-email-admin">Event Email</lable>
             <input
+              value={tobeAdded.email}
               className="service-admin-input"
               id="service-email-admin"
               type="text"
@@ -132,35 +191,74 @@ const Customers = () => {
     const [tobeEdited, setTobeEdited] = useState({
       userId: `${editCustomer}`,
       email: filteredCustomer[0].email,
-      mobileNumber: filteredCustomer[0].mobileNumber,
+      mobileNumber: parseInt(filteredCustomer[0].mobileNumber),
       name: filteredCustomer[0].name,
     });
 
     const editUser = async () => {
-      setModalLoad(true);
-      const url = `${process.env.REACT_APP_ROOT_URL}/api/admin/editUser`;
+      const alreadyPresent = customerData.filter(
+        (each) => each.mobileNumber == tobeEdited.mobileNumber
+      );
+      console.log(alreadyPresent);
+      if (
+        filteredCustomer[0].email === tobeEdited.email &&
+        filteredCustomer[0].mobileNumber === tobeEdited.mobileNumber &&
+        filteredCustomer[0].email === tobeEdited.email
+      ) {
+        toast.error("No changes Made", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (
+        alreadyPresent.length > 0 &&
+        editCustomer !== alreadyPresent[0]._id
+      ) {
+        toast.error("Mobile Number already present", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else {
+        setModalLoad(true);
+        const url = `${process.env.REACT_APP_ROOT_URL}/api/admin/editUser`;
 
-      const reqConfigure = {
-        method: "PUT",
+        const reqConfigure = {
+          method: "PUT",
 
-        headers: {
-          "Content-Type": "application/json",
-        },
+          headers: {
+            "Content-Type": "application/json",
+          },
 
-        body: JSON.stringify(tobeEdited),
-      };
+          body: JSON.stringify(tobeEdited),
+        };
 
-      const response = await fetch(url, reqConfigure);
+        const response = await fetch(url, reqConfigure);
 
-      if (response.ok) {
-        setModalLoad(false);
-        setEditCustomer("");
-        getCustomerData();
+        if (response.ok) {
+          toast.success("Edited", {
+            position: "top-center",
+            autoClose: 2000,
+            pauseOnHover: true,
+            closeOnClick: true,
+            theme: "colored",
+          });
+          setTimeout(() => {
+            setModalLoad(false);
+            setEditCustomer("");
+            getCustomerData();
+          }, 2000);
+        }
       }
     };
 
     return (
       <>
+        <ToastContainer />
         <div className="modal-boxcon"></div>
         {modalLoad ? (
           <div style={{ height: 250, width: 410 }} className="modal-Customer">
@@ -202,7 +300,7 @@ const Customers = () => {
               onChange={(event) => {
                 setTobeEdited((prevEdit) => ({
                   ...prevEdit,
-                  mobileNumber: event.target.value,
+                  mobileNumber: parseInt(event.target.value),
                 }));
               }}
             />
@@ -260,14 +358,25 @@ const Customers = () => {
 
       const response = await fetch(url, requestConfigure);
       if (response.ok) {
-        setLoadingDelete(false);
-        getCustomerData();
-        setDeleteCustomer("");
+        toast.error("Deleted", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+
+        setTimeout(() => {
+          setLoadingDelete(false);
+          getCustomerData();
+          setDeleteCustomer("");
+        }, 2000);
       }
     };
 
     return (
       <>
+        <ToastContainer />
         <div className="modal-boxcon"></div>
         {loadingDelete ? (
           <div style={{ width: 250, height: 100 }} className="modal-delete">
@@ -363,8 +472,9 @@ const Customers = () => {
             <div className="user-email">
               <p className="product-heads">Email</p>
             </div>
+
             <div className="user-Id">
-              <p className="product-heads">User Id</p>
+              <p className="product-heads">Address</p>
             </div>
             <div className="product-action">
               <p className="product-heads">Action</p>
@@ -405,12 +515,17 @@ const Customers = () => {
                   {each.email}
                 </p>
               </div>
+
               <div className="user-Id">
                 <p
-                  style={{ fontWeight: 400, color: "#000000" }}
+                  style={{
+                    fontWeight: 400,
+                    color: "#000000",
+                    textAlign: "center",
+                  }}
                   className="product-heads"
                 >
-                  {each._id}
+                  {each.address}
                 </p>
               </div>
               <div className="product-action">

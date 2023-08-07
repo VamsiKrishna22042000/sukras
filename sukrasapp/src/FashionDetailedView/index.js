@@ -332,7 +332,7 @@ const FashionDetailedView = (props) => {
                   alt="rating"
                 />
                 <p className="selected-rating">
-                  ({filterItem[0].reviews} k reviews)
+                  ({filterItem[0].review} reviews)
                 </p>
               </div>
               {params.type === "cosmetics" ? null : (
@@ -376,7 +376,6 @@ const FashionDetailedView = (props) => {
               )}
               <p className="fashion-details-about">Product Details</p>
               <p>{filterItem[0].about}</p>
-              <p className="fashion-details-about">Select Color</p>
               <p>• Soft material</p>
               <p>• Beautiful floral prints</p>
               <p>• Well stiched</p>

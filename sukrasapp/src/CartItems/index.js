@@ -151,11 +151,7 @@ const CartItems = (props) => {
 
   const sendDates = (dates) => {
     return dateRange.map((date) => (
-      <option
-        selected={dates === formatDate(date) ? true : false}
-        key={formatDate(date)}
-        value={formatDate(date)}
-      >
+      <option key={formatDate(date)} value={formatDate(date)}>
         {formatDate(date)}
       </option>
     ));
@@ -215,7 +211,7 @@ const CartItems = (props) => {
           {
             ...each,
             date: formatDate(moment()._d),
-            time: "",
+            time: getAvailableSlots(data.bookedSlots)[0],
             timeId: uuidv4(),
             availableSlots: getAvailableSlots(data.bookedSlots),
           },
@@ -343,7 +339,7 @@ const CartItems = (props) => {
   };
 
   const getTheTimeSlots = async (obj) => {
-    const { date, image, price, service, _id, time, timeId, serviceId } = obj;
+    const { date, photos, price, service, _id, time, timeId, serviceId } = obj;
 
     const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllBookedSlots`;
 
@@ -369,7 +365,7 @@ const CartItems = (props) => {
       /*console.log(data)*/
       return {
         date,
-        image,
+        photos,
         price,
         serviceId,
         service,
@@ -383,10 +379,10 @@ const CartItems = (props) => {
 
   const notify = () =>
     toast.error("Deleted Item from cart!", { theme: "colored" });
-  /* console.log(cartItemsArr)
-    console.log(cartArr)
-    console.log(displayArr)
-    console.log(ArrayWithTime)*/
+  console.log(cartItemsArr);
+  console.log(cartArr);
+  console.log(displayArr);
+  console.log(ArrayWithTime);
 
   return stage === pageStage.loading ? (
     <div className="loader-spinner">
@@ -406,49 +402,57 @@ const CartItems = (props) => {
         </div>
       ) : (
         <div className="total-con-cartitems">
-          {displayArr.map((each) => (
-            <div className="cart-item">
-              <img className="cart-img" src={each.image} alt="image-cart" />
-              <div className="cart-contents">
-                <p
-                  style={{ textTransform: "capitalize" }}
-                  className="cart-head"
-                >
-                  {each.service}
-                </p>
-                <p className="cart-head">
-                  <span className="service-price">₹</span> {each.price}
-                </p>
-                <div className="slots-available">
-                  <select
+          {displayArr.map(
+            (each) =>
+              each.photos[0] !== undefined && (
+                <div className="cart-item">
+                  <img
+                    className="cart-img"
+                    src={each.photos[0]}
+                    alt="image-cart"
+                  />
+                  <div className="cart-contents">
+                    <p
+                      style={{ textTransform: "capitalize" }}
+                      className="cart-head"
+                    >
+                      {each.service}
+                    </p>
+                    <p className="cart-head">
+                      <span className="service-price">₹</span> {each.price}
+                    </p>
+                    <div className="slots-available">
+                      <select
+                        id={each._id}
+                        onChange={setDatesSelected}
+                        className="select-options1"
+                      >
+                        <option>Select Date</option>
+                        {sendDates(each.date)}
+                      </select>
+                      <select
+                        id={each.timeId}
+                        onChange={setTimesSelected}
+                        className="select-options2"
+                      >
+                        {each.availableSlots.map((each) => (
+                          <option>{each}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <button
+                    onClick={deleteServiceFromCart}
+                    onClickCapture={notify}
                     id={each._id}
-                    onChange={setDatesSelected}
-                    className="select-options1"
+                    className="cart-cancel"
+                    type="button"
                   >
-                    {sendDates(each.date)}
-                  </select>
-                  <select
-                    id={each.timeId}
-                    onChange={setTimesSelected}
-                    className="select-options2"
-                  >
-                    {each.availableSlots.map((each) => (
-                      <option>{each}</option>
-                    ))}
-                  </select>
+                    ✕
+                  </button>
                 </div>
-              </div>
-              <button
-                onClick={deleteServiceFromCart}
-                onClickCapture={notify}
-                id={each._id}
-                className="cart-cancel"
-                type="button"
-              >
-                ✕
-              </button>
-            </div>
-          ))}
+              )
+          )}
         </div>
       )}
       <div className="price-details">

@@ -13,8 +13,31 @@ import Orders from "./orders.js";
 
 import Events from "./events.js";
 
+import Bookings from "./bookings.js";
+
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+
 const DashboardContent = (props) => {
   const { selectedDashboard } = props;
+
+  const [admin, setAdmin] = useState([]);
+
+  useEffect(() => {
+    getCustomerData();
+  }, []);
+
+  const getCustomerData = async () => {
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllUsers`;
+    const response = await fetch(url);
+    const data = await response.json();
+    if (response.ok) {
+      const filterdAdmin = data.users.map(
+        (each) => each._id === Cookies.get("jwt_user") && each.name
+      );
+      setAdmin(filterdAdmin[0]);
+    }
+  };
 
   return (
     <div className="dashboard-content">
@@ -22,7 +45,7 @@ const DashboardContent = (props) => {
         <div className="header-content">
           <p style={{ marginBottom: 0 }}>Hello,</p>
           <h1 style={{ marginTop: 5, color: "#4e4e4e", fontSize: 20 }}>
-            ION Sravan
+            {admin}
           </h1>
         </div>
         <div className="header-content">
@@ -30,24 +53,6 @@ const DashboardContent = (props) => {
           <h1 style={{ marginTop: 5, color: "#4e4e4e", fontSize: 20 }}>
             Administrator
           </h1>
-        </div>
-        <div className="header-content">
-          <p style={{ marginBottom: 0 }}>Last Login</p>
-          <h1 style={{ marginTop: 5, color: "#4e4e4e", fontSize: 20 }}>
-            15/07/2023 - 03:23 Pm
-          </h1>
-        </div>
-        <div className="header-icons-dashboard">
-          <button className="header-notify-btn" type="button">
-            <img
-              className="header-icons"
-              src="/bell-notification.png"
-              alt="notification"
-            />
-          </button>
-          <button className="header-notify-btn" type="button">
-            <img className="header-icons" src="/user.png" alt="notification" />
-          </button>
         </div>
       </div>
       {selectedDashboard === "Dashboard" ? (
@@ -62,8 +67,10 @@ const DashboardContent = (props) => {
         <Products />
       ) : selectedDashboard === "Orders" ? (
         <Orders />
-      ) : (
+      ) : selectedDashboard === "Events" ? (
         <Events />
+      ) : (
+        <Bookings />
       )}
     </div>
   );

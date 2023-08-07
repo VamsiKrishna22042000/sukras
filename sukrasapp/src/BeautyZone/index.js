@@ -109,10 +109,37 @@ const Beautyzone = (props) => {
     /* deleteCookie was integrated with both searchIcons*/
     Cookies.remove("jwt_token");
     Cookies.remove("jwt_user");
+    window.location.reload();
   };
 
   const filterdProductsBasedOnType = products.filter(
     (each) => each.type === "cosmetics"
+  );
+
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(4); // 4 = startIndex + 5
+
+  // Function to handle left arrow click
+  const handleLeftArrowClick = () => {
+    if (startIndex > 0) {
+      setStartIndex((prevStartIndex) => prevStartIndex - 5);
+      setEndIndex((prevEndIndex) => prevEndIndex - 5);
+    }
+  };
+
+  const handleRightArrowClick = () => {
+    if (endIndex < filterdProductsBasedOnType.length - 1) {
+      setStartIndex((prevStartIndex) => prevStartIndex + 5);
+      setEndIndex((prevEndIndex) => prevEndIndex + 5);
+    }
+  };
+
+  // Filtered products based on type (cosmetics) as before
+
+  // Slice the products array to display the current range
+  const visibleProducts = filterdProductsBasedOnType.slice(
+    startIndex,
+    endIndex + 1
   );
 
   return load ? (
@@ -132,16 +159,10 @@ const Beautyzone = (props) => {
         </button>
 
         <select className="dropdown-container">
-          <option>Hyderabad</option>
+          <option>Vizianagaram</option>
         </select>
-        <button onClick={deleteCookie} className="search-btnn" type="button">
-          <img className="search-mobile" src="./search-mobile.png" />
-        </button>
         <button className="notification-btnn" type="button">
-          <img
-            className="notification-mobile"
-            src="./notification-mobile.png"
-          />
+          <img className="search-mobile" src="./search-mobile.png" />
         </button>
         <button className="user-btn" type="button">
           <img className="user" src="./user.png" />
@@ -153,12 +174,29 @@ const Beautyzone = (props) => {
         >
           <img className="arrow" src="./arrowdown.png" />
         </button>
-        <Link
-          to={`/myorders/myorders/myorders/beautyzone`}
-          className={displayProfile ? "profile-block" : "profile-display"}
-        >
-          <p>My Orders</p>
-        </Link>
+        <div className={displayProfile ? "profile-block" : "profile-display"}>
+          {Cookies.get("jwt_user") === undefined ? (
+            <p
+              onClick={() => {
+                window.location.href("/login");
+              }}
+              style={{ marginTop: 5 }}
+            >
+              Log In
+            </p>
+          ) : (
+            <p onClick={deleteCookie} style={{ marginTop: 5 }}>
+              Log Out
+            </p>
+          )}
+          <Link
+            style={{ textDecoration: "none", marginTop: 5, marginBottom: 5 }}
+            to={`/myorders/myorders/myorders/beautyzone`}
+          >
+            My Orders
+          </Link>
+        </div>
+
         <div className="search-cart">
           <input
             className="serch-cart-input"
@@ -194,7 +232,7 @@ const Beautyzone = (props) => {
               <div className="beauty-cosmetic-head">
                 <h1>Our Service videos</h1>
               </div>
-              <div className="beauty-cosmetic-products">
+              <div className="beauty-cosmetic-products3">
                 <div className="cosmatic-products-con">
                   {videos.map((each) => (
                     <div className="cosmatic-videoItem">
@@ -215,28 +253,32 @@ const Beautyzone = (props) => {
               </div>
               <div className="our-services">
                 <p className="our-services-head">Our Service's</p>
-                {categories.map((each) => (
-                  <Link to={`/${each.category}/${each._id}`}>
-                    <button
-                      key={each._id}
-                      className="our-services-btn"
-                      id={each._id}
-                      type="button"
-                    >
-                      <img
-                        className="our-services-img"
-                        src={`${each.categoryImage}`}
-                        alt={each.categoryImage}
-                      />
-                      <p
-                        style={{ textTransform: "capitalize" }}
-                        className="our-services-name"
-                      >
-                        {each.category}
-                      </p>
-                    </button>
-                  </Link>
-                ))}
+                {categories.map(
+                  (each) =>
+                    each.services.length > 0 &&
+                    each.services[0].active === true && (
+                      <Link to={`/${each.category}/${each._id}`}>
+                        <button
+                          key={each._id}
+                          className="our-services-btn"
+                          id={each._id}
+                          type="button"
+                        >
+                          <img
+                            className="our-services-img"
+                            src={`${each.categoryImage}`}
+                            alt={each.categoryImage}
+                          />
+                          <p
+                            style={{ textTransform: "capitalize" }}
+                            className="our-services-name"
+                          >
+                            {each.category}
+                          </p>
+                        </button>
+                      </Link>
+                    )
+                )}
               </div>
             </>
           )}
@@ -251,6 +293,49 @@ const Beautyzone = (props) => {
         </div>
         <div className="beauty-cosmetic-products">
           <div className="cosmatic-products-con">
+            {/* Left Arrow Button */}
+            <button
+              style={{
+                fontSize: "24px",
+                borderWidth: "0",
+                backgroundColor: "transparent",
+              }}
+              className="arrow-button left-arrow"
+              onClick={handleLeftArrowClick}
+              disabled={startIndex === 0}
+            >
+              ❮
+            </button>
+            {visibleProducts.map((each) => (
+              <Link
+                to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
+                className="cosmatic-productItem"
+              >
+                <img
+                  className="cosmatic-productImg"
+                  src={each.photos[0]}
+                  alt={each.category}
+                />
+                <p className="cosmatic-product-name">{each.name}</p>
+              </Link>
+            ))}
+            {/* Right Arrow Button */}
+            <button
+              style={{
+                fontSize: "24px",
+                borderWidth: "0",
+                backgroundColor: "transparent",
+              }}
+              className="arrow-button right-arrow"
+              onClick={handleRightArrowClick}
+              disabled={endIndex === filterdProductsBasedOnType.length - 1}
+            >
+              ❯
+            </button>
+          </div>
+        </div>
+        <div className="beauty-cosmetic-products1">
+          <div className="cosmatic-products-con">
             {filterdProductsBasedOnType.map((each) => (
               <Link
                 to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
@@ -258,7 +343,7 @@ const Beautyzone = (props) => {
               >
                 <img
                   className="cosmatic-productImg"
-                  src={each.image}
+                  src={each.photos[0]}
                   alt={each.category}
                 />
                 <p className="cosmatic-product-name">{each.name}</p>

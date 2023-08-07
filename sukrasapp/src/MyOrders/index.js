@@ -59,7 +59,7 @@ const MyOrders = (props) => {
             <div className="each-order">
               <img
                 className="each-img"
-                src={each.image[0]}
+                src={each.photos[0]}
                 alt="your services"
               />
               <div className="each-content">
@@ -67,13 +67,13 @@ const MyOrders = (props) => {
                   style={{
                     textTransform: "capitalize",
                     fontSize: 18,
-                    marginTop: 20,
+                    marginTop: 15,
                     width: 200,
                   }}
                 >
                   {each.name}
                 </h1>
-                <p>{each.price}</p>
+                <p>₹ {each.price}</p>
                 <p>{each.orderedAt}</p>
               </div>
             </div>
@@ -83,21 +83,30 @@ const MyOrders = (props) => {
         <div className="all-orders">
           {orders.productOrders.map((each) => (
             <div className="each-order">
-              <img className="each-img" src={each.image} alt="your services" />
+              <img
+                className="each-img"
+                src={each.photos[0]}
+                alt="your services"
+              />
               <div className="each-content">
                 <h1
                   style={{
                     textTransform: "capitalize",
                     fontSize: 18,
-                    marginTop: 10,
+                    marginTop: 15,
+                    marginBottom: 0,
                     width: 200,
                   }}
                 >
                   {each.name}
                 </h1>
-                <p>{each.price}</p>
-                <p>{each.orderedAt}</p>
-                <p>{`${each.count} ordered`}</p>
+                <p style={{ marginTop: 5, marginBottom: 5, padding: 0 }}>
+                  ₹ {each.price * each.count}
+                </p>
+                <p style={{ marginTop: 5, padding: 0 }}>{each.orderedAt}</p>
+                <p
+                  style={{ marginTop: 0, padding: 0 }}
+                >{`${each.count} ordered`}</p>
               </div>
             </div>
           ))}

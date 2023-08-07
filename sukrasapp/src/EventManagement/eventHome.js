@@ -80,16 +80,10 @@ const EventHome = (props) => {
         </select>
         <button
           onClick={deleteCookie}
-          className="search-btn-fashion"
+          className="notification-btnn"
           type="button"
         >
           <img className="search-mobile" src="./search-mobile.png" />
-        </button>
-        <button className="notification-btnn" type="button">
-          <img
-            className="notification-mobile"
-            src="./notification-mobile.png"
-          />
         </button>
         <button className="user-btn" type="button">
           <img className="user" src="./user.png" />
@@ -101,25 +95,27 @@ const EventHome = (props) => {
         >
           <img className="arrow" src="./arrowdown.png" />
         </button>
-        <Link
-          to={`/myorders/myorders/myorders/eventManagement`}
-          className={displayProfile ? "profile-block2" : "profile-display"}
-        >
-          <p>My Orders</p>
-        </Link>
-        <div className="search-cart">
-          <input
-            className="serch-cart-input"
-            placeholder="Enter keywords, title, author or ISBN "
-            type="search"
-          />
-          <button onClick={deleteCookie} className="search-icon-button">
-            <img
-              src="./search-icon.png"
-              alt="search-icon"
-              className="search-icon"
-            />
-          </button>
+        <div className={displayProfile ? "profile-block" : "profile-display"}>
+          {Cookies.get("jwt_user") === undefined ? (
+            <p
+              onClick={() => {
+                window.location.href("/login");
+              }}
+              style={{ marginTop: 5 }}
+            >
+              Log In
+            </p>
+          ) : (
+            <p onClick={deleteCookie} style={{ marginTop: 5 }}>
+              Log Out
+            </p>
+          )}
+          <Link
+            style={{ textDecoration: "none", marginTop: 5, marginBottom: 5 }}
+            to={`/myorders/myorders/myorders/beautyzone`}
+          >
+            My Orders
+          </Link>
         </div>
       </div>
       <div className="sukras-main-beauty">

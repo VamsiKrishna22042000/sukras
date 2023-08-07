@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Cookies from "js-cookie";
 
@@ -32,37 +32,65 @@ const SelectPayment = (props) => {
   const { updateProgress, progress, cartItems } = props;
 
   const [buttonSelected, setUpbutton] = useState("");
+  const [address, setAddress] = useState("");
+  const [customerData, setCustomerData] = useState([]);
+  const [show, setShow] = useState(true);
 
   const setUpSuccessfull = () => {
-    if (buttonSelected !== "") {
-      cartItems.map(async (each) => {
-        const details = {
-          userId: Cookies.get("jwt_user"),
-          productId: each.productId,
-          cartId: each._id,
-          count: each.count,
-        };
-        const url = `${process.env.REACT_APP_ROOT_URL}/api/product/bookProduct`;
-        const options = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(details),
-        };
-        const response = await fetch(url, options);
-        if (response.ok) {
-          updateProgress("PaymentDone");
-        }
-      });
-    } else {
-      toast.info("Please select Cash On Delivery", {
+    if (address === "") {
+      toast.error("Please enter address", {
         position: "top-center",
         autoClose: 2000,
         pauseOnHover: true,
         closeOnClick: true,
         theme: "colored",
       });
+    } else {
+      if (buttonSelected !== "") {
+        cartItems.map(async (each) => {
+          const details = {
+            userId: Cookies.get("jwt_user"),
+            productId: each.productId,
+            cartId: each._id,
+            count: each.count,
+            address: address,
+          };
+          const url = `${process.env.REACT_APP_ROOT_URL}/api/product/bookProduct`;
+          const options = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(details),
+          };
+          const response = await fetch(url, options);
+          if (response.ok) {
+            updateProgress("PaymentDone");
+          }
+        });
+      } else {
+        toast.info("Please select Cash On Delivery", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    getCustomerData();
+  }, []);
+
+  const getCustomerData = async () => {
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllUsers`;
+    const response = await fetch(url);
+    const data = await response.json();
+    if (response.ok) {
+      console.log(data.users);
+      setCustomerData(data.users);
     }
   };
 
@@ -70,10 +98,93 @@ const SelectPayment = (props) => {
     setUpbutton("Cash On Delivery");
   };
 
+  const filteredUser = customerData.filter(
+    (each) => each._id === Cookies.get("jwt_user")
+  );
+
+  useEffect(() => {
+    if (filteredUser[0] && filteredUser[0].address !== undefined) {
+      setAddress(filteredUser[0].address);
+    }
+  }, []);
+
+  const settingShow = () => {
+    if (filteredUser[0] && filteredUser[0].address !== undefined) {
+      setAddress(filteredUser[0].address);
+    }
+    setShow(!show);
+  };
+
   return (
     <div className="payment-mode-fashion">
       <ToastContainer />
       <h1 className="fashion-paymentmode-head">Payment Mode</h1>
+      {filteredUser[0] && filteredUser[0].address === undefined && (
+        <div className="fashion-address">
+          <h4 style={{ fontSize: 15 }}>Enter Address</h4>
+          <textarea
+            value={address}
+            placeholder="Enter Address"
+            autoFocus
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
+            type="text"
+            className="input-address"
+          />
+        </div>
+      )}
+      {filteredUser[0] &&
+        filteredUser[0].address !== undefined &&
+        show === true && (
+          <button
+            style={{
+              alignSelf: "flex-end",
+              backgroundColor: "#f4bd18",
+              color: "white",
+              borderWidth: 0,
+              padding: 5,
+            }}
+            type="button"
+            className="button"
+            onClick={settingShow}
+          >
+            Change Address
+          </button>
+        )}
+      {show === false && (
+        <div className="fashion-address">
+          <h4 style={{ fontSize: 15 }}>Enter Address</h4>
+          <textarea
+            value={address}
+            placeholder="Enter Address"
+            autoFocus
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
+            type="text"
+            className="input-address"
+          />
+        </div>
+      )}
+      {filteredUser[0] &&
+        filteredUser[0].address !== undefined &&
+        show === false && (
+          <button
+            style={{
+              alignSelf: "flex-end",
+              backgroundColor: "#f4bd18",
+              color: "white",
+              borderWidth: 0,
+              padding: 5,
+            }}
+            type="button"
+            className="button"
+            onClick={settingShow}
+          >
+            Close
+          </button>
+        )}
       <div className="fashion-buttons">
         {paymentMethodArr.map((each) => (
           <button

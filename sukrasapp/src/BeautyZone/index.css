@@ -243,6 +243,21 @@
     scroll-behavior: smooth;
     margin-left: 2%;
   }
+  .beauty-cosmetic-products1 {
+    display: none;
+  }
+  .beauty-cosmetic-products3 {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    margin-left: 2%;
+  }
   .beauty-cosmetic-head {
     height: auto;
     display: inline-block;
@@ -301,12 +316,13 @@
 
   .cosmatic-product-name {
     position: absolute;
-    font-size: 1.5vw;
+    text-align: center;
+    font-size: 1.1vw;
     padding-top: 1%;
     padding-bottom: 2%;
     padding-left: 5%;
     padding-right: 5%;
-    bottom: -13%;
+    bottom: -11%;
     background-color: #3e3e3e;
     color: #fff;
     border-radius: 5px;
@@ -344,6 +360,7 @@
     height: 2.4vh;
     width: 1.3vw;
   }
+
   .profile-block {
     border-style: solid;
     height: auto;
@@ -354,12 +371,12 @@
     background-color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     color: #3e3e3e;
-    padding-left: 1%;
     border-width: 0px;
     cursor: pointer;
     z-index: 3;
     outline: none;
     text-decoration: none;
+    padding: 0.5%;
   }
   .profile-block2 {
     border-style: solid;
@@ -638,6 +655,30 @@
   .beauty-cosmetic-products {
     height: auto;
     width: 100%;
+    display: none;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: scroll;
+    margin-left: 2%;
+  }
+
+  .beauty-cosmetic-products1 {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: scroll;
+    margin-left: 2%;
+  }
+
+  .beauty-cosmetic-products3 {
+    height: auto;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -704,7 +745,7 @@
 
   .cosmatic-product-name {
     position: absolute;
-    font-size: 2.5vw;
+    font-size: 2.2vw;
     padding-top: 2%;
     padding-bottom: 2%;
     padding-left: 5%;
@@ -714,6 +755,7 @@
     color: #fff;
     border-radius: 3px;
     cursor: pointer;
+    text-align: center;
   }
 
   .user-btn {
@@ -758,7 +800,6 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2.3vw;
     color: #3e3e3e;
-    padding-left: 1%;
     border-width: 0px;
     cursor: pointer;
     z-index: 3;
@@ -766,11 +807,15 @@
     border-color: #9e9e9e;
     outline: none;
     text-decoration: none;
+    padding: 1%;
   }
   .profile-block :hover {
     color: #f4bd18;
   }
   .profile-display {
+    display: none;
+  }
+  .arrow-button {
     display: none;
   }
 }

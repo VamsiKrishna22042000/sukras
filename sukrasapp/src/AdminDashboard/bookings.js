@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import { TailSpin } from "react-loader-spinner";
 
-const Orders = () => {
+const Bookings = () => {
   const [myorders, setOrders] = useState([]);
 
   const [load, setLoad] = useState(false);
@@ -21,10 +21,9 @@ const Orders = () => {
       `${process.env.REACT_APP_ROOT_URL}/api/admin/appoinments`
     );
     const data = await response.json();
-
     if (response.ok) {
       const filterdProducts = data.salons.filter(
-        (each) => each["productId"] !== undefined
+        (each) => each["eventName"] !== undefined
       );
       setOrders(filterdProducts);
       setLoad(true);
@@ -38,26 +37,26 @@ const Orders = () => {
           <div className="product-image">
             <p className="product-heads">Image</p>
           </div>
-          <div className="product-toggle">
-            <p className="product-heads">Toggle</p>
-          </div>
 
           <div className="product-name">
-            <p className="product-heads">Name</p>
+            <p className="product-heads">Event Name</p>
           </div>
 
-          <div className="product-name">
+          <div className="product-action">
             <p className="product-heads">User Name</p>
           </div>
           <div className="product-toggle">
-            <p className="product-heads">Price</p>
+            <p className="product-heads">Count of Guests</p>
           </div>
 
-          <div className="product-id">
-            <p className="product-heads">Address</p>
+          <div className="product-action">
+            <p className="product-heads">Category</p>
           </div>
           <div className="product-action">
-            <p className="product-heads">Count</p>
+            <p className="product-heads">State</p>
+          </div>
+          <div className="product-action">
+            <p className="product-heads">Country</p>
           </div>
           <div className="product-action">
             <p className="product-heads">Booking Date</p>
@@ -68,42 +67,34 @@ const Orders = () => {
             <div className="product-image">
               <img
                 className="productimage"
-                src={each.photos[0]}
+                src={each.image}
                 alt="productimage"
               />
             </div>
-            <div id={each._id} className="product-toggle">
-              {buttonToggle === each._id ? (
-                <TailSpin color={"#F4BD18"} height={50} width={50} />
-              ) : (
-                <div className={each.active ? "toggle-con3" : "toggle-con4"}>
-                  <button
-                    onClick={toggleProduct}
-                    id={each._id}
-                    type="button"
-                    className={each.active ? "togglebutton2" : "togglebutton1"}
-                  ></button>
-                </div>
-              )}
-            </div>
+
             <div className="product-name">
-              <p style={{ textTransform: "capitalize" }}>{each.name}</p>
+              <p style={{ textTransform: "capitalize" }}>{each.eventName}</p>
             </div>
-            <div className="product-name">{each.userName}</div>
+            <div className="product-action">
+              <p style={{ textAlign: "center" }}>{each.yourName}</p>
+            </div>
             <div id={each._id} className="product-toggle">
               <p style={{ textTransform: "capitalize" }}>
-                ₹ {each.price * each.count}
+                {each.NumberOfGuest}
               </p>
             </div>
 
-            <div className="product-id">
-              <p>{each.address}</p>
+            <div className="product-action">
+              <p style={{ textTransform: "capitalize" }}>{each.categories}</p>
             </div>
             <div className="product-action">
-              <p>{each.count}</p>
+              <p style={{ textAlign: "center" }}>{each.state}</p>
             </div>
             <div className="product-action">
-              <p>{each.orderedAt}</p>
+              <p style={{ textAlign: "center" }}>{each.country}</p>
+            </div>
+            <div className="product-action">
+              <p>{each.date}</p>
             </div>
           </div>
         ))}
@@ -115,4 +106,4 @@ const Orders = () => {
     </div>
   );
 };
-export default Orders;
+export default Bookings;

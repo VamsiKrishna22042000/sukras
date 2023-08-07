@@ -53,6 +53,29 @@
     font-size: 1vw;
   }
 
+  .modal-box-appointment {
+    position: fixed;
+    height: 85vh;
+    width: 65vw;
+    top: 4%;
+    left: 16%;
+    background-color: #fff;
+    z-index: 2;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1%;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4e4e4e;
+    font-size: 1vw;
+    overflow: hidden;
+  }
+
   .modal-box3 {
     position: fixed;
     height: 30vh;
@@ -120,9 +143,9 @@
     padding-right: 2%;
   }
   .main-head-dashboard {
-    height: 5vh;
+    height: 25vh;
     width: 13vw;
-    margin-top: 13%;
+    margin-bottom: 5%;
   }
   .dash-board-options {
     height: auto;
@@ -207,7 +230,8 @@
     border-right: hidden;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding-left: 5%;
     align-items: center;
   }
   .header-content {
@@ -395,6 +419,17 @@
 
   .product-toggle {
     width: 16%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+    font-size: 1.2vw;
+    color: #8d8d8f;
+  }
+  .product-togglecon {
+    width: 20%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -660,5 +695,157 @@
     justify-content: space-around;
     align-items: flex-start;
     border-width: 1px;
+  }
+
+  .phone-search-api {
+    height: 8%;
+    width: 30%;
+    font-size: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-self: flex-start;
+    padding-left: 2%;
+  }
+  .phone-search-a {
+    height: auto;
+    width: 28.8%;
+    font-size: 1.2vw;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-self: flex-start;
+    padding-left: 2%;
+    background-color: #fff;
+    position: absolute;
+    top: 21%;
+    z-index: 2;
+    color: black;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #4e4e4e;
+    border-width: 1px;
+  }
+
+  .services-inside {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow: scroll;
+  }
+  .services-appointment {
+    height: 30%;
+    width: 30%;
+    border-style: solid;
+    margin: 1%;
+    display: flex;
+    border-radius: 5px;
+    border-color: #ffc720;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px grey;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .appointment-service-img {
+    height: 100%;
+    width: 40%;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  .appointment-service-content2:hover p {
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-600%);
+  }
+  .appointment-service-content2:hover select {
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-600%);
+  }
+
+  .appointment-service-content2:hover button {
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-510%);
+  }
+
+  .service-appointment-book {
+    margin-left: 43%;
+    background-color: #ffc300;
+    color: #fff;
+    padding: 2%;
+    border-radius: 5px;
+    border-color: #ffc300;
+  }
+
+  .p-none {
+    color: transparent;
+  }
+
+  .appointment-service-content2:hover .p-none {
+    color: black;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-600%);
+  }
+
+  .appointment-service-content2 {
+    background-color: #fff;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 2.1vh;
+    color: black;
+    margin-left: 3%;
+    margin-right: 1%;
+    cursor: pointer;
+    position: absolute;
+    left: 40%;
+    top: 6.1%;
+  }
+  .appointment-service-content3 {
+    display: none;
+  }
+  .appointmnet-service-content {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .appointment-service-content2 .time-app {
+    color: black;
+  }
+  .appointment-service-content2:hover .time-app {
+    color: transparent;
+  }
+  .appointment-service-content2:hover .spin-height {
+    margin-top: 3%;
+    margin-left: 19%;
+    height: 15%;
+    width: 15%;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-520%);
+  }
+  .user-name-app {
+    position: absolute;
+    font-size: 1.2vw;
+    top: 12%;
+    left: 35%;
+  }
+  .user-name-book {
+    position: absolute;
+    font-size: 1.2vw;
+    top: 3%;
+    right: 5%;
+  }
+  .bookapp1 {
+    background-color: red;
+  }
+  .bookapp2 {
+    background-color: green;
   }
 }

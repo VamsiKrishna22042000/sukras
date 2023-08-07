@@ -1,9 +1,6 @@
 import "./index.css";
 
-import {
-  Redirect,
-  withRouter,
-} from "react-router-dom/cjs/react-router-dom.min";
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 const options = [
   {
@@ -34,6 +31,7 @@ const options = [
     imgUrl: "dashboard-events.png",
     name: "Events",
   },
+  { imgUrl: "eventbooked.png", name: "Booking's" },
 ];
 
 const DashboardMain = (props) => {
@@ -47,26 +45,13 @@ const DashboardMain = (props) => {
     <div className="dash-board">
       <img
         className="main-head-dashboard"
-        src="sukraslogoadmin.png"
+        src="logo2.png"
         alt="Dashboardlogo"
         onClick={() => {
           window.location.href = "/";
         }}
       />
       <div className="dash-board-options">
-        <div className="option-dashboard1">
-          <img
-            className="dash-board-search"
-            src="./dashboard-search.png"
-            alt="dashboard-search"
-          />
-          <input
-            id="search"
-            type="search"
-            className="search-dashboard"
-            placeholder="Search"
-          />
-        </div>
         {options.map((each) => (
           <button
             type="button"

@@ -23,8 +23,7 @@ const ModalBoxEdit = (props) => {
   const [demoedit, demosetData] = useState({
     salonId: "64c1e5b880e7fc21fb096a71",
     serviceId: serviceTobeEdited,
-    category: filteredService[0].category,
-    service: filteredService[0].service,
+    updatedName: filteredService[0].service,
     availableSlotCount: filteredService[0].availableSlotCount,
     price: filteredService[0].price,
     time: filteredService[0].time,
@@ -35,8 +34,7 @@ const ModalBoxEdit = (props) => {
   const [edit, setData] = useState({
     salonId: "64c1e5b880e7fc21fb096a71",
     serviceId: serviceTobeEdited,
-    category: filteredService[0].category,
-    service: filteredService[0].service,
+    updatedName: filteredService[0].service,
     availableSlotCount: filteredService[0].availableSlotCount,
     price: filteredService[0].price,
     time: filteredService[0].time,
@@ -46,14 +44,17 @@ const ModalBoxEdit = (props) => {
 
   const addService = (event) => {
     if (event.target.id === "service-name-admin") {
-      setData((prevData) => ({ ...prevData, service: event.target.value }));
+      setData((prevData) => ({ ...prevData, updatedName: event.target.value }));
     } else if (event.target.id === "service-slot-admin") {
       setData((prevData) => ({
         ...prevData,
         availableSlotCount: event.target.value,
       }));
     } else if (event.target.id === "service-category-admit") {
-      setData((prevData) => ({ ...prevData, category: event.target.value }));
+      setData((prevData) => ({
+        ...prevData,
+        categoryName: event.target.value,
+      }));
     } else if (event.target.id === "service-price-admin") {
       setData((prevData) => ({ ...prevData, price: event.target.value }));
     } else if (event.target.id === "service-time-admin") {
@@ -69,7 +70,6 @@ const ModalBoxEdit = (props) => {
   };
 
   const updatingServices = () => {
-    setLoad(false);
     const sendEditedData = async () => {
       const url = `${process.env.REACT_APP_ROOT_URL}/api/salon/editService`;
 
@@ -96,11 +96,8 @@ const ModalBoxEdit = (props) => {
 
     const fd = new FormData();
 
-    if (edit.category !== demoedit.category) {
-      fd.append("category", edit.category);
-    }
-    if (edit.service !== demoedit.service) {
-      fd.append("service", edit.service);
+    if (edit.updatedName !== demoedit.updatedName) {
+      fd.append("updatedName", edit.updatedName);
     }
     if (edit.availableSlotCount !== demoedit.availableSlotCount) {
       fd.append("availableSlotCount", edit.availableSlotCount);
@@ -126,9 +123,20 @@ const ModalBoxEdit = (props) => {
     }
 
     if (count > 0) {
+      setLoad(false);
       fd.append("salonId", "64c1e5b880e7fc21fb096a71");
       fd.append("serviceId", `${serviceTobeEdited}`);
+      console.log(demoedit);
+      console.log(Object.fromEntries(fd.entries()));
       sendEditedData();
+    } else {
+      toast.error("No changes made", {
+        position: "top-center",
+        autoClose: 2000,
+        pauseOnHover: true,
+        closeOnClick: true,
+        theme: "colored",
+      });
     }
   };
 
@@ -147,7 +155,7 @@ const ModalBoxEdit = (props) => {
             className="service-admin-input"
             id="service-name-admin"
             type="text"
-            value={edit.service}
+            value={edit.updatedName}
             onChange={addService}
           />
           <lable htmlFor="service-name-admin">Available Slot count</lable>
@@ -156,17 +164,6 @@ const ModalBoxEdit = (props) => {
             className="service-admin-input"
             id="service-slot-admin"
             type="number"
-            onChange={addService}
-          />
-
-          <label htmlFor="service-category-admit">
-            Edit Category of Service
-          </label>
-          <input
-            style={{ textTransform: "capitalize" }}
-            value={edit.category}
-            id="service-category-admit"
-            className="service-admin-input"
             onChange={addService}
           />
           <lable htmlFor="service-price-admin">Service Price</lable>

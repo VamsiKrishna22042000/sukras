@@ -77,6 +77,7 @@ const FashionZone = (props) => {
     );
     const data = await response.json();
     if (response.ok === true) {
+      console.log(data);
       setCategories(data.categories);
       setLoad(true);
     }
@@ -111,21 +112,16 @@ const FashionZone = (props) => {
           <img className="location-mobilee" src="./location-icon.png" />
         </button>
         <select className="dropdown-container">
-          <option>Hyderabad</option>
+          <option>Vizianagaram</option>
         </select>
         <button
           onClick={deleteCookie}
-          className="search-btn-fashion"
+          className="notification-btnn"
           type="button"
         >
           <img className="search-mobile" src="./search-mobile.png" />
         </button>
-        <button className="notification-btnn" type="button">
-          <img
-            className="notification-mobile"
-            src="./notification-mobile.png"
-          />
-        </button>
+
         <button className="user-btn" type="button">
           <img className="user" src="./user.png" />
         </button>
@@ -136,12 +132,28 @@ const FashionZone = (props) => {
         >
           <img className="arrow" src="./arrowdown.png" />
         </button>
-        <Link
-          to={`/myorders/myorders/myorders/fashionzone`}
-          className={displayProfile ? "profile-block2" : "profile-display"}
-        >
-          <p>My Orders</p>
-        </Link>
+        <div className={displayProfile ? "profile-block" : "profile-display"}>
+          {Cookies.get("jwt_user") === undefined ? (
+            <p
+              onClick={() => {
+                window.location.href("/login");
+              }}
+              style={{ marginTop: 5 }}
+            >
+              Log In
+            </p>
+          ) : (
+            <p onClick={deleteCookie} style={{ marginTop: 5 }}>
+              Log Out
+            </p>
+          )}
+          <Link
+            style={{ textDecoration: "none", marginTop: 5, marginBottom: 5 }}
+            to={`/myorders/myorders/myorders/beautyzone`}
+          >
+            My Orders
+          </Link>
+        </div>
         <div className="search-cart">
           <input
             className="serch-cart-input"
@@ -170,7 +182,6 @@ const FashionZone = (props) => {
         <div className="beautyzone-body-2">
           {categories === "" ? (
             <div className="service-spinner">
-              {" "}
               <TailSpin color={"#F4BD18"} height={70} width={70} />
             </div>
           ) : (
@@ -178,7 +189,7 @@ const FashionZone = (props) => {
               <div className="beauty-cosmetic-head">
                 <h1>Our Fashion videos</h1>
               </div>
-              <div className="beauty-cosmetic-products">
+              <div className="beauty-cosmetic-products3">
                 <div className="cosmatic-products-con">
                   {videos.map((each) => (
                     <div className="cosmatic-videoItem">

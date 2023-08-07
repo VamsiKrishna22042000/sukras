@@ -278,6 +278,8 @@ const DetailedView = (props) => {
 
   /*console.log(idSection)*/
 
+  console.log(serviceDetails);
+
   return loading === pageStage.loading ? (
     <div className="loader-spinner">
       <TailSpin color={"#F4BD18"} height={70} width={70} />
@@ -348,7 +350,7 @@ const DetailedView = (props) => {
             <p className="selected-rating">{serviceDetails.rating}</p>
             <img className="rating-star1" src="/ratingstar.png" alt="rating" />
             <p className="selected-rating">
-              ({serviceDetails.reviews.length} k reviews)
+              ({serviceDetails.reviews.length} reviews)
             </p>
           </div>
           <div className="selected-rating-con">
@@ -370,24 +372,7 @@ const DetailedView = (props) => {
           <p>• Includes trimming & Cutting of Hair with Blow Dry</p>
           <p>• Provides bounce to the hair</p>
           <p>• Give Strength to the hair</p>
-          <p className="details-about">Brands & Equipment Used</p>
-          <div className="details-brands">
-            <img
-              className="details-brands-img"
-              src="/brands1.png"
-              alt="brands-img"
-            />
-            <img
-              className="details-brands-img"
-              src="/brands2.png"
-              alt="brands-img"
-            />
-            <img
-              className="details-brands-img"
-              src="/brands3.png"
-              alt="brands-img"
-            />
-          </div>
+
           <p className="details-about">Why Should you get this Done</p>
           <p>• Improves Hair Growth</p>
           <p>• Removing Split Ends</p>

@@ -29,20 +29,6 @@ const Services = () => {
 
   const [toggleUser, setToggleUser] = useState("");
 
-  const [editedService, setEditedService] = useState({
-    salonId: "64c1e5b880e7fc21fb096a71",
-    serviceId: serviceTobeEdited,
-    category: "",
-    service: "",
-    availableSlotCount: "",
-    price: "",
-    time: "",
-    description: "",
-    image: "",
-  });
-
-  const edittingService = () => {};
-
   useEffect(() => {
     getAllServices();
   }, []);
@@ -89,6 +75,15 @@ const Services = () => {
       photos: "",
       image: "",
     });
+
+    useEffect(() => {
+      if (availableCategories[0] !== undefined) {
+        setData((prevData) => ({
+          ...prevData,
+          category: availableCategories[0].category,
+        }));
+      }
+    }, []);
 
     const addService = (event) => {
       if (event.target.id === "service-name-admin") {
@@ -194,24 +189,32 @@ const Services = () => {
           };
 
           const response = await fetch(url, reqConfigure);
-          const data = await response.json();
 
           if (response.ok) {
-            setLoad(true);
-            /*console.log(data);*/
-            setData({
-              salonId: "64c1e5b880e7fc21fb096a71",
-              category: "",
-              service: "",
-              availableSlotCount: "",
-              price: "",
-              time: "",
-              description: "",
-              photos: "",
-              image: "",
+            toast.success("Added", {
+              position: "top-center",
+              autoClose: 2000,
+              pauseOnHover: true,
+              closeOnClick: true,
+              theme: "colored",
             });
-            settingModal();
-            getAllServices();
+            setTimeout(() => {
+              setLoad(true);
+              /*console.log(data);*/
+              setData({
+                salonId: "64c1e5b880e7fc21fb096a71",
+                category: "",
+                service: "",
+                availableSlotCount: "",
+                price: "",
+                time: "",
+                description: "",
+                photos: "",
+                image: "",
+              });
+              settingModal();
+              getAllServices();
+            }, 2000);
           }
         } else if (!filterdCategory.includes(dataToBe.category)) {
           if (dataToBe.image === "") {
@@ -238,24 +241,32 @@ const Services = () => {
             };
 
             const response = await fetch(url, reqConfigure);
-            const data = await response.json();
 
             if (response.ok) {
-              setLoad(true);
-              /*console.log(data);*/
-              setData({
-                salonId: "64c1e5b880e7fc21fb096a71",
-                category: "",
-                service: "",
-                availableSlotCount: "",
-                price: "",
-                time: "",
-                description: "",
-                photos: "",
-                image: "",
+              toast.success("Added", {
+                position: "top-center",
+                autoClose: 2000,
+                pauseOnHover: true,
+                closeOnClick: true,
+                theme: "colored",
               });
-              settingModal();
-              getAllServices();
+              setTimeout(() => {
+                setLoad(true);
+                /*console.log(data);*/
+                setData({
+                  salonId: "64c1e5b880e7fc21fb096a71",
+                  category: "",
+                  service: "",
+                  availableSlotCount: "",
+                  price: "",
+                  time: "",
+                  description: "",
+                  photos: "",
+                  image: "",
+                });
+                settingModal();
+                getAllServices();
+              }, 2000);
             }
           }
         }
@@ -419,14 +430,24 @@ const Services = () => {
 
       const response = await fetch(url, requestConfigure);
       if (response.ok) {
-        setLoad(true);
-        getAllServices();
-        setDeleteModal(false);
+        toast.error("Deleted", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+        setTimeout(() => {
+          setLoad(true);
+          getAllServices();
+          setDeleteModal(false);
+        }, 2000);
       }
     };
 
     return (
       <>
+        <ToastContainer />
         <div className="modal-boxcon"></div>
         {loading ? (
           <div style={{ width: 250, height: 100 }} className="modal-delete">
@@ -629,7 +650,6 @@ const Services = () => {
       {showDeleteModal && <ModalDelete />}
       {showEditModal && (
         <ModalBoxEdit
-          edittingService={edittingService}
           serviceTobeEdited={serviceTobeEdited}
           availableServices={availableServices}
           getAllServices={getAllServices}

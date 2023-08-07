@@ -24,7 +24,6 @@ const Maindashboard = () => {
     }
   };
 
-  console.log(dashboarddata);
   return load ? (
     <div className="dashboard-component">
       <div className="dashboard-data">
@@ -116,6 +115,21 @@ const Maindashboard = () => {
               {dashboarddata[5].totalEvents}
             </h1>
             <p style={{ margin: 0, paddingLeft: 1 }}>Events</p>
+          </div>
+        </div>
+        <div className="dashboard-data-content">
+          <div className="dash-board-img-con">
+            <img
+              src="/eventBooked.png"
+              className="dash-board-data-img"
+              alt="dashboard-icons"
+            />
+          </div>
+          <div className="dashboard-data-numbers">
+            <h1 style={{ margin: 0, color: "#4e4e4e" }}>
+              {dashboarddata[3].totalEventLength}
+            </h1>
+            <p style={{ margin: 0, paddingLeft: 1 }}>Booking's</p>
           </div>
         </div>
       </div>

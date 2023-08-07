@@ -68,7 +68,7 @@ const CartItemsFashion = (props) => {
       <ToastContainer />
       {cartItems.map((each) => (
         <div className="cart-item">
-          <img className="cart-img" src={each.image} alt="image-cart" />
+          <img className="cart-img" src={each.photos[0]} alt="image-cart" />
           <div className="cart-contents">
             <p style={{ textTransform: "capitalize" }} className="cart-head">
               {each.name}

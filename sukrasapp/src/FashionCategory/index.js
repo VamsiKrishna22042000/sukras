@@ -119,6 +119,8 @@ const FashionCategory = (props) => {
     (each) => each.type === params.category
   );
 
+  console.log(params.category);
+
   return load ? (
     <div className="fashion-category">
       <div className="sukras-header-beauty">
@@ -156,7 +158,7 @@ const FashionCategory = (props) => {
               className="search-icon"
             />
           </button>
-          <Link to={`/fashioncart/${params.type}`}>
+          <Link to={`/fashioncart/${params.category}`}>
             <button className="fashioncategory-count-of-cart">
               {cartItems.length}
             </button>
@@ -168,15 +170,6 @@ const FashionCategory = (props) => {
       </div>
       <div className="fashion">
         <p>Filters</p>
-        <p className="sort-by">Sort By :</p>
-        <select className="fashion-sortby">
-          <option id="op">What's New</option>
-          <option>Better Discount</option>
-          <option>Price Low to High</option>
-          <option>Price High to Low</option>
-          <option>Customer Ratings</option>
-          <option>Recommended</option>
-        </select>
       </div>
       <div className="fashion-category-main-body">
         <div className="fashion-zone-filter">
@@ -215,7 +208,7 @@ const FashionCategory = (props) => {
             </div>
           </div>
           <div className="filter-zone-text">
-            <p>Discount</p>{" "}
+            <p>Discount</p>
             <p
               id="discount"
               onClick={changeOptions}
@@ -248,70 +241,50 @@ const FashionCategory = (props) => {
               <lable htmlFor="4">30% or above</lable>
             </div>
           </div>
-          <div className="filter-zone-text">
-            <p>Availability</p>{" "}
-            <p
-              id="availability"
-              onClick={changeOptions}
-              className={options.availability ? "todown" : "toup"}
-            >
-              ❯
-            </p>
-          </div>
-          <div
-            style={{ marginBottom: 20 }}
-            className={
-              options.availability
-                ? "fashion-zone-opitons"
-                : "fashion-zone-opitons-disable"
-            }
-          >
-            <div>
-              <input id="1" type="checkbox" />
-              <lable htmlFor="1">In Stock</lable>
-            </div>
-          </div>
         </div>
         <div className="fashion-category-body">
-          {filterdItemsBasedOnType.map((each) => (
-            <Link
-              to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
-              key={each._id}
-              id={each._id}
-              className="fashion-category-item"
-            >
-              <img
-                className="fashion-category-image"
-                src={each.image}
-                alt={each.image}
-              />
-              <p
-                style={{ textTransform: "capitalize" }}
-                className="fashion-item-name"
-              >
-                {each.name}
-              </p>
-              <div className="price-details-off">
-                <p className="fashion-item-price">
-                  <span className="fashion-item-name">₹</span>
-                  {each.price}
-                </p>
-                <p className="fashion-item-discount">
-                  {parseInt(each.price) + 500}
-                </p>
-              </div>
-              <div className="price-details-rating">
-                <p className="fashion-item-offer"> 10% OFF</p>
-                <p className="fashion-item-star">{each.rating}</p>
-                <img
-                  className="fashion-item-star-rating"
-                  src="/ratingstar.png"
-                  alt="star"
-                />
-                <p className="fashion-item-reviews">({each.reviews})</p>
-              </div>
-            </Link>
-          ))}
+          {filterdItemsBasedOnType.map(
+            (each) =>
+              each.active && (
+                <Link
+                  to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
+                  key={each._id}
+                  id={each._id}
+                  className="fashion-category-item"
+                >
+                  <img
+                    className="fashion-category-image"
+                    src={each.photos[0]}
+                    alt={each.photos[0]}
+                  />
+                  <p
+                    style={{ textTransform: "capitalize" }}
+                    className="fashion-item-name"
+                  >
+                    {each.name}
+                  </p>
+                  <div className="price-details-off">
+                    <p className="fashion-item-price">
+                      <span className="fashion-item-name">₹</span>
+                      {each.price}
+                    </p>
+                    <p className="fashion-item-discount">
+                      {parseInt(each.price) + 500}
+                    </p>
+                  </div>
+                  <div className="price-details-rating">
+                    <p className="fashion-item-offer"> 10% OFF</p>
+                    <p className="fashion-item-star">{each.rating}</p>
+                    <img
+                      className="fashion-item-star-rating"
+                      src="/ratingstar.png"
+                      alt="star"
+                    />
+                    <p className="fashion-item-reviews">({each.reviews})</p>
+                  </div>
+                </Link>
+              )
+          )}
         </div>
       </div>
     </div>
