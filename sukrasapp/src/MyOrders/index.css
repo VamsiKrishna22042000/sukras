@@ -139,12 +139,12 @@
     border-color: transparent;
     position: absolute;
     top: 2%;
-    left: 3%;
+    left: 2%;
     outline: none;
   }
   .order-left-arrow-mobile {
     display: inline;
-    height: 2.5vh;
+    height: 3vh;
     width: 6vw;
   }
 }
