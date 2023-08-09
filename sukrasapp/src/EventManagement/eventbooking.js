@@ -321,13 +321,15 @@ const EventBooking = (props) => {
         </div>
       </form>
       {button ? (
-        <div className="proceed-btn">
-          <TailSpin
-            wrapperStyle={{ alignSelf: "center", justifyContent: "center" }}
-            color={"white"}
-            height={20}
-            width={20}
-          />
+        <div className="button-container-booking">
+          <div className="proceed-btn" type="submit">
+            <TailSpin
+              wrapperStyle={{ alignSelf: "center", justifyContent: "center" }}
+              color={"white"}
+              height={30}
+              width={25}
+            />
+          </div>
         </div>
       ) : (
         <div className="button-container-booking">

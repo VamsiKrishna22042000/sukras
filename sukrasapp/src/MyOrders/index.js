@@ -94,20 +94,31 @@ const MyOrders = (props) => {
                   style={{
                     textTransform: "capitalize",
                     fontSize: 18,
-                    marginTop: 15,
+                    marginTop: 8,
                     marginBottom: 0,
                     width: 200,
                   }}
                 >
                   {each.name}
                 </h1>
-                <p style={{ marginTop: 5, marginBottom: 5, padding: 0 }}>
+                <p style={{ marginTop: 5, marginBottom: 4, padding: 0 }}>
                   ₹ {each.price * each.count}
                 </p>
-                <p style={{ marginTop: 5, padding: 0 }}>{each.orderedAt}</p>
+                <p style={{ marginTop: 5, padding: 0, marginBottom: 4 }}>
+                  {each.orderedAt}
+                </p>
                 <p
-                  style={{ marginTop: 0, padding: 0 }}
+                  style={{ marginTop: 0, padding: 0, marginBottom: 4 }}
                 >{`${each.count} ordered`}</p>
+                {each.active ? (
+                  <p className="deliverd" style={{ color: "red" }}>
+                    On the Way
+                  </p>
+                ) : (
+                  <p style={{ color: "green" }} className="deliverd">
+                    Delivered
+                  </p>
+                )}
               </div>
             </div>
           ))}

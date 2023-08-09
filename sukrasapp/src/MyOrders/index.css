@@ -78,6 +78,9 @@
     height: 3vh;
     width: 1.5vw;
   }
+  .deliverd {
+    margin-top: 1vh;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -146,5 +149,8 @@
     display: inline;
     height: 3vh;
     width: 6vw;
+  }
+  .deliverd {
+    margin: 0;
   }
 }

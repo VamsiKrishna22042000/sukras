@@ -184,6 +184,8 @@ const Beautyzone = (props) => {
     }
   };
 
+  console.log(categories);
+
   return load ? (
     <>
       <div className="sukras-header-beautyzone">
@@ -290,7 +292,7 @@ const Beautyzone = (props) => {
                   }}
                   className="cosmatic-products-con"
                 >
-                  {videos.map((each, index) => (
+                  {videos.map((each) => (
                     <div className="cosmatic-videoItem">
                       <iframe
                         style={{ cursor: "pointer" }}
@@ -311,8 +313,7 @@ const Beautyzone = (props) => {
                 <p className="our-services-head">Our Service's</p>
                 {categories.map(
                   (each) =>
-                    each.services.length > 0 &&
-                    each.services[0].active === true && (
+                    each.services.length > 0 && (
                       <Link to={`/${each.category}/${each._id}`}>
                         <button
                           key={each._id}
