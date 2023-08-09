@@ -67,7 +67,7 @@ const MyOrders = (props) => {
                   style={{
                     textTransform: "capitalize",
                     fontSize: 18,
-                    marginTop: 15,
+                    marginTop: 8,
                     width: 200,
                   }}
                 >
@@ -75,6 +75,7 @@ const MyOrders = (props) => {
                 </h1>
                 <p>₹ {each.price}</p>
                 <p>{each.orderedAt}</p>
+                <p>{each.time}</p>
               </div>
             </div>
           ))}

@@ -4,6 +4,8 @@ import "./index.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { TailSpin } from "react-loader-spinner";
+
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 import Cookies from "js-cookie";
@@ -18,6 +20,8 @@ const categories = [
 
 const EventBooking = (props) => {
   const { pageStage, settingPage, eventId } = props;
+
+  const [button, setButton] = useState(false);
 
   const [book, setBook] = useState({
     name: "",
@@ -119,6 +123,7 @@ const EventBooking = (props) => {
           theme: "colored",
         });
       } else {
+        setButton(true);
         document.getElementById("name").value = "";
         document.getElementById("eventname").value = "";
         document.getElementById("category").value = "";
@@ -315,11 +320,22 @@ const EventBooking = (props) => {
           />
         </div>
       </form>
-      <div className="button-container-booking">
-        <button onClick={booking} className="proceed-btn" type="submit">
-          Proceed
-        </button>
-      </div>
+      {button ? (
+        <div className="proceed-btn">
+          <TailSpin
+            wrapperStyle={{ alignSelf: "center", justifyContent: "center" }}
+            color={"white"}
+            height={20}
+            width={20}
+          />
+        </div>
+      ) : (
+        <div className="button-container-booking">
+          <button onClick={booking} className="proceed-btn" type="submit">
+            Proceed
+          </button>
+        </div>
+      )}
     </>
   );
 };

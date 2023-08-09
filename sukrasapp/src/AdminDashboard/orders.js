@@ -14,7 +14,7 @@ const Orders = () => {
 
   const toggleProduct = async (e) => {
     setToggle(e.target.id);
-    const url = `${process.env.REACT_APP_ROOT_URL}/api/orders/orderToggle`;
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/orders/ProductorderToggle`;
 
     const details = {
       method: "POST",

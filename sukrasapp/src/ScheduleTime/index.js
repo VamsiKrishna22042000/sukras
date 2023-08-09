@@ -28,12 +28,14 @@ const paymentMethodArr = [
 ];
 
 const ScheduleTime = (props) => {
-  const { progress, ScheduleTimeProgress, TotalPrice, discount } = props;
+  const { ScheduleTimeProgress, TotalPrice, discount } = props;
 
   const [buttonSelected, setUpbutton] = useState("");
+  const [button, setbutton] = useState(false);
 
-  const sendUpdate = (props) => {
+  const sendUpdate = () => {
     if (buttonSelected !== "") {
+      setbutton(true);
       ScheduleTimeProgress(["Done"]);
     } else {
       toast.info(`Select Cash After Service`, {
@@ -128,13 +130,24 @@ const ScheduleTime = (props) => {
         ))}
       </div>
 
-      <button
-        onClick={sendUpdate}
-        className="proceed-to-schedule"
-        type="button"
-      >
-        Proceed
-      </button>
+      {button ? (
+        <button className="proceed-to-schedule" type="button">
+          <TailSpin
+            wrapperStyle={{ alignSelf: "center", justifyContent: "center" }}
+            color={"white"}
+            height={20}
+            width={20}
+          />
+        </button>
+      ) : (
+        <button
+          onClick={sendUpdate}
+          className="proceed-to-schedule"
+          type="button"
+        >
+          Proceed
+        </button>
+      )}
     </div>
   );
 };

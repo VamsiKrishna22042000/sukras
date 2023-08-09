@@ -2,6 +2,8 @@ import "./index.css";
 
 import { withRouter } from "react-router-dom";
 
+import { TailSpin } from "react-loader-spinner";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -35,8 +37,10 @@ const SelectPayment = (props) => {
   const [address, setAddress] = useState("");
   const [customerData, setCustomerData] = useState([]);
   const [show, setShow] = useState(true);
+  const [button, setbutton] = useState(false);
 
   const setUpSuccessfull = () => {
+    setbutton(true);
     if (address === "") {
       toast.error("Please enter address", {
         position: "top-center",
@@ -220,17 +224,28 @@ const SelectPayment = (props) => {
           </button>
         ))}
       </div>
-      <button
-        onClick={setUpSuccessfull}
-        className={
-          progress === "Cart"
-            ? "fashion-proceed-button-disable"
-            : "fashion-proceed-to-schedule"
-        }
-        type="button"
-      >
-        Proceed
-      </button>
+      {button ? (
+        <div className="fashion-proceed-to-schedule">
+          <TailSpin
+            wrapperStyle={{ alignSelf: "center", justifyContent: "center" }}
+            color={"white"}
+            height={23}
+            width={23}
+          />
+        </div>
+      ) : (
+        <button
+          onClick={setUpSuccessfull}
+          className={
+            progress === "Cart"
+              ? "fashion-proceed-button-disable"
+              : "fashion-proceed-to-schedule"
+          }
+          type="button"
+        >
+          Proceed
+        </button>
+      )}
     </div>
   );
 };

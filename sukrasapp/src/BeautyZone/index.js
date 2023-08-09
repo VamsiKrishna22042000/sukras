@@ -185,225 +185,227 @@ const Beautyzone = (props) => {
   };
 
   return load ? (
-    <>
-      <div className="sukras-header-beautyzone">
-        <img
-          onClick={goToSelectCategory}
-          className="sukraslogobeauty"
-          src="./sukraslogo.png"
-          alt="Logo Space"
-        />
-        <button onClick={gobackTo} className="arrow-btn" type="button">
-          <img className="left-arrow-mobile" src="./backarrow.png" />
-        </button>
-        <button className="location-btnn" type="button">
-          <img className="location-mobilee" src="./location-icon.png" />
-        </button>
-
-        <select className="dropdown-container">
-          <option>Vizianagaram</option>
-        </select>
-        <button className="notification-btnn" type="button">
-          <img className="search-mobile" src="./search-mobile.png" />
-        </button>
-        <button className="user-btn" type="button">
-          <img className="user" src="./user.png" />
-        </button>
-        <button
-          onClick={settingProfile}
-          className="arrowdown-btn"
-          type="button"
-        >
-          <img className="arrow" src="./arrowdown.png" />
-        </button>
-        <div className={displayProfile ? "profile-block" : "profile-display"}>
-          {Cookies.get("jwt_user") === undefined ? (
-            <p
-              onClick={() => {
-                window.location.href("/login");
-              }}
-              style={{ marginTop: 5 }}
-            >
-              Log In
-            </p>
-          ) : (
-            <p onClick={deleteCookie} style={{ marginTop: 5 }}>
-              Log Out
-            </p>
-          )}
-          <Link
-            style={{ textDecoration: "none", marginTop: 5, marginBottom: 5 }}
-            to={`/myorders/myorders/myorders/beautyzone`}
-          >
-            My Orders
-          </Link>
-        </div>
-
-        <div className="search-cart">
-          <input
-            className="serch-cart-input"
-            placeholder="Enter keywords, title, author or ISBN "
-            type="search"
+    itemsInCart.length > 0 && (
+      <>
+        <div className="sukras-header-beautyzone">
+          <img
+            onClick={goToSelectCategory}
+            className="sukraslogobeauty"
+            src="./sukraslogo.png"
+            alt="Logo Space"
           />
-          <button onClick={deleteCookie} className="search-icon-button">
-            <img
-              src="./search-icon.png"
-              alt="search-icon"
-              className="search-icon"
-            />
+          <button onClick={gobackTo} className="arrow-btn" type="button">
+            <img className="left-arrow-mobile" src="./backarrow.png" />
           </button>
-          <Link to={`/cart/beautyzone`}>
-            <button className="count-of-cart">{itemsInCart.length}</button>
-            <button className="cart-icon-buttonn">
-              <img src="./cart.png" alt="cart-icon" className="cart-icon" />
-            </button>
-          </Link>
-        </div>
-      </div>
-      <div className="sukras-main-beauty">
-        <div className="beautyzone-body">
-          <Carousel />
-        </div>
-        <div className="beautyzone-body-2">
-          {categories === "" ? (
-            <div className="service-spinner">
-              <TailSpin color={"#F4BD18"} height={70} width={70} />
-            </div>
-          ) : (
-            <>
-              <div className="beauty-cosmetic-head">
-                <h1>Our Service videos</h1>
-              </div>
-              <div className="beauty-cosmetic-products3">
-                <div
-                  onMouseDown={handleVideoMouseDown}
-                  onMouseMove={handleVideoMouseMove}
-                  onMouseUp={handleVideoMouseUp}
-                  style={{
-                    transform: `translateX(${currentX}px)`,
-                    transition: dragging ? "none" : "transform 0.3s ease",
-                  }}
-                  className="cosmatic-products-con"
-                >
-                  {videos.map((each, index) => (
-                    <div className="cosmatic-videoItem">
-                      <iframe
-                        style={{ cursor: "pointer" }}
-                        className="cosmatic-productImg"
-                        width="560"
-                        height="315"
-                        src={each.link}
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="our-services">
-                <p className="our-services-head">Our Service's</p>
-                {categories.map(
-                  (each) =>
-                    each.services.length > 0 &&
-                    each.services[0].active === true && (
-                      <Link to={`/${each.category}/${each._id}`}>
-                        <button
-                          key={each._id}
-                          className="our-services-btn"
-                          id={each._id}
-                          type="button"
-                        >
-                          <img
-                            className="our-services-img"
-                            src={`${each.categoryImage}`}
-                            alt={each.categoryImage}
-                          />
-                          <p
-                            style={{ textTransform: "capitalize" }}
-                            className="our-services-name"
-                          >
-                            {each.category}
-                          </p>
-                        </button>
-                      </Link>
-                    )
-                )}
-              </div>
-            </>
-          )}
-        </div>
-        <div className="beauty-cosmetic-head">
-          <h1>Cosmetics</h1>
-          <p>
-            <Link className="decoration" to={`/fashioncategory/cosmetics`}>
-              View All
+          <button className="location-btnn" type="button">
+            <img className="location-mobilee" src="./location-icon.png" />
+          </button>
+
+          <select className="dropdown-container">
+            <option>Vizianagaram</option>
+          </select>
+          <button className="notification-btnn" type="button">
+            <img className="search-mobile" src="./search-mobile.png" />
+          </button>
+          <button className="user-btn" type="button">
+            <img className="user" src="./user.png" />
+          </button>
+          <button
+            onClick={settingProfile}
+            className="arrowdown-btn"
+            type="button"
+          >
+            <img className="arrow" src="./arrowdown.png" />
+          </button>
+          <div className={displayProfile ? "profile-block" : "profile-display"}>
+            {Cookies.get("jwt_user") === undefined ? (
+              <p
+                onClick={() => {
+                  window.location.href("/login");
+                }}
+                style={{ marginTop: 5 }}
+              >
+                Log In
+              </p>
+            ) : (
+              <p onClick={deleteCookie} style={{ marginTop: 5 }}>
+                Log Out
+              </p>
+            )}
+            <Link
+              style={{ textDecoration: "none", marginTop: 5, marginBottom: 5 }}
+              to={`/myorders/myorders/myorders/beautyzone`}
+            >
+              My Orders
             </Link>
-          </p>
-        </div>
-        <div className="beauty-cosmetic-products">
-          <div className="cosmatic-products-con">
-            {/* Left Arrow Button */}
-            <button
-              style={{
-                fontSize: "24px",
-                borderWidth: "0",
-                backgroundColor: "transparent",
-              }}
-              className="arrow-button left-arrow"
-              onClick={handleLeftArrowClick}
-              disabled={startIndex === 0}
-            >
-              ❮
+          </div>
+
+          <div className="search-cart">
+            <input
+              className="serch-cart-input"
+              placeholder="Enter keywords, title, author or ISBN "
+              type="search"
+            />
+            <button onClick={deleteCookie} className="search-icon-button">
+              <img
+                src="./search-icon.png"
+                alt="search-icon"
+                className="search-icon"
+              />
             </button>
-            {visibleProducts.map((each) => (
-              <Link
-                to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
-                className="cosmatic-productItem"
-              >
-                <img
-                  className="cosmatic-productImg"
-                  src={each.photos[0]}
-                  alt={each.category}
-                />
-                <p className="cosmatic-product-name">{each.name}</p>
-              </Link>
-            ))}
-            {/* Right Arrow Button */}
-            <button
-              style={{
-                fontSize: "24px",
-                borderWidth: "0",
-                backgroundColor: "transparent",
-              }}
-              className="arrow-button right-arrow"
-              onClick={handleRightArrowClick}
-              disabled={endIndex === filterdProductsBasedOnType.length - 1}
-            >
-              ❯
-            </button>
+            <Link to={`/cart/beautyzone`}>
+              <button className="count-of-cart">{itemsInCart.length}</button>
+              <button className="cart-icon-buttonn">
+                <img src="./cart.png" alt="cart-icon" className="cart-icon" />
+              </button>
+            </Link>
           </div>
         </div>
-        <div className="beauty-cosmetic-products1">
-          <div className="cosmatic-products-con">
-            {filterdProductsBasedOnType.map((each) => (
-              <Link
-                to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
-                className="cosmatic-productItem"
-              >
-                <img
-                  className="cosmatic-productImg"
-                  src={each.photos[0]}
-                  alt={each.category}
-                />
-                <p className="cosmatic-product-name">{each.name}</p>
+        <div className="sukras-main-beauty">
+          <div className="beautyzone-body">
+            <Carousel />
+          </div>
+          <div className="beautyzone-body-2">
+            {categories === "" ? (
+              <div className="service-spinner">
+                <TailSpin color={"#F4BD18"} height={70} width={70} />
+              </div>
+            ) : (
+              <>
+                <div className="beauty-cosmetic-head">
+                  <h1>Our Service videos</h1>
+                </div>
+                <div className="beauty-cosmetic-products3">
+                  <div
+                    onMouseDown={handleVideoMouseDown}
+                    onMouseMove={handleVideoMouseMove}
+                    onMouseUp={handleVideoMouseUp}
+                    style={{
+                      transform: `translateX(${currentX}px)`,
+                      transition: dragging ? "none" : "transform 0.3s ease",
+                    }}
+                    className="cosmatic-products-con"
+                  >
+                    {videos.map((each, index) => (
+                      <div className="cosmatic-videoItem">
+                        <iframe
+                          style={{ cursor: "pointer" }}
+                          className="cosmatic-productImg"
+                          width="560"
+                          height="315"
+                          src={each.link}
+                          title="YouTube video player"
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="our-services">
+                  <p className="our-services-head">Our Service's</p>
+                  {categories.map(
+                    (each) =>
+                      each.services.length > 0 &&
+                      each.services[0].active === true && (
+                        <Link to={`/${each.category}/${each._id}`}>
+                          <button
+                            key={each._id}
+                            className="our-services-btn"
+                            id={each._id}
+                            type="button"
+                          >
+                            <img
+                              className="our-services-img"
+                              src={`${each.categoryImage}`}
+                              alt={each.categoryImage}
+                            />
+                            <p
+                              style={{ textTransform: "capitalize" }}
+                              className="our-services-name"
+                            >
+                              {each.category}
+                            </p>
+                          </button>
+                        </Link>
+                      )
+                  )}
+                </div>
+              </>
+            )}
+          </div>
+          <div className="beauty-cosmetic-head">
+            <h1>Cosmetics</h1>
+            <p>
+              <Link className="decoration" to={`/fashioncategory/cosmetics`}>
+                View All
               </Link>
-            ))}
+            </p>
+          </div>
+          <div className="beauty-cosmetic-products">
+            <div className="cosmatic-products-con">
+              {/* Left Arrow Button */}
+              <button
+                style={{
+                  fontSize: "24px",
+                  borderWidth: "0",
+                  backgroundColor: "transparent",
+                }}
+                className="arrow-button left-arrow"
+                onClick={handleLeftArrowClick}
+                disabled={startIndex === 0}
+              >
+                ❮
+              </button>
+              {visibleProducts.map((each) => (
+                <Link
+                  to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
+                  className="cosmatic-productItem"
+                >
+                  <img
+                    className="cosmatic-productImg"
+                    src={each.photos[0]}
+                    alt={each.category}
+                  />
+                  <p className="cosmatic-product-name">{each.name}</p>
+                </Link>
+              ))}
+              {/* Right Arrow Button */}
+              <button
+                style={{
+                  fontSize: "24px",
+                  borderWidth: "0",
+                  backgroundColor: "transparent",
+                }}
+                className="arrow-button right-arrow"
+                onClick={handleRightArrowClick}
+                disabled={endIndex === filterdProductsBasedOnType.length - 1}
+              >
+                ❯
+              </button>
+            </div>
+          </div>
+          <div className="beauty-cosmetic-products1">
+            <div className="cosmatic-products-con">
+              {filterdProductsBasedOnType.map((each) => (
+                <Link
+                  to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
+                  className="cosmatic-productItem"
+                >
+                  <img
+                    className="cosmatic-productImg"
+                    src={each.photos[0]}
+                    alt={each.category}
+                  />
+                  <p className="cosmatic-product-name">{each.name}</p>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </>
+      </>
+    )
   ) : (
     <div className="loader-spinner">
       <TailSpin color={"#F4BD18"} height={70} width={70} />
