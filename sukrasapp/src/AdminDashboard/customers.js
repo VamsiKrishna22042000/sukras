@@ -112,7 +112,7 @@ const Customers = () => {
             <h1 style={{ marginBottom: 10, color: "#3E3E3E", fontSize: 20 }}>
               Add New Customer
             </h1>
-            <lable htmlFor="service-name-admin">Event Name</lable>
+            <lable htmlFor="service-name-admin">Customer Name</lable>
             <input
               value={tobeAdded.name}
               className="service-admin-input"
@@ -126,7 +126,7 @@ const Customers = () => {
                 }));
               }}
             />
-            <lable htmlFor="service-num-admin">Event Mobile Number</lable>
+            <lable htmlFor="service-num-admin">Customer Mobile Number</lable>
             <input
               value={tobeAdded.mobileNumber}
               className="service-admin-input"
@@ -141,7 +141,7 @@ const Customers = () => {
                 }));
               }}
             />
-            <lable htmlFor="service-email-admin">Event Email</lable>
+            <lable htmlFor="service-email-admin">Customer Email</lable>
             <input
               value={tobeAdded.email}
               className="service-admin-input"
