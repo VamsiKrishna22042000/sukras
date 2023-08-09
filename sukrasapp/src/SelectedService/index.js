@@ -39,7 +39,9 @@ const SelectedService = (props) => {
     } else {
       const id = Cookies.get("jwt_user");
       const response = await fetch(
-        `${process.env.REACT_APP_ROOT_URL}/api/salon/getAllServicesFromCart/${id}`
+        `${
+          process.env.REACT_APP_ROOT_URL
+        }/api/salon/getAllServicesFromCart/${Cookies.get("jwt_user")}`
       );
       const data = await response.json();
       setItemsInCart(data.cart);

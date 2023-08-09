@@ -220,7 +220,7 @@ const Beautyzone = (props) => {
           {Cookies.get("jwt_user") === undefined ? (
             <p
               onClick={() => {
-                window.location.href("/login");
+                window.location.href = "/login";
               }}
               style={{ marginTop: 5 }}
             >
@@ -253,6 +253,7 @@ const Beautyzone = (props) => {
             />
           </button>
           <Link to={`/cart/beautyzone`}>
+            <button className="count-of-cart">{itemsInCart.length}</button>
             <button className="cart-icon-buttonn">
               <img src="./cart.png" alt="cart-icon" className="cart-icon" />
             </button>

@@ -99,7 +99,7 @@ const EventHome = (props) => {
           {Cookies.get("jwt_user") === undefined ? (
             <p
               onClick={() => {
-                window.location.href("/login");
+                window.location.href = "/login";
               }}
               style={{ marginTop: 5 }}
             >
