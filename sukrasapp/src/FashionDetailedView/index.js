@@ -387,7 +387,7 @@ const FashionDetailedView = (props) => {
                 className={button}
                 type="button"
               >
-                Add to <BsHandbag />
+                Book Appointment
               </button>
 
               <p className="fashion-details-about">Customer Reviews</p>

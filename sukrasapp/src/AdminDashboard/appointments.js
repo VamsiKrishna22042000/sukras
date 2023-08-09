@@ -401,7 +401,7 @@ const Appointments = () => {
                           getTheTimeSlots(e.target.id, e.target.value);
                         }}
                         style={{
-                          marginTop: 5,
+                          marginTop: 10,
                           marginLeft: 5,
                           textTransform: "capitalize",
                         }}
@@ -415,7 +415,7 @@ const Appointments = () => {
                         dateTime.serviceId === each._id && (
                           <p
                             style={{
-                              marginTop: -5,
+                              marginTop: -10,
                               marginLeft: 5,
                               textTransform: "capitalize",
                               fontWeight: "bold",
@@ -429,7 +429,7 @@ const Appointments = () => {
                         (slots.length > 0 ? (
                           <select
                             style={{
-                              marginTop: 5,
+                              marginTop: 10,
                               marginLeft: 5,
                               textTransform: "capitalize",
                             }}
@@ -457,7 +457,7 @@ const Appointments = () => {
                             className="service-appointment-book"
                             onClick={addToBook}
                           >
-                            Add to Book
+                            Add to book
                           </button>
                         )}
                     </div>

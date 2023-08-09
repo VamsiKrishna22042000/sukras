@@ -231,12 +231,12 @@
     background-color: #f4bd18;
     border-width: 0px;
     color: #fff;
-    font-size: 1.3vw;
+    font-size: 1.1vw;
     padding: 1%;
-    width: 30%;
+    width: 47%;
     border-radius: 5px;
     position: absolute;
-    bottom: -10%;
+    bottom: -8%;
   }
   .book-btn1 {
     background-color: #4e4e4e;
@@ -244,10 +244,10 @@
     color: #fff;
     font-size: 1.3vw;
     padding: 1%;
-    width: 30%;
+    width: 47%;
     border-radius: 5px;
     position: absolute;
-    bottom: -10%;
+    bottom: -8%;
   }
   .sukras-beauty-select {
     display: none;
@@ -494,7 +494,7 @@
     background-color: #f4bd18;
     border-width: 0px;
     color: #fff;
-    font-size: 3vw;
+    font-size: 1.8vw;
     padding: 5%;
     width: 70%;
     border-radius: 5px;
@@ -507,7 +507,7 @@
     color: #fff;
     font-size: 3vw;
     padding: 5%;
-    width: 65%;
+    width: 70%;
     border-radius: 5px;
     position: absolute;
     bottom: -11%;

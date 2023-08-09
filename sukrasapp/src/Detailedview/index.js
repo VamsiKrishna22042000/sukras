@@ -379,7 +379,7 @@ const DetailedView = (props) => {
           <p>• Boost your Confidence</p>
           <Link to={`/${detailsarr.category}/${detailsarr.id}/details`}>
             <button onClick={addToCart} className={button} type="button">
-              Add to <BsHandbag />
+              Book Appointment
             </button>
           </Link>
           <p className="details-about">Customer Reviews</p>

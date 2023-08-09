@@ -802,7 +802,8 @@
   }
 
   .service-appointment-book {
-    margin-left: 43%;
+    font-size: 0.9vw;
+    margin-left: 46%;
     background-color: #ffc300;
     color: #fff;
     padding: 2%;

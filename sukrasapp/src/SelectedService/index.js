@@ -237,7 +237,7 @@ const SelectedService = (props) => {
                     className={button === each._id ? "book-btn1" : "book-btn"}
                     type="button"
                   >
-                    Add to <BsHandbag />
+                    Book Appointment
                   </button>
                 </div>
               </div>
