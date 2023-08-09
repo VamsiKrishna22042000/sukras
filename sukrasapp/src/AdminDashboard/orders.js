@@ -14,6 +14,7 @@ const Orders = () => {
 
   const toggleProduct = async (e) => {
     setToggle(e.target.id);
+    console.log(e.target.id);
     const url = `${process.env.REACT_APP_ROOT_URL}/api/orders/ProductorderToggle`;
 
     const details = {
@@ -23,7 +24,7 @@ const Orders = () => {
       },
       body: JSON.stringify({
         userId: Cookies.get("jwt_user"),
-        orderdId: e.target.id,
+        orderId: e.target.id,
       }),
     };
 
@@ -31,6 +32,7 @@ const Orders = () => {
 
     if (response.ok) {
       setToggle("");
+      getMyOrders();
     }
   };
 
