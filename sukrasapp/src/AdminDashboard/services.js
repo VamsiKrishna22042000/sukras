@@ -451,9 +451,7 @@ const Services = () => {
         <div className="modal-boxcon"></div>
         {loading ? (
           <div style={{ width: 250, height: 100 }} className="modal-delete">
-            <p style={{ fontSize: 20 }}>
-              Are you sure you want to delete service ?
-            </p>
+            <p style={{ fontSize: 20 }}>Are you sure you want to delete ?</p>
             <div
               style={{
                 width: 200,

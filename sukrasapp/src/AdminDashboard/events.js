@@ -156,7 +156,11 @@ const Events = () => {
       setLoadingDelete(true);
       const url = `${process.env.REACT_APP_ROOT_URL}/api/admin/event/deleteEventByAdmin/${showDelete}`;
 
-      const response = await fetch(url);
+      const options = {
+        method: "DELETE",
+      };
+
+      const response = await fetch(url, options);
       if (response.ok) {
         toast.error("Deleted", {
           position: "top-center",
@@ -168,6 +172,7 @@ const Events = () => {
         setTimeout(() => {
           setLoadingDelete(false);
           setDeleteCustomer("");
+          getAllEventsServices();
         }, 2000);
       } else {
         setLoadingDelete(false);
@@ -186,9 +191,7 @@ const Events = () => {
           </div>
         ) : (
           <div style={{ width: 250, height: 100 }} className="modal-delete">
-            <p style={{ fontSize: 20 }}>
-              Are you sure you want to delete customer ?
-            </p>
+            <p style={{ fontSize: 20 }}>Are you sure you want to delete ?</p>
             <div
               style={{
                 width: 200,

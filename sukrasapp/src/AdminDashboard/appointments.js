@@ -138,7 +138,7 @@ const Appointments = () => {
     const generateDateRange = (startDate) => {
       const dates = [];
       for (let i = 0; i < 7; i++) {
-        dates.push(startDate.clone().add(i, "days").format("MM-DD-YY"));
+        dates.push(startDate.clone().add(i, "days").format("DD-MM-YY"));
       }
       if (getCurrentTime() >= "21:00") {
         return dates.slice(1, dates.length + 1);
@@ -221,6 +221,8 @@ const Appointments = () => {
 
           body: JSON.stringify(each),
         };
+
+        console.log(each);
 
         const res = await fetch(url, reqConfigure);
 
@@ -548,9 +550,7 @@ const Appointments = () => {
         <div className="modal-boxcon"></div>
         {lo ? (
           <div style={{ width: 250, height: 100 }} className="modal-delete">
-            <p style={{ fontSize: 20 }}>
-              Are you sure you want to delete service ?
-            </p>
+            <p style={{ fontSize: 20 }}>Are you sure you want to delete ?</p>
             <div
               style={{
                 width: 200,

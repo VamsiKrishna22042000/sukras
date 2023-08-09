@@ -96,6 +96,50 @@ const FashionZone = (props) => {
     (each) => each.type !== "cosmetics"
   );
 
+  const [dragging, setDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [currentX, setCurrentX] = useState(0);
+  const [sliderPosition, setSliderPosition] = useState(0);
+
+  const handleVideoMouseDown = (event) => {
+    console.log(event.button);
+    if (event.button === 0) {
+      setDragging(true);
+      setStartX(event.clientX);
+      setSliderPosition(currentX);
+    }
+  };
+
+  const handleVideoMouseUp = (event) => {
+    console.log(event.button);
+    if (event.button === 0) {
+      setDragging(false);
+    }
+  };
+
+  const handleVideoMouseMove = (event) => {
+    if (dragging) {
+      const deltaX = event.clientX - startX;
+      const newSliderPosition = sliderPosition + deltaX;
+
+      const VIDEO_WIDTH = 550; // Width of each video slide in pixels
+      const CONTAINER_WIDTH = window.innerWidth; // Uses the width of the screen of the particular device
+      const totalVideosWidth = videos.length * VIDEO_WIDTH;
+
+      // Calculate the maximum allowed slider position based on the videos array length
+      const maxSliderPosition = CONTAINER_WIDTH - totalVideosWidth;
+
+      // Restrict the slider position within the range of videos array
+      if (newSliderPosition > 0) {
+        setCurrentX(0);
+      } else if (newSliderPosition < maxSliderPosition) {
+        setCurrentX(maxSliderPosition);
+      } else {
+        setCurrentX(newSliderPosition);
+      }
+    }
+  };
+
   return load ? (
     <>
       <div className="sukras-header-fashionzone">
@@ -190,7 +234,16 @@ const FashionZone = (props) => {
                 <h1>Our Fashion videos</h1>
               </div>
               <div className="beauty-cosmetic-products3">
-                <div className="cosmatic-products-con">
+                <div
+                  onMouseDown={handleVideoMouseDown}
+                  onMouseMove={handleVideoMouseMove}
+                  onMouseUp={handleVideoMouseUp}
+                  style={{
+                    transform: `translateX(${currentX}px)`,
+                    transition: dragging ? "none" : "transform 0.3s ease",
+                  }}
+                  className="cosmatic-products-con"
+                >
                   {videos.map((each) => (
                     <div className="cosmatic-videoItem">
                       <iframe

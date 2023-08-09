@@ -31,6 +31,8 @@ const Orders = () => {
     }
   };
 
+  console.log(myorders);
+
   return load ? (
     <>
       <div className="dashboard-component2">

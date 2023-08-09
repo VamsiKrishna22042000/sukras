@@ -32,6 +32,11 @@ const options = [
     name: "Events",
   },
   { imgUrl: "eventbooked.png", name: "Booking's" },
+  { imgUrl: "slider.png", name: "Banner's" },
+  {
+    imgUrl: "youtube.png",
+    name: "Videos",
+  },
 ];
 
 const DashboardMain = (props) => {

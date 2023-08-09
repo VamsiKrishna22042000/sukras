@@ -95,7 +95,6 @@ const Cart = (props) => {
     /*console.log(progress)*/
     /*console.log(obtained)*/
     if (progress === "Done") {
-      console.log("hi");
       obtained.map(async (each) => {
         const url = `${process.env.REACT_APP_ROOT_URL}/api/user/bookSalon`;
         /*console.log(each.serviceId)*/ const tobeSent = {

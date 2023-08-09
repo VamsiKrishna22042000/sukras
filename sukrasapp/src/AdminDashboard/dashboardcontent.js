@@ -15,6 +15,10 @@ import Events from "./events.js";
 
 import Bookings from "./bookings.js";
 
+import Banners from "./banners.js";
+
+import Videos from "./videos.js";
+
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
@@ -69,8 +73,12 @@ const DashboardContent = (props) => {
         <Orders />
       ) : selectedDashboard === "Events" ? (
         <Events />
-      ) : (
+      ) : selectedDashboard === "Booking's" ? (
         <Bookings />
+      ) : selectedDashboard === "Banner's" ? (
+        <Banners />
+      ) : (
+        <Videos />
       )}
     </div>
   );

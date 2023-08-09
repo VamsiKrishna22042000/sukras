@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "react-loader": "^2.4.7",
-    "react-phone-number-input": "^3.2.23"
+    "react-phone-number-input": "^3.2.23",
+    "react-slick": "^0.29.0"
   }
 }

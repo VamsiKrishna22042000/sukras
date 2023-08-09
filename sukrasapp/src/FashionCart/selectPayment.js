@@ -91,6 +91,14 @@ const SelectPayment = (props) => {
     if (response.ok) {
       console.log(data.users);
       setCustomerData(data.users);
+
+      const filteredU = data.users.filter(
+        (each) => each._id === Cookies.get("jwt_user")
+      );
+
+      if (filteredU[0] && filteredU[0].address !== undefined) {
+        setAddress(filteredU[0].address);
+      }
     }
   };
 
@@ -101,12 +109,6 @@ const SelectPayment = (props) => {
   const filteredUser = customerData.filter(
     (each) => each._id === Cookies.get("jwt_user")
   );
-
-  useEffect(() => {
-    if (filteredUser[0] && filteredUser[0].address !== undefined) {
-      setAddress(filteredUser[0].address);
-    }
-  }, []);
 
   const settingShow = () => {
     if (filteredUser[0] && filteredUser[0].address !== undefined) {

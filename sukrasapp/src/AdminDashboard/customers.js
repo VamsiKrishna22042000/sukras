@@ -386,9 +386,7 @@ const Customers = () => {
           </div>
         ) : (
           <div style={{ width: 250, height: 100 }} className="modal-delete">
-            <p style={{ fontSize: 20 }}>
-              Are you sure you want to delete customer ?
-            </p>
+            <p style={{ fontSize: 20 }}>Are you sure you want to delete ?</p>
             <div
               style={{
                 width: 200,
