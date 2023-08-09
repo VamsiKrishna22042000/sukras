@@ -536,11 +536,13 @@
     height: 3vh;
     padding-top: 4%;
     padding-bottom: 4%;
+    padding-left: 5%;
   }
   .location-mobilee {
     height: 3.5vh;
     padding-top: 4%;
     padding-bottom: 4%;
+    padding-left: 5%;
   }
 
   .arrow-btn {
@@ -715,7 +717,7 @@
   }
   .cosmatic-productItem {
     height: 18vh;
-    width: 30vw;
+    width: 35vw;
     margin-left: 1%;
     margin-right: 1%;
     position: relative;
@@ -746,10 +748,10 @@
     position: absolute;
     font-size: 2.2vw;
     padding-top: 2%;
-    padding-bottom: 2%;
+    padding-bottom: 5%;
     padding-left: 5%;
     padding-right: 5%;
-    bottom: -13%;
+    bottom: -12%;
     background-color: #3e3e3e;
     color: #fff;
     border-radius: 3px;
@@ -791,13 +793,13 @@
   .profile-block {
     border-style: solid;
     height: auto;
-    width: 13vw;
+    width: 17vw;
     position: absolute;
     right: 5%;
     bottom: -100%;
     background-color: #fff;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 2.3vw;
+    font-size: 3.3vw;
     color: #3e3e3e;
     border-width: 0px;
     cursor: pointer;
@@ -807,6 +809,8 @@
     outline: none;
     text-decoration: none;
     padding: 1%;
+    border-radius: 5px;
+    border-color: #f4bd18;
   }
   .profile-block :hover {
     color: #f4bd18;
