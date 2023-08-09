@@ -537,7 +537,7 @@ const Services = () => {
             <p className="product-heads">Image</p>
           </div>
           <div className="product-toggle">
-            <p className="product-heads">Toggle</p>
+            <p className="product-heads">Enable/Disable</p>
           </div>
           <div className="product-name">
             <p className="product-heads">Name</p>

@@ -4,17 +4,41 @@ import { useState, useEffect } from "react";
 
 import { TailSpin } from "react-loader-spinner";
 
+import Cookies from "js-cookie";
+
 const Orders = () => {
   const [myorders, setOrders] = useState([]);
 
   const [load, setLoad] = useState(false);
   const [buttonToggle, setToggle] = useState("");
 
-  const toggleProduct = () => {};
+  const toggleProduct = async (e) => {
+    setToggle(e.target.id);
+    const url = `${process.env.REACT_APP_ROOT_URL}/api/orders/orderToggle`;
+
+    const details = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: Cookies.get("jwt_user"),
+        orderdId: e.target.id,
+      }),
+    };
+
+    const response = await fetch(url, details);
+
+    if (response.ok) {
+      setToggle("");
+    }
+  };
 
   useEffect(() => {
     getMyOrders();
   }, []);
+
+  console.log(myorders);
 
   const getMyOrders = async () => {
     const response = await fetch(
@@ -31,8 +55,6 @@ const Orders = () => {
     }
   };
 
-  console.log(myorders);
-
   return load ? (
     <>
       <div className="dashboard-component2">
@@ -41,7 +63,7 @@ const Orders = () => {
             <p className="product-heads">Image</p>
           </div>
           <div className="product-toggle">
-            <p className="product-heads">Toggle</p>
+            <p className="product-heads">Open/Close</p>
           </div>
 
           <div className="product-name">

@@ -496,6 +496,7 @@ const CartItems = (props) => {
             <span className="actual-price">₹</span> {TotalPrice - discount}
           </p>
         </div>
+
         <button onClick={sendUpdate} className="proceed-schedule" type="button">
           Proceed
         </button>

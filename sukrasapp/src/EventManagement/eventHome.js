@@ -76,7 +76,7 @@ const EventHome = (props) => {
           <img className="location-mobilee" src="./location-icon.png" />
         </button>
         <select className="dropdown-container">
-          <option>Hyderabad</option>
+          <option>Vizianagaram</option>
         </select>
         <button
           onClick={deleteCookie}

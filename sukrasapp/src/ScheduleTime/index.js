@@ -4,6 +4,8 @@ import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import "./index.css";
 import { ToastContainer, toast } from "react-toastify";
 
+import { TailSpin } from "react-loader-spinner";
+
 /*PaymentSection is here*/
 
 const paymentMethodArr = [
@@ -26,7 +28,7 @@ const paymentMethodArr = [
 ];
 
 const ScheduleTime = (props) => {
-  const { ScheduleTimeProgress, TotalPrice, discount } = props;
+  const { progress, ScheduleTimeProgress, TotalPrice, discount } = props;
 
   const [buttonSelected, setUpbutton] = useState("");
 
@@ -125,6 +127,7 @@ const ScheduleTime = (props) => {
           </button>
         ))}
       </div>
+
       <button
         onClick={sendUpdate}
         className="proceed-to-schedule"

@@ -156,6 +156,7 @@ const Cart = (props) => {
           />
         ) : (
           <ScheduleTime
+            progress={progress}
             ScheduleTimeProgress={ScheduleTimeProgress}
             TotalPrice={TotalPrice}
             discount={discount}
