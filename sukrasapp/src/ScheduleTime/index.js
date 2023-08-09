@@ -51,7 +51,7 @@ const ScheduleTime = (props) => {
   };
 
   return (
-    <div className="price-details">
+    <div style={{ marginLeft: 15 }} className="price-details">
       <ToastContainer />
       <p className="price-head1">PriceDetials</p>
       <div

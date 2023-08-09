@@ -747,11 +747,11 @@
   .cosmatic-product-name {
     position: absolute;
     font-size: 2.2vw;
-    padding-top: 2%;
-    padding-bottom: 5%;
+    padding-top: 4%;
+    padding-bottom: 4%;
     padding-left: 5%;
     padding-right: 5%;
-    bottom: -12%;
+    bottom: -13%;
     background-color: #3e3e3e;
     color: #fff;
     border-radius: 3px;
