@@ -245,7 +245,7 @@ const Beautyzone = (props) => {
             placeholder="Enter keywords, title, author or ISBN "
             type="search"
           />
-          <button onClick={deleteCookie} className="search-icon-button">
+          <button className="search-icon-button">
             <img
               src="./search-icon.png"
               alt="search-icon"
