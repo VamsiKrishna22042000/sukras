@@ -120,7 +120,7 @@ const Maindashboard = () => {
         <div className="dashboard-data-content">
           <div className="dash-board-img-con">
             <img
-              src="/eventBooked.png"
+              src="/eventbooked.png"
               className="dash-board-data-img"
               alt="dashboard-icons"
             />
