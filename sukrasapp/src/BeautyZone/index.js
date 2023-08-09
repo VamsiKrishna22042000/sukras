@@ -253,7 +253,6 @@ const Beautyzone = (props) => {
             />
           </button>
           <Link to={`/cart/beautyzone`}>
-            <button className="count-of-cart">{itemsInCart.length}</button>
             <button className="cart-icon-buttonn">
               <img src="./cart.png" alt="cart-icon" className="cart-icon" />
             </button>
