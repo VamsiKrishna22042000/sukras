@@ -400,6 +400,15 @@
   .profile-display {
     display: none;
   }
+  .log-btn {
+    width: 90%;
+    text-align: start;
+    background-color: transparent;
+    border-width: 0px;
+    font-size: 1.2vw;
+    margin-left: 0px;
+    margin-bottom: 5px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -570,7 +579,7 @@
   .notification-btnn {
     position: absolute;
     top: 23%;
-    left: 85%;
+    left: 79%;
     border-color: transparent;
     background-color: transparent;
   }
@@ -820,5 +829,14 @@
   }
   .arrow-button {
     display: none;
+  }
+  .log-btn {
+    width: 90%;
+    text-align: start;
+    background-color: transparent;
+    border-width: 0px;
+    font-size: 3.2vw;
+    margin-left: 0px;
+    margin-bottom: 5px;
   }
 }

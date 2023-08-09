@@ -221,6 +221,7 @@ const Beautyzone = (props) => {
         <div className={displayProfile ? "profile-block" : "profile-display"}>
           {Cookies.get("jwt_user") === undefined ? (
             <button
+              className="log-btn"
               type="button"
               onClick={() => {
                 window.location.href = "/login";
@@ -231,6 +232,7 @@ const Beautyzone = (props) => {
             </button>
           ) : (
             <button
+              className="log-btn"
               type="button"
               onClick={deleteCookie}
               style={{ marginTop: 5 }}
@@ -239,7 +241,10 @@ const Beautyzone = (props) => {
             </button>
           )}
           <Link
-            style={{ textDecoration: "none", marginTop: 5, marginBottom: 5 }}
+            style={{
+              textDecoration: "none",
+            }}
+            className="log-btn"
             to={`/myorders/myorders/myorders/beautyzone`}
           >
             My Orders

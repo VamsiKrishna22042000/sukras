@@ -278,6 +278,15 @@
     overflow: scroll;
     scroll-behavior: smooth;
   }
+  .log-btn {
+    width: 90%;
+    text-align: start;
+    background-color: transparent;
+    border-width: 0px;
+    font-size: 1.2vw;
+    margin-left: 0px;
+    margin-bottom: 5px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -588,5 +597,14 @@
     flex-wrap: wrap;
     overflow: scroll;
     margin-left: 2%;
+  }
+  .log-btn {
+    width: 90%;
+    text-align: start;
+    background-color: transparent;
+    border-width: 0px;
+    font-size: 3.2vw;
+    margin-left: 0px;
+    margin-bottom: 5px;
   }
 }

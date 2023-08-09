@@ -98,6 +98,7 @@ const EventHome = (props) => {
         <div className={displayProfile ? "profile-block" : "profile-display"}>
           {Cookies.get("jwt_user") === undefined ? (
             <button
+              className="log-btn"
               type="button"
               onClick={() => {
                 window.location.href = "/login";
@@ -108,6 +109,7 @@ const EventHome = (props) => {
             </button>
           ) : (
             <button
+              className="log-btn"
               type="button"
               onClick={deleteCookie}
               style={{ marginTop: 5 }}
@@ -116,7 +118,8 @@ const EventHome = (props) => {
             </button>
           )}
           <Link
-            style={{ textDecoration: "none", marginTop: 5, marginBottom: 5 }}
+            className="log-btn"
+            style={{ textDecoration: "none" }}
             to={`/myorders/myorders/myorders/beautyzone`}
           >
             My Orders

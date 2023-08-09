@@ -148,6 +148,15 @@
     border-radius: 5px;
     outline: none;
   }
+  .log-btn {
+    width: 90%;
+    text-align: start;
+    background-color: transparent;
+    border-width: 0px;
+    font-size: 1.2vw;
+    margin-left: 0px;
+    margin-bottom: 5px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -337,5 +346,14 @@
     left: 87%;
     border-color: transparent;
     background-color: transparent;
+  }
+  .log-btn {
+    width: 90%;
+    text-align: start;
+    background-color: transparent;
+    border-width: 0px;
+    font-size: 3.2vw;
+    margin-left: 0px;
+    margin-bottom: 5px;
   }
 }
