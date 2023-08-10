@@ -362,21 +362,22 @@ const DetailedView = (props) => {
             </p>
             <p className="selected-rating">• {serviceDetails.time} mins</p>
           </div>
-          <p>• {serviceDetails.description}</p>
-          <p>• Follow this up with styling look of your choice</p>
-          <p>• Trim Hair to strengthen your hair</p>
-          <p>• Finishing with Blow Dry to double the game</p>
-          <p>• Excludes Hair Wash</p>
-          <p>• Haircut given by our Male Experts</p>
+          <p>{serviceDetails.description}</p>
+
           <p className="details-about">What’s Included?</p>
           <p>• Includes trimming & Cutting of Hair with Blow Dry</p>
           <p>• Provides bounce to the hair</p>
           <p>• Give Strength to the hair</p>
 
-          <p className="details-about">Why Should you get this Done</p>
-          <p>• Improves Hair Growth</p>
-          <p>• Removing Split Ends</p>
-          <p>• Boost your Confidence</p>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          ></div>
+          <p>{serviceDetails.faq1.que1}</p>
           <Link to={`/${detailsarr.category}/${detailsarr.id}/details`}>
             <button onClick={addToCart} className={button} type="button">
               Book Appointment

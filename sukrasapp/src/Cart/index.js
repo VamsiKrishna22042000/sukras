@@ -165,7 +165,7 @@ const Cart = (props) => {
       </div>
     </div>
   ) : (
-    <div className="loader-spinner">
+    <div className="load-spinner">
       <img className="empty-cart" src="/emptycart.gif" alt="empty-cart" />
       <p className="cart-header">Your Cart is Empty</p>
       <button onClick={gobackTo} className="arrow-btn-progress" type="button">

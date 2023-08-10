@@ -66,8 +66,8 @@
     align-items: center;
   }
   .fashion-size-select {
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
     padding-top: 1%;
     padding-bottom: 1%;
     display: flex;
@@ -81,8 +81,8 @@
     width: 3px;
   }
   .fashion-size-select1 {
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
     padding-top: 1%;
     padding-bottom: 1%;
     display: flex;
@@ -226,8 +226,8 @@
     align-items: center;
   }
   .fashion-size-select1 {
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 3%;
+    padding-right: 3%;
     padding-top: 1%;
     padding-bottom: 1%;
     display: flex;
@@ -240,8 +240,8 @@
     color: orange;
   }
   .fashion-size-select {
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 3%;
+    padding-right: 3%;
     padding-top: 1%;
     padding-bottom: 1%;
     display: flex;

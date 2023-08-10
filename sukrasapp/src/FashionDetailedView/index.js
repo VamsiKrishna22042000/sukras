@@ -357,22 +357,24 @@ const FashionDetailedView = (props) => {
                   ))}
                 </div>
               ) : (
-                <div className="fashion-details-size-selection">
-                  {sizes.map((each) => (
-                    <button
-                      id={each.id}
-                      onClick={selectSize}
-                      className={
-                        each.id === size
-                          ? "fashion-size-select1"
-                          : "fashion-size-select"
-                      }
-                      type="button"
-                    >
-                      {each.text}
-                    </button>
-                  ))}
-                </div>
+                (params.type === "men" || "women" || "kids") && (
+                  <div className="fashion-details-size-selection">
+                    {sizes.map((each) => (
+                      <button
+                        id={each.id}
+                        onClick={selectSize}
+                        className={
+                          each.id === size
+                            ? "fashion-size-select1"
+                            : "fashion-size-select"
+                        }
+                        type="button"
+                      >
+                        {each.text}
+                      </button>
+                    ))}
+                  </div>
+                )
               )}
               <p className="fashion-details-about">Product Details</p>
               <p>{filterItem[0].about}</p>

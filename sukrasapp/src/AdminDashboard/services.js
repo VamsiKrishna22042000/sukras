@@ -64,6 +64,8 @@ const Services = () => {
   const Modal = () => {
     const [load, setLoad] = useState(true);
 
+    const [showfaq, setfaq] = useState(false);
+
     const [dataToBe, setData] = useState({
       salonId: "64c1e5b880e7fc21fb096a71",
       category: "",
@@ -74,6 +76,13 @@ const Services = () => {
       description: "",
       photos: "",
       image: "",
+      whatsinculded: "",
+      que1: "",
+      ans1: "",
+      que2: "",
+      ans2: "",
+      que3: "",
+      ans3: "",
     });
 
     useEffect(() => {
@@ -108,6 +117,23 @@ const Services = () => {
         setData((prevData) => ({ ...prevData, photos: event.target.files[0] }));
       } else if (event.target.id === "file-image") {
         setData((prevData) => ({ ...prevData, image: event.target.files[0] }));
+      } else if (event.target.id === "service-description-what") {
+        setData((prevData) => ({
+          ...prevData,
+          whatsinculded: event.target.value,
+        }));
+      } else if (event.target.id === "service-description-q1") {
+        setData((prevData) => ({ ...prevData, que1: event.target.value }));
+      } else if (event.target.id === "service-description-q2") {
+        setData((prevData) => ({ ...prevData, que2: event.target.value }));
+      } else if (event.target.id === "service-description-q3") {
+        setData((prevData) => ({ ...prevData, que3: event.target.value }));
+      } else if (event.target.id === "service-description-ans1") {
+        setData((prevData) => ({ ...prevData, ans1: event.target.value }));
+      } else if (event.target.id === "service-description-ans2") {
+        setData((prevData) => ({ ...prevData, ans2: event.target.value }));
+      } else if (event.target.id === "service-description-ans3") {
+        setData((prevData) => ({ ...prevData, ans3: event.target.value }));
       }
     };
 
@@ -169,6 +195,69 @@ const Services = () => {
           closeOnClick: true,
           theme: "colored",
         });
+      } else if (dataToBe.whatsinculded === "") {
+        toast.error("Please Enter What's Included", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+        toast.info("Click on Add FAQ's", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (dataToBe.que1 === "") {
+        toast.error("Please Enter Question 1", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (dataToBe.ans1 === "") {
+        toast.error("Please Enter Answer 1", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (dataToBe.que2 === "") {
+        toast.error("Please Enter Question 2", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (dataToBe.ans2 === "") {
+        toast.error("Please Enter Answer 2", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (dataToBe.que3 === "") {
+        toast.error("Please Enter Question 3", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
+      } else if (dataToBe.ans3 === "") {
+        toast.error("Please Enter Answer 3", {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: true,
+          closeOnClick: true,
+          theme: "colored",
+        });
       } else {
         const filterdCategory = availableCategories.map(
           (each) => each.category
@@ -187,6 +276,8 @@ const Services = () => {
             method: "POST",
             body: fd,
           };
+
+          console.log(Object.fromEntries(fd.entries()));
 
           const response = await fetch(url, reqConfigure);
 
@@ -278,88 +369,224 @@ const Services = () => {
         <ToastContainer />
         <div className="modal-boxcon"></div>
         {load ? (
-          <form className="modal-box">
-            <h1 style={{ marginBottom: 10, color: "#3E3E3E", fontSize: 20 }}>
-              Add New Service
-            </h1>
-            <lable htmlFor="service-name-admin">Service Title</lable>
-            <input
-              onChange={addService}
-              className="service-admin-input"
-              id="service-name-admin"
-              type="text"
-            />
-            <lable htmlFor="service-name-admin">Available Slot count</lable>
-            <input
-              onChange={addService}
-              className="service-admin-input"
-              id="service-slot-admin"
-              type="number"
-            />
-            {showServiceCategory && (
-              <label htmlFor="service-category-admit">
-                Select Category of the service
-              </label>
-            )}
-            {showServiceCategory && (
-              <select
-                style={{ textTransform: "capitalize" }}
-                onChange={addService}
-                id="service-category-admit"
-                className="service-admin-input"
-              >
-                {availableCategories.map((each) => (
-                  <option
-                    key={each._id}
+          <form className="modal-box-service-con">
+            {!showfaq ? (
+              <>
+                <h1
+                  style={{ marginBottom: 10, color: "#3E3E3E", fontSize: 20 }}
+                >
+                  Add New Service
+                </h1>
+                <lable htmlFor="service-name-admin">Service Title</lable>
+                <input
+                  onChange={addService}
+                  className="service-admin-input"
+                  id="service-name-admin"
+                  type="text"
+                />
+                <lable htmlFor="service-name-admin">Available Slot count</lable>
+                <input
+                  onChange={addService}
+                  className="service-admin-input"
+                  id="service-slot-admin"
+                  type="number"
+                />
+                {showServiceCategory && (
+                  <label htmlFor="service-category-admit">
+                    Select Category of the service
+                  </label>
+                )}
+                {showServiceCategory && (
+                  <select
                     style={{ textTransform: "capitalize" }}
-                    id={each._id}
+                    onChange={addService}
+                    id="service-category-admit"
+                    className="service-admin-input"
                   >
-                    {each.category}
-                  </option>
-                ))}
-              </select>
+                    {availableCategories.map((each) => (
+                      <option
+                        key={each._id}
+                        style={{ textTransform: "capitalize" }}
+                        id={each._id}
+                      >
+                        {each.category}
+                      </option>
+                    ))}
+                  </select>
+                )}
+                {!showServiceCategory && (
+                  <button
+                    onClick={() => {
+                      setServiceCategory(true);
+                    }}
+                    type="button"
+                    className="service-button-admin-category1"
+                  >
+                    Click here to get available categories back
+                  </button>
+                )}
+                <lable htmlFor="service-price-admin">Service Price</lable>
+                <input
+                  className="service-admin-input"
+                  onChange={addService}
+                  id="service-price-admin"
+                  type="text"
+                />
+                <lable htmlFor="service-time-admin">Service Time</lable>
+                <input
+                  className="service-admin-input"
+                  onChange={addService}
+                  id="service-time-admin"
+                  type="text"
+                />
+                <lable htmlFor="service-description-admin">
+                  Describe about service
+                </lable>
+                <textarea
+                  className="service-admin-text-area"
+                  onChange={addService}
+                  id="service-description-admin"
+                  type="text"
+                />
+                <label
+                  style={{ marginTop: 10, marginBottom: 10 }}
+                  htmlFor="service-image-admin"
+                >
+                  Upload Image for service
+                </label>
+                <input id="file" onChange={addService} type="file" />
+              </>
+            ) : (
+              <div className="modal-box-service-con-faq">
+                <div
+                  style={{
+                    paddingTop: 300,
+                    width: "100%",
+                  }}
+                >
+                  <h1
+                    style={{ marginBottom: 10, color: "#3E3E3E", fontSize: 20 }}
+                  >
+                    What's Included
+                  </h1>
+                  <textarea
+                    className="service-admin-text-area1"
+                    onChange={addService}
+                    id="service-description-what"
+                    type="text"
+                  />
+
+                  <h1
+                    style={{ marginBottom: 10, color: "#3E3E3E", fontSize: 20 }}
+                  >
+                    Add FAQ's
+                  </h1>
+                  <lable
+                    style={{ display: "block", width: "100%" }}
+                    htmlFor="service-description-q1"
+                  >
+                    Question 1
+                  </lable>
+                  <input
+                    className="service-admin-input1"
+                    onChange={addService}
+                    id="service-description-q1"
+                    type="text"
+                  />
+                  <lable
+                    style={{ display: "block", width: "100%" }}
+                    htmlFor="service-description-ans1"
+                  >
+                    Answer 1
+                  </lable>
+                  <textarea
+                    className="service-admin-text-area1"
+                    onChange={addService}
+                    id="service-description-ans1"
+                    type="text"
+                  />
+                  <lable
+                    style={{ display: "block", width: "100%" }}
+                    htmlFor="service-description-q2"
+                  >
+                    Question 2
+                  </lable>
+                  <input
+                    className="service-admin-input1"
+                    onChange={addService}
+                    id="service-description-q2"
+                    type="text"
+                  />
+                  <lable
+                    style={{ display: "block", width: "100%" }}
+                    htmlFor="service-description-ans2"
+                  >
+                    Answer 2
+                  </lable>
+                  <textarea
+                    className="service-admin-text-area1"
+                    onChange={addService}
+                    id="service-description-ans2"
+                    type="text"
+                  />
+                  <lable
+                    style={{ display: "block", width: "100%" }}
+                    htmlFor="service-description-q3"
+                  >
+                    Question 3
+                  </lable>
+                  <input
+                    className="service-admin-input1"
+                    onChange={addService}
+                    id="service-description-q3"
+                    type="text"
+                  />
+                  <lable
+                    style={{ display: "block", width: "100%" }}
+                    htmlFor="service-description-ans3"
+                  >
+                    Answer 3
+                  </lable>
+                  <textarea
+                    className="service-admin-text-area1"
+                    onChange={addService}
+                    id="service-description-ans3"
+                    type="text"
+                  />
+                </div>
+                <div className="service-button-admin-con">
+                  <button
+                    onClick={updatingServices}
+                    className="service-button-admin"
+                    type="button"
+                  >
+                    Add
+                  </button>
+                  <button
+                    style={{
+                      paddingTop: "1%",
+                      paddingBottom: "3%",
+                      color: "white",
+                    }}
+                    className="service-button-admin"
+                    onClick={settingModal}
+                    type="button"
+                  >
+                    Close
+                  </button>
+                  <button
+                    style={{ bottom: "-40%" }}
+                    className="service-button-admin-faq"
+                    onClick={() => {
+                      setfaq(!showfaq);
+                    }}
+                    type="button"
+                  >
+                    Add FAQ
+                  </button>
+                </div>
+              </div>
             )}
-            {!showServiceCategory && (
-              <button
-                onClick={() => {
-                  setServiceCategory(true);
-                }}
-                type="button"
-                className="service-button-admin-category1"
-              >
-                Click here to get available categories back
-              </button>
-            )}
-            <lable htmlFor="service-price-admin">Service Price</lable>
-            <input
-              className="service-admin-input"
-              onChange={addService}
-              id="service-price-admin"
-              type="text"
-            />
-            <lable htmlFor="service-time-admin">Service Time</lable>
-            <input
-              className="service-admin-input"
-              onChange={addService}
-              id="service-time-admin"
-              type="text"
-            />
-            <lable htmlFor="service-description-admin">
-              Describe about service
-            </lable>
-            <textarea
-              className="service-admin-text-area"
-              onChange={addService}
-              id="service-description-admin"
-              type="text"
-            />
-            <label
-              style={{ marginTop: 10, marginBottom: 10 }}
-              htmlFor="service-image-admin"
-            >
-              Upload Image for service
-            </label>
-            <input id="file" onChange={addService} type="file" />
             <div className="service-button-admin-con">
               <button
                 onClick={updatingServices}
@@ -375,35 +602,46 @@ const Services = () => {
               >
                 close
               </button>
-            </div>
-            <form className="modal-box2">
-              <h1 style={{ margin: 0, color: "#3E3E3E", fontSize: 20 }}>
-                Add New Category
-              </h1>
-              <p>New category name</p>
-              <input
-                type="text"
-                id="service-category-admit"
-                onFocusCapture={() => {
-                  setServiceCategory(false);
+              <button
+                className="service-button-admin-faq"
+                onClick={() => {
+                  setfaq(!showfaq);
                 }}
-                onChange={addService}
-              />
-              <p style={{ color: "red", fontSize: 10 }}>
-                *Please double click and type to add new category <br /> else
-                leave it blank.
-              </p>
-              <label
-                style={{ marginTop: 10, marginBottom: 10 }}
-                htmlFor="service-image-admin"
+                type="button"
               >
-                Upload Image for category
-              </label>
-              <input id="file-image" onChange={addService} type="file" />
-            </form>
+                Add FAQ
+              </button>
+            </div>
+            {!showfaq && (
+              <form className="modal-box2">
+                <h1 style={{ margin: 0, color: "#3E3E3E", fontSize: 20 }}>
+                  Add New Category
+                </h1>
+                <p>New category name</p>
+                <input
+                  type="text"
+                  id="service-category-admit"
+                  onFocusCapture={() => {
+                    setServiceCategory(false);
+                  }}
+                  onChange={addService}
+                />
+                <p style={{ color: "red", fontSize: 10 }}>
+                  *Please double click and type to add new category <br /> else
+                  leave it blank.
+                </p>
+                <label
+                  style={{ marginTop: 10, marginBottom: 10 }}
+                  htmlFor="service-image-admin"
+                >
+                  Upload Image for category
+                </label>
+                <input id="file-image" onChange={addService} type="file" />
+              </form>
+            )}
           </form>
         ) : (
-          <div className="modal-box">
+          <div className="modal-box-service-con">
             <div className="spinner-edit">
               <TailSpin color={"#F4BD18"} height={70} width={70} />
             </div>

@@ -36,12 +36,15 @@ import FashionDetailedView from "./FashionDetailedView";
 import EventManagement from "./EventManagement";
 import MyOrders from "./MyOrders";
 
+import Footer from "./footer/footer.js";
+
 import Dashboard from "./AdminDashboard";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path="/footer" component={Footer} />
         <Route exact path="/" component={SelectCategory} />
         <Route exact path="/beautyzone" component={Beautyzone} />
         <Route exact path="/fashionzone" component={FashionZone} />
@@ -93,6 +96,7 @@ function App() {
         />
         <Protectedroute exact path="/admindashboard" component={Dashboard} />
         <Route exact path="/login" component={Sukras} />
+
         <NotFound />
       </Switch>
     </BrowserRouter>

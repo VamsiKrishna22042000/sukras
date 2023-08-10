@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 
 import { withRouter, Link } from "react-router-dom";
 
-import { BsHandbag } from "react-icons/bs";
+import { BsBorderStyle, BsHandbag } from "react-icons/bs";
 
 import { TailSpin } from "react-loader-spinner";
 
@@ -188,7 +188,12 @@ const SelectedService = (props) => {
           (each) =>
             each.active && (
               <div className="selected-body-total">
-                <div className="selected-body-content">
+                <div
+                  style={{
+                    width: "100%",
+                  }}
+                  className="selected-body-content"
+                >
                   <h1
                     style={{ textTransform: "capitalize" }}
                     className="selected-hea"
@@ -213,11 +218,17 @@ const SelectedService = (props) => {
                     </p>
                     <p className="selected-rating">• {each.time} mins</p>
                   </div>
-                  <p>• {each.description}</p>
-                  <p>• Follow this up with styling look of your choice</p>
-                  <p>
-                    • A quick trim to remove split ends while minimally reducing
-                    hair length
+                  <p
+                    style={{
+                      width: "78%",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    {each.description}
                   </p>
                   <Link to={`/${each.service}/${arr.id}/details`}>
                     <button className="view-details" type="button">
