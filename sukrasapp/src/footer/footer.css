@@ -78,6 +78,7 @@
 
 @media screen and (max-width: 600px) {
   .footer-con {
+    overflow: hidden;
     padding-top: 2%;
     height: auto;
     width: 100%;

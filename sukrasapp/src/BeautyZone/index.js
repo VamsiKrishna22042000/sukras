@@ -12,6 +12,8 @@ import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 import { Link } from "react-router-dom";
 
+import Footer from "../footer/footer";
+
 const Beautyzone = (props) => {
   const [categories, setCategories] = useState("");
   const [load, setLoad] = useState(false);
@@ -413,6 +415,7 @@ const Beautyzone = (props) => {
             ))}
           </div>
         </div>
+        <Footer />
       </div>
     </>
   ) : (
