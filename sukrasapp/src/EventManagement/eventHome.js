@@ -10,6 +10,8 @@ import { TailSpin } from "react-loader-spinner";
 
 import EventManagementCarousel from "../EventManagementCarousel";
 
+import Footer from "../footer/footer";
+
 const EventHome = (props) => {
   const { settingPage, settingEvent } = props;
   const [eventServices, setEventServices] = useState([]);
@@ -188,6 +190,7 @@ const EventHome = (props) => {
           </div>
         )}
       </div>
+      <Footer />
     </>
   ) : (
     <div className="service-spinner">

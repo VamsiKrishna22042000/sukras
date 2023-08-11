@@ -199,7 +199,7 @@
   .sukras-home-sukras {
     height: 88vh;
     width: 100vw;
-    background-color: #fef4cd;
+    background-color: #231f1e;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -233,21 +233,6 @@
   .sukras-content-image1 {
     height: 55%;
     width: 100%;
-  }
-
-  .sukras-content-container:hover .sukras-content-image1 {
-    /* Change the image source when hovering */
-    content: url("C:\Users\Asus\Desktop\Sukras\sukras\sukrasapp\public\beautyzone2.png");
-  }
-
-  .sukras-content-container:hover .sukras-content-image2 {
-    /* Change the image source when hovering */
-    content: url("C:\Users\Asus\Desktop\Sukras\sukras\sukrasapp\public\fashionzone2.png");
-  }
-
-  .sukras-content-container:hover .sukras-content-image3 {
-    /* Change the image source when hovering */
-    content: url("C:\Users\Asus\Desktop\Sukras\sukras\sukrasapp\public\eventmanagement2.png");
   }
 
   .sukras-content-image2 {
@@ -486,11 +471,13 @@
   .sukras-home-sukras {
     height: auto;
     width: 100vw;
-    background-color: #fef4cd;
+    background-color: #231f1e;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    color: #fff;
+    padding-top: 7%;
   }
   .sukras-content-container {
     height: 80vh;
@@ -526,21 +513,6 @@
     width: 100%;
   }
 
-  .sukras-content-container:hover .sukras-content-image1 {
-    /* Change the image source when hovering */
-    content: url("C:\Users\Asus\Desktop\Sukras\sukras\sukrasapp\public\beautyzone2.png");
-  }
-
-  .sukras-content-container:hover .sukras-content-image2 {
-    /* Change the image source when hovering */
-    content: url("C:\Users\Asus\Desktop\Sukras\sukras\sukrasapp\public\fashionzone2.png");
-  }
-
-  .sukras-content-container:hover .sukras-content-image3 {
-    /* Change the image source when hovering */
-    content: url("C:\Users\Asus\Desktop\Sukras\sukras\sukrasapp\public\eventmanagement2.png");
-  }
-
   .sukras-content-image2 {
     height: 55%;
     width: 100%;
@@ -566,8 +538,5 @@
   }
   .sukras-content-container:hover .content-button-sukrass {
     background-color: #ffbf00;
-  }
-  .sukrasmain-head-display {
-    display: inline;
   }
 }

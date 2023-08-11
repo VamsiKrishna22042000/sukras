@@ -22,20 +22,39 @@ const Footer = () => {
   return (
     <div className="footer-con">
       <div className="logo-con">
-        <img className="footer-image" src="./logo3.png" alt="sukraslogo" />
+        <img className="footer-image" src="/logo3.png" alt="sukraslogo" />
         <div className="fotter-select">
-          <p style={{ borderLeft: "hidden" }} className="footer-para">
+          <p
+            onClick={() => {
+              window.location.href = "/";
+            }}
+            style={{ borderLeft: "hidden", cursor: "pointer" }}
+            className="footer-para"
+          >
             Home
           </p>
           <p
-            style={{ borderLeft: "hidden", borderRight: "hidden" }}
+            style={{
+              borderLeft: "hidden",
+              borderRight: "hidden",
+              cursor: "pointer",
+            }}
             className="footer-para"
           >
             About
           </p>
         </div>
         <p style={{ fontSize: 13, marginTop: 0 }}>
-          Sukras <AiOutlineCopyrightCircle style={{ fontSize: 9 }} /> 2015
+          Sukras
+          <AiOutlineCopyrightCircle
+            style={{
+              fontSize: 10,
+              marginRight: 3,
+              marginLeft: 3,
+              cursor: "pointer",
+            }}
+          />
+          all rights reserved @ 2023
         </p>
       </div>
       <div className="logo-con2">
@@ -52,6 +71,7 @@ const Footer = () => {
                 borderRadius: "50%",
                 padding: "0.5%",
                 fontSize: 20,
+                cursor: "pointer",
               }}
             />
           </div>
@@ -70,6 +90,7 @@ const Footer = () => {
                 borderRadius: "50%",
                 padding: "0.5%",
                 fontSize: 20,
+                cursor: "pointer",
               }}
             />
           </div>
@@ -90,6 +111,7 @@ const Footer = () => {
               borderRadius: "50%",
               padding: "0.5%",
               fontSize: 20,
+              cursor: "pointer",
             }}
           />
           <p style={{ fontSize: 13, marginLeft: 5, marginTop: 0 }}>
@@ -107,6 +129,7 @@ const Footer = () => {
               borderRadius: "50%",
               padding: "0.5%",
               fontSize: 20,
+              cursor: "pointer",
             }}
           />
           <p style={{ fontSize: 13, marginLeft: 5, marginTop: 0 }}>
@@ -129,34 +152,34 @@ const Footer = () => {
             onClick={() => {
               window.location.href = "https://twitter.com/sukras_official";
             }}
-            style={{ fontSize: 25, marginLeft: 10 }}
+            style={{ fontSize: 25, marginLeft: 10, cursor: "pointer" }}
           />
           <IoLogoFacebook
             onClick={() => {
               window.location.href =
                 "https://m.facebook.com/profile.php?id=100092844217013";
             }}
-            style={{ fontSize: 25, marginLeft: 10 }}
+            style={{ fontSize: 25, marginLeft: 10, cursor: "pointer" }}
           />
           <IoLogoYoutube
             onClick={() => {
               window.location.href =
                 "https://www.youtube.com/@Sukras_official/";
             }}
-            style={{ fontSize: 25, marginLeft: 10 }}
+            style={{ fontSize: 25, marginLeft: 10, cursor: "pointer" }}
           />
           <IoLogoInstagram
             onClick={() => {
               window.location.href =
                 "https://www.instagram.com/sukrasofficial/";
             }}
-            style={{ fontSize: 25, marginLeft: 10 }}
+            style={{ fontSize: 25, marginLeft: 10, cursor: "pointer" }}
           />
           <FaWhatsappSquare
             onClick={() => {
               window.location.href = "https://wa.link/855kde";
             }}
-            style={{ fontSize: 25, marginLeft: 10 }}
+            style={{ fontSize: 25, marginLeft: 10, cursor: "pointer" }}
           />
         </div>
       </div>

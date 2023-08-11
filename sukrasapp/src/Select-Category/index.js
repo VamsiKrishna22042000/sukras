@@ -23,28 +23,6 @@ const SelectCategory = (props) => {
       </div>
 
       <div className="sukras-home-sukras">
-        <h1
-          className="sukrasmain-head-display"
-          style={{
-            fontSize: "5vw",
-            fontFamily: "sans-serif",
-            marginTop: "5%",
-            marginBottom: "5%",
-          }}
-        >
-          Let's Get Started
-        </h1>
-        <p
-          className="sukrasmain-head-display"
-          style={{
-            textAlign: "center",
-            marginTop: "-2.5%",
-            marginBottom: "5%",
-          }}
-        >
-          Enjoy our services by clicking any of thesementioned below...
-        </p>
-
         <div
           id="beautyzone"
           onClick={moveToHomePage}

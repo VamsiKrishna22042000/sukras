@@ -1,6 +1,8 @@
 import Cookies from "js-cookie";
 import "./index.css";
 
+import Footer from "../footer/footer.js";
+
 import { TailSpin } from "react-loader-spinner";
 
 import { useEffect, useState } from "react";
@@ -46,105 +48,118 @@ const MyOrders = (props) => {
     orders.serviceOrders.length !== 0 ||
     orders.eventOrders.length !== 0 ||
     orders.productOrders.length !== 0 ? (
-      <div className="total-orders">
-        <div className="myorders-head">
-          <button onClick={gobackTo} className="order-arrow-btn" type="button">
-            <img className="order-left-arrow-mobile" src="/backarrow.png" />
-          </button>
-          <h1>My Orders</h1>
-        </div>
-        <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Services</h1>
-        <div className="all-orders">
-          {orders.serviceOrders.map((each) => (
-            <div className="each-order">
-              <img
-                className="each-img"
-                src={each.photos[0]}
-                alt="your services"
-              />
-              <div className="each-content">
-                <h1
-                  style={{
-                    textTransform: "capitalize",
-                    fontSize: 18,
-                    marginTop: 8,
-                    width: 200,
-                  }}
-                >
-                  {each.name}
-                </h1>
-                <p>₹ {each.price}</p>
-                <p>{each.orderedAt}</p>
-                <p>{each.time}</p>
+      <>
+        <div className="total-orders">
+          <div className="myorders-head">
+            <button
+              onClick={gobackTo}
+              className="order-arrow-btn"
+              type="button"
+            >
+              <img className="order-left-arrow-mobile" src="/backarrow.png" />
+            </button>
+            <h1>My Orders</h1>
+          </div>
+          <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Services</h1>
+          <div className="all-orders">
+            {orders.serviceOrders.map((each) => (
+              <div className="each-order">
+                <img
+                  className="each-img"
+                  src={each.photos[0]}
+                  alt="your services"
+                />
+                <div className="each-content">
+                  <h1
+                    style={{
+                      textTransform: "capitalize",
+                      fontSize: 18,
+                      marginTop: 8,
+                      width: 200,
+                    }}
+                  >
+                    {each.name}
+                  </h1>
+                  <p>₹ {each.price}</p>
+                  <p>{each.orderedAt}</p>
+                  <p>{each.time}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Products</h1>
-        <div className="all-orders">
-          {orders.productOrders.map((each) => (
-            <div className="each-order">
-              <img
-                className="each-img"
-                src={each.photos[0]}
-                alt="your services"
-              />
-              <div className="each-content">
-                <h1
-                  style={{
-                    textTransform: "capitalize",
-                    fontSize: 18,
-                    marginTop: 8,
-                    marginBottom: 0,
-                    width: 200,
-                  }}
-                >
-                  {each.name}
-                </h1>
-                <p style={{ marginTop: 5, marginBottom: 4, padding: 0 }}>
-                  ₹ {each.price * each.count}
-                </p>
-                <p style={{ marginTop: 5, padding: 0, marginBottom: 4 }}>
-                  {each.orderedAt}
-                </p>
-                <p
-                  style={{ marginTop: 0, padding: 0, marginBottom: 4 }}
-                >{`${each.count} ordered`}</p>
-                {each.active ? (
-                  <p className="deliverd" style={{ color: "red" }}>
-                    On the Way
+            ))}
+          </div>
+          <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Products</h1>
+          <div className="all-orders">
+            {orders.productOrders.map((each) => (
+              <div className="each-order">
+                <img
+                  className="each-img"
+                  src={each.photos[0]}
+                  alt="your services"
+                />
+                <div className="each-content">
+                  <h1
+                    style={{
+                      textTransform: "capitalize",
+                      fontSize: 18,
+                      marginTop: 8,
+                      marginBottom: 0,
+                      width: 200,
+                    }}
+                  >
+                    {each.name}
+                  </h1>
+                  <p style={{ marginTop: 5, marginBottom: 4, padding: 0 }}>
+                    ₹ {each.price * each.count}
                   </p>
-                ) : (
-                  <p style={{ color: "green" }} className="deliverd">
-                    Delivered
+                  <p style={{ marginTop: 5, padding: 0, marginBottom: 4 }}>
+                    {each.orderedAt}
                   </p>
-                )}
+                  <p
+                    style={{ marginTop: 0, padding: 0, marginBottom: 4 }}
+                  >{`${each.count} ordered`}</p>
+                  {each.active ? (
+                    <p className="deliverd" style={{ color: "red" }}>
+                      On the Way
+                    </p>
+                  ) : (
+                    <p style={{ color: "green" }} className="deliverd">
+                      Delivered
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-        <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Events</h1>
-        <div className="all-orders">
-          {orders.eventOrders.map((each) => (
-            <div className="each-order">
-              <img className="each-img" src={each.image} alt="your services" />
-              <div className="each-content">
-                <h1
-                  style={{
-                    textTransform: "capitalize",
-                    fontSize: 18,
-                    width: 200,
-                    marginTop: 30,
-                  }}
-                >
-                  {each.eventName}
-                </h1>
-                <p>{each.date}</p>
+            ))}
+          </div>
+          <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Events</h1>
+          <div className="all-orders">
+            {orders.eventOrders.map((each) => (
+              <div className="each-order">
+                <img
+                  className="each-img"
+                  src={each.image}
+                  alt="your services"
+                />
+                <div className="each-content">
+                  <h1
+                    style={{
+                      textTransform: "capitalize",
+                      fontSize: 18,
+                      width: 200,
+                      marginTop: 30,
+                    }}
+                  >
+                    {each.eventName}
+                  </h1>
+                  <p>{each.date}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+        <div>
+          <Footer />
+        </div>
+      </>
     ) : (
       <div className="loader-spinner">
         <img className="empty-cart" src="/emptycart.gif" alt="empty-cart" />

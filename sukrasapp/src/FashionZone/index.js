@@ -7,12 +7,7 @@ import Cookies from "js-cookie";
 
 import { useState, useEffect } from "react";
 
-import {
-  generatePath,
-  withRouter,
-} from "react-router-dom/cjs/react-router-dom.min";
-
-import { v4 as uuidv4 } from "uuid";
+import Footer from "../footer/footer.js";
 
 import { Link } from "react-router-dom";
 
@@ -298,6 +293,7 @@ const FashionZone = (props) => {
           )}
         </div>
       </div>
+      <Footer />
     </>
   ) : (
     <div className="loader-spinner">
