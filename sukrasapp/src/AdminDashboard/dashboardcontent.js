@@ -43,6 +43,8 @@ const DashboardContent = (props) => {
     }
   };
 
+  console.log(admin);
+
   return (
     <div className="dashboard-content">
       <div className="dashboard-header">
