@@ -187,10 +187,11 @@
     padding-right: 2%;
   }
   .main-head-dashboard {
-    height: 25vh;
-    width: 13vw;
+    height: 16vh;
+    width: 8vw;
     margin-bottom: 5%;
-    margin-top: 5%;
+    margin-top: 8%;
+    margin-left: 18%;
     border-radius: 5px;
   }
   .dash-board-options {

@@ -39,7 +39,9 @@ const DashboardContent = (props) => {
       const filterdAdmin = data.users.map(
         (each) => each._id === Cookies.get("jwt_user") && each.name
       );
-      setAdmin(filterdAdmin[0]);
+      const filter = filterdAdmin.filter((each) => each !== false);
+      console.log(filter);
+      setAdmin(filter);
     }
   };
 
