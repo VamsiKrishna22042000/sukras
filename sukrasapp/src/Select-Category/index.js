@@ -54,7 +54,7 @@ const SelectCategory = (props) => {
             id="beautyzone"
             onClick={moveToHomePage}
             className="sukras-content-image1"
-            src="./beautyzone1.png"
+            src="./beautyzone2.png"
           />
           <h1
             id="beautyzone"
@@ -92,7 +92,7 @@ const SelectCategory = (props) => {
             id="fashionzone"
             onClick={moveToHomePage}
             className="sukras-content-image2"
-            src="./fashionzone1.png"
+            src="./fashionzone2.png"
           />
           <h1
             d="fashionzone"
@@ -131,7 +131,7 @@ const SelectCategory = (props) => {
             id="eventManagement"
             onClick={moveToHomePage}
             className="sukras-content-image3"
-            src="./eventmanagement1.png"
+            src="./eventmanagement2.png"
           />
           <h1
             id="eventManagement"

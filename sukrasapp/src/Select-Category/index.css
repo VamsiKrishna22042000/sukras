@@ -208,12 +208,11 @@
   .sukras-content-container {
     height: 95%;
     width: 21%;
-
     border-radius: 10px;
-    background-color: #d9d9d9;
+    background-color: #fff;
+    color: #ffbf00;
     font-family: "Courier New", Courier, monospace;
     font-size: 1vw;
-    color: #000;
     box-shadow: 1px 1px 1px 1px #00000070;
   }
   .sukras-content-para {
@@ -226,8 +225,6 @@
   }
 
   .sukras-content-container:hover {
-    background-color: #fff;
-    color: #ffbf00;
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
     box-shadow: 0px 0px 0px 0px #00000070;
@@ -271,7 +268,7 @@
     font-size: 1.2vw;
     border-radius: 5px;
     border-width: 0px;
-    background-color: grey;
+    background-color: #ffbf00;
     color: #fff;
     font-weight: bold;
   }
@@ -500,13 +497,13 @@
     width: 80%;
     margin-bottom: 5vh;
     border-radius: 10px;
-    background-color: #d9d9d9;
+    box-shadow: 0px 0px 0px 0px #00000070;
     font-family: "Courier New", Courier, monospace;
     font-size: 3.5vw;
-    color: #000;
-    box-shadow: 1px 1px 1px 1px #00000070;
     overflow: scroll;
     margin-left: 2%;
+    background-color: #fff;
+    color: #ffbf00;
   }
   .sukras-content-para {
     font-family: sans-serif;
