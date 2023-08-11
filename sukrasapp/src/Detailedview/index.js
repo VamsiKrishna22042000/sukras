@@ -380,7 +380,7 @@ const DetailedView = (props) => {
           <p>{serviceDetails.description}</p>
 
           <p className="details-about">What’s Included?</p>
-          <p>{serviceDetails.description}</p>
+          <p>{serviceDetails.whatsIncluded}</p>
 
           <div
             style={{

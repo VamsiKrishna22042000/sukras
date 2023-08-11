@@ -76,7 +76,7 @@ const Services = () => {
       description: "",
       photos: "",
       image: "",
-      whatsinculded: "",
+      whatsIncluded: "",
       que1: "",
       ans1: "",
       que2: "",
@@ -120,7 +120,7 @@ const Services = () => {
       } else if (event.target.id === "service-description-what") {
         setData((prevData) => ({
           ...prevData,
-          whatsinculded: event.target.value,
+          whatsIncluded: event.target.value,
         }));
       } else if (event.target.id === "service-description-q1") {
         setData((prevData) => ({ ...prevData, que1: event.target.value }));
@@ -195,7 +195,7 @@ const Services = () => {
           closeOnClick: true,
           theme: "colored",
         });
-      } else if (dataToBe.whatsinculded === "") {
+      } else if (dataToBe.whatsIncluded === "") {
         toast.error("Please Enter What's Included", {
           position: "top-center",
           autoClose: 2000,
@@ -383,6 +383,7 @@ const Services = () => {
                   className="service-admin-input"
                   id="service-name-admin"
                   type="text"
+                  value={dataToBe.service}
                 />
                 <lable htmlFor="service-name-admin">Available Slot count</lable>
                 <input
@@ -390,6 +391,7 @@ const Services = () => {
                   className="service-admin-input"
                   id="service-slot-admin"
                   type="number"
+                  value={dataToBe.availableSlotCount}
                 />
                 {showServiceCategory && (
                   <label htmlFor="service-category-admit">
@@ -402,6 +404,7 @@ const Services = () => {
                     onChange={addService}
                     id="service-category-admit"
                     className="service-admin-input"
+                    value={dataToBe.category}
                   >
                     {availableCategories.map((each) => (
                       <option
@@ -431,6 +434,7 @@ const Services = () => {
                   onChange={addService}
                   id="service-price-admin"
                   type="text"
+                  value={dataToBe.price}
                 />
                 <lable htmlFor="service-time-admin">Service Time</lable>
                 <input
@@ -438,6 +442,7 @@ const Services = () => {
                   onChange={addService}
                   id="service-time-admin"
                   type="text"
+                  value={dataToBe.time}
                 />
                 <lable htmlFor="service-description-admin">
                   Describe about service
@@ -447,6 +452,7 @@ const Services = () => {
                   onChange={addService}
                   id="service-description-admin"
                   type="text"
+                  value={dataToBe.description}
                 />
                 <label
                   style={{ marginTop: 10, marginBottom: 10 }}
@@ -479,6 +485,7 @@ const Services = () => {
                     onChange={addService}
                     id="service-description-what"
                     type="text"
+                    value={dataToBe.whatsIncluded}
                   />
 
                   <h1
@@ -497,6 +504,7 @@ const Services = () => {
                     onChange={addService}
                     id="service-description-q1"
                     type="text"
+                    value={dataToBe.que1}
                   />
                   <lable
                     style={{ display: "block", width: "100%" }}
@@ -509,6 +517,7 @@ const Services = () => {
                     onChange={addService}
                     id="service-description-ans1"
                     type="text"
+                    value={dataToBe.ans1}
                   />
                   <lable
                     style={{ display: "block", width: "100%" }}
@@ -521,6 +530,7 @@ const Services = () => {
                     onChange={addService}
                     id="service-description-q2"
                     type="text"
+                    value={dataToBe.que2}
                   />
                   <lable
                     style={{ display: "block", width: "100%" }}
@@ -533,6 +543,7 @@ const Services = () => {
                     onChange={addService}
                     id="service-description-ans2"
                     type="text"
+                    value={dataToBe.ans2}
                   />
                   <lable
                     style={{ display: "block", width: "100%" }}
@@ -545,6 +556,7 @@ const Services = () => {
                     onChange={addService}
                     id="service-description-q3"
                     type="text"
+                    value={dataToBe.que3}
                   />
                   <lable
                     style={{ display: "block", width: "100%" }}
@@ -557,6 +569,7 @@ const Services = () => {
                     onChange={addService}
                     id="service-description-ans3"
                     type="text"
+                    value={dataToBe.ans3}
                   />
                 </div>
                 <div className="service-button-admin-con">
