@@ -24,6 +24,15 @@
   align-items: center;
 }
 
+.toup {
+  transform: rotate(-90deg);
+  cursor: pointer;
+}
+.todown {
+  transform: rotate(90deg);
+  cursor: pointer;
+}
+
 @media screen and (min-width: 992px) {
   .sukras-main-beauty {
     height: auto;

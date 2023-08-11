@@ -16,11 +16,13 @@ import { FaWhatsappSquare } from "react-icons/fa";
 
 import { IoLogoYoutube } from "react-icons/io";
 
+import { BiLogoTwitter } from "react-icons/bi";
+
 const Footer = () => {
   return (
     <div className="footer-con">
       <div className="logo-con">
-        <img className="footer-image" src="./logo2.png" alt="sukraslogo" />
+        <img className="footer-image" src="./logo3.png" alt="sukraslogo" />
         <div className="fotter-select">
           <p style={{ borderLeft: "hidden" }} className="footer-para">
             Home
@@ -73,11 +75,15 @@ const Footer = () => {
           </div>
 
           <p style={{ fontSize: 13, marginLeft: 5, marginTop: 0 }}>
-            + 9990 999 999
+            +91 7789919999
           </p>
         </div>
         <div className="location-footer">
           <MdEmail
+            onClick={() => {
+              window.location.href =
+                "https://mail.google.com/mail/u/0/#inbox?compose=new";
+            }}
             style={{
               backgroundColor: "#d4af37",
               color: "000000",
@@ -87,7 +93,7 @@ const Footer = () => {
             }}
           />
           <p style={{ fontSize: 13, marginLeft: 5, marginTop: 0 }}>
-            sukras@gmail.com
+            sudha.sukras@gmail.com
           </p>
         </div>
         <div className="location-footer">
@@ -119,10 +125,39 @@ const Footer = () => {
         </p>
         <p>Our Social Media</p>
         <div>
-          <IoLogoFacebook style={{ fontSize: 25, marginLeft: 10 }} />
-          <IoLogoYoutube style={{ fontSize: 25, marginLeft: 10 }} />
-          <IoLogoInstagram style={{ fontSize: 25, marginLeft: 10 }} />
-          <FaWhatsappSquare style={{ fontSize: 25, marginLeft: 10 }} />
+          <BiLogoTwitter
+            onClick={() => {
+              window.location.href = "https://twitter.com/sukras_official";
+            }}
+            style={{ fontSize: 25, marginLeft: 10 }}
+          />
+          <IoLogoFacebook
+            onClick={() => {
+              window.location.href =
+                "https://m.facebook.com/profile.php?id=100092844217013";
+            }}
+            style={{ fontSize: 25, marginLeft: 10 }}
+          />
+          <IoLogoYoutube
+            onClick={() => {
+              window.location.href =
+                "https://www.youtube.com/@Sukras_official/";
+            }}
+            style={{ fontSize: 25, marginLeft: 10 }}
+          />
+          <IoLogoInstagram
+            onClick={() => {
+              window.location.href =
+                "https://www.instagram.com/sukrasofficial/";
+            }}
+            style={{ fontSize: 25, marginLeft: 10 }}
+          />
+          <FaWhatsappSquare
+            onClick={() => {
+              window.location.href = "https://wa.link/855kde";
+            }}
+            style={{ fontSize: 25, marginLeft: 10 }}
+          />
         </div>
       </div>
     </div>

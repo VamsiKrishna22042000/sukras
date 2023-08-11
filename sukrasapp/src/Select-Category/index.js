@@ -6,40 +6,10 @@ import { v4 as uuidv4 } from "uuid";
 
 import "./index.css";
 
-const categories = [
-  {
-    id: uuidv4(),
-    imageUrl: "beautyzone.png",
-    category: "beautyzone",
-    name: "Beauty Zone",
-    yes: "yes",
-  },
-  {
-    id: uuidv4(),
-    imageUrl: "fashion.png",
-    category: "fashionzone",
-    name: "Fashion Zone",
-    yes: "yes",
-  },
-  {
-    id: uuidv4(),
-    imageUrl: "eventmanagement.png",
-    category: "eventManagement",
-    name: "Event Management",
-    yes: "yes",
-  },
-];
-
 const SelectCategory = (props) => {
-  const [categorySelected, setCategory] = useState("");
-
-  const selectedCat = (event) => {
-    setCategory(event.target.id);
-  };
-
-  const moveToHomePage = () => {
+  const moveToHomePage = (event) => {
     const { history } = props;
-    history.push(`/${categorySelected}`);
+    history.push(`/${event.target.id}`);
   };
 
   return (
@@ -51,71 +21,143 @@ const SelectCategory = (props) => {
           alt="Logo Space"
         />
       </div>
-      <div className="website-body-sukras">
-        <div className="form-sukras">
+
+      <div className="sukras-home-sukras">
+        <h1
+          className="sukrasmain-head-display"
+          style={{
+            fontSize: "5vw",
+            fontFamily: "sans-serif",
+            marginTop: "5%",
+            marginBottom: "5%",
+          }}
+        >
+          Let's Get Started
+        </h1>
+        <p
+          className="sukrasmain-head-display"
+          style={{
+            textAlign: "center",
+            marginTop: "-2.5%",
+            marginBottom: "5%",
+          }}
+        >
+          Enjoy our services by clicking any of thesementioned below...
+        </p>
+
+        <div
+          id="beautyzone"
+          onClick={moveToHomePage}
+          className="sukras-content-container"
+        >
           <img
-            className="sukraslogo2sukras"
-            src="./logo2.png"
-            alt="Logo Space2"
+            id="beautyzone"
+            onClick={moveToHomePage}
+            className="sukras-content-image1"
+            src="./beautyzone1.png"
           />
-          <p className="get-started">Let's Get Started</p>
-          <p className="enjoy-sevices">
-            Enjoy our services by clicking any of these
-            <br />
-            mentioned below...
+          <h1
+            id="beautyzone"
+            onClick={moveToHomePage}
+            style={{ textAlign: "center", cursor: "pointer" }}
+          >
+            Beauty Zone
+          </h1>
+          <p
+            id="beautyzone"
+            onClick={moveToHomePage}
+            style={{ textAlign: "center", cursor: "pointer" }}
+            className="sukras-content-para"
+          >
+            Elevate your beauty at Sukras BeautyZone, where our seasoned
+            professionals curate personalized salon experiences, delivering
+            exquisite makeovers that rejuvenate your glow and spirit.
           </p>
-          {categories.map((each) => (
-            <button
-              key={each.category}
-              id={each.category}
-              className={
-                categorySelected === each.category ? "category-2" : "category"
-              }
-              type="button"
-              onClick={selectedCat}
-            >
-              <button
-                id={each.category}
-                className="sukras-span"
-                onClick={selectedCat}
-              >
-                <img
-                  id={each.category}
-                  onClick={selectedCat}
-                  className="sukras-icons"
-                  src={`./${each.imageUrl}`}
-                  alt={each.imageUrl}
-                />
-              </button>
-              <button
-                id={each.category}
-                onClick={selectedCat}
-                className={
-                  categorySelected === each.category
-                    ? "sukras-name-span2"
-                    : "sukras-name-span1"
-                }
-              >
-                {each.name}
-              </button>
-              {categorySelected === each.category && (
-                <img
-                  className="sukras-icons-yes"
-                  src={`/${each.yes}.png`}
-                  alt={each.yes}
-                />
-              )}
-            </button>
-          ))}
-          <div className="proceed-con">
-            <button
-              onClick={moveToHomePage}
-              className={categorySelected !== "" ? "proceed-2" : "proceed"}
-              type="button"
-            >
-              Proceed
-            </button>
-          </div>
+          <button
+            id="beautyzone"
+            onClick={moveToHomePage}
+            style={{ cursor: "pointer" }}
+            className="content-button-sukrass"
+          >
+            Proceed ❯
+          </button>
+        </div>
+
+        <div
+          id="fashionzone"
+          onClick={moveToHomePage}
+          className="sukras-content-container"
+        >
+          <img
+            id="fashionzone"
+            onClick={moveToHomePage}
+            className="sukras-content-image2"
+            src="./fashionzone1.png"
+          />
+          <h1
+            d="fashionzone"
+            onClick={moveToHomePage}
+            style={{ textAlign: "center", cursor: "pointer" }}
+          >
+            Fashion Zone
+          </h1>
+          <p
+            d="fashionzone"
+            onClick={moveToHomePage}
+            style={{ textAlign: "center", cursor: "pointer" }}
+            className="sukras-content-para"
+          >
+            Dive into the world of style and elegance at Fashion Zone. Our
+            trend-setting collection and attentive stylists converge to redefine
+            your fashion journey, ensuring you stand out with confidence and
+            panache.
+          </p>
+          <button
+            d="fashionzone"
+            onClick={moveToHomePage}
+            style={{ cursor: "pointer" }}
+            className="content-button-sukrass"
+          >
+            Proceed ❯
+          </button>
+        </div>
+
+        <div
+          id="eventManagement"
+          onClick={moveToHomePage}
+          className="sukras-content-container"
+        >
+          <img
+            id="eventManagement"
+            onClick={moveToHomePage}
+            className="sukras-content-image3"
+            src="./eventmanagement1.png"
+          />
+          <h1
+            id="eventManagement"
+            onClick={moveToHomePage}
+            style={{ textAlign: "center", cursor: "pointer" }}
+          >
+            Event Managemet
+          </h1>
+          <p
+            id="eventManagement"
+            onClick={moveToHomePage}
+            style={{ textAlign: "center", cursor: "pointer" }}
+            className="sukras-content-para"
+          >
+            Welcome to Event Management by Sukras: Your dreams, our expertise.
+            From concept to execution, we craft unforgettable experiences,
+            turning your occasions into cherished memories.
+          </p>
+          <button
+            id="eventManagement"
+            onClick={moveToHomePage}
+            style={{ cursor: "pointer" }}
+            className="content-button-sukrass"
+          >
+            Proceed ❯
+          </button>
         </div>
       </div>
     </div>

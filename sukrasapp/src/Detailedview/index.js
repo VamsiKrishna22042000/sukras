@@ -49,6 +49,7 @@ const DetailedView = (props) => {
   const [serviceDetails, setDetails] = useState("");
 
   const [itemsInCart, setItemsInCart] = useState([]);
+  const [showque, setQue] = useState({ que1: false, que2: false, que3: false });
 
   useEffect(() => {
     getCartItems();
@@ -365,9 +366,7 @@ const DetailedView = (props) => {
           <p>{serviceDetails.description}</p>
 
           <p className="details-about">What’s Included?</p>
-          <p>• Includes trimming & Cutting of Hair with Blow Dry</p>
-          <p>• Provides bounce to the hair</p>
-          <p>• Give Strength to the hair</p>
+          <p>{serviceDetails.description}</p>
 
           <div
             style={{
@@ -377,12 +376,124 @@ const DetailedView = (props) => {
               alignItems: "center",
             }}
           ></div>
-          <p>{serviceDetails.faq1.que1}</p>
+          <p className="details-about">FAQ's?</p>
+          <div>
+            <p className="questions">
+              {serviceDetails.faq1.que1}
+              {showque.que1 ? (
+                <span
+                  onClick={(prevQue) =>
+                    setQue({ ...prevQue, que1: !showque.que1 })
+                  }
+                  style={{
+                    transform: `rotate(-90deg)`,
+                    display: "inline-block",
+                    marginLeft: 15,
+                    cursor: "pointer",
+                  }}
+                >
+                  ❯
+                </span>
+              ) : (
+                <span
+                  onClick={(prevQue) =>
+                    setQue({ ...prevQue, que1: !showque.que1 })
+                  }
+                  style={{
+                    transform: `rotate(90deg)`,
+                    display: "inline-block",
+                    marginLeft: 15,
+                    cursor: "pointer",
+                  }}
+                >
+                  ❯
+                </span>
+              )}
+            </p>
+            {showque.que1 && (
+              <p style={{ width: "90%" }}>{serviceDetails.faq1.ans1}</p>
+            )}
+          </div>
+          <div>
+            <p className="questions">
+              {serviceDetails.faq2.que2}
+              {showque.que2 ? (
+                <span
+                  onClick={(prevQue) =>
+                    setQue({ ...prevQue, que2: !showque.que2 })
+                  }
+                  style={{
+                    transform: `rotate(-90deg)`,
+                    display: "inline-block",
+                    marginLeft: 15,
+                    cursor: "pointer",
+                  }}
+                >
+                  ❯
+                </span>
+              ) : (
+                <span
+                  onClick={(prevQue) =>
+                    setQue({ ...prevQue, que2: !showque.que2 })
+                  }
+                  style={{
+                    transform: `rotate(90deg)`,
+                    display: "inline-block",
+                    marginLeft: 15,
+                    cursor: "pointer",
+                  }}
+                >
+                  ❯
+                </span>
+              )}
+            </p>
+            {showque.que2 && (
+              <p style={{ width: "90%" }}>{serviceDetails.faq2.ans2}</p>
+            )}
+          </div>
+          <div>
+            <p className="questions">
+              {serviceDetails.faq3.que3}
+              {showque.que3 ? (
+                <span
+                  onClick={(prevQue) =>
+                    setQue({ ...prevQue, que3: !showque.que3 })
+                  }
+                  style={{
+                    transform: `rotate(-90deg)`,
+                    display: "inline-block",
+                    marginLeft: 15,
+                    cursor: "pointer",
+                  }}
+                >
+                  ❯
+                </span>
+              ) : (
+                <span
+                  onClick={(prevQue) =>
+                    setQue({ ...prevQue, que3: !showque.que3 })
+                  }
+                  style={{
+                    transform: `rotate(90deg)`,
+                    display: "inline-block",
+                    marginLeft: 15,
+                    cursor: "pointer",
+                  }}
+                >
+                  ❯
+                </span>
+              )}
+            </p>
+            {showque.que3 && (
+              <p style={{ width: "90%" }}>{serviceDetails.faq3.ans3}</p>
+            )}
+          </div>
           <Link to={`/${detailsarr.category}/${detailsarr.id}/details`}>
             <button onClick={addToCart} className={button} type="button">
               Book Appointment
             </button>
           </Link>
+          <hr />
           <p className="details-about">Customer Reviews</p>
 
           {review.map((each) => (
