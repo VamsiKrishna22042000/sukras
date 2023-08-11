@@ -243,7 +243,7 @@ const FashionDetailedView = (props) => {
       };
 
       const response = await fetch(url, options);
-      const data = await response.json();
+
       if (response.ok) {
         getAllCartItems();
         console.log(params);
@@ -257,9 +257,23 @@ const FashionDetailedView = (props) => {
       <ToastContainer />
       <div className="sukras-header-fashion">
         <img
+          style={{
+            position: "absolute",
+            marginLeft: "6.5%",
+            zIndex: 5,
+          }}
           onClick={goToSelectCategory}
           className="sukraslogobeauty"
           src="/sukraslogo.png"
+          alt="Logo Space"
+        />
+        <img
+          style={{
+            borderRadius: "5px",
+          }}
+          onClick={goToSelectCategory}
+          className="sukraslogobeauty"
+          src="/logo3.png"
           alt="Logo Space"
         />
         <button onClick={gobackTo} className="arrow-btn" type="button">
@@ -389,7 +403,7 @@ const FashionDetailedView = (props) => {
                 className={button}
                 type="button"
               >
-                Book Appointment
+                Add to Cart
               </button>
 
               <p className="fashion-details-about">Customer Reviews</p>

@@ -848,4 +848,7 @@
     margin-left: 0px;
     margin-bottom: 5px;
   }
+  .diable-logoo {
+    display: none;
+  }
 }

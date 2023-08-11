@@ -21,6 +21,14 @@
     margin-left: 1%;
     margin-bottom: 1%;
     margin-top: -0.5%;
+    border-radius: 5px;
+  }
+  .sukraslogosukras1 {
+    height: 50px;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    margin-top: -0.5%;
+    border-radius: 5px;
   }
   .sukraslogo2sukras {
     height: 120px;
@@ -288,6 +296,11 @@
   }
 
   .sukraslogosukras {
+    display: none;
+    height: 58px;
+    margin-bottom: 0.8%;
+  }
+  .sukraslogosukras1 {
     height: 58px;
     margin-bottom: 0.8%;
   }

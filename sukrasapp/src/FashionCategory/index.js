@@ -125,9 +125,23 @@ const FashionCategory = (props) => {
     <div className="fashion-category">
       <div className="sukras-header-beauty">
         <img
+          style={{
+            position: "absolute",
+            marginLeft: "6.5%",
+            zIndex: 5,
+          }}
           onClick={goToSelectCategory}
           className="sukraslogobeauty"
           src="/sukraslogo.png"
+          alt="Logo Space"
+        />
+        <img
+          style={{
+            borderRadius: "5px",
+          }}
+          onClick={goToSelectCategory}
+          className="sukraslogobeauty"
+          src="/logo3.png"
           alt="Logo Space"
         />
         <button onClick={goback} className="arrow-btn" type="button">

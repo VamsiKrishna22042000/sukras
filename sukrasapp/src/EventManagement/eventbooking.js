@@ -181,11 +181,28 @@ const EventBooking = (props) => {
       <div className="sukras-header-fashionzone">
         <ToastContainer />
         <img
+          style={{
+            position: "absolute",
+            marginLeft: "1.5%",
+            zIndex: 5,
+          }}
+          className="sukraslogosukras diable-logo"
+          src="./logo3.png"
+          alt="Logo Space"
           onClick={goToSelectCategory}
-          className="sukraslogobeautyevent"
+        />
+        <img
+          style={{
+            position: "absolute",
+            marginLeft: "5.5%",
+            marginBottom: "1.5%",
+          }}
+          onClick={goToSelectCategory}
+          className="sukraslogobeauty"
           src="./sukraslogo.png"
           alt="Logo Space"
         />
+
         <button
           onClick={gobackTo}
           className="leftevent-arrow-btn"

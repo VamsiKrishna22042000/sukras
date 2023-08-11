@@ -190,6 +190,8 @@
     height: 25vh;
     width: 13vw;
     margin-bottom: 5%;
+    margin-top: 5%;
+    border-radius: 5px;
   }
   .dash-board-options {
     height: auto;

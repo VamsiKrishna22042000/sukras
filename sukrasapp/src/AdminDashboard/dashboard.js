@@ -50,7 +50,7 @@ const DashboardMain = (props) => {
     <div className="dash-board">
       <img
         className="main-head-dashboard"
-        src="logo2.png"
+        src="logo3.png"
         alt="Dashboardlogo"
         onClick={() => {
           window.location.href = "/";

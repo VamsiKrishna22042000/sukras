@@ -192,8 +192,19 @@ const Beautyzone = (props) => {
     <>
       <div className="sukras-header-beautyzone">
         <img
+          className="sukraslogosukras diable-logo"
+          src="./logo3.png"
+          alt="Logo Space"
           onClick={goToSelectCategory}
-          className="sukraslogobeauty"
+        />
+        <img
+          style={{
+            position: "absolute",
+            marginLeft: "5.5%",
+            marginBottom: "1.5%",
+          }}
+          onClick={goToSelectCategory}
+          className="sukraslogobeauty diable-logo"
           src="./sukraslogo.png"
           alt="Logo Space"
         />

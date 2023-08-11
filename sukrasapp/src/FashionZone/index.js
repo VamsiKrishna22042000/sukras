@@ -139,6 +139,17 @@ const FashionZone = (props) => {
     <>
       <div className="sukras-header-fashionzone">
         <img
+          className="sukraslogosukras diable-logo"
+          src="./logo3.png"
+          alt="Logo Space"
+          onClick={goToSelectCategory}
+        />
+        <img
+          style={{
+            position: "absolute",
+            marginLeft: "5.5%",
+            marginBottom: "1.5%",
+          }}
           onClick={goToSelectCategory}
           className="sukraslogobeauty"
           src="./sukraslogo.png"

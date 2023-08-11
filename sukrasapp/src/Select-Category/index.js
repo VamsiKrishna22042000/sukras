@@ -1,9 +1,5 @@
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
-import { useState } from "react";
-
-import { v4 as uuidv4 } from "uuid";
-
 import "./index.css";
 
 const SelectCategory = (props) => {
@@ -15,8 +11,9 @@ const SelectCategory = (props) => {
   return (
     <div className="sukras-main-sukras">
       <div className="sukras-header-sukras">
+        <img className="sukraslogosukras1" src="./logo3.png" alt="Logo Space" />
         <img
-          className="sukraslogosukras"
+          className="sukraslogosukras1"
           src="./sukraslogo.png"
           alt="Logo Space"
         />
@@ -57,7 +54,7 @@ const SelectCategory = (props) => {
             style={{ cursor: "pointer" }}
             className="content-button-sukrass"
           >
-            Proceed ❯
+            Proceed <span style={{ marginLeft: 10 }}>❯</span>
           </button>
         </div>
 
@@ -96,7 +93,7 @@ const SelectCategory = (props) => {
             style={{ cursor: "pointer" }}
             className="content-button-sukrass"
           >
-            Proceed ❯
+            Proceed <span style={{ marginLeft: 10 }}>❯</span>
           </button>
         </div>
 
@@ -134,7 +131,7 @@ const SelectCategory = (props) => {
             style={{ cursor: "pointer" }}
             className="content-button-sukrass"
           >
-            Proceed ❯
+            Proceed <span style={{ marginLeft: 10 }}>❯</span>
           </button>
         </div>
       </div>

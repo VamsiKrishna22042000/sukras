@@ -465,7 +465,12 @@ const Services = () => {
                   }}
                 >
                   <h1
-                    style={{ marginBottom: 10, color: "#3E3E3E", fontSize: 20 }}
+                    style={{
+                      marginTop: 100,
+                      marginBottom: 10,
+                      color: "#3E3E3E",
+                      fontSize: 20,
+                    }}
                   >
                     What's Included
                   </h1>
@@ -575,14 +580,14 @@ const Services = () => {
                     Close
                   </button>
                   <button
-                    style={{ bottom: "-40%" }}
+                    style={{ bottom: "-50%" }}
                     className="service-button-admin-faq"
                     onClick={() => {
                       setfaq(!showfaq);
                     }}
                     type="button"
                   >
-                    Add FAQ
+                    Back
                   </button>
                 </div>
               </div>
