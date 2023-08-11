@@ -209,7 +209,15 @@ const SelectedService = (props) => {
                   className="selected-body-content"
                 >
                   <h1
-                    style={{ textTransform: "capitalize" }}
+                    style={{
+                      textTransform: "capitalize",
+                      width: "90%",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
                     className="selected-hea"
                   >
                     {each.service}

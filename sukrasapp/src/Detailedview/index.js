@@ -315,9 +315,7 @@ const DetailedView = (props) => {
         <p
           style={{ textTransform: "capitalize" }}
           className="sukras-beauty-selected"
-        >
-          {detailsarr.category}
-        </p>
+        ></p>
         <button className="location-btn" type="button">
           <img className="location-mobile" src="/location-icon.png" />
         </button>

@@ -146,9 +146,10 @@
     padding-left: 12.5%;
   }
   .details-img {
-    height: 80vh;
-    width: 90%;
+    height: 90vh;
+    width: 85%;
     margin-bottom: 3%;
+    margin-left: 2.2%;
   }
   .make-abook-details {
     background-color: #f4bd18;
@@ -504,7 +505,7 @@
     font-size: 2.5vw;
   }
   .details-img {
-    height: 25vh;
+    height: 28vh;
     width: 100%;
     margin-bottom: 3%;
     border-radius: 10px;

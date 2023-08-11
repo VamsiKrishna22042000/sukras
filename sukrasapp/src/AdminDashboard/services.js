@@ -643,6 +643,7 @@ const Services = () => {
                     setServiceCategory(false);
                   }}
                   onChange={addService}
+                  value={dataToBe.category}
                 />
                 <p style={{ color: "red", fontSize: 10 }}>
                   *Please double click and type to add new category <br /> else
