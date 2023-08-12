@@ -31,6 +31,9 @@
     padding-left: 5%;
     cursor: pointer;
   }
+  .style-training {
+    font-size: 3vw;
+  }
 }
 
 /* Styles for mobile screens (max-width: 600px) */
@@ -63,9 +66,12 @@
   }
   .arrow-style-training {
     position: absolute;
-    font-size: 6vw;
+    font-size: 9vw;
     padding-top: 1.2%;
     padding-left: 5%;
     cursor: pointer;
+  }
+  .style-training {
+    font-size: 7vw;
   }
 }

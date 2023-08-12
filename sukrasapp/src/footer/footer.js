@@ -142,15 +142,15 @@ const Footer = () => {
       </div>
       <div className="logo-con3">
         <p>About Sukras</p>
-        <p style={{ fontSize: 13, marginTop: 0 }}>
+        <p style={{ fontSize: 13, marginTop: 5, marginBottom: 5 }}>
           Sukra's Salon Shop offers a luxurious escape into beauty and
           relaxation. With a blend of top-notch treatments, skilled stylists,
           and a serene ambiance, it's a haven for self-care. Discover a
           rejuvenating experience that leaves you feeling pampered and
           confident."
         </p>
-        <p>Our Social Media</p>
-        <div>
+        <p style={{ marginTop: 5 }}>Our Social Media</p>
+        <div style={{ marginTop: 5 }}>
           <BiLogoTwitter
             onClick={() => {
               window.location.href = "https://twitter.com/sukras_official";

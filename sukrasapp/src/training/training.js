@@ -22,8 +22,8 @@ const Training = () => {
             marginLeft: "8%",
             paddingLeft: "3%",
             paddingTop: "3%",
-            fontSize: "3vw",
           }}
+          className="style-training"
         >
           Training
         </h2>
