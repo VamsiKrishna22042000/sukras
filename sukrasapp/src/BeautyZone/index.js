@@ -294,7 +294,10 @@ const Beautyzone = (props) => {
             <h1>Beauty Training</h1>
           </div>
           <div className="training-con">
-            <div className="training">
+            <div
+              className="training"
+              style={{ backgroundImage: `url("/training.png")` }}
+            >
               <div className="training-content">
                 <div className="image-training-content">
                   <img
