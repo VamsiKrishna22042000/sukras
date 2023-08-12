@@ -1,9 +1,9 @@
 .App {
   text-align: center;
 }
-.body{
-  box-sizing:border-box;
-  margin:0px;
+.body {
+  box-sizing: border-box;
+  margin: 0px;
 }
 
 .App-logo {

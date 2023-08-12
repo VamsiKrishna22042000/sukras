@@ -36,7 +36,11 @@ import FashionDetailedView from "./FashionDetailedView";
 import EventManagement from "./EventManagement";
 import MyOrders from "./MyOrders";
 
+import AboutUs from "./aboutus/aboutus";
+
 import Dashboard from "./AdminDashboard";
+
+import Training from "./training/training";
 
 function App() {
   return (
@@ -93,7 +97,8 @@ function App() {
         />
         <Protectedroute exact path="/admindashboard" component={Dashboard} />
         <Route exact path="/login" component={Sukras} />
-
+        <Route exact path="/aboutus" component={AboutUs} />
+        <Route exact path="/training" component={Training} />
         <NotFound />
       </Switch>
     </BrowserRouter>

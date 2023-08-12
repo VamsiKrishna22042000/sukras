@@ -34,6 +34,9 @@ const Footer = () => {
             Home
           </p>
           <p
+            onClick={() => {
+              window.location.href = "/aboutus";
+            }}
             style={{
               borderLeft: "hidden",
               borderRight: "hidden",

@@ -197,10 +197,10 @@ const SelectedService = (props) => {
           </Link>
         </div>
       </div>
-      <div className="selected-body">
-        {servicesarr.map(
-          (each) =>
-            each.active && (
+      {servicesarr.length > 0 ? (
+        <div className="selected-body">
+          {servicesarr.map((each) =>
+            each.active ? (
               <div className="selected-body-total">
                 <div
                   style={{
@@ -274,9 +274,24 @@ const SelectedService = (props) => {
                   </button>
                 </div>
               </div>
+            ) : (
+              <div className="loader-spinner">
+                <img
+                  className="empty-cart"
+                  src="/emptycart.gif"
+                  alt="empty-cart"
+                />
+                <p className="cart-header">No Service's Available</p>
+              </div>
             )
-        )}
-      </div>
+          )}
+        </div>
+      ) : (
+        <div className="load-spinner">
+          <img className="empty-cart" src="/emptycart.gif" alt="empty-cart" />
+          <p className="cart-header">No Service's Available</p>
+        </div>
+      )}
     </div>
   );
 };

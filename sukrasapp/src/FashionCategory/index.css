@@ -258,7 +258,19 @@
     display: none;
   }
   .fashion-zone-filter {
-    display: none;
+    height: auto;
+    width: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    border-style: solid;
+    border-color: #d7d7d7;
+    padding-left: 1.5%;
+    border-width: 1px;
+    padding-bottom: 0px;
+    margin-top: 5%;
+  }
+  .filter-zone-text {
+    display: flex;
   }
   .cartBag-btn {
     position: absolute;
@@ -399,5 +411,34 @@
     padding-left: 2.2%;
     padding-right: 2.2%;
     margin-top: -3%;
+  }
+
+  .toup {
+    transform: rotate(-90deg);
+    cursor: pointer;
+  }
+  .todown {
+    transform: rotate(90deg);
+    cursor: pointer;
+  }
+  .fashion-zone-options {
+    border-color: #f2f2f2;
+    border-top: hidden;
+    border-left: hidden;
+    border-right: hidden;
+    border-width: 2px;
+    height: auto;
+    width: 80%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #5c5c5c;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-bottom: 5%;
+    cursor: pointer;
+  }
+  .fashion-zone-opitons-disable {
+    display: none;
   }
 }

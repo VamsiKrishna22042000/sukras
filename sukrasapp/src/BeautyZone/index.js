@@ -290,6 +290,47 @@ const Beautyzone = (props) => {
           <Carousel />
         </div>
         <div className="beautyzone-body-2">
+          <div className="beauty-cosmetic-head">
+            <h1>Beauty Training</h1>
+          </div>
+          <div className="training-con">
+            <div className="training">
+              <div className="training-content">
+                <div className="image-training-content">
+                  <img
+                    className="training-image"
+                    src="BEAUTYlogo.png"
+                    alt="beauty"
+                  />
+                  <img
+                    className="training-image2"
+                    src="Traininglogo.png"
+                    alt="training"
+                  />
+                </div>
+                <h1 className="tining-head1">
+                  Indias One Of Best Beauty Academy
+                </h1>
+                <h1 className="tining-head2">
+                  Leading Beauty School in Vizianagaram
+                </h1>
+                <p className="tining-head3">
+                  Over 80% of our graduates are gainfully employed while the
+                  remaining have become enterpruners and employers of labour
+                </p>
+                <button
+                  onClick={() => {
+                    window.location.href = "/training";
+                  }}
+                  className="tining-button"
+                >
+                  Know More ❯
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="beautyzone-body-2">
           {categories === "" ? (
             <div className="service-spinner">
               <TailSpin color={"#F4BD18"} height={70} width={70} />
@@ -297,7 +338,7 @@ const Beautyzone = (props) => {
           ) : (
             <>
               <div className="beauty-cosmetic-head">
-                <h1>Our Service videos</h1>
+                <h1 style={{ marginBottom: 10 }}>Our Service videos</h1>
               </div>
               <div className="beauty-cosmetic-products3">
                 <div

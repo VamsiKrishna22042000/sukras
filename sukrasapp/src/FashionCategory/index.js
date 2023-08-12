@@ -10,14 +10,10 @@ import { TailSpin } from "react-loader-spinner";
 
 import { useState, useEffect } from "react";
 
-const PageStage = {
-  loading: "LOADING",
-  success: "SUCCESS",
-};
-
 const FashionCategory = (props) => {
   const [subCategory, setSubCategory] = useState([]);
   const [allProducts, setallProducts] = useState([]);
+  const [price, setPrice] = useState(0);
   const [load, setLoad] = useState(false);
   const [options, setOptions] = useState({
     price: true,
@@ -115,11 +111,37 @@ const FashionCategory = (props) => {
     Cookies.remove("jwt_user");
   };
 
+  const changePrice = (e) => {
+    if (e.target.id === "1") {
+      setPrice(1);
+    } else if (e.target.id === "2") {
+      setPrice(2);
+    } else if (e.target.id === "3") {
+      setPrice(3);
+    } else if (e.target.id === "4") {
+      setPrice(4);
+    } else {
+      setPrice(0);
+    }
+  };
+
   const filterdItemsBasedOnType = allProducts.filter(
     (each) => each.type === params.category
   );
 
-  console.log(params.category);
+  const filterBasedOnPrice = filterdItemsBasedOnType.filter((each) => {
+    if (price === 1) {
+      return parseInt(each.price) < 1000 && each;
+    } else if (price === 2) {
+      return parseInt(each.price) > 1000 && parseInt(each.price) < 1500 && each;
+    } else if (price === 3) {
+      return parseInt(each.price) > 1500 && parseInt(each.price) < 2000 && each;
+    } else if (price === 4) {
+      return parseInt(each.price) > 2000 && parseInt(each.price) < 2500 && each;
+    } else {
+      return each;
+    }
+  });
 
   return load ? (
     <div className="fashion-category">
@@ -188,8 +210,9 @@ const FashionCategory = (props) => {
       <div className="fashion-category-main-body">
         <div className="fashion-zone-filter">
           <div className="filter-zone-text">
-            <p>Price</p>{" "}
+            <p>Price</p>
             <p
+              style={{ marginLeft: "2%" }}
               id="price"
               onClick={changeOptions}
               className={options.price ? "todown" : "toup"}
@@ -205,25 +228,55 @@ const FashionCategory = (props) => {
             }
           >
             <div>
-              <input id="1" type="checkbox" />
+              <input
+                checked={price === 0 ? true : false}
+                onClick={changePrice}
+                id="0"
+                type="checkbox"
+              />
+              <lable htmlFor="0">All Products</lable>
+            </div>
+            <div>
+              <input
+                checked={price === 1 ? true : false}
+                onClick={changePrice}
+                id="1"
+                type="checkbox"
+              />
               <lable htmlFor="1">Under ₹ 1000</lable>
             </div>
             <div>
-              <input id="2" type="checkbox" />
+              <input
+                checked={price === 2 ? true : false}
+                onClick={changePrice}
+                id="2"
+                type="checkbox"
+              />
               <lable htmlFor="2">₹ 1000 - ₹ 1500</lable>
             </div>
             <div>
-              <input id="3" type="checkbox" />
+              <input
+                checked={price === 3 ? true : false}
+                onClick={changePrice}
+                id="3"
+                type="checkbox"
+              />
               <lable htmlFor="3">₹ 1500 - ₹ 2000</lable>
             </div>
             <div>
-              <input id="4" type="checkbox" />
+              <input
+                checked={price === 4 ? true : false}
+                onClick={changePrice}
+                id="4"
+                type="checkbox"
+              />
               <lable htmlFor="4">₹ 2000 - ₹ 2500</lable>
             </div>
           </div>
           <div className="filter-zone-text">
             <p>Discount</p>
             <p
+              style={{ marginLeft: "2%" }}
               id="discount"
               onClick={changeOptions}
               className={options.discount ? "todown" : "toup"}
@@ -256,55 +309,61 @@ const FashionCategory = (props) => {
             </div>
           </div>
         </div>
-        <div className="fashion-category-body">
-          {filterdItemsBasedOnType.map(
-            (each) =>
-              each.active && (
-                <Link
-                  to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
-                  key={each._id}
-                  id={each._id}
-                  className="fashion-category-item"
-                >
-                  <img
-                    className="fashion-category-image"
-                    src={each.photos[0]}
-                    alt={each.photos[0]}
-                  />
-                  <p
-                    style={{ textTransform: "capitalize" }}
-                    className="fashion-item-name"
+        {filterBasedOnPrice.length > 0 ? (
+          <div className="fashion-category-body">
+            {filterBasedOnPrice.map(
+              (each) =>
+                each.active && (
+                  <Link
+                    to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
+                    key={each._id}
+                    id={each._id}
+                    className="fashion-category-item"
                   >
-                    {each.name}
-                  </p>
-                  <div className="price-details-off">
-                    <p className="fashion-item-price">
-                      <span className="fashion-item-name">₹</span>
-                      {each.price}
-                    </p>
-                    <p className="fashion-item-discount">
-                      {parseInt(each.price) + 500}
-                    </p>
-                  </div>
-                  <div className="price-details-rating">
-                    <p className="fashion-item-offer"> 10% OFF</p>
-                    <p className="fashion-item-star">{each.rating}</p>
                     <img
-                      className="fashion-item-star-rating"
-                      src="/ratingstar.png"
-                      alt="star"
+                      className="fashion-category-image"
+                      src={each.photos[0]}
+                      alt={each.photos[0]}
                     />
-                    <p className="fashion-item-reviews">({each.reviews})</p>
-                  </div>
-                </Link>
-              )
-          )}
-        </div>
+                    <p
+                      style={{ textTransform: "capitalize" }}
+                      className="fashion-item-name"
+                    >
+                      {each.name}
+                    </p>
+                    <div className="price-details-off">
+                      <p className="fashion-item-price">
+                        <span className="fashion-item-name">₹</span>
+                        {each.price}
+                      </p>
+                      <p className="fashion-item-discount">
+                        {parseInt(each.price) + 500}
+                      </p>
+                    </div>
+                    <div className="price-details-rating">
+                      <p className="fashion-item-offer"> 10% OFF</p>
+                      <p className="fashion-item-star">{each.rating}</p>
+                      <img
+                        className="fashion-item-star-rating"
+                        src="/ratingstar.png"
+                        alt="star"
+                      />
+                      <p className="fashion-item-reviews">({each.reviews})</p>
+                    </div>
+                  </Link>
+                )
+            )}
+          </div>
+        ) : (
+          <div className="load-spinner">
+            <img className="empty-cart" src="/emptycart.gif" alt="empty-cart" />
+            <p className="cart-header">No Product's available</p>
+          </div>
+        )}
       </div>
     </div>
   ) : (
     <div className="loader-spinner">
-      {" "}
       <TailSpin color={"#F4BD18"} height={70} width={70} />
     </div>
   );
