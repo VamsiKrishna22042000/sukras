@@ -958,7 +958,7 @@
   .training {
     height: 100%;
     width: 95%;
-    background-size: cover;
+    background-size: 110% 100%;
     background-position: center;
     margin-left: 1%;
     margin-top: 3%;
@@ -978,7 +978,7 @@
     height: 20%;
     width: 100%;
 
-    margin-top: 1%;
+    margin-top: 3%;
     margin-left: -12%;
     display: flex;
     flex-direction: row;
@@ -1000,7 +1000,7 @@
       "Lucida Sans", Arial, sans-serif;
     font-size: 3vw;
     color: #fff;
-    margin-top: 20%;
+    margin-top: 28%;
     position: absolute;
     width: 100%;
     margin-left: -3%;
@@ -1010,7 +1010,7 @@
       "Lucida Sans", Arial, sans-serif;
     font-size: 2.5vw;
     color: #fff;
-    margin-top: 25.5%;
+    margin-top: 35%;
     position: absolute;
     width: 100%;
     margin-left: 2%;
@@ -1020,7 +1020,7 @@
       "Lucida Sans", Arial, sans-serif;
     font-size: 2.3vw;
     color: #fff;
-    bottom: 32%;
+    bottom: 35%;
     position: absolute;
     width: 80%;
     margin-left: 8%;
