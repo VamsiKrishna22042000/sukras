@@ -37,6 +37,7 @@ const options = [
     imgUrl: "youtube.png",
     name: "Videos",
   },
+  { imgUrl: "CategoryEdit.png", name: "CategoryEdit" },
 ];
 
 const DashboardMain = (props) => {

@@ -16,6 +16,7 @@ import Footer from "../footer/footer";
 
 const Beautyzone = (props) => {
   const [categories, setCategories] = useState("");
+
   const [load, setLoad] = useState(false);
 
   const [videos, setVideos] = useState([]);

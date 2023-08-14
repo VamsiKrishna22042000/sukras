@@ -953,4 +953,67 @@
   .bookapp2 {
     background-color: green;
   }
+
+  /*Category Edit*/
+
+  .catergory-edit {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    border-style: solid;
+    border-right: hidden;
+    border-top: hidden;
+    border-bottom: hidden;
+    border-color: #4e4e4e30;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .category-edit-product {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 2vw;
+    margin-right: 8%;
+  }
+  .category-edit-img {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 15%;
+  }
+
+  .category-edit-button {
+    background-color: #ffc720;
+    border-width: 0px;
+    padding: 2.5%;
+    margin-top: 15%;
+    border-radius: 5px;
+  }
+  .category-edit-buttons-con {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .category-edit-button1 {
+    background-color: #ffc720;
+    border-width: 0px;
+    padding: 1.5%;
+    border-radius: 5px;
+    color: #fff;
+  }
+  .category-edi-button2 {
+    background-color: transparent;
+    border-width: 0px;
+    padding: 1%;
+    color: #000;
+    position: absolute;
+    top: 3%;
+    right: 5%;
+    font-weight: bold;
+  }
 }

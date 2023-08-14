@@ -19,6 +19,8 @@ import Banners from "./banners.js";
 
 import Videos from "./videos.js";
 
+import CategoryEdit from "./categoryedit.js";
+
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
@@ -81,8 +83,10 @@ const DashboardContent = (props) => {
         <Bookings />
       ) : selectedDashboard === "Banner's" ? (
         <Banners />
-      ) : (
+      ) : selectedDashboard === "Videos" ? (
         <Videos />
+      ) : (
+        <CategoryEdit />
       )}
     </div>
   );
