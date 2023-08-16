@@ -204,7 +204,7 @@ const Beautyzone = (props) => {
   const filterSearch = availableServices.map((each) => {
     if (search === "") {
       return null;
-    } else if (each.startsWith(search)) {
+    } else if (each.toLowerCase().startsWith(search.toLowerCase())) {
       return each;
     }
   });
@@ -252,38 +252,7 @@ const Beautyzone = (props) => {
         >
           <img className="arrow" src="./arrowdown.png" />
         </button>
-        <div className={displayProfile ? "profile-block" : "profile-display"}>
-          {Cookies.get("jwt_user") === undefined ? (
-            <button
-              className="log-btn"
-              type="button"
-              onClick={() => {
-                window.location.href = "/login";
-              }}
-              style={{ marginTop: 5 }}
-            >
-              Log In
-            </button>
-          ) : (
-            <button
-              className="log-btn"
-              type="button"
-              onClick={deleteCookie}
-              style={{ marginTop: 5 }}
-            >
-              Log Out
-            </button>
-          )}
-          <Link
-            style={{
-              textDecoration: "none",
-            }}
-            className="log-btn"
-            to={`/myorders/myorders/myorders/beautyzone`}
-          >
-            My Orders
-          </Link>
-        </div>
+
         <div className="search-cart">
           <input
             className="serch-cart-input"
@@ -322,6 +291,38 @@ const Beautyzone = (props) => {
             ))}
           </div>
         )}
+        <div className={displayProfile ? "profile-block" : "profile-display"}>
+          {Cookies.get("jwt_user") === undefined ? (
+            <button
+              className="log-btn"
+              type="button"
+              onClick={() => {
+                window.location.href = "/login";
+              }}
+              style={{ marginTop: 5 }}
+            >
+              Log In
+            </button>
+          ) : (
+            <button
+              className="log-btn"
+              type="button"
+              onClick={deleteCookie}
+              style={{ marginTop: 5 }}
+            >
+              Log Out
+            </button>
+          )}
+          <Link
+            style={{
+              textDecoration: "none",
+            }}
+            className="log-btn"
+            to={`/myorders/myorders/myorders/beautyzone`}
+          >
+            My Orders
+          </Link>
+        </div>
         <div className="beautyzone-body">
           <Carousel />
         </div>

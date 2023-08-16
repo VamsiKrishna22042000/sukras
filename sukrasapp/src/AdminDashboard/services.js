@@ -846,7 +846,19 @@ const Services = () => {
               )}
             </div>
             <div className="product-name">
-              <p style={{ textTransform: "capitalize" }}>{each.service}</p>
+              <p
+                style={{
+                  textTransform: "capitalize",
+                  width: "78%",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {each.service}
+              </p>
             </div>
             <div id={each._id} className="product-toggle">
               <p style={{ textTransform: "capitalize" }}>₹ {each.price}</p>

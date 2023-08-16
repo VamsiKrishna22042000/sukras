@@ -158,12 +158,7 @@ const SelectedService = (props) => {
         <button className="arrow-btn" type="button" onClick={goback}>
           <img className="left-arrow-mobile" src="/backarrow.png" />
         </button>
-        <p
-          style={{ textTransform: "capitalize" }}
-          className="sukras-beauty-select"
-        >
-          {arr.category}
-        </p>
+
         <button className="location-btn" type="button">
           <img className="location-mobile" src="/location-icon.png" />
         </button>
@@ -178,7 +173,10 @@ const SelectedService = (props) => {
         </button>
         <div className="search-cart1">
           <input
-            style={{ borderColor: "transparent" }}
+            style={{
+              borderColor: "transparent",
+              backgroundColor: "transparent",
+            }}
             className="serch-cart-input"
             placeholder=""
             type="search"
@@ -254,7 +252,11 @@ const SelectedService = (props) => {
                     {each.description}
                   </p>
                   <Link to={`/${each.service}/${arr.id}/details`}>
-                    <button className="view-details" type="button">
+                    <button
+                      style={{ marginTop: "2%" }}
+                      className="view-details"
+                      type="button"
+                    >
                       View Details
                     </button>
                   </Link>

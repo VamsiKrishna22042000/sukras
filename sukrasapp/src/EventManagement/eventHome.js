@@ -108,6 +108,8 @@ const EventHome = (props) => {
         >
           <img className="arrow" src="./arrowdown.png" />
         </button>
+      </div>
+      <div className="sukras-main-beauty">
         <div className={displayProfile ? "profile-block" : "profile-display"}>
           {Cookies.get("jwt_user") === undefined ? (
             <button
@@ -138,8 +140,6 @@ const EventHome = (props) => {
             My Orders
           </Link>
         </div>
-      </div>
-      <div className="sukras-main-beauty">
         <div className="beautyzone-body">
           <EventManagementCarousel />
         </div>

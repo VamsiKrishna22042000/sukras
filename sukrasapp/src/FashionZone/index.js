@@ -145,10 +145,11 @@ const FashionZone = (props) => {
   let f = availableproducts.map((each) => [each.type, each.name, each._id]);
 
   let fil = f.filter(
-    (each) => search !== "" && each[1].startsWith(search) && each
+    (each) =>
+      search !== "" &&
+      each[1].toLowerCase().startsWith(search.toLowerCase()) &&
+      each
   );
-
-  console.log(fil);
 
   return load ? (
     <>
@@ -190,36 +191,7 @@ const FashionZone = (props) => {
         >
           <img className="arrow" src="./arrowdown.png" />
         </button>
-        <div className={displayProfile ? "profile-block" : "profile-display"}>
-          {Cookies.get("jwt_user") === undefined ? (
-            <button
-              type="button"
-              className="log-btn"
-              onClick={() => {
-                window.location.href = "/login";
-              }}
-              style={{ marginTop: 5 }}
-            >
-              Log In
-            </button>
-          ) : (
-            <button
-              className="log-btn"
-              type="button"
-              onClick={deleteCookie}
-              style={{ marginTop: 5 }}
-            >
-              Log Out
-            </button>
-          )}
-          <Link
-            className="log-btn"
-            style={{ textDecoration: "none" }}
-            to={`/myorders/myorders/myorders/beautyzone`}
-          >
-            My Orders
-          </Link>
-        </div>
+
         <div className="search-cart">
           <input
             onChange={(e) => {
@@ -258,6 +230,36 @@ const FashionZone = (props) => {
           </div>
         )}
         <div className="beautyzone-body">
+          <div className={displayProfile ? "profile-block" : "profile-display"}>
+            {Cookies.get("jwt_user") === undefined ? (
+              <button
+                type="button"
+                className="log-btn"
+                onClick={() => {
+                  window.location.href = "/login";
+                }}
+                style={{ marginTop: 5 }}
+              >
+                Log In
+              </button>
+            ) : (
+              <button
+                className="log-btn"
+                type="button"
+                onClick={deleteCookie}
+                style={{ marginTop: 5 }}
+              >
+                Log Out
+              </button>
+            )}
+            <Link
+              className="log-btn"
+              style={{ textDecoration: "none" }}
+              to={`/myorders/myorders/myorders/beautyzone`}
+            >
+              My Orders
+            </Link>
+          </div>
           <FashionZoneCarousel />
         </div>
         <div className="beautyzone-body-2">
