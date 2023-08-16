@@ -93,8 +93,10 @@
     padding-left: 2%;
     margin: 0px;
   }
+
   .sukras-logo {
-    height: 80%;
+    display: none;
+    height: 10%;
     margin-left: 1%;
   }
   .sukras-logo2 {
@@ -150,5 +152,8 @@
     margin-top: 10%;
     margin-left: 10%;
     margin-bottom: 5%;
+  }
+  .header-con {
+    display: none;
   }
 }
