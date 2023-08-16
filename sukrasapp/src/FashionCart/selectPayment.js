@@ -58,6 +58,7 @@ const SelectPayment = (props) => {
             cartId: each._id,
             count: each.count,
             address: address,
+            size: each.size,
           };
           const url = `${process.env.REACT_APP_ROOT_URL}/api/product/bookProduct`;
           const options = {

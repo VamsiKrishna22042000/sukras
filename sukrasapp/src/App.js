@@ -55,6 +55,7 @@ function App() {
           path="/fashioncategory/:category"
           component={FashionCategory}
         />
+
         <Route
           exact
           path="/fashioncategory/detailedview/:type/:name/:id"
@@ -78,6 +79,7 @@ function App() {
           component={Cart}
         />
         <Route exact path="/:category/:id" component={SelectedService} />
+
         <Route exact path="/:category/:id/:details" component={Detailedview} />
         <Protectedroute
           exact

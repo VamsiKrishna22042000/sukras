@@ -55,7 +55,7 @@ const FashionDetailedView = (props) => {
   const [load, setLoad] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [button, setButton] = useState("make-abook-details");
-  const { history } = props;
+
   const { match } = props;
   const { params } = match;
 
@@ -228,26 +228,66 @@ const FashionDetailedView = (props) => {
     ) {
       window.location.href = "/login";
     } else {
-      setButton("make-abook-details1");
-      const url = `${process.env.REACT_APP_ROOT_URL}/api/product/addProductToCart`;
-      const details = {
-        userId: Cookies.get("jwt_user"),
-        productId: params.id,
-      };
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(details),
-      };
+      if (
+        params.type === "men" ||
+        params.type === "women" ||
+        params.type === "kids" ||
+        params.type === "footwear"
+      ) {
+        if (size === "") {
+          toast.error("Select Size", {
+            position: "top-center",
+            autoClose: 2000,
+            pauseOnHover: true,
+            closeOnClick: true,
+            theme: "colored",
+          });
+        } else {
+          setButton("make-abook-details1");
+          const url = `${process.env.REACT_APP_ROOT_URL}/api/product/addProductToCart`;
+          const details = {
+            userId: Cookies.get("jwt_user"),
+            size: size,
+            productId: params.id,
+          };
+          const options = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(details),
+          };
 
-      const response = await fetch(url, options);
+          const response = await fetch(url, options);
 
-      if (response.ok) {
-        getAllCartItems();
-        console.log(params);
-        window.location.href = `/fashioncart/fashioncategory/${params.type}/${params.name}/${params.id}`;
+          if (response.ok) {
+            getAllCartItems();
+            console.log(params);
+            window.location.href = `/fashioncart/fashioncategory/${params.type}/${params.name}/${params.id}`;
+          }
+        }
+      } else {
+        setButton("make-abook-details1");
+        const url = `${process.env.REACT_APP_ROOT_URL}/api/product/addProductToCart`;
+        const details = {
+          userId: Cookies.get("jwt_user"),
+          productId: params.id,
+        };
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(details),
+        };
+
+        const response = await fetch(url, options);
+
+        if (response.ok) {
+          getAllCartItems();
+          console.log(params);
+          window.location.href = `/fashioncart/fashioncategory/${params.type}/${params.name}/${params.id}`;
+        }
       }
     }
   };
@@ -255,7 +295,7 @@ const FashionDetailedView = (props) => {
   return load ? (
     <div classname="detailed-view-body">
       <ToastContainer />
-      <div className="sukras-header-fashion">
+      <div style={{ overflow: "hidden" }} className="sukras-header-fashion">
         <img
           style={{
             position: "absolute",
@@ -284,17 +324,15 @@ const FashionDetailedView = (props) => {
         </p>
         <div className="search-cart">
           <input
+            style={{
+              borderColor: "transparent",
+              backgroundColor: "transparent",
+            }}
             className="serch-cart-input"
-            placeholder="Enter keywords, title, author or ISBN "
+            placeholder=""
             type="search"
           />
-          <button className="search-icon-button">
-            <img
-              src="/search-icon.png"
-              alt="search-icon"
-              className="search-icon"
-            />
-          </button>
+          <button className="search-icon-button"></button>
 
           <Link
             to={`/fashioncart/fashioncategory/${params.type}/${params.name}/${params.id}`}
@@ -349,9 +387,11 @@ const FashionDetailedView = (props) => {
                   ({filterItem[0].reviews} reviews)
                 </p>
               </div>
-              {params.type === "cosmetics" ? null : (
+              {params.type === "cosmetics" ? null : params.type === "men" ||
+                params.type === "women" ||
+                params.type === "kids" ? (
                 <p className="fashion-details-about">Select Size</p>
-              )}
+              ) : null}
               {params.type === "cosmetics" ? null : params.type ===
                 "footwear" ? (
                 <div className="fashion-details-size-selection">
@@ -370,26 +410,26 @@ const FashionDetailedView = (props) => {
                     </button>
                   ))}
                 </div>
-              ) : (
-                (params.type === "men" || "women" || "kids") && (
-                  <div className="fashion-details-size-selection">
-                    {sizes.map((each) => (
-                      <button
-                        id={each.id}
-                        onClick={selectSize}
-                        className={
-                          each.id === size
-                            ? "fashion-size-select1"
-                            : "fashion-size-select"
-                        }
-                        type="button"
-                      >
-                        {each.text}
-                      </button>
-                    ))}
-                  </div>
-                )
-              )}
+              ) : params.type === "men" ||
+                params.type === "women" ||
+                params.type === "kids" ? (
+                <div className="fashion-details-size-selection">
+                  {sizes.map((each) => (
+                    <button
+                      id={each.id}
+                      onClick={selectSize}
+                      className={
+                        each.id === size
+                          ? "fashion-size-select1"
+                          : "fashion-size-select"
+                      }
+                      type="button"
+                    >
+                      {each.text}
+                    </button>
+                  ))}
+                </div>
+              ) : null}
               <p className="fashion-details-about">Product Details</p>
               <p>{filterItem[0].about}</p>
               <p>• Soft material</p>

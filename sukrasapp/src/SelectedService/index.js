@@ -178,11 +178,12 @@ const SelectedService = (props) => {
         </button>
         <div className="search-cart1">
           <input
+            style={{ borderColor: "transparent" }}
             className="serch-cart-input"
-            placeholder="Enter keywords, title, author or ISBN "
+            placeholder=""
             type="search"
           />
-          <button className="search-icon-button">
+          <button style={{ display: "none" }} className="search-icon-button">
             <img
               src="/search-icon.png"
               alt="search-icon"
@@ -211,7 +212,7 @@ const SelectedService = (props) => {
                   <h1
                     style={{
                       textTransform: "capitalize",
-                      width: "90%",
+                      width: "80%",
                       display: "-webkit-box",
                       WebkitLineClamp: 2,
                       WebkitBoxOrient: "vertical",

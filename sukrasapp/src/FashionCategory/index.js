@@ -145,7 +145,7 @@ const FashionCategory = (props) => {
 
   return load ? (
     <div className="fashion-category">
-      <div className="sukras-header-beauty">
+      <div style={{ overflow: "hidden" }} className="sukras-header-beauty">
         <img
           style={{
             position: "absolute",
@@ -183,17 +183,15 @@ const FashionCategory = (props) => {
         </Link>
         <div className="search-cart">
           <input
+            style={{ borderColor: "transparent" }}
             className="serch-cart-input"
-            placeholder="Enter keywords, title, author or ISBN "
+            placeholder=""
             type="search"
           />
-          <button onClick={deleteCookie} className="search-icon-button">
-            <img
-              src="/search-icon.png"
-              alt="search-icon"
-              className="search-icon"
-            />
-          </button>
+          <button
+            onClick={deleteCookie}
+            className="search-icon-button"
+          ></button>
           <Link to={`/fashioncart/${params.category}`}>
             <button className="fashioncategory-count-of-cart">
               {cartItems.length}

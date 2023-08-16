@@ -40,14 +40,15 @@ const Sukras = (props) => {
   return (
     <div className="sukras-main">
       <ToastContainer />
-      <div className="header">
+      <div className="header-con">
         <img
+          style={{ borderRadius: "10px" }}
           onClick={() => {
             const { history } = props;
             history.push("/");
           }}
           className="sukras-logo"
-          src="./sukraslogo.png"
+          src="./logo3.png"
           alt="Logo Space"
         />
       </div>

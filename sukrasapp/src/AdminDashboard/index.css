@@ -1016,4 +1016,14 @@
     right: 5%;
     font-weight: bold;
   }
+  .edit-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    width: 20vw;
+    border-style: solid;
+    border-color: transparent;
+  }
 }

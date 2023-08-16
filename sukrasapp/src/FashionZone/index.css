@@ -72,6 +72,47 @@
     margin-bottom: 1.5%;
     position: relative;
   }
+  .serch-cart-container {
+    height: auto;
+    width: 25.9%;
+    position: absolute;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #4e4e4e;
+    right: 21.3%;
+    top: 11%;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .serch-cart-container1 {
+    height: auto;
+    width: 26.2%;
+    position: absolute;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #4e4e4e;
+    right: 19.8%;
+    top: 11%;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .each-service-each {
+    display: inline-block;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 1%;
+    text-decoration: none;
+    color: #000;
+    z-index: 5;
+  }
+
   .serch-cart-input {
     padding-top: 3%;
     padding-bottom: 3%;
@@ -336,13 +377,41 @@
 
   .search-cart {
     height: auto;
-    width: 41%;
-    margin-right: 7.5%;
-    margin-bottom: 1.5%;
+    width: 60%;
+    margin-right: -5.5%;
     position: relative;
+    margin-top: 1.5%;
+  }
+  .serch-cart-container {
+    height: auto;
+    width: 38%;
+    position: absolute;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #4e4e4e;
+    right: 15.3%;
+    top: 6%;
+    background-color: #fff;
+    z-index: 1;
+    overflow: scroll;
+  }
+  .serch-cart-container1 {
+    height: auto;
+    width: 38%;
+    position: absolute;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #4e4e4e;
+    right: 15.3%;
+    top: 6%;
+    background-color: #fff;
+    z-index: 1;
+    overflow: scroll;
   }
   .serch-cart-input {
-    display: none;
+    display: inline;
     padding-top: 3%;
     padding-bottom: 3%;
     padding-left: 4%;
@@ -356,7 +425,7 @@
   .search-icon-button {
     position: absolute;
     height: 50%;
-    width: 4.5%;
+    width: 6.5%;
     top: 26.5%;
     left: 56%;
     display: flex;
@@ -366,10 +435,10 @@
     border-width: 0px;
   }
   .search-icon {
-    display: none;
+    display: inline;
     position: absolute;
     height: 85%;
-    width: 85%;
+    width: 150%;
     margin: 0px;
   }
   .cart-icon-buttonn {
@@ -609,5 +678,15 @@
   }
   .diable-logoo {
     display: none;
+  }
+  .each-service-each {
+    display: inline-block;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 1%;
+    text-decoration: none;
+    color: #000;
+    z-index: 5;
   }
 }

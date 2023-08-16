@@ -2,36 +2,52 @@ import { useState, useEffect } from "react";
 
 import "./index.css";
 
-const carouselImg = [
-  {
-    id: 0,
-    imgUrl: "marriageCermonyEvents.png",
-    offer: "Get Upto 15% off",
-    service: "Marriage Ceremony",
-    btn: "Book Now   ❯",
-  },
-  {
-    id: 1,
-    imgUrl: "birthdayEvents.png",
-    offer: "Minimum 30% off",
-    service: "Birthday Events",
-    btn: "Book Now   ❯",
-  },
-  {
-    id: 2,
-    imgUrl: "CorporateEvents.png",
-    offer: "Best Of Facilities",
-    service: "Corporate Events",
-    btn: "Book Now   ❯",
-  },
-];
-
 const EventManagementCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [banners, setBanners] = useState([]);
+  const [dots, setDots] = useState([]);
+
+  useEffect(() => {
+    getBanners();
+  }, []);
+
+  const getBanners = async () => {
+    const response = await fetch(
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllBanners`
+    );
+    const data = await response.json();
+    console.log(data);
+    if (response.ok === true) {
+      const bannersDestructure = data.banners.filter((each) => ({
+        id: each._id,
+        image: each.image,
+        offer: each.offer,
+        text: each.text,
+        link: each.link,
+        btn: "Shop Now   ❯",
+      }));
+      console.log(bannersDestructure);
+      const filterdBanners = bannersDestructure.filter(
+        (each) => each.category === "eventmanagement"
+      );
+      setBanners(filterdBanners);
+    }
+  };
+
+  useEffect(() => {
+    getDots();
+  }, [banners]);
+
+  const getDots = () => {
+    setDots([]);
+    for (let index = 0; index < banners.length; index++) {
+      setDots((prevDots) => [...prevDots, { id: index }]);
+    }
+  };
 
   useEffect(() => {
     const id = setTimeout(() => {
-      if (activeIndex === carouselImg.length - 1) {
+      if (activeIndex === banners.length - 1) {
         setActiveIndex(0);
       } else {
         setActiveIndex(activeIndex + 1);
@@ -46,27 +62,23 @@ const EventManagementCarousel = () => {
   return (
     <>
       <div className="carouselImg-con">
-        {carouselImg.map((each) => (
-          <div
-            key={each.id}
-            id={each.id}
-            className="eventmanagement-carousel-content"
-            style={{
-              transform: `translate(-${activeIndex * 100}%)`,
-              backgroundImage: `URL(${each.imgUrl})`,
-            }}
-          >
-            <h1 className="offer">{each.offer}</h1>
-            <p className="service">{each.service}</p>
-            <button className="btn" type="button">
-              {each.btn}
-            </button>
-            <div className="shadow"></div>
-          </div>
-        ))}
+        {banners !== "" &&
+          banners.map((each) => (
+            <div
+              key={each._id}
+              id={each.id}
+              className="fashionzone-carousel-content"
+              style={{
+                transform: `translate(-${activeIndex * 100}%)`,
+                backgroundImage: `url(${each.image})`,
+              }}
+            >
+              <div className="shadow"></div>
+            </div>
+          ))}
       </div>
       <div className="dots-con">
-        {carouselImg.map((each) => (
+        {dots.map((each) => (
           <div
             key={each.id}
             id={each.id}

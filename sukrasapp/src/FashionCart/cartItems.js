@@ -69,12 +69,29 @@ const CartItemsFashion = (props) => {
       {cartItems.map((each) => (
         <div className="cart-item">
           <img className="cart-img" src={each.photos[0]} alt="image-cart" />
-          <div className="cart-contents">
+          <div style={{ position: "relative" }} className="cart-contents">
             <p style={{ textTransform: "capitalize" }} className="cart-head">
               {each.name}
             </p>
             <p className="cart-head">
               <span className="service-price">₹</span> {each.price}
+            </p>
+            <p
+              style={{
+                position: "absolute",
+                fontSize: 18,
+                marginTop: -1,
+                right: -120,
+              }}
+              className="cart-head"
+            >
+              <span
+                style={{ fontSize: 18, marginTop: -1 }}
+                className="service-price"
+              >
+                Size :
+              </span>
+              {each.size}
             </p>
             <div className="counter">
               <button

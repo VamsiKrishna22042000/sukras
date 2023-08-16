@@ -106,7 +106,11 @@ const DetailedView = (props) => {
 
   const gobackToNodetails = () => {
     const { history } = props;
-    history.push(`/${detailsarr.category}/${detailsarr.id}`);
+    if (detailsarr.id === "beautyzone") {
+      history.push("/beautyzone");
+    } else {
+      history.push(`/${detailsarr.category}/${detailsarr.id}`);
+    }
   };
 
   const addCommentFunction = (event) => {
@@ -279,8 +283,6 @@ const DetailedView = (props) => {
 
   /*console.log(idSection)*/
 
-  console.log(serviceDetails);
-
   return loading === pageStage.loading ? (
     <div className="loader-spinner">
       <TailSpin color={"#F4BD18"} height={70} width={70} />
@@ -309,7 +311,12 @@ const DetailedView = (props) => {
           src="/logo3.png"
           alt="Logo Space"
         />
-        <button className="arrow-btn" type="button" onClick={gobackToNodetails}>
+        <button
+          style={{ paddingTop: "3%", paddingLeft: "1%" }}
+          className="arrow-btn"
+          type="button"
+          onClick={gobackToNodetails}
+        >
           <img className="left-arrow-mobile" src="/backarrow.png" />
         </button>
         <p
@@ -330,17 +337,14 @@ const DetailedView = (props) => {
         </button>
         <div className="search-cart2">
           <input
+            style={{
+              backgroundColor: "transparent",
+              borderColor: "transparent",
+            }}
             className="serch-cart-input"
-            placeholder="Enter keywords, title, author or ISBN "
             type="search"
           />
-          <button className="search-icon-button">
-            <img
-              src="/search-icon.png"
-              alt="search-icon"
-              className="search-icon"
-            />
-          </button>
+          <button className="search-icon-button"></button>
           <Link to={`/cart/${detailsarr.category}/${detailsarr.id}/details`}>
             <button className="count-of-cart2">{itemsInCart.length}</button>
             <button className="cart-icon-button2">

@@ -70,14 +70,14 @@ const SelectCategory = (props) => {
             src="./fashionzone2.png"
           />
           <h1
-            d="fashionzone"
+            id="fashionzone"
             onClick={moveToHomePage}
             style={{ textAlign: "center", cursor: "pointer" }}
           >
             Fashion Zone
           </h1>
           <p
-            d="fashionzone"
+            id="fashionzone"
             onClick={moveToHomePage}
             style={{ textAlign: "center", cursor: "pointer" }}
             className="sukras-content-para"
@@ -88,7 +88,7 @@ const SelectCategory = (props) => {
             panache.
           </p>
           <button
-            d="fashionzone"
+            id="fashionzone"
             onClick={moveToHomePage}
             style={{ cursor: "pointer" }}
             className="content-button-sukrass"

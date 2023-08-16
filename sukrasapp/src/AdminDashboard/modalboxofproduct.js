@@ -113,7 +113,6 @@ const Mode = (props) => {
           theme: "colored",
         });
       } else {
-        console.log(dataToBe);
         setProductLoader(true);
         const fd = new FormData();
         const fd2 = new FormData();
@@ -130,7 +129,7 @@ const Mode = (props) => {
             fd2.append(`${key}`, dataToBe[key]);
           }
           if (key === "category") {
-            fd2.append(`${key}`, dataToBe[key]);
+            fd2.append(`${key}`, [dataToBe[key]]);
           }
         }
 

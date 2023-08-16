@@ -25,6 +25,10 @@ const Beautyzone = (props) => {
   const [itemsInCart, setItemsInCart] = useState([]);
   const [displayProfile, setProfile] = useState(false);
 
+  const [availableServices, setavailServices] = useState([]);
+
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     getVideos();
   }, []);
@@ -68,12 +72,23 @@ const Beautyzone = (props) => {
     const response = await fetch(
       `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllSalon`
     );
+
     const data = await response.json();
 
-    if (response.ok === true) {
+    const res = await fetch(
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllServices`
+    );
+
+    const da = await res.json();
+
+    if (response.ok === true && res.ok === true) {
       getCartItems();
       setLoad(true);
       setCategories(data.salons[0].categories);
+
+      const filerServices = da.allServices.map((each) => each.service);
+
+      setavailServices(filerServices);
       /*console.log(data.salons[0].categories)*/
 
       /*console.log(service)*/
@@ -149,7 +164,6 @@ const Beautyzone = (props) => {
   const [sliderPosition, setSliderPosition] = useState(0);
 
   const handleVideoMouseDown = (event) => {
-    console.log(event.button);
     if (event.button === 0) {
       setDragging(true);
       setStartX(event.clientX);
@@ -187,11 +201,21 @@ const Beautyzone = (props) => {
     }
   };
 
-  console.log(categories);
+  const filterSearch = availableServices.map((each) => {
+    if (search === "") {
+      return null;
+    } else if (each.startsWith(search)) {
+      return each;
+    }
+  });
+
+  const fil = filterSearch.filter(
+    (each) => each !== null && each !== undefined
+  );
 
   return load ? (
     <>
-      <div className="sukras-header-beautyzone">
+      <div style={{ overflow: "hidden" }} className="sukras-header-beautyzone">
         <img
           className="sukraslogosukras diable-logo"
           src="./logo3.png"
@@ -215,13 +239,9 @@ const Beautyzone = (props) => {
         <button className="location-btnn" type="button">
           <img className="location-mobilee" src="./location-icon.png" />
         </button>
-
         <select className="dropdown-container">
           <option>Vizianagaram</option>
         </select>
-        <button className="notification-btnn" type="button">
-          <img className="search-mobile" src="./search-mobile.png" />
-        </button>
         <button className="user-btn" type="button">
           <img className="user" src="./user.png" />
         </button>
@@ -264,12 +284,14 @@ const Beautyzone = (props) => {
             My Orders
           </Link>
         </div>
-
         <div className="search-cart">
           <input
             className="serch-cart-input"
-            placeholder="Enter keywords, title, author or ISBN "
+            placeholder="Search Service"
             type="search"
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
           />
           <button className="search-icon-button">
             <img
@@ -286,7 +308,20 @@ const Beautyzone = (props) => {
           </Link>
         </div>
       </div>
+
       <div className="sukras-main-beauty">
+        {fil.length > 0 && (
+          <div className="serch-cart-container">
+            {fil.map((ea) => (
+              <Link
+                to={`/${ea}/beautyzone/:details`}
+                className="each-service-each"
+              >
+                {ea}
+              </Link>
+            ))}
+          </div>
+        )}
         <div className="beautyzone-body">
           <Carousel />
         </div>
@@ -335,7 +370,7 @@ const Beautyzone = (props) => {
           </div>
         </div>
         <div className="beautyzone-body-2">
-          {categories === "" ? (
+          {categories.length === 0 ? (
             <div className="service-spinner">
               <TailSpin color={"#F4BD18"} height={70} width={70} />
             </div>
@@ -377,7 +412,11 @@ const Beautyzone = (props) => {
                 {categories.map(
                   (each) =>
                     each.services.length > 0 && (
-                      <Link to={`/${each.category}/${each._id}`}>
+                      <Link
+                        className="services-link"
+                        key={each._id}
+                        to={`/${each.category}/${each._id}`}
+                      >
                         <button
                           key={each._id}
                           className="our-services-btn"

@@ -108,10 +108,12 @@
   .head-modal {
     margin-left: 20%;
     font-size: 1vw;
+    margin-top: 2%;
+    margin-bottom: 2%;
   }
   .phone-input3 {
     margin-left: 20%;
-    height: 8vh;
+    height: 5vh;
     width: 59%;
   }
 }
@@ -235,10 +237,11 @@
   .head-modal {
     margin-left: 8%;
     margin-top: 5%;
+    margin-bottom: 3%;
     font-size: 4vw;
   }
   .phone-input3 {
-    margin-top: 1%;
+    margin-top: 2.3%;
     margin-left: 8%;
     padding-top: 2.9%;
     padding: 2.9%;

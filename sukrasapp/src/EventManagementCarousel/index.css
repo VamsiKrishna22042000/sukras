@@ -45,7 +45,7 @@
     border-radius: 5px;
     transition: all 0.5s ease-in-out;
   }
-  .eventmanagement-carousel-content {
+  .beautyzone-carousel-content {
     transition: all 0.5s ease-in-out;
     position: relative;
     display: flex;
@@ -54,15 +54,17 @@
     align-items: center;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
-    padding-left: 46%;
-    padding-right: 50%;
+    padding-left: 45%;
+    padding-right: 51%;
     height: 100vh;
+    width: 100vw;
     background-size: 100% 100%;
     background-position: center top;
     background-repeat: no-repeat;
     border-style: solid;
     border-color: #fff;
     border-width: 2vw;
+    border-bottom: hidden;
     border-radius: 70px;
   }
   .shadow {
@@ -129,6 +131,7 @@
     position: relative;
     margin-top: 0px;
     padding-top: 0px;
+    margin-left: 0%;
   }
   .dots-con {
     padding: 1.5%;
@@ -163,7 +166,7 @@
     transition: all 0.5s ease-in-out;
     height: 5%;
   }
-  .eventmanagement-carousel-content {
+  .beautyzone-carousel-content {
     transition: all 0.5s ease-in-out;
     position: relative;
     display: flex;

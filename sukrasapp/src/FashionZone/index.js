@@ -17,6 +17,7 @@ const FashionZone = (props) => {
   const [cartItems, setCartItems] = useState([]);
   const [displayProfile, setProfile] = useState(false);
   const [videos, setVideos] = useState([]);
+  const [availableproducts, setProducts] = useState([]);
 
   useEffect(() => {
     getVideos();
@@ -70,10 +71,15 @@ const FashionZone = (props) => {
     const response = await fetch(
       `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllCategory`
     );
+
     const data = await response.json();
-    if (response.ok === true) {
-      console.log(data);
+    const res = await fetch(
+      `${process.env.REACT_APP_ROOT_URL}/api/admin/getAllProduct`
+    );
+    const da = await res.json();
+    if (response.ok === true && res.ok === true) {
       setCategories(data.categories);
+      setProducts(da.products);
       setLoad(true);
     }
   };
@@ -95,6 +101,7 @@ const FashionZone = (props) => {
   const [startX, setStartX] = useState(0);
   const [currentX, setCurrentX] = useState(0);
   const [sliderPosition, setSliderPosition] = useState(0);
+  const [search, setSearch] = useState("");
 
   const handleVideoMouseDown = (event) => {
     console.log(event.button);
@@ -135,9 +142,17 @@ const FashionZone = (props) => {
     }
   };
 
+  let f = availableproducts.map((each) => [each.type, each.name, each._id]);
+
+  let fil = f.filter(
+    (each) => search !== "" && each[1].startsWith(search) && each
+  );
+
+  console.log(fil);
+
   return load ? (
     <>
-      <div className="sukras-header-fashionzone">
+      <div style={{ overflow: "hidden" }} className="sukras-header-fashionzone">
         <img
           className="sukraslogosukras diable-logo"
           src="./logo3.png"
@@ -164,13 +179,6 @@ const FashionZone = (props) => {
         <select className="dropdown-container">
           <option>Vizianagaram</option>
         </select>
-        <button
-          onClick={deleteCookie}
-          className="notification-btnn"
-          type="button"
-        >
-          <img className="search-mobile" src="./search-mobile.png" />
-        </button>
 
         <button className="user-btn" type="button">
           <img className="user" src="./user.png" />
@@ -214,8 +222,11 @@ const FashionZone = (props) => {
         </div>
         <div className="search-cart">
           <input
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
             className="serch-cart-input"
-            placeholder="Enter keywords, title, author or ISBN "
+            placeholder="Search Product"
             type="search"
           />
           <button onClick={deleteCookie} className="search-icon-button">
@@ -234,6 +245,18 @@ const FashionZone = (props) => {
         </div>
       </div>
       <div className="sukras-main-beauty">
+        {fil.length > 0 && (
+          <div className="serch-cart-container1">
+            {fil.map((ea) => (
+              <Link
+                to={`/fashioncategory/detailedview/${ea[0]}/${ea[1]}/${ea[2]}`}
+                className="each-service-each"
+              >
+                {ea[1]}
+              </Link>
+            ))}
+          </div>
+        )}
         <div className="beautyzone-body">
           <FashionZoneCarousel />
         </div>

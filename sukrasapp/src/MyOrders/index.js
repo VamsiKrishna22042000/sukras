@@ -90,7 +90,7 @@ const MyOrders = (props) => {
           <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Products</h1>
           <div className="all-orders">
             {orders.productOrders.map((each) => (
-              <div className="each-order">
+              <div style={{ position: "relative" }} className="each-order">
                 <img
                   className="each-img"
                   src={each.photos[0]}
@@ -117,6 +117,17 @@ const MyOrders = (props) => {
                   <p
                     style={{ marginTop: 0, padding: 0, marginBottom: 4 }}
                   >{`${each.count} ordered`}</p>
+                  {each.size !== undefined && (
+                    <p
+                      style={{
+                        position: "absolute",
+                        marginTop: 0,
+                        padding: 0,
+                        marginBottom: 4,
+                        right: 10,
+                      }}
+                    >{`Size : ${each.size}`}</p>
+                  )}
                   {each.active ? (
                     <p className="deliverd" style={{ color: "red" }}>
                       On the Way
