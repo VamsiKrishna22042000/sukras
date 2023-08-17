@@ -273,7 +273,20 @@ const Events = () => {
             </div>
 
             <div className="product-name">
-              <p style={{ textTransform: "capitalize" }}>{each.name}</p>
+              <p
+                style={{
+                  textTransform: "capitalize",
+                  textTransform: "capitalize",
+
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {each.name}
+              </p>
             </div>
             <div className="product-id">
               <p>{each._id}</p>

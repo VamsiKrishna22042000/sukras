@@ -654,7 +654,6 @@ const Appointments = () => {
               <p
                 style={{
                   textTransform: "capitalize",
-                  width: "78%",
                   display: "-webkit-box",
                   WebkitLineClamp: 2,
                   WebkitBoxOrient: "vertical",
@@ -669,7 +668,18 @@ const Appointments = () => {
               <p style={{ textTransform: "capitalize" }}>₹ {each.price}</p>
             </div>
             <div className="product-category">
-              <p style={{ textTransform: "capitalize" }}>{each.category}</p>
+              <p
+                style={{
+                  textTransform: "capitalize",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {each.category}
+              </p>
             </div>
             <div className="product-toggle">
               <p style={{ fontWeight: 400 }} className="product-heads">

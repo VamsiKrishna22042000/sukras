@@ -445,21 +445,57 @@ const Products = () => {
               )}
             </div>
             <div className="product-name">
-              <p style={{ textTransform: "capitalize" }}>{each.name}</p>
+              <p
+                style={{
+                  textTransform: "capitalize",
+                  textTransform: "capitalize",
+
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {each.name}
+              </p>
             </div>
             <div id={each._id} className="product-toggle">
               <p style={{ textTransform: "capitalize" }}>₹ {each.price}</p>
             </div>
             <div className="product-togglecon">
               <p
-                style={{ textTransform: "capitalize", fontWeight: 400 }}
+                style={{
+                  textTransform: "capitalize",
+                  fontWeight: 400,
+                  textTransform: "capitalize",
+
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
                 className="product-heads"
               >
                 {each.type}
               </p>
             </div>
             <div className="product-category">
-              <p style={{ textTransform: "capitalize" }}>{each.category}</p>
+              <p
+                style={{
+                  textTransform: "capitalize",
+                  textTransform: "capitalize",
+
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {each.category}
+              </p>
             </div>
             <div className="product-togglecon">
               <p

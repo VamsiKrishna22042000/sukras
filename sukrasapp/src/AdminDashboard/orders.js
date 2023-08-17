@@ -113,9 +113,37 @@ const Orders = () => {
               )}
             </div>
             <div className="product-name">
-              <p style={{ textTransform: "capitalize" }}>{each.name}</p>
+              <p
+                style={{
+                  textTransform: "capitalize",
+                  textTransform: "capitalize",
+
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {each.name}
+              </p>
             </div>
-            <div className="product-name">{each.userName}</div>
+            <div className="product-name">
+              <p
+                style={{
+                  textTransform: "capitalize",
+
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {each.userName}
+                <p />
+              </p>
+            </div>
             <div id={each._id} className="product-toggle">
               <p style={{ textTransform: "capitalize" }}>
                 ₹ {each.price * each.count}
@@ -123,7 +151,19 @@ const Orders = () => {
             </div>
 
             <div className="product-id">
-              <p>{each.address}</p>
+              <p
+                style={{
+                  textTransform: "capitalize",
+
+                  display: "-webkit-box",
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {each.address}
+              </p>
             </div>
             <div className="product-action">
               <p>{each.count}</p>
