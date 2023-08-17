@@ -426,12 +426,7 @@ const FashionDetailedView = (props) => {
               ) : null}
               <p className="fashion-details-about">Product Details</p>
               <p>{filterItem[0].about}</p>
-              <p>• Soft material</p>
-              <p>• Beautiful floral prints</p>
-              <p>• Well stiched</p>
-              <p className="fashion-details-about">Material & Care</p>
-              <p>• Pure georgette</p>
-              <p>• Mashine wash</p>
+
               <button
                 onClick={addProductToCart}
                 className={button}
