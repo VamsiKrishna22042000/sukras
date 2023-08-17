@@ -146,6 +146,7 @@ const FashionCategory = (props) => {
   return load ? (
     <div className="fashion-category">
       <div style={{ overflow: "hidden" }} className="sukras-header-beauty">
+        <img className="white-block" src="/whitesquare.png" alt="white-block" />
         <img
           style={{
             position: "absolute",
@@ -173,9 +174,7 @@ const FashionCategory = (props) => {
           onClick={deleteCookie}
           className="search-btn-fashion"
           type="button"
-        >
-          <img className="search-mobile" src="/search-mobile.png" />
-        </button>
+        ></button>
         <Link to={`/fashioncart/${params.category}`}>
           <button className="cartBag-btn" type="button">
             <img className="cartBag" src="/cartBag.png" />
@@ -271,41 +270,6 @@ const FashionCategory = (props) => {
               <lable htmlFor="4">₹ 2000 - ₹ 2500</lable>
             </div>
           </div>
-          <div className="filter-zone-text">
-            <p>Discount</p>
-            <p
-              style={{ marginLeft: "2%" }}
-              id="discount"
-              onClick={changeOptions}
-              className={options.discount ? "todown" : "toup"}
-            >
-              ❯
-            </p>
-          </div>
-          <div
-            className={
-              options.discount
-                ? "fashion-zone-opitons"
-                : "fashion-zone-opitons-disable"
-            }
-          >
-            <div>
-              <input id="1" type="checkbox" />
-              <lable htmlFor="1">80% or above</lable>
-            </div>
-            <div>
-              <input id="2" type="checkbox" />
-              <lable htmlFor="2">50% or above</lable>
-            </div>
-            <div>
-              <input id="3" type="checkbox" />
-              <lable htmlFor="3">45% or above</lable>
-            </div>
-            <div>
-              <input id="4" type="checkbox" />
-              <lable htmlFor="4">30% or above</lable>
-            </div>
-          </div>
         </div>
         {filterBasedOnPrice.length > 0 ? (
           <div className="fashion-category-body">
@@ -334,19 +298,17 @@ const FashionCategory = (props) => {
                         <span className="fashion-item-name">₹</span>
                         {each.price}
                       </p>
-                      <p className="fashion-item-discount">
-                        {parseInt(each.price) + 500}
-                      </p>
                     </div>
                     <div className="price-details-rating">
-                      <p className="fashion-item-offer"> 10% OFF</p>
-                      <p className="fashion-item-star">{each.rating}</p>
+                      <p className="fashion-item-star">{each.rating} </p>
                       <img
                         className="fashion-item-star-rating"
                         src="/ratingstar.png"
                         alt="star"
                       />
-                      <p className="fashion-item-reviews">({each.reviews})</p>
+                      <p className="fashion-item-reviews">
+                        ({each.reviews} reviews)
+                      </p>
                     </div>
                   </Link>
                 )

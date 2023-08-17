@@ -413,7 +413,9 @@ const CartItems = (props) => {
                   />
                   <div className="cart-contents">
                     <p
-                      style={{ textTransform: "capitalize" }}
+                      style={{
+                        textTransform: "capitalize",
+                      }}
                       className="cart-head"
                     >
                       {each.service}
@@ -456,12 +458,15 @@ const CartItems = (props) => {
         </div>
       )}
       <div className="price-details">
-        <p className="price-head1">PriceDetials</p>
+        <p style={{ marginTop: "5%" }} className="price-head1">
+          PriceDetials
+        </p>
         <div
           style={{
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            marginTop: "3.5%",
           }}
         >
           <p className="actual-price">Actual Price</p>
@@ -475,6 +480,7 @@ const CartItems = (props) => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            marginTop: "3.5%",
           }}
         >
           <p className="total-discount">Total Discount</p>
@@ -489,9 +495,12 @@ const CartItems = (props) => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            marginTop: "3.5%",
           }}
         >
-          <p className="total-price-head">Total</p>
+          <p style={{ marginTop: "1%" }} className="total-price-head">
+            Total
+          </p>
           <p className="total-price-head">
             <span className="actual-price">₹</span> {TotalPrice - discount}
           </p>

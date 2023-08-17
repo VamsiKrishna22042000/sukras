@@ -272,12 +272,14 @@
     border-color: orange;
   }
   .fashion-cartBag-btn {
+    position: absolute;
     height: 4vh;
     width: 10.5vw;
     background-color: transparent;
     border-color: transparent;
-    margin-top: 1.2vh;
     margin-left: 0%;
+    right: 17%;
+    margin-top: 0%;
   }
   .fashion-cartBag {
     color: #4e4e4e;
@@ -308,6 +310,7 @@
     padding-bottom: 0.1%;
     top: 35%;
   }
+
   .sukras-header-fashion {
     height: 7vh;
     width: 100%;

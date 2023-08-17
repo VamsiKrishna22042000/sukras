@@ -146,6 +146,7 @@ const SelectedService = (props) => {
           src="/sukraslogo.png"
           alt="Logo Space"
         />
+        <img className="white-block" src="/whitesquare.png" alt="white-block" />
         <img
           style={{
             borderRadius: "5px",

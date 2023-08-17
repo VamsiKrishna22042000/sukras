@@ -135,13 +135,14 @@ const FashionCart = (props) => {
             />
           )}
 
-          <div className="price-details">
+          <div style={{ marginTop: "5%" }} className="price-details">
             <p className="price-head1">PriceDetials</p>
             <div
               style={{
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
+                marginTop: "2.5%",
               }}
             >
               <p className="actual-price">Actual Price</p>
@@ -155,6 +156,7 @@ const FashionCart = (props) => {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
+                marginTop: "2.5%",
               }}
             >
               <p className="total-discount">Total Discount</p>
@@ -169,6 +171,9 @@ const FashionCart = (props) => {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
+                marginTop: "2.5%",
+                paddingTop: "2.5%",
+                marginBottom: "5%",
               }}
             >
               <p className="total-price-head">Total</p>

@@ -60,7 +60,7 @@ const AboutUs = () => {
                   </p>
                   <img
                     className="about-image"
-                    src="bridal.jpg"
+                    src="/bridal.jpg"
                     alt="Bridal Makeup"
                   />
                 </div>

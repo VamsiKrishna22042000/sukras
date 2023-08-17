@@ -210,39 +210,6 @@ const EventBooking = (props) => {
         >
           <img className="leftevent-arrow-mobile" src="./backarrow.png" />
         </button>
-        <button className="location-btnn" type="button">
-          <img className="location-mobilee" src="./location-icon.png" />
-        </button>
-        <select className="dropdown-container">
-          <option>Hyderabad</option>
-        </select>
-        <button
-          onClick={deleteCookie}
-          className="search-btn-booking"
-          type="button"
-        >
-          <img className="search-mobile" src="./search-mobile.png" />
-        </button>
-        <button className="notification-btnn-booking" type="button">
-          <img
-            className="notification-mobile"
-            src="./notification-mobile.png"
-          />
-        </button>
-        <div className="search-cart">
-          <input
-            className="serch-cart-input"
-            placeholder="Enter keywords, title, author or ISBN "
-            type="search"
-          />
-          <button onClick={deleteCookie} className="search-icon-button">
-            <img
-              src="./search-icon.png"
-              alt="search-icon"
-              className="search-icon"
-            />
-          </button>
-        </div>
       </div>
       <form className="booking-con">
         <h1 className="booking-head">Create Event</h1>

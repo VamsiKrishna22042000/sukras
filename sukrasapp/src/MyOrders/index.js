@@ -45,9 +45,9 @@ const MyOrders = (props) => {
   };
 
   return load ? (
-    orders.serviceOrders.length !== 0 ||
-    orders.eventOrders.length !== 0 ||
-    orders.productOrders.length !== 0 ? (
+    orders.serviceOrders.length > 0 &&
+    orders.eventOrders.length > 0 &&
+    orders.productOrders.length > 0 ? (
       <>
         <div className="total-orders">
           <div className="myorders-head">
@@ -74,15 +74,19 @@ const MyOrders = (props) => {
                     style={{
                       textTransform: "capitalize",
                       fontSize: 18,
-                      marginTop: 8,
-                      width: 200,
+                      width: 180,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 1,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                     }}
                   >
                     {each.name}
                   </h1>
                   <p>₹ {each.price}</p>
                   <p>{each.orderedAt}</p>
-                  <p>{each.time}</p>
+                  <p>Time : {each.time}</p>
                 </div>
               </div>
             ))}
@@ -101,29 +105,26 @@ const MyOrders = (props) => {
                     style={{
                       textTransform: "capitalize",
                       fontSize: 18,
-                      marginTop: 8,
+
                       marginBottom: 0,
-                      width: 200,
+                      width: 180,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 1,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                     }}
                   >
                     {each.name}
                   </h1>
-                  <p style={{ marginTop: 5, marginBottom: 4, padding: 0 }}>
-                    ₹ {each.price * each.count}
-                  </p>
-                  <p style={{ marginTop: 5, padding: 0, marginBottom: 4 }}>
-                    {each.orderedAt}
-                  </p>
-                  <p
-                    style={{ marginTop: 0, padding: 0, marginBottom: 4 }}
-                  >{`${each.count} ordered`}</p>
+                  <p>₹ {each.price * each.count}</p>
+                  <p>{each.orderedAt}</p>
+                  <p>{`${each.count} ordered`}</p>
                   {each.size !== undefined && (
                     <p
                       style={{
                         position: "absolute",
-                        marginTop: 0,
-                        padding: 0,
-                        marginBottom: 4,
+                        top: 30,
                         right: 10,
                       }}
                     >{`Size : ${each.size}`}</p>
@@ -155,8 +156,12 @@ const MyOrders = (props) => {
                     style={{
                       textTransform: "capitalize",
                       fontSize: 18,
-                      width: 200,
-                      marginTop: 30,
+                      width: 180,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 1,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                     }}
                   >
                     {each.eventName}

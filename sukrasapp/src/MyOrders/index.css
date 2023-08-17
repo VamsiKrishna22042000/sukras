@@ -25,7 +25,7 @@
     margin-left: 2.5%;
   }
   .each-order {
-    height: auto;
+    height: 20vh;
     width: 24%;
     border-style: solid;
     padding: 0px;
@@ -41,19 +41,23 @@
     margin-right: 0.3%;
   }
   .each-img {
-    height: 20vh;
+    height: 100%;
     width: 38%;
     margin: 0px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
   .each-content {
-    height: 20vh;
+    height: 100%;
     width: 60%;
     padding-left: 3%;
     color: #3e3e3e;
     font-size: 1vw;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-self: flex-start;
   }
 
   .myorders-head {
@@ -63,6 +67,8 @@
     height: auto;
     color: #3e3e3e;
     justify-content: space-around;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
   }
   .order-arrow-btn {
     display: inline;
@@ -101,7 +107,7 @@
     margin-left: 2.5%;
   }
   .each-order {
-    height: auto;
+    height: 18vh;
     width: 95%;
     border-style: solid;
     padding: 0px;
@@ -111,17 +117,24 @@
     align-items: center;
     border-color: #f4bd18;
     border-radius: 10px;
-    margin: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 2%;
+    margin-bottom: 2%;
   }
   .each-img {
-    height: 20vh;
+    height: 100%;
     width: 40%;
     margin: 0px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
   .each-content {
-    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-self: flex-start;
+    height: 100%;
     width: 60%;
     padding-left: 3%;
     color: #3e3e3e;
@@ -131,7 +144,9 @@
   .myorders-head {
     display: flex;
     flex-direction: row;
-    width: 98%;
+    height: 5vh;
+    padding-top: 5%;
+    padding-bottom: 5%;
     height: auto;
     color: #3e3e3e;
     justify-content: space-around;

@@ -58,7 +58,12 @@
 
   .cart-head {
     padding: 0px;
-    margin: 5%;
+    display: -webkit-box; /* Required for 2-line truncation */
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Display ellipsis (...) when text overflows */
+    margin-bottom: 13%;
   }
 
   .service-price {
@@ -80,7 +85,7 @@
 
   .select-options1 {
     height: 5vh;
-    width: 9vw;
+    width: 11vw;
     margin-right: 5%;
     border-color: #f4bd18;
     border-width: 2px;
@@ -224,14 +229,17 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 5vw;
     margin-left: 5%;
-    height: 50%;
+    height: 95%;
     width: 35%;
   }
 
   .cart-head {
-    width: 110%;
     padding: 0px;
-    margin: 3%;
+    display: -webkit-box; /* Required for 2-line truncation */
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Display ellipsis (...) when text overflows */
   }
 
   .service-price {
@@ -325,12 +333,12 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-top: 2%;
+    margin-top: 5%;
   }
 
   .select-options1 {
     height: 5vh;
-    width: 65%;
+    width: 48%;
     margin-right: 5%;
     border-color: #f4bd18;
     border-width: 2px;
@@ -343,7 +351,7 @@
 
   .select-options2 {
     height: 5vh;
-    width: 38%;
+    width: 35%;
     margin-right: 1%;
     border-color: #f4bd18;
     border-width: 2px;

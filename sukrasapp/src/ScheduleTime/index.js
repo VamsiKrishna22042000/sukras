@@ -55,12 +55,15 @@ const ScheduleTime = (props) => {
   return (
     <div style={{ marginLeft: 15 }} className="price-details">
       <ToastContainer />
-      <p className="price-head1">PriceDetials</p>
+      <p style={{ marginTop: "5%" }} className="price-head1">
+        PriceDetials
+      </p>
       <div
         style={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          marginTop: "2.5%",
         }}
       >
         <p className="actual-price">Actual Price</p>
@@ -74,6 +77,7 @@ const ScheduleTime = (props) => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          marginTop: "2.5%",
         }}
       >
         <p className="total-discount">Total Discount</p>
@@ -88,10 +92,19 @@ const ScheduleTime = (props) => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          marginTop: "2.5%",
         }}
       >
-        <p className="total-price-head">Total</p>
-        <p className="total-price-head">
+        <p
+          style={{ marginTop: "2.5%", marginBottom: "2%" }}
+          className="total-price-head"
+        >
+          Total
+        </p>
+        <p
+          style={{ marginTop: "2.5%", marginBottom: "2%" }}
+          className="total-price-head"
+        >
           <span className="actual-price">₹</span> {TotalPrice - discount}
         </p>
       </div>

@@ -91,13 +91,7 @@ const EventHome = (props) => {
         <select className="dropdown-container">
           <option>Vizianagaram</option>
         </select>
-        <button
-          onClick={deleteCookie}
-          className="notification-btnn"
-          type="button"
-        >
-          <img className="search-mobile" src="./search-mobile.png" />
-        </button>
+
         <button className="user-btn" type="button">
           <img className="user" src="./user.png" />
         </button>
@@ -146,7 +140,7 @@ const EventHome = (props) => {
         <div className="event-points">
           <h1>You know events,we know you</h1>
           <p>
-            Managing & booking events is stressful, here we help you to <br />{" "}
+            Managing & booking events is stressful, here we help you to <br />
             book venue within minutes
           </p>
           <div className="points-con">

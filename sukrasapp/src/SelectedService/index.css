@@ -253,9 +253,17 @@
   .sukras-beauty-select {
     display: none;
   }
+  .white-block {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 600px) {
+  .white-block {
+    height: 95%;
+    position: absolute;
+    margin-left: 30%;
+  }
   .selected-category-con {
     height: auto;
     width: 100%;
@@ -344,7 +352,7 @@
     color: #4e4e4e;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2.5vw;
-    right: 70%;
+    right: 75%;
     top: 30%;
     background-color: #fff;
     height: auto;

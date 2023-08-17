@@ -70,27 +70,24 @@ const CartItemsFashion = (props) => {
         <div className="cart-item">
           <img className="cart-img" src={each.photos[0]} alt="image-cart" />
           <div style={{ position: "relative" }} className="cart-contents">
-            <p style={{ textTransform: "capitalize" }} className="cart-head">
+            <p
+              style={{ textTransform: "capitalize", marginBottom: "5%" }}
+              className="cart-head"
+            >
               {each.name}
             </p>
-            <p className="cart-head">
+            <p style={{ marginBottom: "5%" }} className="cart-head">
               <span className="service-price">₹</span> {each.price}
             </p>
             <p
               style={{
                 position: "absolute",
-                fontSize: 18,
+                fontSize: 15,
                 marginTop: -1,
-                right: -120,
+                right: -70,
               }}
-              className="cart-head"
             >
-              <span
-                style={{ fontSize: 18, marginTop: -1 }}
-                className="service-price"
-              >
-                Size :
-              </span>
+              <span>Size : </span>
               {each.size}
             </p>
             <div className="counter">

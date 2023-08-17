@@ -307,6 +307,7 @@ const FashionDetailedView = (props) => {
           src="/sukraslogo.png"
           alt="Logo Space"
         />
+
         <img
           style={{
             borderRadius: "5px",
@@ -368,13 +369,6 @@ const FashionDetailedView = (props) => {
                     {filterItem[0].price}
                   </span>
                 </p>
-                <p>
-                  <span className="fashion-selected-price">₹ </span>
-                  <span className="fashion-selected-price-icon">
-                    {parseInt(filterItem[0].price) + 500}
-                  </span>
-                </p>
-                <p className="fashion-selected-offer">(10% Off)</p>
               </div>
               <div className="selected-rating-con">
                 <p className="selected-rating">{filterItem[0].rating}</p>

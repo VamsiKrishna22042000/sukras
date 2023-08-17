@@ -283,7 +283,7 @@ const Beautyzone = (props) => {
           <div className="serch-cart-container">
             {fil.map((ea) => (
               <Link
-                to={`/${ea}/beautyzone/:details`}
+                to={`/${ea}/beautyzone/details`}
                 className="each-service-each"
               >
                 {ea}
