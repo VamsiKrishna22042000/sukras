@@ -377,6 +377,7 @@
 
   .search-cart {
     height: auto;
+    display: inline;
     width: 60%;
     margin-right: -5.5%;
     position: relative;
@@ -411,7 +412,7 @@
     overflow: scroll;
   }
   .serch-cart-input {
-    display: inline;
+    display: none;
     padding-top: 3%;
     padding-bottom: 3%;
     padding-left: 4%;
@@ -423,6 +424,7 @@
     outline-color: #9e9e9e;
   }
   .search-icon-button {
+    display: none;
     position: absolute;
     height: 50%;
     width: 6.5%;
@@ -435,7 +437,7 @@
     border-width: 0px;
   }
   .search-icon {
-    display: inline;
+    display: none;
     position: absolute;
     height: 85%;
     width: 150%;

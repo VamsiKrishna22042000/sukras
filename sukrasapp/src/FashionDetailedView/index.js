@@ -338,7 +338,7 @@ const FashionDetailedView = (props) => {
           <Link
             to={`/fashioncart/fashioncategory/${params.type}/${params.name}/${params.id}`}
           >
-            <button className="fashion-count-of-cart">
+            <button className="fashion-count-of-cart-cart">
               {cartItems.length}
             </button>
             <button className="cart-icon-buttonn">

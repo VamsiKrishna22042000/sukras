@@ -402,7 +402,7 @@
   }
 
   .search-cart2 {
-    display: flex;
+    display: inline;
     height: auto;
     width: auto;
     margin-right: 7.5%;
