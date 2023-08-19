@@ -279,7 +279,7 @@ const Appointments = () => {
             />
             <p className="user-name-app">Selected User : {selectedUser.name}</p>
             <p className="user-name-book">
-              Selected Book Count :{" "}
+              Selected Book Count :
               <span style={{ color: "green", fontWeight: "bold" }}>
                 {aboutToBook.length}
               </span>
@@ -351,9 +351,16 @@ const Appointments = () => {
                       <p
                         style={{
                           marginTop: 5,
+                          marginBottom: 10,
                           marginLeft: 5,
                           textTransform: "capitalize",
                           fontWeight: "bold",
+                          display: "-webkit-box",
+                          WebkitLineClamp: 1,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          width: "90%",
                         }}
                       >
                         {each.service}
@@ -361,6 +368,7 @@ const Appointments = () => {
                       <p
                         style={{
                           marginTop: 5,
+                          marginBottom: 10,
                           marginLeft: 5,
                           textTransform: "capitalize",
                           fontWeight: "bold",
@@ -372,6 +380,7 @@ const Appointments = () => {
                         className="time-app"
                         style={{
                           marginTop: 5,
+                          marginBottom: 10,
                           marginLeft: 5,
                           textTransform: "capitalize",
                           fontWeight: "bold",
@@ -401,7 +410,7 @@ const Appointments = () => {
                           getTheTimeSlots(e.target.id, e.target.value);
                         }}
                         style={{
-                          marginTop: 10,
+                          marginTop: 25,
                           marginLeft: 5,
                           textTransform: "capitalize",
                         }}
@@ -429,7 +438,7 @@ const Appointments = () => {
                         (slots.length > 0 ? (
                           <select
                             style={{
-                              marginTop: 10,
+                              marginTop: 25,
                               marginLeft: 5,
                               textTransform: "capitalize",
                             }}
@@ -446,7 +455,10 @@ const Appointments = () => {
                             ))}
                           </select>
                         ) : (
-                          <div className="spin-height">
+                          <div
+                            style={{ marginTop: 25 }}
+                            className="spin-height"
+                          >
                             <TailSpin color={"red"} height={20} width={20} />
                           </div>
                         ))}
