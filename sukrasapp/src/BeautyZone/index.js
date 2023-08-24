@@ -326,50 +326,7 @@ const Beautyzone = (props) => {
         <div className="beautyzone-body">
           <Carousel />
         </div>
-        <div className="beautyzone-body-2">
-          <div className="beauty-cosmetic-head">
-            <h1>Beauty Training</h1>
-          </div>
-          <div className="training-con">
-            <div
-              className="training"
-              style={{ backgroundImage: `url("/training.png")` }}
-            >
-              <div className="training-content">
-                <div className="image-training-content">
-                  <img
-                    className="training-image"
-                    src="BEAUTYlogo.png"
-                    alt="beauty"
-                  />
-                  <img
-                    className="training-image2"
-                    src="Traininglogo.png"
-                    alt="training"
-                  />
-                </div>
-                <h1 className="tining-head1">
-                  Indias One Of Best Beauty Academy
-                </h1>
-                <h1 className="tining-head2">
-                  Leading Beauty School in Vizianagaram
-                </h1>
-                <p className="tining-head3">
-                  Over 80% of our graduates are gainfully employed while the
-                  remaining have become enterpruners and employers of labour
-                </p>
-                <button
-                  onClick={() => {
-                    window.location.href = "/training";
-                  }}
-                  className="tining-button"
-                >
-                  Know More ❯
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+
         <div className="beautyzone-body-2">
           {categories.length === 0 ? (
             <div className="service-spinner">
@@ -377,37 +334,6 @@ const Beautyzone = (props) => {
             </div>
           ) : (
             <>
-              <div className="beauty-cosmetic-head">
-                <h1 style={{ marginBottom: 10 }}>Our Service videos</h1>
-              </div>
-              <div className="beauty-cosmetic-products3">
-                <div
-                  onMouseDown={handleVideoMouseDown}
-                  onMouseMove={handleVideoMouseMove}
-                  onMouseUp={handleVideoMouseUp}
-                  style={{
-                    transform: `translateX(${currentX}px)`,
-                    transition: dragging ? "none" : "transform 0.3s ease",
-                  }}
-                  className="cosmatic-products-con"
-                >
-                  {videos.map((each) => (
-                    <div className="cosmatic-videoItem">
-                      <iframe
-                        style={{ cursor: "pointer" }}
-                        className="cosmatic-productImg"
-                        width="560"
-                        height="315"
-                        src={each.link}
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
-                  ))}
-                </div>
-              </div>
               <div className="our-services">
                 <p className="our-services-head">Our Service's</p>
                 {categories.map(
@@ -440,9 +366,86 @@ const Beautyzone = (props) => {
                     )
                 )}
               </div>
+              <div className="beautyzone-body-2">
+                <div className="beauty-cosmetic-head">
+                  <h1>Beauty Training</h1>
+                </div>
+                <div className="training-con">
+                  <div
+                    className="training"
+                    style={{ backgroundImage: `url("/training.png")` }}
+                  >
+                    <div className="training-content">
+                      <div className="image-training-content">
+                        <img
+                          className="training-image"
+                          src="BEAUTYlogo.png"
+                          alt="beauty"
+                        />
+                        <img
+                          className="training-image2"
+                          src="Traininglogo.png"
+                          alt="training"
+                        />
+                      </div>
+                      <h1 className="tining-head1">
+                        Indias One Of Best Beauty Academy
+                      </h1>
+                      <h1 className="tining-head2">
+                        Leading Beauty School in Vizianagaram
+                      </h1>
+                      <p className="tining-head3">
+                        Over 80% of our graduates are gainfully employed while
+                        the remaining have become enterpruners and employers of
+                        labour
+                      </p>
+                      <button
+                        onClick={() => {
+                          window.location.href = "/training";
+                        }}
+                        className="tining-button"
+                      >
+                        Know More ❯
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="beauty-cosmetic-head">
+                <h1 style={{ marginBottom: 10 }}>Our Service videos</h1>
+              </div>
+              <div className="beauty-cosmetic-products3">
+                <div
+                  onMouseDown={handleVideoMouseDown}
+                  onMouseMove={handleVideoMouseMove}
+                  onMouseUp={handleVideoMouseUp}
+                  style={{
+                    transform: `translateX(${currentX}px)`,
+                    transition: dragging ? "none" : "transform 0.3s ease",
+                  }}
+                  className="cosmatic-products-con"
+                >
+                  {videos.map((each) => (
+                    <div className="cosmatic-videoItem">
+                      <iframe
+                        style={{ cursor: "pointer" }}
+                        className="cosmatic-productImg"
+                        width="560"
+                        height="315"
+                        src={each.link}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </>
           )}
         </div>
+
         <div className="beauty-cosmetic-head">
           <h1>Cosmetics</h1>
           <p>
