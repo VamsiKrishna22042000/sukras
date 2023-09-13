@@ -200,7 +200,7 @@ const SelectedService = (props) => {
       {servicesarr.length > 0 ? (
         <div className="selected-body">
           {servicesarr.map((each) =>
-            each.active ? (
+            servicesarr.length > 0 ? (
               <div className="selected-body-total">
                 <div
                   style={{
