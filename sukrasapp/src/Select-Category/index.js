@@ -60,25 +60,25 @@ const SelectCategory = (props) => {
 
         <div
           id="fashionzone"
-          onClick={moveToHomePage}
+          /*onClick={moveToHomePage}*/
           className="sukras-content-container"
         >
           <img
             id="fashionzone"
-            onClick={moveToHomePage}
+            /*onClick={moveToHomePage}*/
             className="sukras-content-image2"
             src="./fashionzone2.png"
           />
           <h1
             id="fashionzone"
-            onClick={moveToHomePage}
+            /*onClick={moveToHomePage}*/
             style={{ textAlign: "center", cursor: "pointer" }}
           >
             Fashion Zone
           </h1>
           <p
             id="fashionzone"
-            onClick={moveToHomePage}
+            /*onClick={moveToHomePage}*/
             style={{ textAlign: "center", cursor: "pointer" }}
             className="sukras-content-para"
           >
@@ -89,11 +89,11 @@ const SelectCategory = (props) => {
           </p>
           <button
             id="fashionzone"
-            onClick={moveToHomePage}
+            /*onClick={moveToHomePage}*/
             style={{ cursor: "pointer" }}
             className="content-button-sukrass"
           >
-            Proceed <span style={{ marginLeft: 10 }}>❯</span>
+            Coming Soon ... <span style={{ marginLeft: 10 }}>❯</span>
           </button>
         </div>
 

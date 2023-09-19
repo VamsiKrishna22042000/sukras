@@ -446,7 +446,7 @@ const Beautyzone = (props) => {
           )}
         </div>
 
-        <div className="beauty-cosmetic-head">
+        {/** <div className="beauty-cosmetic-head">
           <h1>Cosmetics</h1>
           <p>
             <Link className="decoration" to={`/fashioncategory/cosmetics`}>
@@ -456,7 +456,7 @@ const Beautyzone = (props) => {
         </div>
         <div className="beauty-cosmetic-products">
           <div className="cosmatic-products-con">
-            {/* Left Arrow Button */}
+            
             <button
               style={{
                 fontSize: "24px",
@@ -471,6 +471,7 @@ const Beautyzone = (props) => {
             </button>
             {visibleProducts.map((each) => (
               <Link
+               
                 to={`/fashioncategory/detailedview/${each.type}/${each.name}/${each._id}`}
                 className="cosmatic-productItem"
               >
@@ -479,10 +480,11 @@ const Beautyzone = (props) => {
                   src={each.photos[0]}
                   alt={each.category}
                 />
-                <p className="cosmatic-product-name">{each.name}</p>
+                <p className="cosmatic-product-name">
+                {each.name}
+                </p>
               </Link>
             ))}
-            {/* Right Arrow Button */}
             <button
               style={{
                 fontSize: "24px",
@@ -496,7 +498,7 @@ const Beautyzone = (props) => {
               ❯
             </button>
           </div>
-        </div>
+        </div>*/}
         <div className="beauty-cosmetic-products1">
           <div className="cosmatic-products-con">
             {filterdProductsBasedOnType.map((each) => (

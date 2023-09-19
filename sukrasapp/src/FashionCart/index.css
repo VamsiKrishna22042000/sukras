@@ -159,15 +159,32 @@
     display: none;
   }
   .fashion-address {
-    height: 30vh;
+    height: auto;
     width: 90%;
     margin-left: -5%;
     margin-top: -5%;
     margin-bottom: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .con-address {
+    margin: 5%;
+    align-self: start;
   }
   .input-address {
-    height: 80%;
-    width: 100%;
+    padding: 1% 2% 25% 1%;
+    width: 110%;
+  }
+  .input-address2 {
+    padding: 1%;
+    width: 110%;
+  }
+  .input-address3 {
+    height: 15vh;
+    width: 30vw;
   }
 }
 
@@ -308,11 +325,19 @@
     display: none;
   }
   .fashion-address {
-    height: 30vh;
+    height: auto;
     width: 90%;
     margin-left: -2%;
     margin-top: -5%;
     margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .con-address {
+    height: auto;
+    width: 90%;
   }
   .input-address {
     height: 80%;
@@ -320,5 +345,13 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+  }
+  .input-address2 {
+    padding: 1%;
+    width: 110%;
+  }
+  .input-address3 {
+    height: 15vh;
+    width: 110%;
   }
 }

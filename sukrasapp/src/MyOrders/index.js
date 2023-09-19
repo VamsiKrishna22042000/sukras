@@ -45,8 +45,8 @@ const MyOrders = (props) => {
   };
 
   return load ? (
-    orders.serviceOrders.length > 0 &&
-    orders.eventOrders.length > 0 &&
+    orders.serviceOrders.length > 0 ||
+    orders.eventOrders.length > 0 ||
     orders.productOrders.length > 0 ? (
       <>
         <div className="total-orders">
@@ -60,7 +60,9 @@ const MyOrders = (props) => {
             </button>
             <h1>My Orders</h1>
           </div>
-          <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Services</h1>
+          {orders.serviceOrders.length > 0 && (
+            <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Services</h1>
+          )}
           <div className="all-orders">
             {orders.serviceOrders.map((each) => (
               <div className="each-order">
@@ -91,7 +93,9 @@ const MyOrders = (props) => {
               </div>
             ))}
           </div>
-          <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Products</h1>
+          {orders.productOrders.length > 0 && (
+            <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Products</h1>
+          )}
           <div className="all-orders">
             {orders.productOrders.map((each) => (
               <div style={{ position: "relative" }} className="each-order">
@@ -142,7 +146,9 @@ const MyOrders = (props) => {
               </div>
             ))}
           </div>
-          <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Events</h1>
+          {orders.eventOrders.length > 0 && (
+            <h1 style={{ marginLeft: 25, color: "#3E3E3E" }}>Events</h1>
+          )}
           <div className="all-orders">
             {orders.eventOrders.map((each) => (
               <div className="each-order">
