@@ -67,7 +67,7 @@ const SelectCategory = (props) => {
             id="fashionzone"
             /*onClick={moveToHomePage}*/
             className="sukras-content-image2"
-            src="./fashionzone2.png"
+            src="./fashionzone1.png"
           />
           <h1
             id="fashionzone"
@@ -90,10 +90,11 @@ const SelectCategory = (props) => {
           <button
             id="fashionzone"
             /*onClick={moveToHomePage}*/
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", backgroundColor: "grey" }}
             className="content-button-sukrass"
           >
-            Coming Soon ... <span style={{ marginLeft: 10 }}>❯</span>
+            Coming Soon ...
+            <span style={{ marginLeft: 10 }}>❯</span>
           </button>
         </div>
 
