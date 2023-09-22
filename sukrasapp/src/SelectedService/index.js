@@ -201,83 +201,87 @@ const SelectedService = (props) => {
         <div className="selected-body">
           {servicesarr.map((each) =>
             servicesarr.length > 0 ? (
-              <div className="selected-body-total">
-                <div
-                  style={{
-                    width: "100%",
-                  }}
-                  className="selected-body-content"
-                >
-                  <h1
+              each.active && (
+                <div className="selected-body-total">
+                  <div
                     style={{
-                      textTransform: "capitalize",
-                      width: "80%",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
+                      width: "100%",
                     }}
-                    className="selected-hea"
+                    className="selected-body-content"
                   >
-                    {each.service}
-                  </h1>
-                  <div className="selected-rating-con">
-                    <p className="selected-rating">{each.rating}</p>
+                    <h1
+                      style={{
+                        textTransform: "capitalize",
+                        width: "80%",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                      className="selected-hea"
+                    >
+                      {each.service}
+                    </h1>
+                    <div className="selected-rating-con">
+                      <p className="selected-rating">{each.rating}</p>
+                      <img
+                        className="rating-star"
+                        src="/ratingstar.png"
+                        alt="rating"
+                      />
+                      <p className="selected-rating">
+                        ({each.reviews.length} reviews)
+                      </p>
+                    </div>
+                    <div className="selected-rating-con">
+                      <p className="selected-rating">
+                        <span className="selected-price">₹ </span>
+                        <span className="selected-price-icon">
+                          {each.price}
+                        </span>
+                      </p>
+                      <p className="selected-rating">• {each.time} mins</p>
+                    </div>
+                    <p
+                      style={{
+                        width: "78%",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {each.description}
+                    </p>
+                    <Link to={`/${each.service}/${arr.id}/details`}>
+                      <button
+                        style={{ marginTop: "2%" }}
+                        className="view-details"
+                        type="button"
+                      >
+                        View Details
+                      </button>
+                    </Link>
+                  </div>
+                  <div className="selected-body-book">
                     <img
-                      className="rating-star"
-                      src="/ratingstar.png"
-                      alt="rating"
+                      className="selected-image"
+                      src={each.image[0]}
+                      alt={arr.category}
                     />
-                    <p className="selected-rating">
-                      ({each.reviews.length} reviews)
-                    </p>
-                  </div>
-                  <div className="selected-rating-con">
-                    <p className="selected-rating">
-                      <span className="selected-price">₹ </span>
-                      <span className="selected-price-icon">{each.price}</span>
-                    </p>
-                    <p className="selected-rating">• {each.time} mins</p>
-                  </div>
-                  <p
-                    style={{
-                      width: "78%",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {each.description}
-                  </p>
-                  <Link to={`/${each.service}/${arr.id}/details`}>
                     <button
-                      style={{ marginTop: "2%" }}
-                      className="view-details"
+                      id={each._id}
+                      onClick={addToCart}
+                      className={button === each._id ? "book-btn1" : "book-btn"}
                       type="button"
                     >
-                      View Details
+                      Book Appointment
                     </button>
-                  </Link>
+                  </div>
                 </div>
-                <div className="selected-body-book">
-                  <img
-                    className="selected-image"
-                    src={each.image[0]}
-                    alt={arr.category}
-                  />
-                  <button
-                    id={each._id}
-                    onClick={addToCart}
-                    className={button === each._id ? "book-btn1" : "book-btn"}
-                    type="button"
-                  >
-                    Book Appointment
-                  </button>
-                </div>
-              </div>
+              )
             ) : (
               <div className="loader-spinner">
                 <img
